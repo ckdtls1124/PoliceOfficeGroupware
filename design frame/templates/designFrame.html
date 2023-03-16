@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/board/boardWrite.css">
+  <title>게시글 작성</title>
+</head>
+
+<body>
+
+  <div id="all-container-wrap">
+
+    <!--왼쪽 메뉴바-->
+    <div class="left-wrap">
+
+      <div class="left-menu">
+        <div class="left-con">
+          <h1 class="logo"><a href="#"><img src="/static/img/logo.png" alt="logo"></a></h1>
+
+          <div class="dash-board">
+            <h3 class="title">DASHBOARD</h3>
+
+            <div class="menu">
+              <!--이 부분에 들어갈 항목은 어떤 기업인지에 따라 달라짐-->
+
+              <ul>
+                <!--메뉴 리스트-->
+                <li class="menu-worker">
+                  <img src="/static/img/worker.png" alt="worker"><a href="#">사원관리</a>
+                  <ul class="menu-worker-sub">
+                    <li><a href="#">사원조회</a></li>
+                    <li><a href="#">사원등록</a></li>
+                    <li><a href="#">사원삭제</a></li>
+                  </ul>
+                </li>
+
+                <li class="menu-pay">
+                  <img src="/static/img/pay.png" alt=""><a href="#">급여관리</a>
+                </li>
+
+                <li class="menu-dal">
+                  <img src="/static/img/dal.png" alt=""><a href="#">근태관리</a>
+                </li>
+
+                <li class="menu-depart">
+                  <img src="/static/img/depart.png" alt=""><a href="#">부서관리</a>
+                </li>
+
+                <li class="menu-board">
+                  <img src="/static/img/board.png" alt=""><a href="#">게시판</a>
+                </li>
+
+                <li class="menu-sign">
+                  <img src="/static/img/sign.png" alt=""><a href="#">결재관리</a>
+                </li>
+
+                <li class="menu-store">
+                  <img src="/static/img/store.png" alt=""><a href="#">영업점관리</a>
+                </li>
+
+                <li class="menu-login">
+                  <img src="/static/img/login.png" alt=""><a href="#">LOGIN</a>
+                </li>
+
+              </ul>
+            </div>
+
+            <div class="naver-api">
+              <img src="/static/img/naver.png" alt="naver-logo"><a href="#">NAVER WORKPLACE</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--왼쪽 메뉴바-->
+
+    <!--오른쪽 컨테이너-->
+    <div class="right-wrap">
+      <div class="right-menu">
+        <div class="right-con">
+
+          <!--오른쪽 컨테이너-->
+
+          <div class="boardWrite-container">
+            <div class="boardWrite">
+
+              <form action="" method="post" class="write-form">
+
+                <div class="write-box">
+
+                  <div class="box-top">
+                  </div>
+
+                  <div class="box-middle">
+                  </div>
+
+                  <div class="box-bottom">
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
