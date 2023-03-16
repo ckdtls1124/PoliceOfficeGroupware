@@ -5,16 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>사건 · 사고 관리</title>
+  <title>일석이조 지구대 :: 사건·사고 관리</title>
   <link rel="stylesheet" href="/static/css/eventMain.css">
-  <link rel="stylesheet" href="/static/css/menuIndex.css">
 </head>
 
 <body>
   <div id="all-container-wrap">
     <!--왼쪽 메뉴바-->
     <div class="left-wrap">
-
       <div class="left-menu">
         <div class="left-con">
           <h1 class="logo"><a href="#"><img src="/static/img/logo.png" alt="logo"></a></h1>
@@ -23,8 +21,6 @@
             <h3 class="title">DASHBOARD</h3>
 
             <div class="menu">
-              <!--이 부분에 들어갈 항목은 어떤 기업인지에 따라 달라짐-->
-
               <ul>
                 <!--메뉴 리스트-->
                 <li class="menu-worker">
@@ -84,28 +80,28 @@
 
           <div class="event-header-items">
             <div class="event-search">
+
               <form action="#">
                 <input type="date" name="startDate" id="startDate">~
                 <input type="date" name="endDate" id="endDate">
 
                 <div class="event-radio">
-                  <label for="settleOk">
-                    <input type="radio" name="settle" id="settleOk"> 해결
+                  <label for="1">
+                    <input type="radio" name="eventSettle" id="1"> 해결
                   </label>
-                  <label for="settleNot">
-                    <input type="radio" name="settle" id="settleNot"> 미해결
+                  <label for="0">
+                    <input type="radio" name="eventSettle" id="0"> 미해결
                   </label>
-
                 </div>
+
                 <input type="reset" value="초기화">
                 <input type="submit" value="조회">
               </form>
 
             </div>
-
             <h2 class="event-title">사건·사고 관리</h2>
-
           </div>
+
 
           <div class="event-list">
             <!--grid로 구성하기-->
@@ -119,18 +115,19 @@
               <!--테스트용 더미 텍스트(나중에 지울것)-->
               <!--th:each 이용해서 데이터 뽑아오기-->
             </div>
-            <div class="event-content">사건2</div>
-            <div class="event-content">사건3</div>
-            <div class="event-content">사건4</div>
-            <div class="event-content">사건5</div>
-            <div class="event-content">사건6</div>
-            <div class="event-content">사건7</div>
-            <div class="event-content">사건8</div>
-            <div class="event-content">사건9</div>
-            <div class="event-content">사건10</div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
+            <div class="event-content"></div>
           </div>
 
-          <div class="event-pagingIndex">
+          <div class="event-end-item">
+            <a href="#">사건등록</a>
             <!--페이징 처리-->
             ◀ 1 2 3 4 5 ▶
           </div>

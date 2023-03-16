@@ -1,4 +1,5 @@
 @import url(/static/css/common/reset.css);
+@import url(/static/css/menuIndex.css);
 
 .event-wrap {
   width: 100%;
@@ -35,13 +36,15 @@
   background-color: #003478;
   padding: 10px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .event-wrap .event-container .event-container-items .event-header-items .event-search>form {
+  width: 600px;
   display: flex;
   align-items: center;
   text-align: center;
-  gap: 5px;
+  gap: 10px;
   color: #ffffff;
 }
 
@@ -70,23 +73,25 @@
 }
 
 .event-wrap .event-container .event-container-items .event-header-items .event-search>form .event-radio {
-  padding: 10px;
+  width: 150px;
+  padding: 5px;
   box-sizing: border-box;
 }
 
 .event-wrap .event-container .event-container-items .event-header-items .event-title {
-  width: 30vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding: 0 200px 0; */
+  width: 50%;
+  height: 30px;
   color: #ffffff;
   box-sizing: border-box;
+  position: absolute;
+  top: 10px;
+  left: 530px;
 }
 
 .event-wrap .event-container .event-container-items .event-list {
   width: 100%;
-  height: calc(100vh - 100px);
+  height: auto;
+  /* height: calc(100vh - 100px); */
   /*높이는 나중에 auto로 바꿀것*/
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -104,9 +109,8 @@
   box-sizing: border-box;
 }
 
-.event-wrap .event-container .event-container-items .event-pagingIndex {
+/* .event-wrap .event-container .event-container-items .event-end-item>a {
   height: 20px;
-  /*임시 높이(나중에 뺄 것)*/
   display: flex;
   justify-content: center;
-}
+} */
