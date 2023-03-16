@@ -15,6 +15,7 @@ public class EventGroupEntity {
 	@Column(nullable = false)
 	public Long eventGroup_id;
 
+
 	@Column(nullable = false, unique = true)
 	private String eventGroupName;
 

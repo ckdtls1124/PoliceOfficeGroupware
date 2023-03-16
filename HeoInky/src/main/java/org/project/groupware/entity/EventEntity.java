@@ -1,8 +1,11 @@
 package org.project.groupware.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -11,20 +14,29 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "policeEvent_tb")
-public class EventEntity extends BaseEntity {
+public class EventEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "eventId")
 	public Long event_id;
 
+	@Column(nullable = false)
+	private Long eventNumber;
+
+	@Column(nullable = false)
+	private String eventLocation;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(nullable = false)
+	private LocalDate eventDate;
+
+	@Column(nullable = false)
+	private int eventSettle;
+
 	@OneToOne(mappedBy = "EventGroupEntity")
 	@JoinColumn(name = "eventGroupName")
 	private String eventGroup;
-	
-	private String eventContent;
-
-	private int eventSettle;
 
 
 //  사원(경찰)과 조인

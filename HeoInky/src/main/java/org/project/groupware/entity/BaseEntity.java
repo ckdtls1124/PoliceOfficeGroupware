@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,12 +19,10 @@ import java.time.LocalDateTime;
 public class BaseEntity {
 
 	@CreationTimestamp
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(nullable = false)
 	private LocalDateTime createTime;
 
 	@UpdateTimestamp
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(nullable = false)
 	private LocalDateTime updateTime;
 
