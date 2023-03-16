@@ -16,11 +16,14 @@
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form{
-    
+    border-top: 3px solid #003478;
+    border-bottom: 3px solid #003478;
+    /* border: 5px solid; */
+    padding: 10px 10px;
     width: 66%;
     height: 80%;
-    border-radius: 10px;
-    /* box-shadow: 3px 3px 20px 5px rgb(100, 100, 221); */
+    box-sizing: border-box;
+    
 }
 .Pinsert-container .Pinsert-container-con .Pinsert-form .insert-form{
     background-color: white;
@@ -30,6 +33,7 @@
     text-align: center;
     color: white;
     padding: 20px;
+    box-sizing: border-box;
     background-color: rgb(45, 50, 111);
 }
 
@@ -48,12 +52,13 @@
     justify-content: space-between;
     color: black;
     font-weight: bold;
-    
+    box-sizing: border-box;
 }   
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .li1 input{
     padding: 10px;
     border-radius: 5px;
+    box-sizing: border-box;
     /* margin-left: 100px; */
 }
 
@@ -63,23 +68,26 @@
     padding: 15px;
     /* border: 5px solid #f0f; */
     padding-top: 50px;
+    box-sizing: border-box;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .rank select{
     width: 66%;
     padding: 10px;
     border-radius: 5px;
-    
+    box-sizing: border-box;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .adrress{
  padding: 20px;
  padding-top: 30px;
+ box-sizing: border-box;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .adrress input{
     padding: 7px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .button-class{
@@ -87,15 +95,11 @@
     justify-content: center;
     padding-top: 40px;
     padding-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form button{
     padding: 13px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
-/* 
-.Pinsert-container .Pinsert-container-con .Pinsert-form .officer-img{
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
-} */
