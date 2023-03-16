@@ -1,0 +1,94 @@
+@import url(common/reset.css);
+
+
+/* 전체 민원 페이지 */
+.inquiryContainer{
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.inquiryContainer .inquiryTitle-con{
+    height: 20%;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+
+    padding: 20px;
+    font-size: 50px;
+    color: #003478;
+}
+
+/* 민원 내용 Container */
+.inquiryContainer .inquiryContents-con{
+    height: 80%;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+}
+.inquiryContainer .inquiryContents-con>ul{
+    height: 100%;
+    width: 100%;
+}
+/* column 설정 */
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-column{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+}
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-column>ul{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    column-gap: 10px;
+}
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-column>ul>li{
+    flex-basis: 100px;
+}
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-column>ul>li:nth-child(2){
+    flex: 3;
+}
+.inquiryContents-con-column-title{
+    display: flex;
+    justify-content: center;
+}
+
+/* rows 설정 */
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-rows{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 10px;
+    padding: 10px;
+}
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-rows>ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    column-gap: 10px;
+}
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-rows>ul>li{
+    flex-basis: 100px;
+}
+.inquiryContainer .inquiryContents-con>ul>.inquiryContents-con-rows>ul>li:nth-child(2){
+    flex: 3;
+}
+
+.inquiryContents-con-rows-title{
+    display: flex;
+    justify-content: center;
+}
