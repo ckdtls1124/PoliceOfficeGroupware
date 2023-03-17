@@ -5,14 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>일석이조 지구대 :: 사건관리</title>
-  <link rel="stylesheet" href="/static/css/eventMain.css">
+  <title>일석이조 지구대 :: 사건조회</title>
+  <link rel="stylesheet" href="/static/css/eventDetail.css">
 </head>
 
 <body>
   <div id="all-container-wrap">
 
     <div class="left-wrap">
+
       <div class="left-menu">
         <div class="left-con">
           <h1 class="logo"><a href="#"><img src="/static/img/logo.png" alt="logo"></a></h1>
@@ -21,8 +22,8 @@
             <h3 class="title">DASHBOARD</h3>
 
             <div class="menu">
+
               <ul>
-                <!--메뉴 리스트-->
                 <li class="menu-worker">
                   <img src="/static/img/worker.png" alt="worker"><a href="#">사원관리</a>
                   <ul class="menu-worker-sub">
@@ -78,61 +79,35 @@
         <div class="event-container-items">
 
           <div class="event-header-items">
-            <div class="event-search">
-
-              <form action="#">
-                <input type="date" name="startDate" id="startDate">~
-                <input type="date" name="endDate" id="endDate">
-
-                <div class="event-radio">
-                  <label for="1">
-                    <input type="radio" name="eventSettle" id="1"> 해결
-                  </label>
-                  <label for="0">
-                    <input type="radio" name="eventSettle" id="0"> 미해결
-                  </label>
-                </div>
-
-                <input type="reset" value="초기화">
-                <input type="submit" value="조회">
-              </form>
-
-            </div>
-            <h2 class="event-title">사건·사고 관리</h2>
+            <h2 class="event-title">사건조회</h2>
           </div>
 
+          <div class="event-detail-items">
 
-          <div class="event-list">
-            <!--grid로 구성하기-->
-            <div class="event-content">
-              <img src="https://via.placeholder.com/100x100" alt="사건이미지">
-              사건No 2023003456182<br>
-              장소 노원구<br>
-              일시 2023-03-16 / 13:22<br>
-              분류 과속<br>
-              구분 해결
-              <!--테스트용 더미 텍스트(나중에 지울것)-->
-              <!--th:each 이용해서 데이터 뽑아오기-->
+            <div class="event-detail-con">
+              <div class="event-image">
+                <img src="https://via.placeholder.com/400x400" alt="사건현장이미지">
+              </div>
+              <div class="event-data">
+                <ul>
+                  <li>장소 : 서울시 노원구 상계동</li>
+                  <li>일시 : 2023-03-17 14:55</li>
+                  <li>분류 : 음주운전</li>
+                  <li>담당부서 : 교통안전과</li>
+                  <li>구분 : 해결</li>
+                  <li>상세사항 : 혈중알콜농도 0.17% / 면허취소처분</li>
+                </ul>
+              </div>
             </div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-          </div>
 
-          <div class="event-end-item">
-            <a href="#">사건등록</a>
-            <!--페이징 처리-->
-            ◀ 1 2 3 4 5 ▶
+            <div class="event-settle">
+              <!--미해결 상태인 경우에만 보이도록 처리하기-->
+              <input type="button" value="해결완료처리">
+            </div>
+
           </div>
 
         </div>
-
       </div>
     </div>
 

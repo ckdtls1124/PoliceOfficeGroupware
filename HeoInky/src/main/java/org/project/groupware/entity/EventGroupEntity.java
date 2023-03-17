@@ -3,20 +3,27 @@ package org.project.groupware.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @ToString
 @Table(name = "eventGroup_tb")
 public class EventGroupEntity {
+//사건 분류 엔티티
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	public Long eventGroup_id;
 
-
+	//사건 분류 이름(음주운전, 불법노점상, 무단투기 etc)
 	@Column(nullable = false, unique = true)
 	private String eventGroupName;
+
+	//사건과 1:N 관계
+	@OneToMany(mappedBy = "eventGroup")
+	private List<EventEntity> eventList = new ArrayList<>();
 
 }
