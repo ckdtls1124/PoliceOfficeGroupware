@@ -19,8 +19,8 @@ public class CalendarEntity {
     @Column(name = "Calendar_id")
     private Long calendarId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private MemberEntity member;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private MemberEntity member;
 
 }

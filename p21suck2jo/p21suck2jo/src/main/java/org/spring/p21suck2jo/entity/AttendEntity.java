@@ -29,8 +29,8 @@ public class AttendEntity {
     private LocalDateTime attendLeaveTime;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private MemberEntity member;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private MemberEntity member;
 
 }
