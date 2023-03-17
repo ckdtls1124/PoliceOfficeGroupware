@@ -1,4 +1,4 @@
-package org.spring.security02.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 import org.w3c.dom.Text;
@@ -18,16 +18,16 @@ public class InquiryEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inquiry_id")
-    private Long id;
+    private Long inquiryId;
 
-    private String title;
+    private String inquiryTitle;
 
     @Column(columnDefinition = "TEXT")
-    private String content;
+    private String inquiryContent;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 
     @ManyToOne

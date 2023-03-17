@@ -1,4 +1,4 @@
-package org.spring.security02.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 
@@ -17,12 +17,10 @@ public class VacationEntity {
     @Column(name = "vacation_id")
     private Long id;
 
-
     private String name;
     private String number;
 
-
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 }

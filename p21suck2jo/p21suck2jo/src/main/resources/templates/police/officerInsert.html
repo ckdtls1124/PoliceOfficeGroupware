@@ -104,6 +104,7 @@
                             </div>
 
                             <div class="rank">
+                              <label for="#">직급</label>
                                 <select name="ranks" id="ranks">
                                     <option value="직급">직급 선택...</option>
                                     <option value="순경">순경</option>
@@ -111,7 +112,8 @@
                                     <option value="경감">경감</option>
                                 </select>
                             </div>
-
+                            <div class="adrress-box">
+                            <label for="#">주소</label>
                             <div class="adrress">
                                 <input type="text" id="sample4_postcode" placeholder="우편번호">
                                 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -119,6 +121,7 @@
                                 <span id="guide" style="color:#999;display:none"></span>
                                 <input type="text" id="sample4_detailAddress" placeholder="상세주소" size="30">
                             </div>
+                          </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
    
@@ -168,6 +171,8 @@
     <!-- <div class="officer-img">
         <img src="/static/img/worker.png" alt="#">
     </div> -->
+      <input type="text"placeholder="부서명">
+      <input type="text"placeholder="부서위치">
                           <div class="button-class">
                        <button type="submit" value="">사용자 추가</button>
                             </div>     

@@ -18,10 +18,10 @@
 .Pinsert-container .Pinsert-container-con .Pinsert-form{
     border-top: 3px solid #003478;
     border-bottom: 3px solid #003478;
-    /* border: 5px solid; */
+    background-color: white;
     padding: 10px 10px;
     width: 66%;
-    height: 80%;
+    height: 69%;
     box-sizing: border-box;
     
 }
@@ -34,7 +34,7 @@
     color: white;
     padding: 20px;
     box-sizing: border-box;
-    background-color: rgb(45, 50, 111);
+    background-color: #003478;
 }
 
 /* .Pinsert-container .Pinsert-container-con .Pinsert-form ul{
@@ -66,22 +66,35 @@
 .Pinsert-container .Pinsert-container-con .Pinsert-form .rank{
     display: flex;
     padding: 15px;
+    justify-content: space-between;
+    align-items: center;
     /* border: 5px solid #f0f; */
-    padding-top: 50px;
+    /* padding-top: 50px; */
     box-sizing: border-box;
+    font-weight: bold;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .rank select{
-    width: 66%;
+    width: 75%;
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+}
+.Pinsert-container .Pinsert-container-con .Pinsert-form .adrress-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Pinsert-container .Pinsert-container-con .Pinsert-form .adrress-box label{
+    padding-left: 18px;
+    font-weight: bold;
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .adrress{
  padding: 20px;
  padding-top: 30px;
  box-sizing: border-box;
+
 }
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .adrress input{
@@ -93,8 +106,7 @@
 .Pinsert-container .Pinsert-container-con .Pinsert-form .button-class{
     display: flex;
     justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 17px;
     box-sizing: border-box;
 }
 
@@ -102,4 +114,10 @@
     padding: 13px;
     border-radius: 5px;
     box-sizing: border-box;
+    border: none;
+	border-radius: 3px;
+	background-color: #003478;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 14px;
 }

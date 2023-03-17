@@ -1,4 +1,4 @@
-package org.spring.security02.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 
@@ -18,14 +18,14 @@ public class PersonEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
-    private Long id;
+    private Long personId;
 
     @Column(nullable = false)
-    private String name;
+    private String personName;
 
-    private String email;
-    private int phone;
-    private String address;
+    private String personEmail;
+    private int personPhone;
+    private String personAddress;
 
 
     @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)

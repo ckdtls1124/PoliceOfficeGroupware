@@ -1,4 +1,4 @@
-package org.spring.security02.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 
@@ -17,14 +17,14 @@ public class EventEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "event_id")
-    private Long id;
+    private Long eventId;
 
-    private int number; //사건번호
-    private String content; //사건내용
+    private int eventNumber; //사건번호
+    private String eventContent; //사건내용
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 
     @ManyToOne
