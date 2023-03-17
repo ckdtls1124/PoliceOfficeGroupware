@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/static/css/board/board.css">
-  <title>게시판</title>
+  <title>공지게시판</title>
 </head>
 
 <body>
@@ -90,20 +90,70 @@
               <div class="board-box">
 
                 <div class="box-top">
-                  <h3>공지 게시판</h3>
+                  <h3>공지게시판</h3>
                 </div>
-                <div class="box-middle">
 
-                  <div class="search">
+                <div class="search">
+                  <div class="search-bar">
                     <input type="search" name="search" id="search" placeholder="검색어를 입력해주세요"
                       onfocus="this.placeholder=''" onblur="this.placeholder='검색어를 입력해주세요'">
                     <button type="submit">검색</button>
                   </div>
+                </div>
+
+                <div class="box-middle">
+
+                  <table>
+                    <colgroup>
+                      <col width="10%">
+                      </col>
+                      <col width="auto">
+                      </col>
+                      <col width="10%">
+                      </col>
+                      <col width="20%">
+                      </col>
+                      <col width="10%">
+                      </col>
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>순번</th>
+                        <th>제목</th>
+                        <th>등록자</th>
+                        <th>등록일</th>
+                        <th>조회수</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td><a href="#">안녕하세요. 서장입니다.</a></td>
+                        <td>홍길동</td>
+                        <td>2023-03-16</td>
+                        <td>12</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td><a href="#">닫아댜ㅏ야아아아아아아아앙</a></td>
+                        <td>홍길동</td>
+                        <td>2023-03-17</td>
+                        <td>5</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><a href="#">안녕하세요.</a></td>
+                        <td>홍길동</td>
+                        <td>2023-03-20</td>
+                        <td>17</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
                 </div>
 
                 <div class="box-bottom">
-                  <button type="submit">글추가</button>
+                  <button type="submit">글등록</button>
                 </div>
 
               </div>
