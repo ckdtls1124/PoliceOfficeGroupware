@@ -1,0 +1,57 @@
+@import url(/static/css/common/reset.css);
+@import url(/static/css/index.css);
+.inquiryDetailContainer {
+	width: 100%;
+	height: 100%;
+	/* border: 1px solid; */
+	box-sizing: border-box;
+	padding: 30px 80px 30px 30px;
+}
+.inquiryDetailContainer .inquiryDetailTable {
+	width: 100%;
+	height: 100%;
+	/* border: 1px solid;
+	box-sizing: border-box; */
+}
+.inquiryDetailContainer .inquiryDetailTable  {
+	width: auto;
+	height: 100%;
+	border-top: 2px solid #003478;
+	border-bottom: 2px solid #003478;
+	box-sizing: border-box;
+	/* margin: 0 15px; */
+	padding: 10px 10px;
+	background-color: #ffffff;
+}
+.inquiryDetailContainer .inquiryDetailTable  .inquiryDetail-box {
+	display: flex;
+	flex-direction: column;
+
+	/* gap: 5px; */
+}
+.inquiryDetailContainer .inquiryDetailTable  .inquiryDetail-box .box-top {
+	width: 100%;
+	height: auto;
+	background-color: #003478;
+	color: #ffffff;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+}
+.inquiryDetailContainer .inquiryDetailTable  .inquiryDetail-box .box-middle {
+	/* width: 100%; */
+	margin: 10px 0;
+	display: flex;
+	flex-direction: column;
+}
+.inquiryDetailContainer .inquiryDetailTable  .inquiryDetail-box .box-middle .box-con {
+	width: 100%;
+	margin: 10px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+th, .inquiryDetailData{
+    text-align: start;
+}
