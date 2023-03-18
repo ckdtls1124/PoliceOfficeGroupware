@@ -1,4 +1,4 @@
-package org.spring.security02.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -18,7 +18,7 @@ public class AttendEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "attend_id")
-    private Long id;
+    private Long attendId;
 
     @CreationTimestamp
     @Column(nullable = false)
@@ -30,7 +30,7 @@ public class AttendEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 }

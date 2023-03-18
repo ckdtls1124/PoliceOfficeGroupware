@@ -1,4 +1,4 @@
-package org.spring.security02.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 
@@ -11,16 +11,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "Calender")
+@Table(name = "calender")
 public class CalendarEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Calender_id")
-    private Long id;
+    @Column(name = "calender_id")
+    private Long calenderId;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 }
