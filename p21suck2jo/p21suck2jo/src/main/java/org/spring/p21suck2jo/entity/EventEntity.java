@@ -57,5 +57,8 @@ public class EventEntity {
     //부서와 N:1 관계(추가해야함)
 
     //시민과 N:1 관계(추가해야함)
+    @ManyToOne
+    @JoinColumn(name="personId")
+    private PersonEntity personEntity;
 
 }
