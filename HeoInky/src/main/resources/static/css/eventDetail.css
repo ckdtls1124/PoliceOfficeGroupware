@@ -23,7 +23,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 25%;
   background-color: #ffffff;
   border-top: 2px solid #003478;
   border-bottom: 2px solid #003478;
@@ -52,6 +52,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  position: relative;
 }
 
 .event-wrap .event-container .event-container-items .event-detail-items .event-image {
@@ -63,14 +64,16 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border: 1px solid #000000;
+  border: 2px solid #003478;
   box-sizing: border-box;
 }
 
 .event-wrap .event-container .event-container-items .event-detail-items .event-settle {
-  width: 80%;
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  bottom: 40%;
+  right: 30%;
 }
 
 .event-wrap .event-container .event-container-items .event-detail-items .event-settle>input {

@@ -58,4 +58,6 @@ public class EventEntity {
 	
 	//시민과 N:1 관계(추가해야함)
 
+
+
 }
