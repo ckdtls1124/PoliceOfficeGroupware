@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "memorandum")
+@Builder
 public class MemorandumEntity {
 
     @Id
@@ -26,16 +28,16 @@ public class MemorandumEntity {
 
 
 //    승인 여부 확인
-    private int approval;
+//    private int approval;
 
 
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "policeId")
+    private PoliceEntity policeEntity;
 
 //    승인을 해주는 member의 list를 가진다.
     @OneToMany
-    private List<MemberEntity> approvingMember = new ArrayList<>();
+    private List<PoliceEntity> apprvoingPolice = new ArrayList<>();
 
 }

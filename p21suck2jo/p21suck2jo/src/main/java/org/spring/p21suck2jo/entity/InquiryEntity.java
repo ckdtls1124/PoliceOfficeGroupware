@@ -29,8 +29,8 @@ public class InquiryEntity extends BaseEntity {
     private InquiryAnswerEntity inquiryAnswer;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "policeId")
+    private PoliceEntity policeEntity;
 
 
     @ManyToOne

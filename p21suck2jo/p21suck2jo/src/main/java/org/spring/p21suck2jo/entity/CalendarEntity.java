@@ -20,7 +20,7 @@ public class CalendarEntity {
     private Long calendarId;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private MemberEntity member;
+    @JoinColumn(name = "policeId")
+    private PoliceEntity policeEntity;
 
 }
