@@ -28,11 +28,12 @@ public class PersonEntity extends BaseEntity{
     private String personAddress;
 
 
-    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "personEntity",cascade = CascadeType.ALL)
     private List<EventEntity> eventList = new ArrayList<>();
 
     @OneToMany(mappedBy = "person" ,cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
+
 
 
 }

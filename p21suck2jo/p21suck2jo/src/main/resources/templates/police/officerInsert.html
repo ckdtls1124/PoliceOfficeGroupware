@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <title>Officer Insert</title>
-  <link rel="stylesheet" href="/static/css/police/officerInsert.css">
+  <link rel="stylesheet" th:href="@{/css/police/officerInsert.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 
 <body>
@@ -85,41 +86,59 @@
                 <div class="Pinsert-container-con">
                     <div class="Pinsert-form">
                         <h1>사원 등록</h1>
+                        <form th:action="@{/police/insert}" method="post">
                       <div class="insert-form">      
                         <div class="insert-text">
                             <ul>
                                 <li class="li1">사원번호
-                                    <input type="text" placeholder="사원 번호" size="100">
+                                    <input type="text" th:field="${police.policeNumber}"  id="policeNumber" placeholder="사원 번호" size="100">
                                 </li>
+                                <li class="li1">사원 이름
+                                  <input type="text" th:field="${police.policeName}" id="policeName" placeholder="사원 이름" size="100">
+                              </li>
+                              <!-- <li class="li1"> 부서
+                                <input type="text" placeholder="부서명" size="100" maxlength="20">
+                            </li> -->
                                 <li class="li1"> 비밀번호
-                                    <input type="password" placeholder="비밀번호" size="100" maxlength="18">
+                                    <input type="password" th:field="${police.password}" id="password" placeholder="비밀번호" size="100" maxlength="18">
                                 </li>
                                 <li class="li1"> 이메일
-                                    <input type="text" placeholder="이메일" size="100">
+                                    <input type="text" th:field="${police.email}" id="email" placeholder="이메일" size="100">
                                 </li>
                                 <li class="li1"> 핸드폰 번호
-                                    <input type="text" placeholder="핸드폰 번호" size="100" maxlength="20">
+                                    <input type="text" th:field="${police.policePhone}" id="policePhone" placeholder="핸드폰 번호" size="100" maxlength="20">
                                 </li>
                             </ul>
                             </div>
 
-                            <div class="rank">
-                              <label for="#">직급</label>
-                                <select name="ranks" id="ranks">
-                                    <option value="직급">직급 선택...</option>
-                                    <option value="순경">순경</option>
-                                    <option value="경위">경위</option>
-                                    <option value="경감">경감</option>
+                            <div class="dept">
+                              <label for="#">부서</label>
+                                <select  th:field="${police.dept}" id="dept">
+                                    <option th:value="직급">부서 선택...</option>
+                                    <option th:value="1팀">1팀</option>
+                                    <option th:value="2팀">2팀</option>
+                                    <option th:value="3팀">3팀</option>
                                 </select>
                             </div>
+
+                            <div class="rank">
+                              <label for="#">직급</label>
+                                <select th:field="${police.ranks}" id="ranks">
+                                    <option th:value="직급">직급 선택...</option>
+                                    <option th:value="순경">순경</option>
+                                    <option th:value="경위">경위</option>
+                                    <option th:value="경감">경감</option>
+                                </select>
+                            </div>
+
                             <div class="adrress-box">
                             <label for="#">주소</label>
                             <div class="adrress">
-                                <input type="text" id="sample4_postcode" placeholder="우편번호">
+                                <input type="text" id="sample4_postcode" th:field="${police.zip_code}" placeholder="우편번호">
                                 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                                <input type="text" id="sample4_roadAddress" placeholder="도로명주소" size="30">
+                                <input type="text" id="sample4_roadAddress" th:field="${police.policeAddress}" placeholder="도로명주소" size="30">
                                 <span id="guide" style="color:#999;display:none"></span>
-                                <input type="text" id="sample4_detailAddress" placeholder="상세주소" size="30">
+                                <input type="text" id="sample4_detailAddress" th:field="${police.DetailAddress}" placeholder="상세주소" size="30">
                             </div>
                           </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -171,12 +190,16 @@
     <!-- <div class="officer-img">
         <img src="/static/img/worker.png" alt="#">
     </div> -->
-      <input type="text"placeholder="부서명">
-      <input type="text"placeholder="부서위치">
                           <div class="button-class">
-                       <button type="submit" value="">사용자 추가</button>
-                            </div>     
+                       <button type="submit" value="" id="insertbtn">사용자 추가</button>
+                          </div>
+                          <script>
+                               document.getElementById("insertbtn").onclick = function () {
+                                 alert("사원(사용자)이 추가되었습니다.");
+                                };
+                           </script>
                     </div>
+                        </form>
                 </div>
                 </div>
             </div>

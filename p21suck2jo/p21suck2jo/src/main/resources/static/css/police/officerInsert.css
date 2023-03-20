@@ -21,7 +21,7 @@
     background-color: white;
     padding: 10px 10px;
     width: 66%;
-    height: 69%;
+    height: 84%;
     box-sizing: border-box;
     
 }
@@ -73,8 +73,25 @@
     box-sizing: border-box;
     font-weight: bold;
 }
+.Pinsert-container .Pinsert-container-con .Pinsert-form .dept{
+    display: flex;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 5px solid #f0f; */
+    /* padding-top: 50px; */
+    box-sizing: border-box;
+    font-weight: bold;
+}
 
 .Pinsert-container .Pinsert-container-con .Pinsert-form .rank select{
+    width: 75%;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.Pinsert-container .Pinsert-container-con .Pinsert-form .dept select{
     width: 75%;
     padding: 10px;
     border-radius: 5px;

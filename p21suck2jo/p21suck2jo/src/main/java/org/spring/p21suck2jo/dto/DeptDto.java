@@ -16,7 +16,7 @@ public class DeptDto {
 
     private Long deptId;
     private String deptNM;
-    private String deptLOC;
+
     private PoliceEntity police;
 
 

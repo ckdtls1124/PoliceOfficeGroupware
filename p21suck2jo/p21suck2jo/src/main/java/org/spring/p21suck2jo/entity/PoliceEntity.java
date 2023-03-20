@@ -2,7 +2,8 @@ package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 
-import org.spring.p21suck2jo.convert.PoliceConvert;
+//import org.spring.p21suck2jo.convert.PoliceConvert;
+//import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -27,17 +28,19 @@ public class PoliceEntity extends BaseEntity{
     @Column(nullable = false)
     private String password;
 
+    private String dept;
+    private String policeName;
     private String email;
     private int policeNumber; //사원번호
     private String ranks; //직책 <- table
     private String zip_code;
 
-    @Converter(converter = PoliceConvert.class)
-    private String dept;
+//    @Converter(converter = PoliceConvert.class)
+//    private String dept;
 
     private String policeAddress;
     private String DetailAddress;
-    private int policePhone;
+    private String policePhone;
 
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
@@ -50,28 +53,29 @@ public class PoliceEntity extends BaseEntity{
     private List<CalendarEntity> calendarList = new ArrayList<>();
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
-    private List<VacationEntity> vacationList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
-    private List<EventEntity> EventList = new ArrayList<>();
+    private List<MemorandumEntity> moMemorandumList = new ArrayList<>();
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
-//    private List<DeptEntity> deptList = new ArrayList<>();
+    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
+    private List<DeptEntity> deptList = new ArrayList<>();
 
 
-    public static PoliceEntity createOfficer(PoliceDto policeDto,PasswordEncoder passwordEncoder){
+    public static PoliceEntity createOfficer(PoliceDto policeDto){
         PoliceEntity police = new PoliceEntity();
-        police.setPoliceId(policeDto.getPoliceId());
-        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+//        police.setPoliceId(policeDto.getPoliceId());
+//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+        police.setPassword(policeDto.getPassword());
+        police.setPoliceName(policeDto.getPoliceName());
+        police.setDept(policeDto.getDept());
         police.setEmail(policeDto.getEmail());
-        police.setPoliceNumber(policeDto.getPoilceNumber());
+        police.setPoliceNumber(policeDto.getPoliceNumber());
         police.setRanks(policeDto.getRanks());
         police.setZip_code(policeDto.getZip_code());
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());
+        police.setPolicePhone(policeDto.getPolicePhone());
         return police;
     }
 

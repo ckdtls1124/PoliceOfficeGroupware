@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <title>admin officer update</title>
-  <link rel="stylesheet" href="/static/css/police/adminOfficerUpdate.css">
+  <link rel="stylesheet" th:href="@{/css/police/adminOfficerUpdate.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 
 <body>
@@ -101,21 +102,28 @@
                             <li>주소</li>
                         </ul>
                         </div>
-                        
-                        <div class="basicInfo-right">
-                            <ul>
-                                <li><input type="text" value="홍길동" readonly></li>
-                                <li><input type="text" value="01011112222" readonly></li>
-                                <li><input type="text" value="email@email.com" readonly></li>
-                                <li><input type="text" value="18231" size="8" readonly></li>
-                                <li><input type="text" value="경기도 의정부시 호원동 31-31" size="50" readonly></li>
-                                <li><input type="text" value="ㅇㅇ아파트 101동101호" size="50" readonly></li>
-                                <div class="btn">
-                                <button type="submit" >사원 해임</button>
-                                </div>
-                            </ul>
-                        </div>
 
+                        <div class="basicInfo-right">
+                        <form th:action="@{|/police/list/delete/${police.policeId}|}" method="post">
+                            <ul>
+                                <li><input type="text" th:value="${police.policeName}" readonly></li>
+                                <li><input type="text" th:value="${police.policePhone}" readonly></li>
+                                <li><input type="text" th:value="${police.email}" readonly></li>
+                                <li><input type="text" th:value="${police.zip_code}" size="8" readonly></li>
+                                <li><input type="text" th:value="${police.policeAddress}" size="50" readonly></li>
+                                <li><input type="text" th:value="${police.DetailAddress}" size="50" readonly></li>
+                                <div class="btn">
+                                <button type="submit" id="deletebtn">사원 해임</button>
+                                </div>
+                                <script>
+                               document.getElementById("deletebtn").onclick = function () {
+                                 alert("사원 정보가 삭제되었습니다.");
+                                };
+                            </script>
+
+                            </ul>
+                        </form>
+                        </div>
                     </div>
                     <h3>회사 정보</h3>
                     <div class="mypage-companyInfo">
@@ -130,15 +138,17 @@
                             </div>
                             
                             <div class="companyInfo-right">
+                                <form th:action="@{|/police/update/${police.policeId}|}" method="post">
                                 <ul>
-                                    <li>떡잎마을방범대</li>
-                                    <li>20230317</li>
-                                    <li>순경</li>
-                                    <li>createTime</li>
+                                    <li><input type="text" th:value="${police.dept}"></li>
+                                    <li><input type="text" th:value="${police.policeNumber}"></li>
+                                    <li><input type="text"  th:value="${police.ranks}"></li>
+                                    <li><input type="text"  th:value="${police.createTime}"readonly></li>
                                     <div class="btn2">
                                         <button type="submit" >직책 변경</button>
                                     </div>
                                 </ul>
+                                </form>
                             </div>
 
                     </div>

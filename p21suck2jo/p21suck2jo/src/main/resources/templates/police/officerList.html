@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <title>Officer List</title>
-  <link rel="stylesheet" href="/static/css/police/officerList.css">
+  <link rel="stylesheet" th:href="@{/css/police/officerList.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 
 <body>
@@ -98,44 +99,15 @@
                             </div>
 
                             <div class="List-info">
-                                <ul>
-                                    <li><img src="/static/img/worker.png" alt="#"></li>
-                                    <li>20230316</li>
-                                    <li>홍길동</li>
-                                    <li>01000001111</li>
-                                    <li><a href="#">직원수정</a></li>
+                                <ul th:each="police : ${policeList}">
+                                    <li><img th:src="@{/img/worker.png}" alt="#"></li>
+                                    <li th:text="${police.policeNumber}"></li>
+                                    <li th:text="${police.policeName}"></li>
+                                    <li th:text="${police.policePhone}"></li>
+                                    <li><a th:href="@{|/police/list/${police.policeId}|}">직원수정</a></li><!--sec:authorize="hasRole('ADMIN')" -->
                                 </ul>
-                                <ul>
-                                  <li><img src="/static/img/worker.png" alt="#"></li>
-                                  <li>20230316</li>
-                                  <li>홍길동</li>
-                                  <li>01000001111</li>
-                                  <li><a href="#">직원수정</a></li>
-                              </ul>
-                              <ul>
-                                <li><img src="/static/img/worker.png" alt="#"></li>
-                                <li>20230316</li>
-                                <li>홍길동</li>
-                                <li>01000001111</li>
-                                <li><a href="#">직원수정</a></li>
-                            </ul>
-                            <ul>
-                              <li><img src="/static/img/worker.png" alt="#"></li>
-                              <li>20230316</li>
-                              <li>홍길동</li>
-                              <li>01000001111</li>
-                              <li><a href="#">직원수정</a></li>
-                          </ul>
-                          <ul>
-                            <li><img src="/static/img/worker.png" alt="#"></li>
-                            <li>20230316</li>
-                            <li>홍길동</li>
-                            <li>01000001111</li>
-                            <li><a href="#">직원수정</a></li>
-                        </ul>
-                                
-    
-                            </div>
+
+                             </div>
 
                     </div>   
                 </div>

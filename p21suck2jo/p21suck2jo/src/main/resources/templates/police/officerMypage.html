@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <title>My page</title>
-  <link rel="stylesheet" href="/static/css/police/officerMypage.css">
+  <link rel="stylesheet" th:href="@{/css/police/officerMypage.css}">
 </head>
 
 <body>
@@ -104,12 +104,12 @@
                         
                         <div class="basicInfo-right">
                             <ul>
-                                <li><input type="text" value="홍길동"></li>
-                                <li><input type="text" value="01011112222"></li>
-                                <li><input type="text" value="email@email.com"></li>
-                                <li><input type="text" value="18231" size="8"></li>
-                                <li><input type="text" value="경기도 의정부시 호원동 31-31" size="50"></li>
-                                <li><input type="text" value="ㅇㅇ아파트 101동101호" size="50"></li>
+                                <li><input type="text" th:value="${police.policeName}"></li>
+                                <li><input type="text" th:value="${police.policePhone}"></li>
+                                <li><input type="text" th:value="${police.email}"></li>
+                                <li><input type="text" th:value="${police.zip_code}" size="8"></li>
+                                <li><input type="text" th:value="${police.policeAddress}" size="50"></li>
+                                <li><input type="text" th:value="${police.DetailAddress}" size="50"></li>
                                 <div class="btn">
                                 <button type="submit" >내 정보 수정</button>
                                 </div>
@@ -124,17 +124,17 @@
                             <ul>
                                 <li>소속</li>
                                 <li>사번</li>
-                                <li>직급</li>
+                                <li>직책</li>
                                 <li>입사 날짜</li>
                             </ul>
                             </div>
                             
                             <div class="companyInfo-right">
                                 <ul>
-                                    <li>떡잎마을방범대</li>
-                                    <li>20230317</li>
-                                    <li>순경</li>
-                                    <li>createTime</li>
+                                    <li th:text="${police.dept}"></li>
+                                    <li th:text="${police.policeNumber}"></li>
+                                    <li th:text="${police.ranks}"></li>
+                                    <li th:text="${police.createTime}"></li>
                                 </ul>
                             </div>
 
