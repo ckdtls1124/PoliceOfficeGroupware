@@ -25,7 +25,7 @@ public class EventFileEntity extends BaseEntity {
     private String eventFileNewName;
 
     @ManyToOne
-    @JoinColumn(name = "event_id")
+    @JoinColumn(name = "eventFileEntities")
     private EventEntity fileJoinEvent;
 
 }

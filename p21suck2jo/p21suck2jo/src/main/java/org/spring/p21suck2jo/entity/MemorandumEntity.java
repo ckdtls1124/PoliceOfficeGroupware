@@ -29,6 +29,8 @@ public class MemorandumEntity {
     //    승인 여부 확인
     private int approval;
 
+    @OneToMany(mappedBy = "memorandumEntity",cascade = CascadeType.ALL)
+    List<MemorandumFileEntity> memorandumFileList = new ArrayList<>();
 
 
     @ManyToOne
@@ -36,7 +38,8 @@ public class MemorandumEntity {
     private PoliceEntity police;
 
     //    승인을 해주는 member의 list를 가진다.
-    @OneToMany
-    private List<PoliceEntity> approvingMember = new ArrayList<>();
+    @OneToMany(mappedBy = "memorandum",cascade = CascadeType.ALL)
+    List<ApprovingMember> approvingMemberList = new ArrayList<>();
+
 
 }

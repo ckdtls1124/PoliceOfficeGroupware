@@ -6,33 +6,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "memorandumFile")
-public class MemorandumFileEntity {
+@Table(name = "approvingMember")
+public class ApprovingMember {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "memorandumFile_id")
-    private Long memorandumFileId;
-
-    @Column
-    private String memorandumFileName;
-
-    @Column(columnDefinition = "TEXT")
-    private String memorandumFileContents;
-
-    private String memorandumFileType;
+    @Column(name = "approvingMember_id")
+    private Long approvingMemberId;
 
     @ManyToOne
     @JoinColumn(name = "police_id")
     private PoliceEntity police;
 
-
     @ManyToOne
     @JoinColumn(name = "memorandum_id")
-    private MemorandumEntity memorandumEntity;
+    private MemorandumEntity memorandum;
+
+
+
 }
