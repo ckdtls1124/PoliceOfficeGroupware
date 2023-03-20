@@ -7,8 +7,10 @@ import org.spring.p21suck2jo.entity.MemorandumFileEntity;
 import org.spring.p21suck2jo.memorandumRepository.MemorandumFileRepository;
 import org.spring.p21suck2jo.memorandumService.MemorandumFileService;
 import org.spring.p21suck2jo.memorandumService.MemorandumService;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
 
-import javax.annotation.Resource;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -50,6 +52,8 @@ public class MemorandumController {
         return "FilePage";
     }
 
+//    파일 첨부하기
+
     @PostMapping("/uploadFileInMemo")
     public String uploadFile(@RequestParam("file") List<MultipartFile> files) throws IOException {
         for (MultipartFile multipartFile : files) {
@@ -61,18 +65,31 @@ public class MemorandumController {
 
 //    첨부 파일 다운로드
     @GetMapping("/attach/{id}")
-    public ResponseEntity<UrlResource> downloadAttach(@PathVariable Long id) throws MalformedURLException{
+    public ResponseEntity<Resource> downloadAttach(@PathVariable Long id) throws MalformedURLException{
 
         MemorandumFileEntity file = memorandumFileRepository.findById(id).orElse(null);
 
         UrlResource resource = new UrlResource("file:"+file.getMemorandumFilePath());
+        System.out.println("Resource :"+resource);
 
         String encodedFileName = UriUtils.encode(file.getMemorandumFileOriginalName(), StandardCharsets.UTF_8);
+        System.out.println("Encoded file name :"+encodedFileName);
 
         String contentDisposition = "attachment; filename=\""+encodedFileName+"\"";
+        System.out.println("Content Disposition :"+contentDisposition);
 
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition).body(resource);
 
+    }
+
+//    저장한 파일 중 선택 삭제
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteSelectedFile(@PathVariable Long id){
+        if(memorandumFileService.deleteSelectedFile(id) == 1){
+            return new ResponseEntity<>("", HttpStatus.OK);
+        } else {
+            return null;
+        }
     }
 
 
