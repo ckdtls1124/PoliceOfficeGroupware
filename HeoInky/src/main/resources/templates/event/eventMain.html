@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>일석이조 지구대 :: 사건관리</title>
-  <link rel="stylesheet" href="/static/css/eventMain.css">
+  <link rel="stylesheet" th:href="@{/css/eventMain.css}">
 </head>
 
 <body>
   <div id="all-container-wrap">
 
-    <div class="left-wrap">
+    <div th:replace="/common/menuIndex :: leftMain"></div>
+
+    <!-- <div class="left-wrap">
       <div class="left-menu">
         <div class="left-con">
           <h1 class="logo"><a href="#"><img src="/static/img/logo.png" alt="logo"></a></h1>
@@ -22,7 +24,6 @@
 
             <div class="menu">
               <ul>
-                <!--메뉴 리스트-->
                 <li class="menu-worker">
                   <img src="/static/img/worker.png" alt="worker"><a href="#">사원관리</a>
                   <ul class="menu-worker-sub">
@@ -71,7 +72,7 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
 
     <div class="event-wrap">
       <div class="event-container">

@@ -1,12 +1,14 @@
 package org.project.groupware.entity;
 
 import lombok.*;
+import org.project.groupware.dto.EventDto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Entity
 @Getter
@@ -25,7 +27,7 @@ public class EventEntity {
 
 	//사건 넘버
 	@Column(nullable = false)
-	private Long eventNumber;
+	private int eventNumber;
 
 	//사건 발생 장소
 	@Column(nullable = false)
@@ -44,6 +46,10 @@ public class EventEntity {
 	@Column(nullable = false, length = 5000)
 	private String eventNote;
 
+	//파일 첨부 여부(첨부 = 1, 미첨부 = 0)
+	@Column(nullable = false)
+	private int eventAttachFile;
+
 	//사건 현장 파일과 1:N 관계
 	//사건은 삭제될 수 없기에 cascade, orphanRemoval은 따로 설정하지 않는다
 	@OneToMany(mappedBy = "fileJoinEvent")
@@ -58,6 +64,36 @@ public class EventEntity {
 	
 	//시민과 N:1 관계(추가해야함)
 
+	
+	//생성자
+	public static EventEntity eventDtoToEntityFile(EventDto eventDto) {
+		//첨부된 파일이 있을 때
+		EventEntity eventEntity = new EventEntity();
 
+		eventEntity.setEventNumber(new Random().nextInt(1000000));
+		eventEntity.setEventLocation(eventDto.getEventLocation());
+		eventEntity.setEventDate(eventDto.getEventDate());
+		eventEntity.setEventSettle(eventDto.getEventSettle());
+		eventEntity.setEventNote(eventDto.getEventNote());
+		eventEntity.setEventAttachFile(1);
+
+		return eventEntity;
+
+	}
+
+	public static EventEntity eventDtoToEntity(EventDto eventDto) {
+		//첨부된 파일X
+		EventEntity eventEntity = new EventEntity();
+
+		eventEntity.setEventNumber(new Random().nextInt(1000000));
+		eventEntity.setEventLocation(eventDto.getEventLocation());
+		eventEntity.setEventDate(eventDto.getEventDate());
+		eventEntity.setEventSettle(eventDto.getEventSettle());
+		eventEntity.setEventNote(eventDto.getEventNote());
+		eventEntity.setEventAttachFile(0);
+
+		return eventEntity;
+
+	}
 
 }

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
-  <title>MAIN INDEX</title>
-  <link rel="stylesheet" href="../static/css/index.css">
+  <title></title>
 </head>
 
 <body>
@@ -12,7 +11,7 @@
   <div id="all-container-wrap">
 
     <!--왼쪽 메뉴바-->
-    <div class="left-wrap">
+    <div class="left-wrap" th:fragment="leftMain">
 
       <div class="left-menu">
         <div class="left-con">
@@ -75,16 +74,7 @@
       </div>
 
     </div>
-    <!--왼쪽 메뉴바-->
 
-    <!--오른쪽 컨테이너-->
-    <div class="right-wrap">
-      <div class="right-menu">
-        <div class="right-con">
-        </div>
-      </div>
-    </div>
-    <!--오른쪽 컨테이너-->
   </div>
 
 </body>

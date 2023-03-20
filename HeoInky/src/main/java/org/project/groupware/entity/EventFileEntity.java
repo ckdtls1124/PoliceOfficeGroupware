@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.project.groupware.dto.EventDto;
 
 import javax.persistence.*;
 
@@ -20,12 +21,22 @@ public class EventFileEntity extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long eventFile_id;
 
-	private String eventFileOriginName;
-
-	private String eventFileNewName;
+	private String eventFileName;
 
 	@ManyToOne
 	@JoinColumn(name = "event_id")
 	private EventEntity fileJoinEvent;
+
+	//생성자
+	public static EventFileEntity eventFileUpload(EventEntity eventEntity, String eventFileName) {
+
+		EventFileEntity eventFileEntity = new EventFileEntity();
+
+		eventFileEntity.setFileJoinEvent(eventEntity);
+		eventFileEntity.setEventFileName(eventFileName);
+
+		return eventFileEntity;
+
+	}
 
 }

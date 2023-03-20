@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th=" http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>일석이조 지구대 :: 사건조회</title>
-  <link rel="stylesheet" href="/static/css/eventDetail.css">
+  <link rel="stylesheet" hth:ref="@{/css/eventDetail.css}">
 </head>
 
 <body>
@@ -90,16 +90,17 @@
               </div>
               <div class="event-data">
                 <ul>
-                  <li>장소 : 서울시 노원구 상계동</li>
-                  <li>일시 : 2023-03-17 14:55</li>
-                  <li>분류 : 음주운전</li>
-                  <li>담당부서 : 교통안전과</li>
-                  <li>구분 : 해결</li>
-                  <li>상세사항 : 혈중알콜농도 0.17% / 면허취소처분</li>
+                  <li>장소</li>
+                  <li>서울시 노원구 상계동 55-1</li>
+                  <li>일시</li>
+                  <li>분류</li>
+                  <li>담당부서</li>
+                  <li>구분</li>
+                  <li>상세사항</li>
                 </ul>
               </div>
             </div>
-            
+
             <!--미해결 상태인 경우에만 보이도록 처리하기-->
             <!-- <div class="event-settle">
               <input type="button" value="해결완료처리">
