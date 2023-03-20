@@ -146,7 +146,7 @@
                       </div>
 
                       <div class="comment-box">
-                        <ul>
+                        <!--<ul>
                           <li>
                             <div class="writer">홍길동</div>
                             <div class="date">2023-03-17 12:33:11</div>
@@ -156,25 +156,46 @@
                               <button><a href="#">삭제</a></button>
                             </div>
                           </li>
-                          <li>
-                            <div class="writer">홍길동</div>
-                            <div class="date">2023-03-17 12:33:11</div>
-                            <div class="message">와아아!! 무조건 참석하겠습니다.</div>
-                            <div class="button-group">
-                              <button><a href="#">수정</a></button>
-                              <button><a href="#">삭제</a></button>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="writer">홍길동</div>
-                            <div class="date">2023-03-17 12:33:11</div>
-                            <div class="message">와아아!! 무조건 참석하겠습니다.</div>
-                            <div class="button-group">
-                              <button><a href="#">수정</a></button>
-                              <button><a href="#">삭제</a></button>
-                            </div>
-                          </li>
-                        </ul>
+                        </ul>-->
+
+                        <div class="reply-write">
+                          <form th:action="@{/replyWrite}" method="post">
+                            <input hidden="hidden" readonly name="replyId" th:value="${replyId}">
+                            <input hidden="hidden" readonly name="boardId" th:value="${boardId}">
+                            <ul>
+                              <li>
+                                <label for="replyWriter">작성자</label>
+                                <input type="text" name="replyWriter" id="replyWriter" placeholder="작성자">
+                              </li>
+                              <li>
+                              <label for="replyContent">댓글내용</label>
+                                <input type="text" name="replyContent" id="replyContent" placeholder="댓글입력"
+                                       onfocus="this.placeholder=''" onblur="this.placeholder='댓글입력'">
+                              </li>
+                                <button type="submit">댓글등록</button>
+                              </li>
+                            </ul>
+                          </form>
+                        </div>
+
+                        <div class="reply-list">
+                          <table>
+                            <tr>
+                              <th>댓글번호</th>
+                              <th>작성자</th>
+                              <th>내용</th>
+                              <th>작성시간</th>
+                            </tr>
+                            <tr th:each="list: ${replyList}">
+                              <td th:text="${list.replyId}"></td>
+                              <td th:text="${list.replyWriter}"></td>
+                              <td th:text="${list.replyContent}"></td>
+                              <td th:text="*{#temporals.format(list.createTime, 'yyyy/MM/dd/ HH:mm:ss')}"></td>
+                            </tr>
+                          </table>
+
+                        </div>
+
                       </div>
                     </div>
                   </div>

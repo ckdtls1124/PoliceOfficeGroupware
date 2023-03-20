@@ -57,4 +57,40 @@ public class BoardService{
             return null;
         }
     }
+
+    @Transactional
+    public void upViews(Long boardId) {
+
+        boardRepository.updateViews(boardId);
+    }
+
+    @Transactional
+    public BoardDto boardUpdate(Long boardId) {
+
+        Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(boardId);
+
+        if(boardEntity.isPresent()){
+            BoardDto boardDto=BoardDto.toboardDto(boardEntity.get());
+
+            return boardDto;
+        }else{
+            return null;
+        }
+    }
+
+
+    @Transactional
+    public void boardUpdateOk(BoardDto boarDto) {
+
+        BoardEntity boardEntity=BoardEntity.toAllboardEntity(boarDto);
+
+        boardRepository.save(boardEntity);
+    }
+
+    @Transactional
+    public void boardDelete(Long boardId) {
+
+        boardRepository.deleteByBoardId(boardId);
+    }
+
 }

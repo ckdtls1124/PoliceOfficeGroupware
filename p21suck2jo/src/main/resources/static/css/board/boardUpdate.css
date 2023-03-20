@@ -159,21 +159,8 @@ button {
 	.button-right
 	button {
 	width: 60px;
-	text-align: center;
-}
-.boardUpdate-container
-	.boardUpdate
-	.update-form
-	.update-box
-	.box-bottom
-	.button-right
-	button
-	a {
-	width: 100%;
-	display: block;
 	padding: 3px;
 	box-sizing: border-box;
-	border: none;
 	border-radius: 3px;
 	background-color: #003478;
 	color: #ffffff;
@@ -187,8 +174,7 @@ button {
 	.update-box
 	.box-bottom
 	.button-right
-	button
-	a:hover {
+	button:hover {
 	background-color: #ffc400;
 	color: #000000;
 }

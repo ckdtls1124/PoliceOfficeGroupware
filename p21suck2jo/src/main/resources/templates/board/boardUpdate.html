@@ -89,36 +89,38 @@
           <div class="boardUpdate-container">
             <div class="boardUpdate">
 
-              <form action="" method="post" class="update-form">
+              <form th:action="@{/boardUpdate}" method="post" class="update-form" th:object="${boardDto}">
                 <div class="update-box">
                   <div class="box-top">
                     <h3>게시글 수정</h3>
                   </div>
                   <div class="box-middle">
+                    <input type="hidden" name="boardId" dirname="boardId" th:value="${boardDto.boardId}">
+                    <input type="hidden" name="views" dirname="views" th:value="${boardDto.views}">
                     <div class="box-con">
-                      <label for="title">제목</label>
-                      <input type="text" id="title" name="title" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''"
+                      <label th:for="boardTitle">제목</label>
+                      <input type="text" id="boardTitle" name="boardTitle" th:value="${boardDto.boardTitle}" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''"
                         onblur="this.placeholder='제목을 입력해주세요'">
                     </div>
                     <div class="box-con">
                       <input type="file" name="" id="">
                     </div>
                     <div class="box-con">
-                      <label for="content">내용</label>
-                      <textarea name="content" id="content" rows="34" placeholder="내용을 입력해주세요"
+                      <label th:for="boardContent">내용</label>
+                      <textarea name="boardContent" id="boardContent" th:value="${boardDto.boardContent}" th:text="${boardDto.boardContent}" rows="34" placeholder="내용을 입력해주세요"
                         onfocus="this.placeholder=''" onblur="this.placeholder='내용을 입력해주세요'"></textarea>
                     </div>
                     <div class="box-con">
-                      <label for="writer">작성자</label>
-                      <input type="text" id="writer" name="writer" readonly>
+                      <label th:for="boardWriter">작성자</label>
+                      <input type="text" id="boardWriter" name="boardWriter" th:value="${boardDto.boardWriter}" readonly>
                     </div>
                   </div>
                   <div class="box-bottom">
                     <div class="button-left">
-                      <button><a href="#"><img src="/img/board/list.png" alt=""> 목록</a></button>
+                      <button><a th:href="@{/board}"><img src="/img/board/list.png" alt=""> 목록</a></button>
                     </div>
                     <div class="button-right">
-                      <button type="submit"><a href="#">글수정</a></button>
+                      <button type="submit">글수정</button>
                     </div>
                   </div>
                 </div>

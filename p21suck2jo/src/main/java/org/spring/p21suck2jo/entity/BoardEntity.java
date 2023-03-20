@@ -5,6 +5,8 @@ import org.spring.p21suck2jo.dto.BoardDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,9 +37,13 @@ public class BoardEntity extends BaseEntity{
     @Column(nullable = false)
     private String boardWriter;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member_id")
-//    private MemberEntity memberId;
+/*    @ManyToOne
+    @JoinColumn(name = "police_id")
+    private PoliceEntity policeEntity;*/
+
+    @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ReplyEntity> replyList = new ArrayList<>();
+
 
     public static BoardEntity toboardEntity(BoardDto boardDto){
 
@@ -46,6 +52,7 @@ public class BoardEntity extends BaseEntity{
         boardEntity.setBoardTitle(boardDto.getBoardTitle());
         boardEntity.setBoardContent(boardDto.getBoardContent());
         boardEntity.setBoardWriter(boardDto.getBoardWriter());
+        boardEntity.setViews(boardDto.getViews());
 
         return boardEntity;
     }
@@ -57,6 +64,7 @@ public class BoardEntity extends BaseEntity{
         boardEntity.setBoardTitle(boardDto.getBoardTitle());
         boardEntity.setBoardContent(boardDto.getBoardContent());
         boardEntity.setBoardWriter(boardDto.getBoardWriter());
+        boardEntity.setViews(boardDto.getViews());
 
         return boardEntity;
     }
