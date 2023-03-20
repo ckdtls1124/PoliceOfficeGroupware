@@ -27,7 +27,6 @@ public class EventController {
 	}
 
 
-
 	//사건 등록 페이지로 이동
 	@GetMapping("/register")
 	public String eventWriteView(EventDto eventDto) {
@@ -50,5 +49,7 @@ public class EventController {
 		}
 
 	}
+
+
 
 }

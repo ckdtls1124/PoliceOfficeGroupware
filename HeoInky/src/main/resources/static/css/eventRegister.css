@@ -1,5 +1,5 @@
-@import url(/static/css/common/reset.css);
-@import url(/static/css/menuIndex.css);
+@import url(/css/common/reset.css);
+@import url(/css/menuIndex.css);
 
 .event-wrap {
   width: 100%;
