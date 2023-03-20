@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>File Write Page</title>
     <script src="../static/js/FilePage.js"></script>
 </head>
 <body>
-  <form action="/writeMemorandum" enctype="multipart/form-data" method="post">
-    You can upload file here. <input type="file" name="file" id="file">
+  <form action="/uploadFileInMemo" enctype="multipart/form-data" method="post">
+    You can upload many files here. <input type="file" name="file" multiple="multiple">
     <button>Submit file</button>
   </form>
+
+  <!--        파일 다운로드 하기 위해서, 파일을 받아옴-->
+  <div th:each="file : ${files}">
+      <a th:href="|/attach/${file.memorandumFileId}|" th:text="${file.memorandumFileOriginalName}"></a>
+  </div>
+
 </body>
 </html>

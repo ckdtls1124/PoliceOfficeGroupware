@@ -30,7 +30,8 @@ public class MemorandumEntity {
 //    승인 여부 확인
 //    private int approval;
 
-
+    @OneToMany(mappedBy = "memorandumEntity", cascade = CascadeType.ALL)
+    List<MemorandumFileEntity> memorandumFileEntities = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "policeId")

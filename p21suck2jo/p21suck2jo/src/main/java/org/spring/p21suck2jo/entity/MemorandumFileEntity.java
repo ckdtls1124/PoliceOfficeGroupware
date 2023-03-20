@@ -20,24 +20,22 @@ public class MemorandumFileEntity {
     private Long memorandumFileId;
 
     @Column
-    private String memorandumFileName;
+    private String memorandumFileOriginalName;
 
-//    private MultipartFile memoFileData;
+    private String memorandumFileSavedName;
 
     @Column
-    private String memorandumFileUri;
+    private String memorandumFilePath;
 
-    private String memorandumFileType;
+    @ManyToOne
+    @JoinColumn(name="memorandum_id")
+    private MemorandumEntity memorandumEntity;
 
-    private Long size;
 
 
     @ManyToOne
     @JoinColumn(name = "policeId")
     private PoliceEntity policeEntity;
 
-    public MemorandumFileEntity(String memorandumFileName, MultipartFile file){
-        this.memorandumFileName = memorandumFileName;
-    }
 
 }
