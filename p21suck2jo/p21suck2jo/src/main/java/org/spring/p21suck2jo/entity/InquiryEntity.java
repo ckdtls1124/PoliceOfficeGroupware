@@ -33,6 +33,7 @@ public class InquiryEntity extends BaseEntity{
     private PoliceEntity police;
 
 
+
     @ManyToOne
     @JoinColumn(name = "person_id")
     private PersonEntity person;

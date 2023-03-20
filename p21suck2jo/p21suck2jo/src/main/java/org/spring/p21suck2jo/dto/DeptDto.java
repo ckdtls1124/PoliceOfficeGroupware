@@ -1,10 +1,6 @@
 package org.spring.p21suck2jo.dto;
 
 import lombok.*;
-import org.spring.p21suck2jo.entity.PoliceEntity;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
@@ -13,8 +9,8 @@ import javax.persistence.ManyToOne;
 @ToString
 public class DeptDto {
 
-
     private Long deptId;
+<<<<<<< HEAD
     private String deptNM;
 
     private PoliceEntity police;
@@ -22,4 +18,6 @@ public class DeptDto {
 
 
 
+=======
+>>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
 }

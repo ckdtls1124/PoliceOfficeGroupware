@@ -54,11 +54,18 @@ public class EventEntity {
     @JoinColumn(name = "eventGroup_id")
     private EventGroupEntity eventGroup;
 
+    //부서와 N:1 관계(추가해야함)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
     //시민과 N:1 관계(추가해야함)
     @ManyToOne
     @JoinColumn(name="personId")
     private PersonEntity personEntity;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
 }

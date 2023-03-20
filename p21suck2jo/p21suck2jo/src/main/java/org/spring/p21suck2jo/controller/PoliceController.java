@@ -2,6 +2,7 @@ package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.PoliceDto;
+<<<<<<< HEAD
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.PoliceService;
 import org.springframework.security.core.Authentication;
@@ -12,6 +13,18 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+=======
+import org.spring.p21suck2jo.service.PoliceService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
+
+
+>>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
 @Controller
 @RequestMapping("/police")
 @RequiredArgsConstructor
@@ -20,6 +33,7 @@ public class PoliceController {
     private final PoliceService policeService;
 
     @GetMapping("/insert")
+<<<<<<< HEAD
     public String policeAddView(Model model){
         model.addAttribute("police",new PoliceDto());
         return "/police/officerInsert";
@@ -73,4 +87,19 @@ public class PoliceController {
         policeService.policeDelete(id);
         return "redirect:/police/list";
     }
+=======
+    public String InsertView(Model model){
+        model.addAttribute("member", new PoliceDto());
+        return "/police/officerInsert";
+
+    }
+
+//    @PostMapping("/insert")
+//    public String policeInsert(@Valid PoliceDto policeDto){
+//         policeService.policeAdd(policeDto);
+//         return "main";
+//         //버튼에 이벤트 넣어주기
+//    }
+
+>>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
 }
