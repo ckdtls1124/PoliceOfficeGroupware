@@ -27,18 +27,21 @@ public class MemorandumEntity {
     private String memorandumContent;
 
 
-//    승인 여부 확인
-//    private int approval;
+    //    승인 여부 확인
+    private int approval;
 
-    @OneToMany(mappedBy = "memorandumEntity", cascade = CascadeType.ALL)
-    List<MemorandumFileEntity> memorandumFileEntities = new ArrayList<>();
+//    결재 문서에 들어갈 파일
+    @OneToMany(mappedBy = "memorandumEntity",cascade = CascadeType.ALL)
+    List<MemorandumFileEntity> memorandumFileList = new ArrayList<>();
 
+//  작성자 정보
     @ManyToOne
-    @JoinColumn(name = "policeId")
-    private PoliceEntity policeEntity;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
-//    승인을 해주는 member의 list를 가진다.
-    @OneToMany
-    private List<PoliceEntity> apprvoingPolice = new ArrayList<>();
+    //    승인을 해주는 member의 list를 가진다.
+    @OneToMany(mappedBy = "memorandum",cascade = CascadeType.ALL)
+    List<ApprovingMember> approvingMemberList = new ArrayList<>();
+
 
 }

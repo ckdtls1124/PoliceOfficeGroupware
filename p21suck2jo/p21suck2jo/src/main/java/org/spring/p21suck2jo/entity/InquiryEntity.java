@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "inquiry")
-public class InquiryEntity extends BaseEntity {
+public class InquiryEntity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,21 +22,18 @@ public class InquiryEntity extends BaseEntity {
 
     private String inquiryTitle;
 
+//    @OneToOne
+//    private InquiryAnswerEntity inquiryAnswer;
+
     @Column(columnDefinition = "TEXT")
     private String inquiryContent;
 
-    @OneToOne
-    private InquiryAnswerEntity inquiryAnswer;
-
     @ManyToOne
-    @JoinColumn(name = "policeId")
-    private PoliceEntity policeEntity;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 
     @ManyToOne
     @JoinColumn(name = "person_id")
     private PersonEntity person;
-
-
-
 }

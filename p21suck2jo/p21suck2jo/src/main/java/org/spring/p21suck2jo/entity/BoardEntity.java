@@ -35,7 +35,7 @@ public class BoardEntity extends BaseEntity{
     private String boardWriter;
 
     @ManyToOne
-    @JoinColumn(name = "policeId")
+    @JoinColumn(name = "police_id")
     private PoliceEntity police;
 
 

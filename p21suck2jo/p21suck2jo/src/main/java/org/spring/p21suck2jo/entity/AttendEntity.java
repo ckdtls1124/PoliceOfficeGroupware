@@ -22,15 +22,15 @@ public class AttendEntity {
 
     @CreationTimestamp
     @Column(nullable = false)
-    private LocalDateTime attendCheckTime;
+    private LocalDateTime checkTime;
 
     @UpdateTimestamp
     @Column(nullable = false)
-    private LocalDateTime attendLeaveTime;
+    private LocalDateTime leaveTime;
 
 
     @ManyToOne
-    @JoinColumn(name = "policeId")
-    private PoliceEntity policeEntity;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 }

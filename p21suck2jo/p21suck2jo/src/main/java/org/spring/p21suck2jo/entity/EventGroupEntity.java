@@ -1,7 +1,6 @@
 package org.spring.p21suck2jo.entity;
 
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;

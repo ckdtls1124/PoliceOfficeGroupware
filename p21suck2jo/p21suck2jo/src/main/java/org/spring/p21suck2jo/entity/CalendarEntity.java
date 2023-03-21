@@ -11,16 +11,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "Calendar")
+@Table(name = "calender")
 public class CalendarEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Calendar_id")
-    private Long calendarId;
+    @Column(name = "calender_id")
+    private Long calenderId;
 
     @ManyToOne
-    @JoinColumn(name = "policeId")
-    private PoliceEntity policeEntity;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 }

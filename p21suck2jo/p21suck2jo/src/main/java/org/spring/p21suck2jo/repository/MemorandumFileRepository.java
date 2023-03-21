@@ -1,9 +1,11 @@
-package org.spring.p21suck2jo.memorandumRepository;
+package org.spring.p21suck2jo.repository;
 
 import org.spring.p21suck2jo.entity.MemorandumFileEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 public interface MemorandumFileRepository extends JpaRepository<MemorandumFileEntity, Long> {
+    List<MemorandumFileEntity> findAllByMemorandumEntity(Long memoId);
 }
