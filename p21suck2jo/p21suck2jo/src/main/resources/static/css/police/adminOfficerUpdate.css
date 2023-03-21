@@ -129,6 +129,10 @@
     border-bottom: 1px solid rgb(172, 161, 161);
     padding: 8px;
 }
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li>select{
+    width: 100px;
+}
+
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right .btn2{
     padding: 8px;
     
@@ -144,4 +148,26 @@
 	color: #ffffff;
 	cursor: pointer;
 	font-size: 14px;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(5){
+border: none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(6){
+border: none;
+}
+
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(7){
+border: none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(8){
+border: none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(9){
+border: none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(10){
+border: none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(11){
+border: none;
 }

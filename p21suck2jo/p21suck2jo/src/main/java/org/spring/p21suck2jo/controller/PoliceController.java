@@ -48,18 +48,14 @@ public class PoliceController {
     @GetMapping("/list")
     public String policeList(Model model){
        model.addAttribute("policeList",policeService.policeList());
-//       model.addAttribute("deptList",policeService.deptList());
         return "/police/officerList";
     }
 
     @GetMapping("/list/{id}")
     public String adminPoliceUpdate(@PathVariable("id") Long id,Model model){
         PoliceDto dto = policeService.policeDetail(id);
-//        DeptDto dto2 = policeService.deptDetail2(dto.getPoliceId());
-//        DeptDto deptDto= policeService.deptDetail(deptId);
         model.addAttribute("police",dto);
-//        model.addAttribute("dept",dto2);
-//        model.addAttribute("dept",deptDto);
+
         return "/police/adminOfficerUpdate";
     }
 

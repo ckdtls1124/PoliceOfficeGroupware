@@ -30,9 +30,9 @@ public class PoliceService {
         PoliceEntity police = PoliceEntity.createOfficer(policeDto);
         PoliceEntity policeInsert=policeRepository.save(police);
 
-        DeptEntity deptEntity = DeptEntity.deptCreate
-                (policeInsert.getDept(),policeInsert.getRanks(),policeInsert.getPoliceNumber(),policeInsert);
-        deptRepository.save(deptEntity);
+//        DeptEntity deptEntity = DeptEntity.deptCreate
+//                (policeInsert.getDept(),policeInsert.getRanks(),policeInsert.getPoliceNumber(),policeInsert);
+//        deptRepository.save(deptEntity);
 
     }
 
@@ -69,26 +69,5 @@ public class PoliceService {
     }
 
 
-    public DeptDto deptDetail(Long id){
-        Optional<DeptEntity> deptIdSearch = deptRepository.findByDeptId(id);
-        return DeptDto.deptView(deptIdSearch.get());
-    }
-
-    public List<DeptDto> deptList(){
-        List<DeptDto> deptList = new ArrayList<>();
-        List<DeptEntity> deptListSearch=deptRepository.findAll();
-
-        for (DeptEntity dept : deptListSearch){
-            deptList.add(DeptDto.deptView(dept));
-        }
-        return deptList;
-    }
-
-    public DeptDto deptDetail2(Long id){
-//        Optional<PoliceEntity> policeIdSearch = policeRepository.findByPoliceId(id);
-//        PoliceEntity  policeEntity= policeIdSearch.get();
-        DeptEntity deptEntity= deptRepository.findByPolice(id);
-        return DeptDto.deptView(deptEntity);
-    }
 
 }

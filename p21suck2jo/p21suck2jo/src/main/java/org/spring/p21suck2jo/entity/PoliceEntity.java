@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+
 @Table(name = "police_officer")
 public class PoliceEntity extends BaseEntity{
 
@@ -28,20 +28,20 @@ public class PoliceEntity extends BaseEntity{
     @Column(nullable = true)
     private String password;
 
-    private String dept;
+
     private String policeName;
     private String email;
     private int policeNumber; //사원번호
     private String ranks; //직책 <- table
-
-
-
 
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
     private String policePhone;
 
+    @ManyToOne
+    @JoinColumn(name ="dpt_id")
+    private DeptEntity dept;
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<BoardEntity> boardList = new ArrayList<>();
@@ -63,8 +63,6 @@ public class PoliceEntity extends BaseEntity{
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
-    private List<DeptEntity> deptList = new ArrayList<>();
 
 
 
@@ -77,7 +75,6 @@ public class PoliceEntity extends BaseEntity{
 //        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
         police.setPassword(policeDto.getPassword());
         police.setPoliceName(policeDto.getPoliceName());
-        police.setDept(policeDto.getDept());
         police.setEmail(policeDto.getEmail());
         police.setPoliceNumber(policeDto.getPoliceNumber());
         police.setRanks(policeDto.getRanks());
@@ -85,7 +82,7 @@ public class PoliceEntity extends BaseEntity{
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());
         police.setPolicePhone(policeDto.getPolicePhone());
-
+        police.setDept(policeDto.getDept());
         return police;
     }
 

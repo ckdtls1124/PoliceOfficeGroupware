@@ -22,14 +22,14 @@ public class DeptDto {
 
     private PoliceEntity police;
 
-    public static DeptDto deptView(DeptEntity deptEntity){
-        DeptDto deptDto = new DeptDto();
-        deptDto.setDeptId(deptEntity.getDeptId());
-        deptDto.setDeptName(deptEntity.getDeptName());
-        deptDto.setDeptRanks(deptEntity.getDeptRanks());
-        deptDto.setDeptPoliceNumber(deptEntity.getDeptPoliceNumber());
-        deptDto.setPolice(deptEntity.getPolice());
-        return deptDto;
-    }
+//    public static DeptDto deptView(DeptEntity deptEntity){
+//        DeptDto deptDto = new DeptDto();
+//        deptDto.setDeptId(deptEntity.getDeptId());
+//        deptDto.setDeptName(deptEntity.getDeptName());
+//        deptDto.setDeptRanks(deptEntity.getDeptRanks());
+//        deptDto.setDeptPoliceNumber(deptEntity.getDeptPoliceNumber());
+//        deptDto.setPolice(deptEntity.getPolice());
+//        return deptDto;
+//    }
 
 }
