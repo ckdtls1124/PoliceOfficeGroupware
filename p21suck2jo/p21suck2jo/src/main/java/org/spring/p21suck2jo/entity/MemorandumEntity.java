@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "memorandum")
+@Builder
 public class MemorandumEntity {
 
     @Id

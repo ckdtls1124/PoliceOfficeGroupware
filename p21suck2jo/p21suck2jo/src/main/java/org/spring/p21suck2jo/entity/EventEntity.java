@@ -59,4 +59,7 @@ public class EventEntity {
 	@JoinColumn(name = "eventGroup_id")
 	private EventGroupEntity eventGroup;
 
+	@ManyToOne
+	@JoinColumn(name = "person_id")
+	private PersonEntity person;
 }

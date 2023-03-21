@@ -31,8 +31,38 @@ public class ReplyEntity extends BaseEntity{
     @JoinColumn(name = "board_id")
     private BoardEntity boardEntity;
 
+<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name = "police_id")
     private PoliceEntity policeEntity;
 
 }
+=======
+/*    @ManyToOne
+    @JoinColumn(name = "police_id")
+    private PoliceEntity policeEntity;*/
+
+    public static ReplyEntity toReplyEntity(ReplyDto replyDto, BoardEntity boardEntity){
+
+        ReplyEntity replyEntity =new ReplyEntity();
+
+        replyEntity.setReplyContent(replyDto.getReplyContent());
+        replyEntity.setReplyWriter(replyDto.getReplyWriter());
+        replyEntity.setBoardEntity(boardEntity);
+
+        return replyEntity;
+    }
+    public static ReplyEntity toGetReplyEntity(ReplyDto replyDto){
+
+        ReplyEntity replyEntity =new ReplyEntity();
+
+        replyEntity.setReplyContent(replyDto.getReplyContent());
+        replyEntity.setReplyWriter(replyDto.getReplyWriter());
+
+        return replyEntity;
+    }
+
+
+
+}
+>>>>>>> a018ced5bc69c03acd702d843658d20688f93d00
