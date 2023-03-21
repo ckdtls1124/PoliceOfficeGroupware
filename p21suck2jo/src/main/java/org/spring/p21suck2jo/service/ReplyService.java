@@ -29,7 +29,7 @@ public class ReplyService {
         if(boardEntity.isPresent()){
             BoardEntity boardEntity1=boardEntity.get();
 
-            ReplyEntity replyEntity = ReplyEntity.toBoardReplyEntity(replyDto,boardEntity1);
+            ReplyEntity replyEntity = ReplyEntity.toReplyEntity(replyDto,boardEntity1);
 
             return replyRepository.save(replyEntity).getReplyId();
         }else{
@@ -40,17 +40,16 @@ public class ReplyService {
     public List<ReplyDto> replyList(Long boardId) {
 
         BoardEntity boardEntity=boardRepository.findByBoardId(boardId).get();
-        System.out.println("test="+boardEntity);
 
         List<ReplyEntity> boardReplyEntities= replyRepository.findAllByBoardEntityOrderByReplyIdDesc(boardEntity);
 
         List<ReplyDto> list =new ArrayList<>();
 
         for(ReplyEntity replyEntity:boardReplyEntities){
-            ReplyDto replyDto= ReplyDto.toBoardReplyDto(replyEntity,boardId);
+            ReplyDto replyDto= ReplyDto.toReplyDto(replyEntity,boardId);
             list.add(replyDto);
-        System.out.println("test="+list);
         }
         return list;
     }
+
 }

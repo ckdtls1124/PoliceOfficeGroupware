@@ -20,7 +20,7 @@ public class ReplyDto {
     public LocalDateTime updateTime;
 
 
-    public static ReplyDto toBoardReplyDto(ReplyEntity replyEntity, Long boardId){
+    public static ReplyDto toReplyDto(ReplyEntity replyEntity, Long boardId){
 
         ReplyDto replyDto =new ReplyDto();
 
@@ -29,6 +29,18 @@ public class ReplyDto {
         replyDto.setReplyWriter(replyEntity.getReplyWriter());
         replyDto.setCreateTime(replyEntity.getCreateTime());
         replyDto.setBoardId(boardId);
+
+        return replyDto;
+    }
+    public static ReplyDto toGetReplyDto(ReplyEntity replyEntity){
+
+        ReplyDto replyDto =new ReplyDto();
+
+        replyDto.setReplyId(replyEntity.getReplyId());
+        replyDto.setReplyContent(replyEntity.getReplyContent());
+        replyDto.setReplyWriter(replyEntity.getReplyWriter());
+        replyDto.setCreateTime(replyEntity.getCreateTime());
+
 
         return replyDto;
     }

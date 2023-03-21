@@ -5,7 +5,9 @@ import org.spring.p21suck2jo.dto.ReplyDto;
 import org.spring.p21suck2jo.service.ReplyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -23,9 +25,9 @@ public class ReplyController {
 
         List<ReplyDto> replyList= replyService.replyList(replyDto.getBoardId());
 
-
         model.addAttribute("replyList",replyList);
-        System.out.println("redirect:/boardDetail/"+ replyDto.getBoardId());
+
         return "redirect:/boardDetail/"+ replyDto.getBoardId();
     }
+
 }

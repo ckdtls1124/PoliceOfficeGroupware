@@ -196,7 +196,7 @@ button {
 	.reply
 	.reply-con
 	.reply-box
-	.reply-write {
+	.reply-btn {
 	width: 100px;
 	height: auto;
 }
@@ -207,7 +207,7 @@ button {
 	.reply
 	.reply-con
 	.reply-box
-	.reply-write
+	.reply-btn
 	button {
 	width: 100%;
 	padding: 5px 0;
@@ -235,10 +235,11 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
 	ul {
-	width: 100%;
+	width: 50%;
 	height: auto;
-	margin-top: 20px;
+	margin-top: 40px;
 }
 .boardDetail-container
 	.boardDetail
@@ -247,12 +248,14 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
 	ul
 	li {
 	width: 100%;
 	height: auto;
 	border-bottom: 1px solid #55555552;
 	margin-top: 10px;
+	font-size: 14px;
 }
 .boardDetail-container
 	.boardDetail
@@ -261,6 +264,7 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
 	ul
 	li
 	.writer {
@@ -274,6 +278,7 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
 	ul
 	li
 	.date {
@@ -286,21 +291,10 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
 	ul
 	li
 	.message {
-	margin-top: 10px;
-}
-.boardDetail-container
-	.boardDetail
-	.detail-box
-	.box-bottom
-	.reply
-	.reply-con
-	.comment-box
-	ul
-	li
-	.button-group {
 	margin: 10px 0;
 }
 .boardDetail-container
@@ -310,15 +304,12 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
 	ul
 	li
-	.button-group
-	button {
-	width: 60px;
-	padding: 5px 0;
-	border-radius: 3px;
-	font-weight: bold;
-	cursor: pointer;
+	.button-group {
+	display: inline-block;
+	margin-left: 10px;
 }
 .boardDetail-container
 	.boardDetail
@@ -327,11 +318,152 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
+	ul
+	li
+	.button-group
+	button {
+	padding: 5px;
+	border-radius: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-list
 	ul
 	li
 	.button-group
 	button
-	a {
-	display: block;
+	img {
+	transform: translateY(2px);
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write {
+	margin: 20px 0;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	width: 50%;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul {
 	width: 100%;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	li {
+	width: 100%;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	li
+	input {
+	border-radius: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	li:nth-child(1)
+	input {
+	border-radius: 5px;
+	width: 30%;
+	margin-left: 14px;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	li:nth-child(2)
+	input {
+	border-radius: 5px;
+	width: 91%;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	.comment-btn {
+	display: flex;
+	justify-content: flex-end;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	.comment-btn
+	button {
+	border-radius: 5px;
+	padding: 3px;
+	box-sizing: border-box;
+	background-color: #555555;
+	color: #ffffff;
+	font-size: 12px;
+}
+.boardHide {
+	visibility: hidden !important;
+	height: 0;
 }
