@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/common/head/infinity.png}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1seog2jo Join</title>
+    <link rel="stylesheet" th:href="@{/css/member/join.css}">
+    <!--  <link rel="stylesheet" href="../../static/css/join/join.css">-->
+</head>
+
+<body>
+<div class="container">
+    <div class="join">
+        <div class="join-form">
+            <form th:action="@{/join}" method="post" >
+                <ul>
+                    <li class="s1">Sign Up</li>
+
+                    <li class="s2"><input type="email" name="email" placeholder="Enter Email">
+                    </li>
+                    <li class="s2"><input type="password" name="password" placeholder="Enter Password"  >
+                    </li>
+                    <li class="s2">
+                        <input type="text" name="policeNumber"   placeholder="policeNumber">
+                    </li>
+                    <li class="s4">
+                        <input type="submit" class="joinOk" value="sign up">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+
+</html>

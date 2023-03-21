@@ -18,9 +18,12 @@
 <!--        <a href="#"><img src="/static/css/img/logo.png" alt=""></h1></a>-->
       </div>
       <div class="login-content">
-        <form th:action="@{/idSearch}" method="post" id="idSearch">
+        <form th:action="@{/pwSearch}" method="post" >
           <ul>
-            <li><input type="number" name="policeNumber" id="policeNumber" placeholder="사원번호입력"></li>
+            <li><input type="text" name="email" placeholder="이메일입력"></li>
+          </ul>
+          <ul>
+            <li><input type="number" name="policeNumber" placeholder="사원번호입력"></li>
           </ul>
           <div class="button">
             <button class="btn" type="submit">
@@ -30,7 +33,7 @@
         </form>
       </div>
       <ul class="login-list">
-        <li><p class="before"></p><a target="_blank" href="/pwSearch">비밀번호찾기</a></li>
+        <li><a target="_blank" href="/idSearch">아이디찾기</a></li>
         <li><p class="before"></p><a target="_blank" href="/join">회원가입</a></li>
       </ul>
     </div>
