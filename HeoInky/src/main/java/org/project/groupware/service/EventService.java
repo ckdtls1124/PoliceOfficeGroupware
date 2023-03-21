@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.project.groupware.dto.EventDto;
 import org.project.groupware.entity.EventEntity;
 import org.project.groupware.entity.EventFileEntity;
+import org.project.groupware.entity.EventGroupEntity;
 import org.project.groupware.repository.EventFileRepository;
+import org.project.groupware.repository.EventGroupRepository;
 import org.project.groupware.repository.EventRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +24,16 @@ public class EventService {
 
 	private final EventRepository eventRepository;
 	private final EventFileRepository eventFileRepository;
+	private final EventGroupRepository eventGroupRepository;
 
 	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
+
+		Long eventGroupNo = eventDto.getEventGroup();
+		Optional<EventGroupEntity> eventGroup = eventGroupRepository.findById(eventGroupNo);
+		EventGroupEntity eventGroupEntity = eventGroup.get();
+
+		eventDto.setEventJoinGroup(eventGroupEntity);
 
 		//파일업로드 처리
 		if(eventDto.getEventFile().isEmpty()){

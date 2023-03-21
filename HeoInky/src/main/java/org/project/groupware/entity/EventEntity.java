@@ -50,10 +50,6 @@ public class EventEntity {
 	@Column(nullable = false)
 	private int eventAttachFile;
 
-	//사건 분류 그룹 넘버 -> 필요없음 나중에 삭제처리하기
-	@Column(nullable = false)
-	private Long eventGroup;
-
 	//사건 현장 파일과 1:N 관계
 	//사건은 삭제될 수 없기에 cascade, orphanRemoval은 따로 설정하지 않는다
 	@OneToMany(mappedBy = "fileJoinEvent")

@@ -41,6 +41,8 @@ public class EventDto {
 
 	private EventGroupEntity eventJoinGroup;
 
+	private String eventGroupName;
+
 	public static EventDto eventEntityToDto(EventEntity eventEntity) {
 
 		EventDto eventDto = new EventDto();
@@ -49,9 +51,9 @@ public class EventDto {
 		eventDto.setEventNumber(eventEntity.getEventNumber());
 		eventDto.setEventLocation(eventEntity.getEventLocation());
 		eventDto.setEventDate(eventEntity.getEventDate());
-		eventDto.setEventGroup(eventEntity.getEventGroup());
 		eventDto.setEventSettle(eventEntity.getEventSettle());
 		eventDto.setEventNote(eventEntity.getEventNote());
+		eventDto.setEventGroupName(eventEntity.getEventJoinGroup().getEventGroupName());
 
 		if(eventEntity.getEventAttachFile()==0){
 			eventDto.setEventAttachFile(eventDto.getEventAttachFile());

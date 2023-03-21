@@ -24,7 +24,7 @@ public class EventGroupEntity {
 	
 	//사건과 1:N 관계
 	//하나의 사건 분류 그룹이 여러 개의 사건을 가진다
-	@OneToMany(mappedBy = "eventGroup")
+	@OneToMany(mappedBy = "eventJoinGroup")
 	private List<EventEntity> eventList = new ArrayList<>();
 
 }
