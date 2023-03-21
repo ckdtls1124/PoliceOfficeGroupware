@@ -20,12 +20,9 @@ public class EventFileEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long eventFile_id;
 
-    private String eventFileOriginName;
+   private String eventFileName;
 
-    private String eventFileNewName;
-
-    @ManyToOne
-    @JoinColumn(name = "eventFileEntities")
-    private EventEntity fileJoinEvent;
-
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private EventEntity fileJoinEvent;
 }
