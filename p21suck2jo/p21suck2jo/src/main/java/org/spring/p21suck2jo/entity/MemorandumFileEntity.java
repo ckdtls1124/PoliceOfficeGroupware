@@ -1,11 +1,10 @@
 package org.spring.p21suck2jo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.InputStream;
 
 @Entity
 @Getter
@@ -13,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "memorandumFile")
+@Builder
 public class MemorandumFileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,19 +20,22 @@ public class MemorandumFileEntity {
     private Long memorandumFileId;
 
     @Column
-    private String memorandumFileName;
+    private String memorandumFileOriginalName;
 
-    @Column(columnDefinition = "TEXT")
-    private String memorandumFileContents;
+    private String memorandumFileSavedName;
 
-    private String memorandumFileType;
-
-    @ManyToOne
-    @JoinColumn(name = "police_id")
-    private PoliceEntity police;
-
+    @Column
+    private String memorandumFilePath;
 
     @ManyToOne
-    @JoinColumn(name = "memorandum_id")
+    @JoinColumn(name="memorandum_id")
     private MemorandumEntity memorandumEntity;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "policeId")
+    private PoliceEntity policeEntity;
+
+
 }

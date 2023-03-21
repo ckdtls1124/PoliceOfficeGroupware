@@ -4,8 +4,8 @@ import lombok.*;
 
 //import org.spring.p21suck2jo.convert.PoliceConvert;
 //import org.spring.p21suck2jo.dto.PoliceDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.spring.p21suck2jo.dto.PoliceDto;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -62,21 +62,21 @@ public class PoliceEntity extends BaseEntity{
     private List<DeptEntity> deptList = new ArrayList<>();
 
 
-    public static PoliceEntity createOfficer(PoliceDto policeDto){
-        PoliceEntity police = new PoliceEntity();
-//        police.setPoliceId(policeDto.getPoliceId());
-//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-        police.setPassword(policeDto.getPassword());
-        police.setPoliceName(policeDto.getPoliceName());
-        police.setDept(policeDto.getDept());
-        police.setEmail(policeDto.getEmail());
-        police.setPoliceNumber(policeDto.getPoliceNumber());
-        police.setRanks(policeDto.getRanks());
-        police.setZip_code(policeDto.getZip_code());
-        police.setPoliceAddress(policeDto.getPoliceAddress());
-        police.setDetailAddress(policeDto.getDetailAddress());
-        police.setPolicePhone(policeDto.getPolicePhone());
-        return police;
-    }
+//    public static PoliceEntity createOfficer(PoliceDto policeDto){
+//        PoliceEntity police = new PoliceEntity();
+////        police.setPoliceId(policeDto.getPoliceId());
+////        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+//        police.setPassword(policeDto.getPassword());
+//        police.setPoliceName(policeDto.getPoliceName());
+//        police.setDept(policeDto.getDept());
+//        police.setEmail(policeDto.getEmail());
+//        police.setPoliceNumber(policeDto.getPoliceNumber());
+//        police.setRanks(policeDto.getRanks());
+//        police.setZip_code(policeDto.getZip_code());
+//        police.setPoliceAddress(policeDto.getPoliceAddress());
+//        police.setDetailAddress(policeDto.getDetailAddress());
+//        police.setPolicePhone(policeDto.getPolicePhone());
+//        return police;
+//    }
 
 }
