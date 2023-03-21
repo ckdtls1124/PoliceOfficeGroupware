@@ -38,6 +38,8 @@ public class BoardEntity extends BaseEntity{
     @JoinColumn(name = "police_id")
     private PoliceEntity police;
 
+    @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<ReplyEntity> replyList = new ArrayList<>();
 
 
 
