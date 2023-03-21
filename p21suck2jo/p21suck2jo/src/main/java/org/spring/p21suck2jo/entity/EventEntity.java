@@ -44,10 +44,6 @@ public class EventEntity {
     @Column(nullable = false, length = 5000)
     private String eventNote;
 
-    //사건 현장 파일과 1:N 관계
-    //사건은 삭제될 수 없기에 cascade, orphanRemoval은 따로 설정하지 않는다
-    @OneToMany(mappedBy = "fileJoinEvent")
-    private List<EventFileEntity> eventFileEntities = new ArrayList<>();
 
     //사건 분류 그룹과 N:1 관계
     @ManyToOne
@@ -56,16 +52,10 @@ public class EventEntity {
 
     //부서와 N:1 관계(추가해야함)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
     //시민과 N:1 관계(추가해야함)
     @ManyToOne
     @JoinColumn(name="personId")
     private PersonEntity personEntity;
-<<<<<<< HEAD
 
-=======
->>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
 }

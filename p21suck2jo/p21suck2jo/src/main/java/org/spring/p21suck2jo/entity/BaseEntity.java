@@ -18,11 +18,11 @@ import java.time.LocalDateTime;
 public class BaseEntity {
 
     @CreationTimestamp
-    @Column(nullable = false)
+    @Column(updatable = false)
     private LocalDateTime createTime;
 
     @UpdateTimestamp
-    @Column(nullable = false)
+    @Column(insertable = false)
     private LocalDateTime updateTime;
 
 }

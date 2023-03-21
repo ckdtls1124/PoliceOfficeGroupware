@@ -28,11 +28,8 @@ public class PersonEntity extends BaseEntity{
     private String personAddress;
 
 
-<<<<<<< HEAD
-    @OneToMany(mappedBy = "personEntity",cascade = CascadeType.ALL)
-=======
+
     @OneToMany(mappedBy = "event_id",cascade = CascadeType.ALL)
->>>>>>> 7f258f5a50dc7c24595ef8ae19017e80b2c680db
     private List<EventEntity> eventList = new ArrayList<>();
 
     @OneToMany(mappedBy = "person" ,cascade = CascadeType.ALL)

@@ -86,6 +86,7 @@
             <div class="mypage-container-con">
                 <div class="mypage-table">
 
+
                     <div class="table-logo">
                         <h1>사원 정보</h1>
                         
@@ -93,7 +94,7 @@
 
                     <h3>기본 정보</h3>
                     <div class="mypage-basicInfo">
-                        
+
                         <div class="basicInfo-left">
                         <ul>
                             <li>이름</li>
@@ -103,18 +104,20 @@
                         </ul>
                         </div>
 
+
                         <div class="basicInfo-right">
-                        <form th:action="@{|/police/list/delete/${police.policeId}|}" method="post">
                             <ul>
-                                <li><input type="text" th:value="${police.policeName}" readonly></li>
-                                <li><input type="text" th:value="${police.policePhone}" readonly></li>
-                                <li><input type="text" th:value="${police.email}" readonly></li>
-                                <li><input type="text" th:value="${police.zip_code}" size="8" readonly></li>
-                                <li><input type="text" th:value="${police.policeAddress}" size="50" readonly></li>
-                                <li><input type="text" th:value="${police.DetailAddress}" size="50" readonly></li>
+                                <li><input type="text" th:value="${police.policeName}"th:field="${police.policeName}" readonly></li>
+                                <li><input type="text" th:value="${police.policePhone}"th:field="${police.policePhone}" readonly></li>
+                                <li><input type="text" th:value="${police.email}" th:field="${police.email}"readonly></li>
+                                <li><input type="text" th:value="${police.zip_code}" th:field="${police.zip_code}" size="8" readonly></li>
+                                <li><input type="text" th:value="${police.policeAddress}" th:field="${police.policeAddress}" size="50" readonly></li>
+                                <li><input type="text" th:value="${police.DetailAddress}" th:field="${police.DetailAddress}" size="50" readonly></li>
+                        <form th:action="@{|/police/list/delete/${police.policeId}|}" method="post">
                                 <div class="btn">
                                 <button type="submit" id="deletebtn">사원 해임</button>
                                 </div>
+                        </form>
                                 <script>
                                document.getElementById("deletebtn").onclick = function () {
                                  alert("사원 정보가 삭제되었습니다.");
@@ -122,7 +125,6 @@
                             </script>
 
                             </ul>
-                        </form>
                         </div>
                     </div>
                     <h3>회사 정보</h3>
@@ -136,22 +138,24 @@
                                 <li>입사 날짜</li>
                             </ul>
                             </div>
-                            
+
+
                             <div class="companyInfo-right">
-                                <form th:action="@{|/police/update/${police.policeId}|}" method="post">
+
                                 <ul>
-                                    <li><input type="text" th:value="${police.dept}"></li>
-                                    <li><input type="text" th:value="${police.policeNumber}"></li>
-                                    <li><input type="text"  th:value="${police.ranks}"></li>
-                                    <li><input type="text"  th:value="${police.createTime}"readonly></li>
+                                    <li><input type="text" th:value="${police.dept}" th:field="${police.dept}"></li>
+                                    <li><input type="text" th:value="${police.policeNumber}" th:field="${police.policeNumber}"></li>
+                                    <li><input type="text"  th:value="${police.ranks}" th:field="${police.ranks}"></li>
+                                    <li><input type="text"  th:value="${police.createTime}" th:field="${police.createTime}"  readonly> </li>
+                                    <li><input type="hidden"  th:value="${police.policeId}" th:field="${police.policeId}"></li>
+
                                     <div class="btn2">
                                         <button type="submit" >직책 변경</button>
                                     </div>
                                 </ul>
-                                </form>
                             </div>
-
                     </div>
+
                 </div>
             </div>
           </div>
