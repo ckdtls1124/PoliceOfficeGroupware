@@ -2,7 +2,6 @@ package org.project.groupware.dto;
 
 import lombok.*;
 import org.project.groupware.entity.EventEntity;
-import org.project.groupware.entity.EventFileEntity;
 
 import java.time.LocalDateTime;
 

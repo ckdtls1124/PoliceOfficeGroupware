@@ -7,10 +7,13 @@ import org.project.groupware.entity.EventFileEntity;
 import org.project.groupware.repository.EventFileRepository;
 import org.project.groupware.repository.EventRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,7 +23,9 @@ public class EventService {
 	private final EventRepository eventRepository;
 	private final EventFileRepository eventFileRepository;
 
+	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
+
 		//파일업로드 처리
 		if(eventDto.getEventFile().isEmpty()){
 			//파일이 없을 때
@@ -48,4 +53,15 @@ public class EventService {
 
 	}
 
+	//사건 전체 목록 불러오기
+	public List<EventDto> allEventView() {
+
+		List<EventDto> eventDtoList = new ArrayList<>();
+		List<EventEntity> eventEntityList = eventRepository.findAll();
+
+		for (EventEntity eventEntity : eventEntityList) {
+			eventDtoList.add(EventDto.eventEntityToDto(eventEntity));
+		}
+		return eventDtoList;
+	}
 }

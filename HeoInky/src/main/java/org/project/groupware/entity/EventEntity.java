@@ -34,7 +34,7 @@ public class EventEntity {
 	private String eventLocation;
 
 	//사건 발생 일시
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@Column(nullable = false)
 	private LocalDateTime eventDate;
 
@@ -50,6 +50,10 @@ public class EventEntity {
 	@Column(nullable = false)
 	private int eventAttachFile;
 
+	//사건 분류 그룹 넘버 -> 필요없음 나중에 삭제처리하기
+	@Column(nullable = false)
+	private Long eventGroup;
+
 	//사건 현장 파일과 1:N 관계
 	//사건은 삭제될 수 없기에 cascade, orphanRemoval은 따로 설정하지 않는다
 	@OneToMany(mappedBy = "fileJoinEvent")
@@ -58,11 +62,13 @@ public class EventEntity {
 	//사건 분류 그룹과 N:1 관계
 	@ManyToOne
 	@JoinColumn(name = "eventGroup_id")
-	private EventGroupEntity eventGroup;
+	private EventGroupEntity eventJoinGroup;
 
-	//부서와 N:1 관계(추가해야함)
-	
-	//시민과 N:1 관계(추가해야함)
+	//부서와 N:1 관계
+
+	//경찰관(사원)과 N:1 관계
+
+	//시민과 N:1 관계
 
 	
 	//생성자
@@ -70,11 +76,12 @@ public class EventEntity {
 		//첨부된 파일이 있을 때
 		EventEntity eventEntity = new EventEntity();
 
-		eventEntity.setEventNumber(new Random().nextInt(1000000));
+		eventEntity.setEventNumber(new Random().nextInt(1000000000));
 		eventEntity.setEventLocation(eventDto.getEventLocation());
 		eventEntity.setEventDate(eventDto.getEventDate());
 		eventEntity.setEventSettle(eventDto.getEventSettle());
 		eventEntity.setEventNote(eventDto.getEventNote());
+		eventEntity.setEventJoinGroup(eventDto.getEventJoinGroup());
 		eventEntity.setEventAttachFile(1);
 
 		return eventEntity;
@@ -85,11 +92,12 @@ public class EventEntity {
 		//첨부된 파일X
 		EventEntity eventEntity = new EventEntity();
 
-		eventEntity.setEventNumber(new Random().nextInt(1000000));
+		eventEntity.setEventNumber(new Random().nextInt(1000000000));
 		eventEntity.setEventLocation(eventDto.getEventLocation());
 		eventEntity.setEventDate(eventDto.getEventDate());
 		eventEntity.setEventSettle(eventDto.getEventSettle());
 		eventEntity.setEventNote(eventDto.getEventNote());
+		eventEntity.setEventJoinGroup(eventDto.getEventJoinGroup());
 		eventEntity.setEventAttachFile(0);
 
 		return eventEntity;

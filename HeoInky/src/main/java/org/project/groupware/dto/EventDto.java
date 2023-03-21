@@ -1,6 +1,9 @@
 package org.project.groupware.dto;
 
 import lombok.*;
+import org.project.groupware.entity.EventEntity;
+import org.project.groupware.entity.EventGroupEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
@@ -19,20 +22,45 @@ public class EventDto {
 
 	private int eventNumber;
 
-	@NotBlank(message = "발생 장소를 작성하시오")
 	private String eventLocation;
 
-	@Past
-	@NotEmpty(message = "발생 일시를 입력하시오")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private LocalDateTime eventDate;
 
-	@NotEmpty(message = "해결 여부를 체크하시오")
 	private int eventSettle;
-	
+
 	private String eventNote;
 
 	private int eventAttachFile;
 
+	private String eventFileName;
+
 	private MultipartFile eventFile;
+
+	private Long eventGroup;
+
+	private EventGroupEntity eventJoinGroup;
+
+	public static EventDto eventEntityToDto(EventEntity eventEntity) {
+
+		EventDto eventDto = new EventDto();
+
+		eventDto.setEvent_id(eventEntity.getEvent_id());
+		eventDto.setEventNumber(eventEntity.getEventNumber());
+		eventDto.setEventLocation(eventEntity.getEventLocation());
+		eventDto.setEventDate(eventEntity.getEventDate());
+		eventDto.setEventGroup(eventEntity.getEventGroup());
+		eventDto.setEventSettle(eventEntity.getEventSettle());
+		eventDto.setEventNote(eventEntity.getEventNote());
+
+		if(eventEntity.getEventAttachFile()==0){
+			eventDto.setEventAttachFile(eventDto.getEventAttachFile());
+		}else {
+			eventDto.setEventAttachFile(eventDto.getEventAttachFile());
+			eventDto.setEventFileName(eventEntity.getEventFileEntities().get(0).getEventFileName());
+		}
+
+		return eventDto;
+	}
 
 }

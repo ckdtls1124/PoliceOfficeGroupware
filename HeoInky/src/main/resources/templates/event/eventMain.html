@@ -19,8 +19,9 @@
         <div class="event-container-items">
 
           <div class="event-header-items">
-            <div class="event-search">
 
+            <!--검색 요소-->
+            <div class="event-search">
               <form action="#">
                 <input type="date" name="startDate" id="startDate">~
                 <input type="date" name="endDate" id="endDate">
@@ -37,47 +38,42 @@
                 <input type="reset" value="초기화">
                 <input type="submit" value="조회">
               </form>
-
             </div>
+            <!--검색 요소-->
+
             <h2 class="event-title">사건·사고 관리</h2>
           </div>
 
-
           <div class="event-list">
-            <!--grid로 구성하기-->
-            <div class="event-content">
-              <img src="https://via.placeholder.com/100x100" alt="사건이미지">
-              사건No 2023003456182<br>
-              장소 노원구<br>
-              일시 2023-03-16 / 13:22<br>
-              분류 과속<br>
-              구분 해결
-              <!--테스트용 더미 텍스트(나중에 지울것)-->
-              <!--th:each 이용해서 데이터 뽑아오기-->
-            </div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
-            <div class="event-content"></div>
+            <th:block th:each="list: ${eventList}">
+              <div class="event-content">
+                <ul>
+                  <img src="https://via.placeholder.com/100x100" alt="사건이미지">
+                  <li><span>No.</span><span th:text="${list.eventNumber}"></span></li>
+                  <li><span>장소</span><span th:text="${list.eventLocation}"></span></li>
+                  <li><span>일시</span><span th:text="*{#temporals.format(list.eventDate, 'yyyy-MM-dd / HH:mm')}"></span>
+                  </li>
+                  <li><span>분류</span><span th:text="${list.eventGroup}"></span></li>
+                  <li>
+                    <span>구분</span>
+                    <span th:if="${list.eventSettle}==0">미해결</span>
+                    <span th:if="${list.eventSettle}==1">해결</span>
+                  </li>
+                </ul>
+              </div>
+            </th:block>
           </div>
 
           <div class="event-end-item">
-            <a href="#">사건등록</a>
+            <a th:href="@{/event/register}">사건등록</a>
             <!--페이징 처리-->
-            ◀ 1 2 3 4 5 ▶
+
           </div>
 
         </div>
-
       </div>
-    </div>
 
-  </div>
+    </div>
 </body>
 
 </html>
