@@ -28,10 +28,10 @@ public class DeptController {
         model.addAttribute("dept",new DeptDto());
         return "";
     }
-    @PostMapping("insert")
+    @PostMapping("/insert")
     public String deptInsert(DeptDto deptDto){
         deptService.deptInsert(deptDto);
-        return "/dept/list";
+        return "redirect:/dept/list";
     }
 
 
