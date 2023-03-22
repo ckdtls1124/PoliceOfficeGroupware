@@ -13,4 +13,5 @@ public interface PoliceRepository extends JpaRepository<PoliceEntity,Long> {
 
     Optional<PoliceEntity> findByPoliceId(Long policeId);
 
+    Optional<PoliceEntity> findByDept(Long deptId);
 }

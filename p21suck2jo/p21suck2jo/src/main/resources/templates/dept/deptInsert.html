@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>MAIN INDEX</title>
-  <link rel="stylesheet" th:href="@{/css/index.css}">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static//css/dept/deptInsert.css">
 </head>
 
 <body>
@@ -81,16 +82,36 @@
     <div class="right-wrap">
       <div class="right-menu">
         <div class="right-con">
-          <h1>
-            right-con<br>
-            1. 사건 사고에 대한 당일 기준 현황 표 <br>
+          <div class="dept-insert-container">
+            <div class="container-con">
 
-            2. 당직, 근무, 휴가 등의 기준에 따른 인원표<br>
+                    <div class="insert-form">
+                            <div class="form-head">
+                                <h1>부서 생성</h1>
+                            </div>
 
-            3. 사내 게시판 조회 <br>
+                            <div class="form-text">
+                                <ul>
+                                    <li class="li-select">
+                                        <select name="deptName">
+                                            <option th:value="1팀">1팀</option>
+                                            <option th:value="2팀">2팀</option>
+                                            <option th:value="3팀">3팀</option>
+                                        </select>
+                                    </li>
+                                    <li class="li-select">
+                                        <select name="deptLocation">
+                                            <option th:value="1동">1동</option>
+                                            <option th:value="2동">2동</option>
+                                            <option th:value="3동">3동</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
 
-            4. 민원 처리 현황<br>
-          </h1>
+            </div>
+          </div>
         </div>
       </div>
     </div>

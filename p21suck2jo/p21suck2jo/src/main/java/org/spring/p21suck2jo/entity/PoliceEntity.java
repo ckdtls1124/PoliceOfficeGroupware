@@ -40,7 +40,7 @@ public class PoliceEntity extends BaseEntity{
     private String policePhone;
 
     @ManyToOne
-    @JoinColumn(name ="dpt_id")
+    @JoinColumn(name ="dept_id")
     private DeptEntity dept;
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)

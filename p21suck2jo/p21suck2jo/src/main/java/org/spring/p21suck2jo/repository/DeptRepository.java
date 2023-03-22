@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface DeptRepository extends JpaRepository<DeptEntity,Long> {
 
+
+    DeptEntity findByDeptId(Long id);
 }

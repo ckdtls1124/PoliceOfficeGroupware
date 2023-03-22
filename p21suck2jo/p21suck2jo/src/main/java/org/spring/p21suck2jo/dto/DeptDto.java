@@ -6,6 +6,8 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,19 +19,28 @@ public class DeptDto {
     private Long deptId;
 
     private String deptName;
-    private String deptRanks;
-    private int deptPoliceNumber;
+    private String deptLocation;
 
-    private PoliceEntity police;
+    private int policeNM;
+    private List<PoliceEntity> policeList = new ArrayList<>();
 
-//    public static DeptDto deptView(DeptEntity deptEntity){
-//        DeptDto deptDto = new DeptDto();
-//        deptDto.setDeptId(deptEntity.getDeptId());
-//        deptDto.setDeptName(deptEntity.getDeptName());
-//        deptDto.setDeptRanks(deptEntity.getDeptRanks());
-//        deptDto.setDeptPoliceNumber(deptEntity.getDeptPoliceNumber());
-//        deptDto.setPolice(deptEntity.getPolice());
-//        return deptDto;
-//    }
+
+    public static DeptDto deptView(DeptEntity deptEntity){
+        DeptDto deptDto = new DeptDto();
+        deptDto.setDeptId(deptEntity.getDeptId());
+        deptDto.setDeptName(deptEntity.getDeptName());
+        deptDto.setDeptLocation(deptEntity.getDeptLocation());
+
+        return deptDto;
+    }
+    public static DeptDto deptView2(DeptEntity deptEntity,int policeNM){
+        DeptDto deptDto = new DeptDto();
+        deptDto.setDeptId(deptEntity.getDeptId());
+        deptDto.setDeptName(deptEntity.getDeptName());
+        deptDto.setDeptLocation(deptEntity.getDeptLocation());
+        deptDto.setPoliceNM(policeNM);
+
+        return deptDto;
+    }
 
 }

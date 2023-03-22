@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>My page</title>
   <link rel="stylesheet" th:href="@{/css/police/officerMypage.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 
 <body>
@@ -83,16 +84,17 @@
         <div class="right-con">
           <div class="mypage-container">
             <div class="mypage-container-con">
+
                 <div class="mypage-table">
 
                     <div class="table-logo">
                         <h1>나의 정보</h1>
-                        
+
                     </div>
 
                     <h3>기본 정보</h3>
                     <div class="mypage-basicInfo">
-                        
+
                         <div class="basicInfo-left">
                         <ul>
                             <li>이름</li>
@@ -101,21 +103,71 @@
                             <li>주소</li>
                         </ul>
                         </div>
-                        
+
+                <form th:action="@{/police/update}" method="post" th:object="${policeDto}">
                         <div class="basicInfo-right">
                             <ul>
-                                <li><input type="text" th:value="${police.policeName}"></li>
-                                <li><input type="text" th:value="${police.policePhone}"></li>
-                                <li><input type="text" th:value="${police.email}"></li>
-                                <li><input type="text" th:value="${police.zip_code}" size="8"></li>
-                                <li><input type="text" th:value="${police.policeAddress}" size="50"></li>
-                                <li><input type="text" th:value="${police.DetailAddress}" size="50"></li>
+                                <li><input type="text" th:value="${police.policeName}" th:field="${police.policeName}"name="policeName"></li>
+                                <li><input type="text" th:value="${police.policePhone}" th:field="${police.policePhone}" name="policePhone"></li>
+                                <li><input type="text" th:value="${police.email}" th:field="${police.email}" name="email"></li>
+                                <li><input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br></li>
+                                <li><input type="text" id="sample4_postcode" th:field="${police.zip_code}" placeholder="우편번호"></li>
+                                <li><input type="text" id="sample4_roadAddress" th:field="${police.policeAddress}" placeholder="도로명주소" size="30"></li>
+                                <span id="guide" style="color:#999;display:none"></span>
+                                <li><input type="text" id="sample4_detailAddress" th:field="${police.DetailAddress}" placeholder="상세주소" size="30"></li>
+                                <li><input type="hidden" th:value="${police.policeId}" th:field="${police.policeId}"></li>
                                 <div class="btn">
                                 <button type="submit" >내 정보 수정</button>
                                 </div>
+
                             </ul>
                         </div>
+                </form>
+                        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                        <script>
 
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
                     </div>
                     <h3>회사 정보</h3>
                     <div class="mypage-companyInfo">
@@ -131,15 +183,16 @@
                             
                             <div class="companyInfo-right">
                                 <ul>
-                                    <li th:text="${police.dept}"></li>
-                                    <li th:text="${police.policeNumber}"></li>
-                                    <li th:text="${police.ranks}"></li>
-                                    <li th:text="${police.createTime}"></li>
+                                    <li th:text="${police.dept.getDeptName()}" th:field="${police.dept}"></li>
+                                    <li th:text="${police.policeNumber}" th:field="${police.policeNumber}"></li>
+                                    <li th:text="${police.ranks}" th:field="${police.ranks}"></li>
+<!--                                    <li th:text="${police.createTime}" th:field="${police.createTime]"></li>-->
                                 </ul>
                             </div>
 
                     </div>
                 </div>
+
             </div>
           </div>
         </div>
