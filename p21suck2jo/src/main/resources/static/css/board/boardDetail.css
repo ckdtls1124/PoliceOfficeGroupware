@@ -109,7 +109,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 20px;
 	gap: 50px;
 }
 .boardDetail-container .boardDetail .detail-box .box-bottom .button {
@@ -256,6 +255,7 @@ button {
 	border-bottom: 1px solid #55555552;
 	margin-top: 10px;
 	font-size: 14px;
+	position: relative;
 }
 .boardDetail-container
 	.boardDetail
@@ -352,8 +352,61 @@ button {
 	.reply
 	.reply-con
 	.comment-box
+	.reply-list
+	ul
+	li
+	.button-group
+	.reply-update {
+	position: absolute;
+	left: 0;
+	transform: translateY(6px);
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-list
+	ul
+	li
+	.button-group
+	.reply-update
+	form
+	input:nth-child(4) {
+	padding: 3px 0;
+	width: 638px;
+	font-size: 14px;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-list
+	ul
+	li
+	.button-group
+	.reply-update
+	form
+	.comment-btn {
+	display: inline-block;
+}
+
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
 	.reply-write {
-	margin: 20px 0;
+	margin: 20px 0 10px 0;
 	border: 1px solid #cccccc;
 	border-radius: 5px;
 	padding: 5px;
@@ -417,6 +470,7 @@ button {
 	border-radius: 5px;
 	width: 30%;
 	margin-left: 14px;
+	border: 1px solid #cccccc;
 }
 .boardDetail-container
 	.boardDetail
@@ -431,6 +485,7 @@ button {
 	input {
 	border-radius: 5px;
 	width: 91%;
+	border: 1px solid #cccccc;
 }
 .boardDetail-container
 	.boardDetail
@@ -462,8 +517,15 @@ button {
 	background-color: #555555;
 	color: #ffffff;
 	font-size: 12px;
+	cursor: pointer;
 }
+
 .boardHide {
+	visibility: hidden !important;
+	height: 0;
+}
+
+.updateHide {
 	visibility: hidden !important;
 	height: 0;
 }

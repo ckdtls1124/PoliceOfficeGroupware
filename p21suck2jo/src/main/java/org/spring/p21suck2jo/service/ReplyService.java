@@ -8,6 +8,8 @@ import org.spring.p21suck2jo.repository.ReplyRepository;
 import org.spring.p21suck2jo.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,5 +53,36 @@ public class ReplyService {
         }
         return list;
     }
+    @Transactional
+    public Long updateReply(ReplyDto replyDto) {
 
+        Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(replyDto.getBoardId());
+
+        if(boardEntity.isPresent()){
+            BoardEntity boardEntity1=boardEntity.get();
+
+            ReplyEntity replyEntity = ReplyEntity.toReplyUpdateEntity(replyDto,boardEntity1);
+
+            return replyRepository.save(replyEntity).getReplyId();
+        }else{
+            return null;
+        }
+    }
+
+    @Transactional
+    public void replyDelete(Long replyId,Long boardId) {
+
+        Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(boardId);
+
+        if(boardEntity.isPresent()){
+
+            Optional<ReplyEntity> replyEntity=replyRepository.findByReplyId(replyId);
+
+            if(replyEntity.isPresent()){
+
+                replyRepository.deleteByReplyId(replyEntity.get().replyId);
+            }
+        }
+
+    }
 }

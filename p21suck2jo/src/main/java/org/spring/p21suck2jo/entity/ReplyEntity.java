@@ -45,6 +45,7 @@ public class ReplyEntity extends BaseEntity{
 
         return replyEntity;
     }
+
     public static ReplyEntity toGetReplyEntity(ReplyDto replyDto){
 
         ReplyEntity replyEntity =new ReplyEntity();
@@ -55,6 +56,17 @@ public class ReplyEntity extends BaseEntity{
         return replyEntity;
     }
 
+    public static ReplyEntity toReplyUpdateEntity(ReplyDto replyDto, BoardEntity boardEntity){
+
+        ReplyEntity replyEntity =new ReplyEntity();
+
+        replyEntity.setReplyId(replyDto.getReplyId());
+        replyEntity.setReplyContent(replyDto.getReplyContent());
+        replyEntity.setReplyWriter(replyDto.getReplyWriter());
+        replyEntity.setBoardEntity(boardEntity);
+
+        return replyEntity;
+    }
 
 
 }

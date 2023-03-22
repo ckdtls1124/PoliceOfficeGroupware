@@ -90,6 +90,7 @@ public class BoardController {
             System.out.println("boardDto ="+boardDtos);
 
             List<ReplyDto> replyList=replyService.replyList(boardId);
+            System.out.println("list = "+replyList);
             model.addAttribute("replyList",replyList);
             return "/board/boardDetail";
         }else{
