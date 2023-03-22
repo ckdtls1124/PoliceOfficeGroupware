@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,7 +92,7 @@
 
                             <div class="dept-create" >
                                 <div class="dept-create-con" th:each="dept : ${deptList}">
-                                <a th:href="@{|/police/dept/${dept.deptId}|}" th:text="${dept.deptName}"></a>
+                                <a th:href="@{|/dept/detail/${dept.deptId}|}" th:text="${dept.deptName}"></a>
                             </div>
                             </div>
                     <div class="dept-form-data">

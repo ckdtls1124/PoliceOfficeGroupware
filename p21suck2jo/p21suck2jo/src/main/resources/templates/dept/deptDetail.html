@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,7 +92,7 @@
 
                             <div class="dept-create" >
                                 <div class="dept-create-con" th:each="dept : ${deptList}">
-                                <a th:href="@{|/police/dept/${dept.deptId}|}" th:text="${dept.deptName}"></a>
+                                <a th:href="@{|/dept/${dept.deptId}|}" th:text="${dept.deptName}"></a>
                             </div>
                             </div>
                     <div class="dept-form-data">
@@ -100,17 +100,28 @@
                            <thead>
                         
                             <tr>
-                                <th>부서이름</th>
+                                <th>소속 인원</th>
+                                <th>직챙</th>
                                 <th>부서위치</th>
-                                <th>직책</th>
-                                <th>소속된 인원</th>
+                                <th>부서명</th>
                             </tr>
                     
                            </thead>
 
                            <tbody>
                             <tr th:each="police : ${policeList}">
-                                <td th:text="${police.dept.getDeptId()}"></td>
+                                <td th:text="${police.policeName}"></td>
+                                <td th:text="${police.ranks}"></td>
+                                <td>
+                                    <span th:each="dept : ${deptList}">
+                                        <p th:text="${dept.deptLocation}"></p>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span th:each="dept : ${deptList}">
+                                        <p th:text="${dept.deptName}"></p>
+                                    </span>
+                                </td>
                             </tr>
                             <!-- <tr th:each="dept : ${deptList}">
                                 <td th:text="${dept.deptName}"></td>
