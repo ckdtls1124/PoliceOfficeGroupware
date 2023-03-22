@@ -30,10 +30,11 @@ public class MemorandumEntity {
     //    승인 여부 확인
     private int approval;
 
+//    결재 문서에 들어갈 파일
     @OneToMany(mappedBy = "memorandumEntity",cascade = CascadeType.ALL)
     List<MemorandumFileEntity> memorandumFileList = new ArrayList<>();
 
-
+//  작성자 정보
     @ManyToOne
     @JoinColumn(name = "police_id")
     private PoliceEntity police;
