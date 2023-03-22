@@ -3,7 +3,7 @@ package team.login.teamproject.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.*;
 import team.login.teamproject.dto.TeamDto;
 import team.login.teamproject.service.WebService;
@@ -30,8 +30,12 @@ public class MainController {
         return "redirect:/login";
     }
 
-    @GetMapping("/login")
-    public String login() {
+    @GetMapping("/login")                               //로그인
+    public String login(@RequestParam(value = "error" ,required = false ) String error,
+                        @RequestParam(value = "exception" ,required = false)String exception,
+                        Model model) {
+        model.addAttribute("error",error);
+        model.addAttribute("exception",exception);
         return "login";
     }
     @GetMapping("/idSearch")
@@ -45,7 +49,7 @@ public class MainController {
         TeamDto teamDto=webService.policeid(policeNumber);
         model.addAttribute("teamDto",teamDto);
         if(teamDto==null){
-            return "login";
+            return "error";
         }else {
         System.out.println("조회성공");
         return "idSearch1";
@@ -62,8 +66,12 @@ public class MainController {
 
         TeamDto teamDto=webService.policepw(email,policeNumber);
         model.addAttribute("teamDto",teamDto);
-        return "pwSearch1";
-
+        if(teamDto==null){
+            return "error";
+        }else {
+            System.out.println("조회성공");
+            return "pwSearch1";
+        }
     }
     @PostMapping("/pwSearch1")
     public String pwUpdate(@ModelAttribute TeamDto teamDto){

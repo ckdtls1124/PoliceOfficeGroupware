@@ -23,3 +23,14 @@ spring:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+
+  profiles:
+    include: oauth
+
+  security:
+    oauth2.client:
+      registration:
+        google:
+          clientId: 318085017753-mr69j8f3n5tg64rjqalfjm0j1elkvk5j.apps.googleusercontent.com
+          clientSecret: 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
+          scope: email,profile

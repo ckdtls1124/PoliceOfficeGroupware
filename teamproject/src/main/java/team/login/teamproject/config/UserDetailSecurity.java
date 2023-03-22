@@ -20,7 +20,7 @@ public class UserDetailSecurity implements UserDetailsService {
 
     private final WebRepository webRepository;
 
-    @Override
+    @Override           //loadUserByUsername메서드는 "이런 정보가 들어왔는데 얘 혹시 회원이야?" 라고 묻는 메서드이다.
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<TeamEntity> webId = webRepository.findById(Long.valueOf(email));
 

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--  <link rel="stylesheet" href="/static/css/login.css">-->
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+<!-- <link rel="stylesheet" href="/static/css/login.css">-->
+     <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 
 <body>
@@ -13,9 +13,8 @@
   <div class="login-container">
     <div class="login">
       <div class="header-home">
-        <!-- <a href="#"><h1 class="h1">일석이조 지구대</h1></a> -->
-         <a href="#"><img th:src="@{/css/img/logo.png}" alt=""></h1></a>
-<!--        <a href="#"><img src="/static/css/img/logo.png" alt=""></h1></a>-->
+          <a href="#"><img th:src="@{/css/img/logo.png}" alt=""></a>
+<!--       <a href="#"><img src="/static/css/img/logo.png" alt=""></a>-->
       </div>
       <div class="login-content">
         <form th:action="@{/login}" method="post" id="loginForm">
@@ -23,6 +22,9 @@
             <li><input type="text" name="email" id="email" placeholder="아이디"></li>
             <li><input type="password" name="pw" id="pw" placeholder="비밀번호"></li>
           </ul>
+          <span th:if="error">
+                        <p id="valid" style="color:#ffffff; font-size:12px;" th:text="${exception}"></p>
+                    </span>
           <div class="button">
             <button class="btn" type="submit">
               <span>로그인</span>
@@ -35,6 +37,10 @@
           <li><p class="before"></p><a target="_blank" href="/pwSearch">비밀번호찾기</a></li>
           <li><p class="before"></p><a target="_blank" href="/join">회원가입</a></li>
       </ul>
+      <div class="oauth">
+         <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/css/img/google.png}"></a>
+<!--        <a th:href="@{/oauth2/authorization/google}"><img src="/static/css/img/google.png" alt=""></a>-->
+      </div>
     </div>
     </div>
   </body>

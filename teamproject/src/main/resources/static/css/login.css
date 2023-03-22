@@ -52,9 +52,6 @@
 	border: 1px solid #100f0f;
 	border-radius: 3px;
 }
-.login-container .login .login-content .button{
-
-}
 .login-container .login .login-content .button .btn{
   font-size: 20px;
   width: 100%;
@@ -75,3 +72,26 @@
   align-items: center;
   padding: 20px;
 }
+.login-container .login .oauth{
+  display: flex;
+  justify-content: center;
+  padding: 5px ;
+  box-sizing: border-box;
+ }
+ .login-container .login .oauth a{
+  width: 30%;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+  border: 1px solid;
+  border-radius: 15px ;
+ }
+ .login-container .login .oauth a img{
+  width: 100%;
+  height: auto;
+ }
+ .login-container .login .oauth a:hover{
+  background-color: #86898d;
+ }
