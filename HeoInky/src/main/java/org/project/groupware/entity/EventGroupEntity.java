@@ -16,7 +16,7 @@ public class EventGroupEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
-	public Long eventGroup_id;
+	public Long eventGroupId;
 
 	//사건 분류 이름(음주운전, 불법노점상, 무단투기 etc)
 	@Column(nullable = false, unique = true)

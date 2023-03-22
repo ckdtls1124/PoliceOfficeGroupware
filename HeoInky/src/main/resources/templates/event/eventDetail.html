@@ -26,17 +26,32 @@
 
             <div class="event-detail-con">
               <div class="event-image">
-                <img src="https://via.placeholder.com/400x400" alt="사건현장이미지">
+                <!-- <img src="https://via.placeholder.com/500x500" alt="사건현장이미지"> -->
+                <img th:src="@{|/upload/${detail.eventFileName}|}" alt="사건이미지"
+                  onerror="this.src='https://via.placeholder.com/400x400'">
               </div>
               <div class="event-data">
                 <ul>
-                  <li>장소</li>
-                  <li>서울시 노원구 상계동 55-1</li>
-                  <li>일시</li>
-                  <li>분류</li>
-                  <li>담당부서</li>
-                  <li>구분</li>
-                  <li>상세사항</li>
+                  <li>
+                    <span>No.</span><span th:text="${detail.eventNumber}"></span>
+                  </li>
+                  <li>
+                    <span>장소</span><span th:text="${detail.eventLocation}"></span>
+                  </li>
+                  <li>
+                    <span>일시</span><span th:text="*{#temporals.format(detail.eventDate, 'yyyy-MM-dd / HH:mm')}"></span>
+                  </li>
+                  <li>
+                    <span>분류</span><span th:text="${detail.eventGroupName}"></span>
+                  </li>
+                  <li>
+                    <span>구분</span>
+                    <span th:if="${detail.eventSettle}==0">미해결</span>
+                    <span th:if="${detail.eventSettle}==1">해결</span>
+                  </li>
+                  <li>
+                    <span>상세정보</span><span th:text="${detail.eventNote}"></span>
+                  </li>
                 </ul>
               </div>
             </div>

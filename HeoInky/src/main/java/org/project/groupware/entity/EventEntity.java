@@ -23,7 +23,7 @@ public class EventEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "eventId")
-	public Long event_id;
+	public Long eventId;
 
 	//사건 넘버
 	@Column(nullable = false)

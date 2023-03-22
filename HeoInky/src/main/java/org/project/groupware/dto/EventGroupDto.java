@@ -10,7 +10,7 @@ import org.project.groupware.entity.EventEntity;
 @NoArgsConstructor
 public class EventGroupDto {
 
-	private Long eventGroup_id;
+	private Long eventGroupId;
 
 	private String evenGroupName;
 

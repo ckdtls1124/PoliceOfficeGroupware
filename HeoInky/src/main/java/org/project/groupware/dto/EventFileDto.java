@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EventFileDto {
 
-	public Long eventFile_id;
+	public Long eventFileId;
 
 	private String eventFileName;
 

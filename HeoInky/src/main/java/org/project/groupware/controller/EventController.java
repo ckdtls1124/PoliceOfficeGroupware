@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,10 +28,22 @@ public class EventController {
 
 	//메인페이지(사건사고 목록)
 	@GetMapping({"/", "/list", "/main"})
-	public String eventList(Model model) {
+	public String eventMain(Model model, @PageableDefault(page = 0, size = 10, sort = "eventId", direction = Sort.Direction.DESC) Pageable pageable) {
 
-		List<EventDto> eventList = eventService.allEventView();
-		model.addAttribute("eventList", eventList);
+		Page<EventDto> eventMainView = eventService.allEventsView(pageable);
+
+		int block = 5;
+		int nowPage = eventMainView.getNumber() + 1;
+		int startPage = Math.max(1, eventMainView.getNumber() - block);
+		int endPage = eventMainView.getTotalPages();
+		int totalPage = eventMainView.getTotalPages();
+
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("totalPage", totalPage);
+
+		model.addAttribute("eventMainView", eventMainView);
 
 		return "event/eventMain";
 	}
@@ -49,7 +62,6 @@ public class EventController {
 
 		//유효성처리
 //		if(bindingResult.hasErrors()){
-//			//유효성을 만족하지 못하면 작성 페이지에 계속 머무른다
 //			return "event/eventRegister";
 //		}
 
@@ -57,5 +69,28 @@ public class EventController {
 		return "redirect:/event/";
 
 	}
+
+	@GetMapping("/detail/{eventId}")
+	public String eventDetailView(@PathVariable Long eventId, Model model) {
+
+		EventDto eventDetailDto = eventService.eventDetailView(eventId);
+		model.addAttribute("detail", eventDetailDto);
+
+		return "event/eventDetail";
+	}
+
+	@GetMapping("/update/{eventId}")
+	public String eventUpdateView(@PathVariable Long eventId, Model model){
+
+		EventDto eventDetailDto = eventService.eventDetailView(eventId);
+		model.addAttribute("detail", eventDetailDto);
+
+		return "event/eventUpdate";
+	}
+
+//	@PostMapping("/update/{eventId}")
+//	public String eventUpdateDo(){
+//
+//	}
 
 }

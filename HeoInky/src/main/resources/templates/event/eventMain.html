@@ -22,38 +22,52 @@
 
             <!--검색 요소-->
             <div class="event-search">
-              <form action="#">
-                <input type="date" name="startDate" id="startDate">~
-                <input type="date" name="endDate" id="endDate">
 
-                <div class="event-radio">
-                  <label for="1">
-                    <input type="radio" name="eventSettle" id="1"> 해결
-                  </label>
-                  <label for="0">
-                    <input type="radio" name="eventSettle" id="0"> 미해결
-                  </label>
-                </div>
+              <div class="searchForm">
+                <form action="#">
+                  <input type="date" name="startDate" id="startDate">~
+                  <input type="date" name="endDate" id="endDate">
 
-                <input type="reset" value="초기화">
-                <input type="submit" value="조회">
-              </form>
+                  <div class="event-radio">
+                    <label for="1">
+                      <input type="radio" name="eventSettle" id="1"> 해결
+                    </label>
+                    <label for="0">
+                      <input type="radio" name="eventSettle" id="0"> 미해결
+                    </label>
+                  </div>
+
+                  <input type="reset" value="초기화">
+                  <input type="submit" value="조회">
+                </form>
+                <h2 class="event-title">사건·사고 관리</h2>
+              </div>
+              <a href="#">담당사건조회</a>
             </div>
             <!--검색 요소-->
 
-            <h2 class="event-title">사건·사고 관리</h2>
           </div>
 
           <div class="event-list">
-            <th:block th:each="list: ${eventList}">
+            <th:block th:each="list: ${eventMainView}">
               <div class="event-content">
                 <ul>
-                  <img src="https://via.placeholder.com/100x100" alt="사건이미지">
-                  <li><span>No.</span><span th:text="${list.eventNumber}"></span></li>
-                  <li><span>장소</span><span th:text="${list.eventLocation}"></span></li>
-                  <li><span>일시</span><span th:text="*{#temporals.format(list.eventDate, 'yyyy-MM-dd / HH:mm')}"></span>
+                  <a th:href="@{|/event/detail/${list.eventId}|}">
+                    <img th:src="@{|/upload/${list.eventFileName}|}" alt="사건이미지"
+                      onerror="this.src='https://via.placeholder.com/200x200'">
+                  </a>
+                  <li>
+                    <span>No.</span><span th:text="${list.eventNumber}"></span>
                   </li>
-                  <li><span>분류</span><span th:text="${list.eventGroupName}"></span></li>
+                  <li>
+                    <span>장소</span><span class="location" th:text="${list.eventLocation}"></span>
+                  </li>
+                  <li>
+                    <span>일시</span><span th:text="*{#temporals.format(list.eventDate, 'yyyy-MM-dd / HH:mm')}"></span>
+                  </li>
+                  <li>
+                    <span>분류</span><span th:text="${list.eventGroupName}"></span>
+                  </li>
                   <li>
                     <span>구분</span>
                     <span th:if="${list.eventSettle}==0">미해결</span>
@@ -65,7 +79,23 @@
           </div>
 
           <div class="event-end-item">
-            <a th:href="@{/event/register}">사건등록</a>
+            <div class="end-item-sub">
+              <a th:href="@{/event/register}">사건등록</a>
+
+              <div class="pagingIndex">
+                <a th:href="${eventMainView.first} ? '#' : @{/event/main(page=${eventMainView.number-1})}">
+                  <img th:src="@{/img/prev.png}" alt="이전">
+                </a>
+                <th:block th:each="page:${#numbers.sequence(startPage, endPage)}">
+                  <span th:if="${page==nowPage}" th:text="${page}" th:classappend="nowPage"></span>
+                  <span th:unless="${page==nowPage}"><a th:href="@{/event/(page=${page-1})}"
+                      th:text="${page}"></a></span>
+                </th:block>
+                <a th:href="${eventMainView.last} ? '#' : @{/event/main(page=${eventMainView.number+1})}">
+                  <img th:src="@{/img/next.png}" alt="다음">
+                </a>
+              </div>
+            </div>
             <!--페이징 처리-->
 
           </div>

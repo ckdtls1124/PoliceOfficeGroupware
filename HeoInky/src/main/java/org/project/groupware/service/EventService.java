@@ -8,6 +8,8 @@ import org.project.groupware.entity.EventGroupEntity;
 import org.project.groupware.repository.EventFileRepository;
 import org.project.groupware.repository.EventGroupRepository;
 import org.project.groupware.repository.EventRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,7 +52,7 @@ public class EventService {
 			//2. 사건을 테이블에 저장
 			EventEntity eventEntity = EventEntity.eventDtoToEntityFile(eventDto);
 			//3. 사건의 id 정보를 get
-			Long eventId = eventRepository.save(eventEntity).getEvent_id();
+			Long eventId = eventRepository.save(eventEntity).getEventId();
 
 			//4. 사건의 id 정보를 조회해 사건을 가져온다
 			Optional<EventEntity> eventFind = eventRepository.findById(eventId);
@@ -62,15 +64,26 @@ public class EventService {
 
 	}
 
-	//사건 전체 목록 불러오기
-	public List<EventDto> allEventView() {
+	//사건 전체목록 불러오기
+	public Page<EventDto> allEventsView(Pageable pageable) {
 
-		List<EventDto> eventDtoList = new ArrayList<>();
-		List<EventEntity> eventEntityList = eventRepository.findAll();
+		Page<EventEntity> eventEntityList = eventRepository.findAll(pageable);
+		Page<EventDto> eventDtoList = eventEntityList.map(EventDto::eventEntityToDto);
 
-		for (EventEntity eventEntity : eventEntityList) {
-			eventDtoList.add(EventDto.eventEntityToDto(eventEntity));
-		}
 		return eventDtoList;
+	}
+
+	//특정 사건 상세조회
+	public EventDto eventDetailView(Long eventId) {
+
+		Optional<EventEntity> optionalEventEntity = eventRepository.findById(eventId);
+
+		if(optionalEventEntity.isPresent()){
+			EventDto eventDto = EventDto.eventEntityToDto(optionalEventEntity.get());
+			return eventDto;
+		}else {
+			return null;
+		}
+
 	}
 }

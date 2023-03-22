@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EventDto {
 
-	public Long event_id;
+	public Long eventId;
 
 	private int eventNumber;
 
@@ -47,7 +47,7 @@ public class EventDto {
 
 		EventDto eventDto = new EventDto();
 
-		eventDto.setEvent_id(eventEntity.getEvent_id());
+		eventDto.setEventId(eventEntity.getEventId());
 		eventDto.setEventNumber(eventEntity.getEventNumber());
 		eventDto.setEventLocation(eventEntity.getEventLocation());
 		eventDto.setEventDate(eventEntity.getEventDate());
