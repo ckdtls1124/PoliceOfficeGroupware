@@ -1,5 +1,6 @@
 package org.spring.p21suck2jo.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.DeptDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -20,6 +22,20 @@ public class DeptController {
 
     private final DeptService deptService;
     private final PoliceService policeService;
+
+    @GetMapping("/insert")
+    public String deptInsertVIew(Model model){
+        model.addAttribute("dept",new DeptDto());
+        return "";
+    }
+    @PostMapping("insert")
+    public String deptInsert(DeptDto deptDto){
+        deptService.deptInsert(deptDto);
+        return "/dept/list";
+    }
+
+
+
 
     @GetMapping("/list")
     public String deptList(Model model){

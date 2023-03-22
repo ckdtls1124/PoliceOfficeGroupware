@@ -1,6 +1,7 @@
 package org.spring.p21suck2jo.entity;
 
 import lombok.*;
+import org.spring.p21suck2jo.dto.DeptDto;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,12 +29,12 @@ public class DeptEntity {
     List<PoliceEntity> policeList = new ArrayList<>();
 
 
-//    public static DeptEntity deptCreate(String deptName,String deptRanks ,int deptPoliceNumber, PoliceEntity policeEntity){
-//        DeptEntity deptEntity = new DeptEntity();
-//        deptEntity.setDeptName(deptName);
-//        deptEntity.setDeptRanks(deptRanks);
-//        deptEntity.setDeptPoliceNumber(deptPoliceNumber);
-//        deptEntity.setPolice(policeEntity);
-//    return deptEntity;
-//    }
+    public static DeptEntity deptCreate(DeptDto deptDto){
+        DeptEntity deptEntity = new DeptEntity();
+        deptEntity.setDeptId(deptDto.getDeptId());
+        deptEntity.setDeptName(deptDto.getDeptName());
+        deptEntity.setDeptLocation(deptDto.getDeptLocation());
+        return deptEntity;
+    }
+
 }

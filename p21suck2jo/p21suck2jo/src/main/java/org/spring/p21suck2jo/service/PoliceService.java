@@ -30,10 +30,6 @@ public class PoliceService {
         PoliceEntity police = PoliceEntity.createOfficer(policeDto);
         PoliceEntity policeInsert=policeRepository.save(police);
 
-//        DeptEntity deptEntity = DeptEntity.deptCreate
-//                (policeInsert.getDept(),policeInsert.getRanks(),policeInsert.getPoliceNumber(),policeInsert);
-//        deptRepository.save(deptEntity);
-
     }
 
     public List<PoliceDto> policeList(){

@@ -20,6 +20,12 @@ public class DeptService {
     private final DeptRepository deptRepository;
     private final PoliceRepository policeRepository;
 
+
+    public void deptInsert(DeptDto deptDto){
+      deptRepository.save(DeptEntity.deptCreate(deptDto));
+    }
+
+
     public List<DeptDto> deptList(){
         List<DeptDto> deptDtoList = new ArrayList<>();
         List<DeptEntity> list= deptRepository.findAll();
