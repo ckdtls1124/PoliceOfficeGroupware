@@ -1,4 +1,4 @@
-package org.spring.p21suck2jo.entity;
+package org.project.groupware.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,19 +10,21 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "eventFile_tb")
+@Table(name = "eventFile")
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventFileEntity extends BaseEntity {
 //사건 현장 파일(이미지) 엔티티
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long eventFile_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long eventFile_id;
 
-   private String eventFileName;
+	private String eventFileName;
 
 	@ManyToOne
 	@JoinColumn(name = "event_id")
 	private EventEntity fileJoinEvent;
+
+
 }

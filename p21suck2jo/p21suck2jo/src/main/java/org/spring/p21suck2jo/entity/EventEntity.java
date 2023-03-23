@@ -1,6 +1,7 @@
-package org.spring.p21suck2jo.entity;
+package org.project.groupware.entity;
 
 import lombok.*;
+import org.project.groupware.dto.EventDto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,14 +16,14 @@ import java.util.Random;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "event_tb")
+@Table(name = "event")
 public class EventEntity {
 //사건 엔티티
 
-    @Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "eventId")
-	public Long event_id;
+	public Long eventId;
 
 	//사건 넘버
 	@Column(nullable = false)
@@ -33,7 +34,7 @@ public class EventEntity {
 	private String eventLocation;
 
 	//사건 발생 일시
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@Column(nullable = false)
 	private LocalDateTime eventDate;
 
@@ -57,9 +58,21 @@ public class EventEntity {
 	//사건 분류 그룹과 N:1 관계
 	@ManyToOne
 	@JoinColumn(name = "eventGroup_id")
-	private EventGroupEntity eventGroup;
+	private EventGroupEntity eventJoinGroup;
 
+	//부서와 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "dept_id")
+	private DeptEntity eventJoinDept;
+
+	//경찰관(사원)과 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "police_id")
+	private PoliceEntity eventJoinPolice;
+
+	//시민과 N:1 관계
 	@ManyToOne
 	@JoinColumn(name = "person_id")
-	private PersonEntity person;
+	private PersonEntity eventJoinPerson;
+
 }
