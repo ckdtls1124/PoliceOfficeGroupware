@@ -8,6 +8,7 @@ import org.spring.p21suck2jo.service.MemorandumFileService;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 
 @Controller
+@RequestMapping("/memo/file")
 @RequiredArgsConstructor
 public class MemorandumFileController {
 
@@ -49,14 +51,21 @@ public class MemorandumFileController {
     }
 
 //    저장한 파일 중 선택 삭제
-//    @GetMapping("/delete/{id}")
-//    public ResponseEntity<String> deleteSelectedFile(@PathVariable Long id){
-//        if(memorandumFileService.deleteSelectedFile(id) == 1){
-//            return new ResponseEntity<>("", HttpStatus.OK);
-//        } else {
-//            return null;
-//        }
-//    }
+    @GetMapping("/delete/{memorandumFileId}")
+    public ResponseEntity<String> deleteSelectedFile(@PathVariable Long memorandumFileId){
+
+        if(memorandumFileId != null){
+            System.out.println("!!!!!!!!!!!!Number of the file exists");
+        } else {
+            System.out.println("!!!!!!!!!!!!!!Number of the file doesn't exist");
+        }
+
+        if(memorandumFileService.deleteSelectedFile(memorandumFileId) == 1){
+            return new ResponseEntity<>("", HttpStatus.OK);
+        } else {
+            return null;
+        }
+    }
 
 
 }

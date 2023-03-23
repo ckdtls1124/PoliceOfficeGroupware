@@ -13,7 +13,7 @@ import java.io.InputStream;
 @NoArgsConstructor
 @Table(name = "memorandumFile")
 @Builder
-public class MemorandumFileEntity {
+public class MemorandumFileEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "memorandumFile_id")
@@ -34,8 +34,8 @@ public class MemorandumFileEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "policeId")
-    private PoliceEntity policeEntity;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 
 }

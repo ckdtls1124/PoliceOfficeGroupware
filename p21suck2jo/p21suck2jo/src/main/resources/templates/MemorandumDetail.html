@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/MemorandumDetail.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
     <link rel="stylesheet" href="/css/memorandum/MemorandumDetail.css">
     <title>Document</title>
 </head>
@@ -90,11 +92,11 @@
                             <div class="detail-box">
 
                                 <div class="box-top">
-                                    <h3>게시판 상세</h3>
+                                    <h3>결재문서 상세 내용</h3>
                                 </div>
 
                                 <div class="box-middle">
-                                    <table th:each="list: ${detailMemo}">
+                                    <table>
                                         <colgroup>
                                             <col width="15%">
                                             <col width="auto">
@@ -105,34 +107,40 @@
                                             <tr>
                                                 <td colspan="4">
                                                     <span><img src="/img/board/board.png" alt=""></span>
-                                                    <span th:text="${list.memorandumTitle}"></span>
+<!--                                                    결재문서 제목-->
+                                                    <span th:text="${detailMemo.memorandumTitle}"></span>
+<!--                                                    결재 문서 ID (숨김 처리)-->
+                                                    <input th:value="${detailMemo.memorandumId}" hidden="hidden" class="currentMemoId">
                                                 </td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-<!--                                                <th>등록자</th>-->
-<!--                                                <td th:text="${list.boardWriter}"></td>-->
                                                 <th>승인여부</th>
-                                                <td th:text="${list.approval}"></td>
+                                                <td th:text="${detailMemo.approval}"></td>
                                             <tr>
+<!--                                                등록일 오류남. 수정 필요-->
                                                 <th>등록일</th>
-                                                <td colspan="3"
-                                                    th:text="*{#temporals.format(list.createTime, 'yyyy-MM-dd HH:mm:ss')}">
+<!--                                                <td colspan="3" th:text="*{#temporals.format(detailMemo.createTime, 'yyyy-MM-dd HH:mm:ss')}">-->
                                                 </td>
                                             </tr>
+                                                <th><a th:href="@{|/memo/updateMemoPage/${detailMemo.memorandumId}|}">수정하기</a></th>
                                             </tr>
                                             <tr>
-                                                <td colspan="4" th:text="${list.memorandumContent}"></td>
+<!--                                                결재 문서 내용-->
+                                                <td colspan="4">
+                                                    <input th:value="${detailMemo.memorandumContent}">
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
 
-
+<!--                                    결재 문서에 첨부된 파일 리스트-->
                                     <div class="box-bottom">
+
                                         <!--        파일 다운로드 하기 위해서, 파일을 받아옴-->
                                         <div th:each="file : ${fileInDetailMemo}" class="FileListContainer">
-                                            <a th:href="|/attach/${file.memorandumFileId}|"
+                                            <a th:href="|/memo/file/attach/${file.memorandumFileId}|"
                                                 th:text="${file.memorandumFileOriginalName}"></a>
                                             <input hidden="hidden" th:value="${file.memorandumFileId}"
                                                 class="numberOfFile">

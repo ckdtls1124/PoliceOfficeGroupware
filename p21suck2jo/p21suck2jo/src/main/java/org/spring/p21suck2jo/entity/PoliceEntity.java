@@ -51,6 +51,8 @@ public class PoliceEntity extends BaseEntity{
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<MemorandumEntity> moMemorandumList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
+    private List<MemorandumFileEntity> moMemorandumFileList = new ArrayList<>();
 
     @OneToMany(mappedBy = "event_id",cascade = CascadeType.ALL)
     private List<EventEntity> EventList = new ArrayList<>();

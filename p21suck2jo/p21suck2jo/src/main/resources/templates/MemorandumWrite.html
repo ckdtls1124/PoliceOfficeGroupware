@@ -96,20 +96,12 @@
                   <div class="box-middle">
                     <div class="box-con">
                       <label th:for="memorandumTitle">제목</label>
-
-<!--                                    현재 로그인한 경찰에 대한 Id를 session에서 가져온다.-->
-                      <input hidden="hidden" th:value="${session.currentPoliceId}" name="policeId">
-
                       <input type="text" th:field="*{memorandumTitle}" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''"
                         onblur="this.placeholder='제목을 입력해주세요'">
                     </div>
                     <div class="box-con">
-
 <!--                      파일 올리기-->
-<!--                      <form th:action="@{/memo/write}" enctype="multipart/form-data" method="post">-->
                       <input type="file" name="file" multiple="multiple">
-                        <!-- <button>파일 올리기</button> -->
-<!--                      </form>-->
                     </div>
                     <div class="box-con">
                       <label th:for="memorandumContent">내용</label>

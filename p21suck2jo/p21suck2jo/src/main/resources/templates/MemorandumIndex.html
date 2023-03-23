@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/memorandum/MemorandumIndex.css">
 <script src="/js/MemorandumIndex.js" defer></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
 <head>
     <meta charset="UTF-8">
     <title>나의 결재함</title>
@@ -92,7 +92,7 @@
                         <div class="board-box">
 
                             <div class="box-top">
-                                <h3>나의 결재함</h3>
+                                <h3>나의 결재 문서함</h3>
 
                             </div>
 
@@ -136,13 +136,15 @@
                                     </thead>
                                     <tbody>
                                     <tr th:each="list: ${myMemoList}">
-                                        <td th:text="${list.memorandumId}"></td>
-                                        <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}}"
+                                        <td th:text="${list.memorandumId}">
+                                            <input hidden="hidden" th:value="${list.memorandumId}" class="memoId">
+                                        </td>
+                                        <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}|}"
                                                th:text="${list.memorandumTitle}"></a></td>
 <!--                                        <td th:text="${list.boardWriter}"></td>-->
 <!--                                        <td th:text="*{#temporals.format(list.createTime, 'yyyy-MM-dd')}"></td>-->
                                         <td th:text="${list.approval}"></td>
-                                        <td><a th:href="@{/memo/delete/${list.memorandumId}}">문서 삭제</a></td>
+                                        <td><a th:href="@{|/memo/delete/${list.memorandumId}|}" class="deletMemo" onclick="if(!confirm('문서를 삭제하시겠습니까?')){return false;}">문서 삭제</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -161,5 +163,4 @@
 
 
 </body>
-
 </html>

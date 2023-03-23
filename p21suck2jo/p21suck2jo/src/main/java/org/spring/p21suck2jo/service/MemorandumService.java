@@ -36,10 +36,10 @@ public class MemorandumService {
     }
 
 //    결재 문서 작성
-    public Long writeMemorandum(MemorandumDto memorandumDto, Long policeId) throws IOException {
+    public Long writeMemorandum(MemorandumDto memorandumDto, Long sessionPoliceId) throws IOException {
 
         PoliceEntity policeEntity = new PoliceEntity();
-        policeEntity.setPoliceId(policeId);
+        policeEntity.setPoliceId(sessionPoliceId);
 
         MemorandumEntity memorandum = MemorandumEntity.builder()
                 .memorandumTitle(memorandumDto.getMemorandumTitle())
