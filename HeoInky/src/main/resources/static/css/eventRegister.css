@@ -23,7 +23,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 60px;
   background-color: #ffffff;
   border-top: 2px solid #003478;
   border-bottom: 2px solid #003478;
@@ -44,7 +44,13 @@
   color: #ffffff;
 }
 
+.event-wrap .event-container .event-container-items .event-regist {
+  display: flex;
+  justify-content: center;
+}
+
 .event-wrap .event-container .event-container-items .event-regist>form {
+  width: 30%;
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -64,29 +70,35 @@
 .event-wrap .event-container .event-container-items .event-regist>form>ul {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .event-wrap .event-container .event-container-items .event-regist>form>ul>li {
   height: 50px;
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 0 0 0 10px;
+  gap: 50px;
+  padding: 10px;
   border-bottom: 1px solid #dedede;
   box-sizing: border-box;
 }
 
+.event-wrap .event-container .event-container-items .event-regist>form>ul>li>span {
+  width: 70px;
+  text-align: center;
+}
+
 .event-wrap .event-container .event-container-items .event-regist>form>ul>li>input {
-  width: 225px;
+  width: 280px;
   height: 30px;
-  padding: 5px;
+  padding: 0 10px 0;
   box-sizing: border-box;
 }
 
 .event-wrap .event-container .event-container-items .event-regist>form>ul>li>select {
-  width: 225px;
+  width: 280px;
   height: 30px;
-  padding: 5px;
+  padding: 0 10px 0;
   box-sizing: border-box;
 }
 

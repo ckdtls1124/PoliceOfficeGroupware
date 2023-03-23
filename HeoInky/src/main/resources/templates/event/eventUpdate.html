@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>일석이조 지구대 :: 사건업데이트</title>
-  <link rel="stylesheet" th:href="@{/css/eventRegister.css}">
+  <link rel="stylesheet" th:href="@{/css/eventUpdate.css}">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
           </div>
 
           <div class="event-regist">
-            <form th:action="@{/event/update/${detail.eventId}}" method="post" th:object="${eventDto}"
+            <form th:action="@{|/event/update/${detail.eventId}|}" method="post" th:object="${eventDto}"
               enctype="multipart/form-data">
               <ul>
 
@@ -31,36 +31,50 @@
                   <h3>※ 신중하고 정확하게 기입하시오.</h3>
                 </div>
 
-                <li>사건현장<input type="text" th:value="${detail.eventFileName}" readonly></li>
-                <li>사건장소<input type="text" th:value="${detail.eventLocation}" readonly></li>
-                <li>발생일시<input type="text" th:value="${detail.eventDate}" readonly>
+                <li>
+                  <span>사건현장</span>
+                  <input type="text" th:value="${detail.eventFileName}" readonly>
                 </li>
                 <li>
-                  사건분류<input type="text" th:value="${detail.eventGroupName}" readonly>
+                  <span>사건장소</span>
+                  <input type="text" th:value="${detail.eventLocation}" readonly>
                 </li>
-                <!-- <li>
-                  담당부서<select name="" id="">
-                    <option value="">::정확하게 선택하시오::</option>
-                    <option value="">교통안전과</option>
-                    <option value="">민원해결과</option>
-                    <option value="">또 뭐가있지...</option>
-                  </select>
-                </li> -->
                 <li>
-                  　구분　
+                  <span>발생일시</span>
+                  <input type="text" th:value="${detail.eventDate}" readonly>
+                </li>
+                <li>
+                  <span>분류</span>
+                  <input type="text" th:value="${detail.eventGroupName}" readonly>
+                </li>
+                <li>
+                  <span>담당부서</span>
+                  <input type="text" th:value="${detail.deptName}" readonly>
+                </li>
+                <li>
+                  <span>담당경관</span>
+                  <input type="text" th:value="${detail.policeName}" readonly>
+                </li>
+                <li>
+                  <span>관련인</span>
+                  <input type="text" th:value="${detail.personName}" readonly>
+                </li>
+                <li>
+                  <span>구분</span>
                   <label for="1">
                     <input type="radio" name="eventSettle" id="1" value="1"> 해결
                   </label>
                   <label for="0">
-                    <input type="radio" name="eventSettle" id="0" value="0"> 미해결
+                    <input type="radio" name="eventSettle" id="0" value="0" checked="checked"> 미해결
                   </label>
                 </li>
                 <li class="textarea">
-                  상세사항<textarea th:value="${detail.eventNote}" name="eventNote" id="eventNote" cols="28" rows="4"
+                  <span>상세사항</span>
+                  <textarea th:value="${detail.eventNote}" name="eventNote" id="eventNote" cols="36" rows="4"
                     resize="none"></textarea>
                 </li>
                 <li class="event-btns">
-                  <a th:href="@{/event/}">취소</a>
+                  <a th:href="@{|/event/detail/${detail.eventId}}">취소</a>
                   <div class="event-btns-sub">
                     <input type="reset" value="초기화">
                     <input type="submit" value="업데이트">

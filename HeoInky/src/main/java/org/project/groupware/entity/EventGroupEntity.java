@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @ToString
-@Table(name = "eventGroup_tb")
+@Table(name = "eventGroup")
 public class EventGroupEntity {
 //사건 분류 엔티티
 

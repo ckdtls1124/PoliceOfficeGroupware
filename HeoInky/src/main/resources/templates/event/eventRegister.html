@@ -30,12 +30,19 @@
                   <h3>※ 신중하고 정확하게 기입하시오.</h3>
                 </div>
 
-                <li>사건현장<input type="file" th:field="*{eventFile}" name="" id=""></li>
-                <li>사건장소<input type="text" th:field="*{eventLocation}" id=""></li>
-                <li>발생일시<input type="datetime-local" th:field="*{eventDate}" name="" id="" value="yyyy-MM-dd HH:mm">
+                <li>
+                  <span>사건현장</span><input type="file" th:field="*{eventFile}" name="" id="">
                 </li>
                 <li>
-                  사건분류<select th:field="*{eventGroup}" name="" id="">
+                  <span>사건장소</span><input type="text" th:field="*{eventLocation}" id="">
+                </li>
+                <li>
+                  <span>발생일시</span><input type="datetime-local" th:field="*{eventDate}" name="" id=""
+                    value="yyyy-MM-dd HH:mm">
+                </li>
+                <li>
+                  <span>사건분류</span>
+                  <select th:field="*{eventGroup}" name="" id="">
                     <option value="">::정확하게 선택하시오::</option>
                     <option value="1">음주운전</option>
                     <option value="2">인근소란</option>
@@ -48,16 +55,42 @@
                     <option value="9">기타(담당부서 확인)</option>
                   </select>
                 </li>
-                <!-- <li>
-                  담당부서<select name="" id="">
-                    <option value="">::정확하게 선택하시오::</option>
-                    <option value="">교통안전과</option>
-                    <option value="">민원해결과</option>
-                    <option value="">또 뭐가있지...</option>
-                  </select>
-                </li> -->
                 <li>
-                  　구분　
+                  <span>담당부서</span>
+                  <select th:field="*{dept}" name="" id="">
+                    <option value="">::정확하게 선택하시오::</option>
+                    <option value="1">경비교통반</option>
+                    <option value="2">민원해결반</option>
+                    <option value="3">생활안전반</option>
+                    <option value="4">인권감사실</option>
+                  </select>
+                </li>
+                <li>
+                  <span>담당경관</span>
+                  <select th:field="*{police}" name="" id="">
+                    <option value="">::정확하게 선택하시오::</option>
+                    <option value="1">김경찰</option>
+                    <option value="2">이경찰</option>
+                    <option value="3">박경찰</option>
+                    <option value="4">최경찰</option>
+                    <option value="5">밥경찰</option>
+                  </select>
+                </li>
+                <li>
+                  <span>관련인</span>
+                  <select th:field="*{person}" name="" id="">
+                    <option value="">::정확하게 선택하시오::</option>
+                    <option value="1">김시민</option>
+                    <option value="2">이시민</option>
+                    <option value="3">박시민</option>
+                    <option value="4">최시민</option>
+                    <option value="5">임시민</option>
+                    <option value="6">정시민</option>
+                    <option value="7">주시민</option>
+                  </select>
+                </li>
+                <li>
+                  <span>구분</span>
                   <label for="1">
                     <input type="radio" th:field="*{eventSettle}" name="eventSettle" id="1" value="1"> 해결
                   </label>
@@ -66,7 +99,8 @@
                   </label>
                 </li>
                 <li class="textarea">
-                  상세사항<textarea th:field="*{eventNote}" name="" id="" cols="28" rows="4" resize="none"></textarea>
+                  <span>상세사항</span>
+                  <textarea th:field="*{eventNote}" name="" id="" cols="36" rows="4" resize="none"></textarea>
                 </li>
                 <li class="event-btns">
                   <a th:href="@{/event/}">취소</a>

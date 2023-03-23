@@ -16,7 +16,7 @@ import java.util.Random;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "event_tb")
+@Table(name = "event")
 public class EventEntity {
 //사건 엔티티
 
@@ -61,43 +61,19 @@ public class EventEntity {
 	private EventGroupEntity eventJoinGroup;
 
 	//부서와 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "dept_id")
+	private DeptEntity eventJoinDept;
 
 	//경찰관(사원)과 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "police_id")
+	private PoliceEntity eventJoinPolice;
 
 	//시민과 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "person_id")
+	private PersonEntity eventJoinPerson;
 
-	
-	//생성자
-	public static EventEntity eventDtoToEntityFile(EventDto eventDto) {
-		//첨부된 파일이 있을 때
-		EventEntity eventEntity = new EventEntity();
-
-		eventEntity.setEventNumber(new Random().nextInt(1000000000));
-		eventEntity.setEventLocation(eventDto.getEventLocation());
-		eventEntity.setEventDate(eventDto.getEventDate());
-		eventEntity.setEventSettle(eventDto.getEventSettle());
-		eventEntity.setEventNote(eventDto.getEventNote());
-		eventEntity.setEventJoinGroup(eventDto.getEventJoinGroup());
-		eventEntity.setEventAttachFile(1);
-
-		return eventEntity;
-
-	}
-
-	public static EventEntity eventDtoToEntity(EventDto eventDto) {
-		//첨부된 파일X
-		EventEntity eventEntity = new EventEntity();
-
-		eventEntity.setEventNumber(new Random().nextInt(1000000000));
-		eventEntity.setEventLocation(eventDto.getEventLocation());
-		eventEntity.setEventDate(eventDto.getEventDate());
-		eventEntity.setEventSettle(eventDto.getEventSettle());
-		eventEntity.setEventNote(eventDto.getEventNote());
-		eventEntity.setEventJoinGroup(eventDto.getEventJoinGroup());
-		eventEntity.setEventAttachFile(0);
-
-		return eventEntity;
-
-	}
 
 }

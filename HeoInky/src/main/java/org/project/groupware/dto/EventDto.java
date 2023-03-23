@@ -1,8 +1,7 @@
 package org.project.groupware.dto;
 
 import lombok.*;
-import org.project.groupware.entity.EventEntity;
-import org.project.groupware.entity.EventGroupEntity;
+import org.project.groupware.entity.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EventDto {
 
+//--------------순수 사건 관련 Dto------------
 	public Long eventId;
 
 	private int eventNumber;
@@ -31,38 +31,39 @@ public class EventDto {
 
 	private String eventNote;
 
+//---------------파일 관련 Dto----------------
 	private int eventAttachFile;
 
 	private String eventFileName;
 
 	private MultipartFile eventFile;
 
+//-----------사건 분류 그룹 관련 Dto------------
 	private Long eventGroup;
 
 	private EventGroupEntity eventJoinGroup;
 
 	private String eventGroupName;
 
-	public static EventDto eventEntityToDto(EventEntity eventEntity) {
+//-----------------부서 관련 Dto-----------------
+	private Long dept;
 
-		EventDto eventDto = new EventDto();
+	private DeptEntity eventJoinDept;
 
-		eventDto.setEventId(eventEntity.getEventId());
-		eventDto.setEventNumber(eventEntity.getEventNumber());
-		eventDto.setEventLocation(eventEntity.getEventLocation());
-		eventDto.setEventDate(eventEntity.getEventDate());
-		eventDto.setEventSettle(eventEntity.getEventSettle());
-		eventDto.setEventNote(eventEntity.getEventNote());
-		eventDto.setEventGroupName(eventEntity.getEventJoinGroup().getEventGroupName());
+	private String deptName;
 
-		if(eventEntity.getEventAttachFile()==0){
-			eventDto.setEventAttachFile(eventDto.getEventAttachFile());
-		}else {
-			eventDto.setEventAttachFile(eventDto.getEventAttachFile());
-			eventDto.setEventFileName(eventEntity.getEventFileEntities().get(0).getEventFileName());
-		}
+//------------회원(경찰관) 관련 Dto-----------------
+	private Long police;
 
-		return eventDto;
-	}
+	private PoliceEntity eventJoinPolice;
+
+	private String policeName;
+
+//------------------시민 관련 Dto--------------------
+	private Long person;
+
+	private PersonEntity eventJoinPerson;
+
+	private String personName;
 
 }

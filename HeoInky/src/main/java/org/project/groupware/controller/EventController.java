@@ -10,10 +10,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -70,6 +67,7 @@ public class EventController {
 
 	}
 
+	//사건 상세조회
 	@GetMapping("/detail/{eventId}")
 	public String eventDetailView(@PathVariable Long eventId, Model model) {
 
@@ -79,6 +77,7 @@ public class EventController {
 		return "event/eventDetail";
 	}
 
+	//사건 업데이트 페이지로 이동
 	@GetMapping("/update/{eventId}")
 	public String eventUpdateView(@PathVariable Long eventId, Model model){
 
@@ -88,9 +87,24 @@ public class EventController {
 		return "event/eventUpdate";
 	}
 
-//	@PostMapping("/update/{eventId}")
-//	public String eventUpdateDo(){
-//
-//	}
+	//사건 업데이트 실행
+	@PostMapping("/update/{eventId}")
+	public String eventUpdateDo(@PathVariable Long eventId, EventDto eventDto){
+
+		eventService.eventUpdateDo(eventId, eventDto);
+
+		return "redirect:/event/detail/{eventId}";
+	}
+
+	//사건 검색(날짜, 해결 여부)
+	@PostMapping("/search")
+	public String eventSearchDo(EventDto eventDto, Model model){
+
+		List<EventDto> eventSearchView = eventService.eventSearchDateOrSettle(eventDto);
+
+		model.addAttribute("search", eventSearchView);
+
+		return "redirect:/event/";
+	}
 
 }

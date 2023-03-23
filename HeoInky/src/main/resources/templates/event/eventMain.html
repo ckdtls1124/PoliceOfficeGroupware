@@ -24,7 +24,7 @@
             <div class="event-search">
 
               <div class="searchForm">
-                <form action="#">
+                <form th:action="@{/event/search}">
                   <input type="date" name="startDate" id="startDate">~
                   <input type="date" name="endDate" id="endDate">
 
@@ -82,6 +82,7 @@
             <div class="end-item-sub">
               <a th:href="@{/event/register}">사건등록</a>
 
+              <!--페이징-->
               <div class="pagingIndex">
                 <a th:href="${eventMainView.first} ? '#' : @{/event/main(page=${eventMainView.number-1})}">
                   <img th:src="@{/img/prev.png}" alt="이전">
@@ -96,7 +97,7 @@
                 </a>
               </div>
             </div>
-            <!--페이징 처리-->
+            <!--페이징-->
 
           </div>
 

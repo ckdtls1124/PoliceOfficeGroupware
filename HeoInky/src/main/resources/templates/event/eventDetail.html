@@ -28,21 +28,37 @@
               <div class="event-image">
                 <!-- <img src="https://via.placeholder.com/500x500" alt="사건현장이미지"> -->
                 <img th:src="@{|/upload/${detail.eventFileName}|}" alt="사건이미지"
-                  onerror="this.src='https://via.placeholder.com/400x400'">
+                  onerror="this.src='https://via.placeholder.com/500x500'">
               </div>
               <div class="event-data">
                 <ul>
                   <li>
-                    <span>No.</span><span th:text="${detail.eventNumber}"></span>
+                    <span>No.</span>
+                    <span th:text="${detail.eventNumber}"></span>
                   </li>
                   <li>
-                    <span>장소</span><span th:text="${detail.eventLocation}"></span>
+                    <span>장소</span>
+                    <span th:text="${detail.eventLocation}"></span>
                   </li>
                   <li>
-                    <span>일시</span><span th:text="*{#temporals.format(detail.eventDate, 'yyyy-MM-dd / HH:mm')}"></span>
+                    <span>일시</span>
+                    <span th:text="*{#temporals.format(detail.eventDate, 'yyyy-MM-dd / HH:mm')}"></span>
                   </li>
                   <li>
-                    <span>분류</span><span th:text="${detail.eventGroupName}"></span>
+                    <span>분류</span>
+                    <span th:text="${detail.eventGroupName}"></span>
+                  </li>
+                  <li>
+                    <span>담당부서</span>
+                    <span th:text="${detail.deptName}"></span>
+                  </li>
+                  <li>
+                    <span>담당경관</span>
+                    <span th:text="${detail.policeName}"></span>
+                  </li>
+                  <li>
+                    <span>관련인</span>
+                    <span th:text="${detail.personName}"></span>
                   </li>
                   <li>
                     <span>구분</span>
@@ -52,16 +68,16 @@
                   <li>
                     <span>상세정보</span><span th:text="${detail.eventNote}"></span>
                   </li>
+                  <li class="event-settle" th:if="${detail.eventSettle}==0">
+                    <span></span>
+                    <a th:href="@{|/event/update/${detail.eventId}|}">사건업데이트</a>
+                  </li>
                 </ul>
               </div>
             </div>
 
-            <!--미해결 상태인 경우에만 보이도록 처리하기-->
-            <!-- <div class="event-settle">
-              <input type="button" value="해결완료처리">
-            </div> -->
-
           </div>
+
 
         </div>
       </div>

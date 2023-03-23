@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class EventFileConfigClass implements WebMvcConfigurer {
 
-	String saveEventFiles = "file:///c:/saveEventFiles/";
+	String saveEventFiles = "file:///C:/saveEventFiles/";
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
