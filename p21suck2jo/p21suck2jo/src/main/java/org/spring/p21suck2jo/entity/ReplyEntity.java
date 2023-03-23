@@ -34,7 +34,7 @@ public class ReplyEntity extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "police_id")
-    private PoliceEntity policeEntity;
+    private PoliceEntity police;
 
 }
 
