@@ -34,8 +34,8 @@ public class MemorandumFileEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "policeId")
-    private PoliceEntity policeEntity;
+    @JoinColumn(name = "police_id")
+    private PoliceEntity police;
 
 
 }
