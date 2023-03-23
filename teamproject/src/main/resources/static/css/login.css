@@ -82,15 +82,15 @@
   width: 30%;
   padding: 10px;
   box-sizing: border-box;
+  /* text-align: center; */
   cursor: pointer;
-  text-align: center;
   transition: all 0.3s;
   border: 1px solid;
   border-radius: 15px ;
  }
  .login-container .login .oauth a img{
   width: 100%;
-  height: auto;
+  height: 100%;
  }
  .login-container .login .oauth a:hover{
   background-color: #86898d;

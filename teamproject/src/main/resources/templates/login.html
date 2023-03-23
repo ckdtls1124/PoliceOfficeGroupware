@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- <link rel="stylesheet" href="/static/css/login.css">-->
-     <link rel="stylesheet" th:href="@{/css/login.css}">
+<!--<link rel="stylesheet" href="/static/css/login.css">-->
+      <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 
 <body>
@@ -13,8 +13,8 @@
   <div class="login-container">
     <div class="login">
       <div class="header-home">
-          <a href="#"><img th:src="@{/css/img/logo.png}" alt=""></a>
-<!--       <a href="#"><img src="/static/css/img/logo.png" alt=""></a>-->
+           <a href="#"><img th:src="@{/css/img/logo.png}" alt=""></a>
+<!--      <a href="#"><img src="/static/css/img/logo.png" alt=""></a>-->
       </div>
       <div class="login-content">
         <form th:action="@{/login}" method="post" id="loginForm">
@@ -38,9 +38,17 @@
           <li><p class="before"></p><a target="_blank" href="/join">회원가입</a></li>
       </ul>
       <div class="oauth">
-         <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/css/img/google.png}"></a>
-<!--        <a th:href="@{/oauth2/authorization/google}"><img src="/static/css/img/google.png" alt=""></a>-->
+          <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/css/img/google.png}"></a>
+<!--       <a th:href="@{/oauth2/authorization/google}"><img src="/static/css/img/google.png" ></a>-->
+        <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/css/img/naver.png}"></a>
+<!--       <a th:href="@{/oauth2/authorization/naver}"><img src="/static/css/img/naver.png"></a>-->
       </div>
+<!--                언젠간쓸 코드들-->
+<!--        <li  sec:authorize="isAnonymous()">-->
+<!--            <a href="/oauth2/authorization/naver">네이버LOGIN</a>-->
+<!--        </li>-->
+<!--        <li sec:authorize="isAuthenticated()">-->
+<!--            <a th:href="@{/logout}">네이버LOGOUT</a>-->
     </div>
     </div>
   </body>

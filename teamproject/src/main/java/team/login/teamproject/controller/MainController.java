@@ -30,7 +30,7 @@ public class MainController {
         return "redirect:/login";
     }
 
-    @GetMapping("/login")                               //로그인
+    @GetMapping("/login")                               //로그인 오류
     public String login(@RequestParam(value = "error" ,required = false ) String error,
                         @RequestParam(value = "exception" ,required = false)String exception,
                         Model model) {
