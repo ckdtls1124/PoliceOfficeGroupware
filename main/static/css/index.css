@@ -37,7 +37,7 @@
 	box-sizing: border-box;
 }
 
-.left-menu .left-con h1.logo > a > img {
+.left-menu .left-con h1.logo>a>img {
 	width: auto;
 	height: 50px;
 }
@@ -53,7 +53,7 @@
 	color: rgb(255, 255, 255);
 }
 
-.left-menu .left-con .dash-board .menu > ul {
+.left-menu .left-con .dash-board .menu>ul {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
@@ -61,22 +61,22 @@
 	box-sizing: border-box;
 }
 
-.left-menu .left-con .dash-board .menu > ul > li {
+.left-menu .left-con .dash-board .menu>ul>li {
 	gap: 10px;
 	position: relative;
 }
 
-.left-menu .left-con .dash-board .menu > ul > li > ul {
+.left-menu .left-con .dash-board .menu>ul>li>ul {
 	padding: 7px 0 0;
 	box-sizing: border-box;
 	display: none;
 }
 
-.left-menu .left-con .dash-board .menu > ul > li:hover > ul {
+.left-menu .left-con .dash-board .menu>ul>li:hover>ul {
 	display: block;
 }
 
-.left-menu .left-con .dash-board .menu > ul > li > ul > li > a {
+.left-menu .left-con .dash-board .menu>ul>li>ul>li>a {
 	padding: 3px 0;
 	box-sizing: border-box;
 	font-size: small;
@@ -85,7 +85,7 @@
 	color: #ffffff;
 }
 
-.left-menu .left-con .dash-board .menu > ul > li > a {
+.left-menu .left-con .dash-board .menu>ul>li>a {
 	display: block;
 	text-indent: 25px;
 	color: #ffffff;
@@ -93,7 +93,7 @@
 	font-weight: bold;
 }
 
-.left-menu .left-con .dash-board .menu > ul > li > img {
+.left-menu .left-con .dash-board .menu>ul>li>img {
 	width: 18px;
 	height: 18px;
 	position: absolute;
@@ -105,12 +105,12 @@
 	box-sizing: border-box;
 }
 
-.left-menu .left-con .dash-board .naver-api > img {
+.left-menu .left-con .dash-board .naver-api>img {
 	width: 18px;
 	height: 18px;
 }
 
-.left-menu .left-con .dash-board .naver-api > a {
+.left-menu .left-con .dash-board .naver-api>a {
 	padding: 10px;
 	box-sizing: border-box;
 	font-weight: bold;
@@ -144,16 +144,19 @@
 	box-sizing: border-box;
 	padding: 30px 100px 30px 30px;
 }
+
 .right-menu .right-con .main-container .main {
 	width: 100%;
 	height: 870px;
 }
+
 .right-menu .right-con .main-container .main .main-grid {
 	width: auto;
 	height: 100%;
 
 	padding: 10px 10px;
 }
+
 .right-menu .right-con .main-container .main .main-grid ul {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -163,8 +166,50 @@
 	margin-top: 65px;
 	/* border: 1px solid; */
 }
+
 .right-menu .right-con .main-container .main .main-grid ul li {
 	/* border: 1px solid; */
 	border-radius: 30px;
 	background-color: #ffffff;
 }
+
+
+/* my menu Btn container*/
+.myMenuContainer {
+	border: 1px solid black;
+	border-radius: 10px;
+	box-sizing: border-box;
+	width: 5%;
+	height: 5%;
+	position: absolute;
+	left: 93%;
+
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* my menu content container */
+.myMenuContainer-content {
+	position: absolute;
+	top: 9%;
+	left: 86%;
+	z-index: 3;
+	border: 1px solid black;
+	height: auto;
+	width: 10%;
+
+	background-color: white;
+}
+
+/* 말풍선 효과 주기 */
+/* .myMenuContainer-content::before {
+	position: absolute;
+    content: "";
+    left: 10em;
+    border: 1em solid transparent;
+    border-bottom: 1em solid red;
+    z-index: 0;
+    bottom: 6.6em;
+  } */
