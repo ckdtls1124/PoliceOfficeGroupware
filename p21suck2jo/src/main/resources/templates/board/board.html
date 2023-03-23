@@ -90,18 +90,19 @@
               <div class="board-box">
 
                 <div class="box-top">
-                  <h3>공지게시판</h3>
+                  <h3><img src="/img/board/megaphone.png" alt="">공지게시판</h3>
                 </div>
 
                 <div class="search">
                   <div class="write-btn">
-                  <button type="submit"><a th:href="@{boardWrite}"><img src="/img/board/plus.png" alt=""> 글등록</a></button>
+                    <button type="submit"><a th:href="@{boardWrite}"><img src="/img/board/plus.png" alt="">
+                        글등록</a></button>
                   </div>
                   <div class="search-bar">
                     <form th:action="@{/board}" method="get">
-                    <input type="search" name="search" id="search" placeholder="검색어를 입력해주세요"
-                      onfocus="this.placeholder=''" onblur="this.placeholder='검색어를 입력해주세요'">
-                    <button type="submit">검색</button>
+                      <input type="search" name="search" id="search" placeholder="검색어를 입력해주세요"
+                        onfocus="this.placeholder=''" onblur="this.placeholder='검색어를 입력해주세요'">
+                      <button type="submit">검색</button>
                     </form>
                   </div>
                 </div>
@@ -146,17 +147,19 @@
                 <div class="box-bottom">
 
                   <div class="paging">
-                    <a th:href="${boardDtos.first} ? '#' : @{/board(page=${boardDtos.number - 1})}" class="box1 first">이전</a>
+                    <a th:href="${boardDtos.first} ? '#' : @{/board(page=${boardDtos.number - 1})}"
+                      class="box1 first">이전</a>
                     <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
                       <input type="text" th:value="${boardDtos.number}" hidden="hidden" id="listNumber">
-                      <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1"  class="box1"
-                            style="color: #ffffff; background-color: rgba(0, 0, 0, 0.2) "></span>
+                      <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1" class="box1"
+                        style="color: #ffffff; background-color: rgba(0, 0, 0, 0.2) "></span>
                       <span th:unless="${page == nowPage}" class="box1">
-                  <a class="pagingNum" th:href="@{/board(page=${page-1})}" style="color: #000000; background-color:#ffffff;
-                  width: inherit; height: inherit; display:block;"   th:text="${page}"></a>
-                    </span>
+                        <a class="pagingNum" th:href="@{/board(page=${page-1})}" style="color: #000000; background-color:#ffffff;
+                  width: inherit; height: inherit; display:block;" th:text="${page}"></a>
+                      </span>
                     </th:block>
-                    <a th:href="${boardDtos.last} ? '#' : @{/board(page=${boardDtos.number + 1})}"  class="box1 next">다음</a>
+                    <a th:href="${boardDtos.last} ? '#' : @{/board(page=${boardDtos.number + 1})}"
+                      class="box1 next">다음</a>
                   </div>
 
 

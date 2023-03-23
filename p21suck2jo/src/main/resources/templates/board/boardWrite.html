@@ -92,7 +92,7 @@
               <form th:action="@{/boardWrite}" method="post" class="write-form" th:object="${boardDto}">
                 <div class="write-box">
                   <div class="box-top">
-                    <h3>게시글 등록</h3>
+                    <h3><img src="/img/board/megaphone.png" alt="">게시글 등록</h3>
                   </div>
                   <div class="box-middle">
                     <div class="box-con">
@@ -101,11 +101,8 @@
                         onblur="this.placeholder='제목을 입력해주세요'">
                     </div>
                     <div class="box-con">
-                      <input type="file" name="" id="">
-                    </div>
-                    <div class="box-con">
                       <label th:for="boardContent">내용</label>
-                      <textarea th:field="*{boardContent}" rows="34" placeholder="내용을 입력해주세요"
+                      <textarea th:field="*{boardContent}" rows="37" placeholder="내용을 입력해주세요"
                         onfocus="this.placeholder=''" onblur="this.placeholder='내용을 입력해주세요'"></textarea>
                     </div>
                     <div class="box-con">

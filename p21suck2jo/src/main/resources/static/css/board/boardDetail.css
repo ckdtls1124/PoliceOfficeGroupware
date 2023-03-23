@@ -34,6 +34,14 @@
 	padding: 20px;
 	box-sizing: border-box;
 }
+.boardDetail-container .boardDetail .detail-box .box-top h3 {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+.boardDetail-container .boardDetail .detail-box .box-top h3 img {
+	transform: translateY(-1px);
+}
 .boardDetail-container .boardDetail .detail-box .box-middle {
 	width: 100%;
 	height: 660px;

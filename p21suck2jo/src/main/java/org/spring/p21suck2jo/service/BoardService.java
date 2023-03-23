@@ -6,11 +6,10 @@ import org.spring.p21suck2jo.entity.BoardEntity;
 import org.spring.p21suck2jo.repository.BoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,10 +57,13 @@ public class BoardService{
         }
     }
 
+
     @Transactional
-    public void upViews(Long boardId) {
+    public int upViews(Long boardId) {
 
         boardRepository.updateViews(boardId);
+
+        return 0;
     }
 
     @Transactional
@@ -92,5 +94,6 @@ public class BoardService{
 
         boardRepository.deleteByBoardId(boardId);
     }
+
 
 }

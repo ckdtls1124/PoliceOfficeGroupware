@@ -38,6 +38,14 @@
 	padding: 20px;
 	box-sizing: border-box;
 }
+.boardWrite-container .boardWrite .write-form .write-box .box-top h3 {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+.boardWrite-container .boardWrite .write-form .write-box .box-top h3 img {
+	transform: translateY(-1px);
+}
 .boardWrite-container .boardWrite .write-form .write-box .box-middle {
 	/* width: 100%; */
 	margin: 10px 0;

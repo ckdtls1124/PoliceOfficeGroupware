@@ -38,6 +38,14 @@
 	padding: 20px;
 	box-sizing: border-box;
 }
+.boardUpdate-container .boardUpdate .update-form .update-box .box-top h3 {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+.boardUpdate-container .boardUpdate .update-form .update-box .box-top h3 img {
+	transform: translateY(-1px);
+}
 .boardUpdate-container .boardUpdate .update-form .update-box .box-middle {
 	/* width: 100%; */
 	margin: 10px 0;

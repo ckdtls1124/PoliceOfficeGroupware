@@ -31,9 +31,10 @@ public class ReplyEntity extends BaseEntity{
     @JoinColumn(name = "board_id")
     private BoardEntity boardEntity;
 
+
 /*    @ManyToOne
     @JoinColumn(name = "police_id")
-    private PoliceEntity policeEntity;*/
+    private PoliceEntity police;*/
 
     public static ReplyEntity toReplyEntity(ReplyDto replyDto, BoardEntity boardEntity){
 
