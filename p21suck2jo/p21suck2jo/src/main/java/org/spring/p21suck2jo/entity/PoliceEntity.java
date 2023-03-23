@@ -44,8 +44,11 @@ public class PoliceEntity extends BaseEntity{
     @JoinColumn(name ="dept_id")
     private DeptEntity dept;
 
-    @OneToMany(mappedBy = "policeEntity",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<BoardEntity> boardList = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
+    private List<ReplyEntity> replyList = new ArrayList<>();
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<AttendEntity> attendList = new ArrayList<>();
