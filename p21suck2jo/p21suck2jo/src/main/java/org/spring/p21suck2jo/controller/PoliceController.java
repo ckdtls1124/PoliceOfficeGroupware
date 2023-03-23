@@ -88,23 +88,5 @@ public class PoliceController {
     }
 
 
-// 부서 테스트중================================
 
-//    @GetMapping("/dept/list")
-//    public String deptList(Model model){
-//
-//       model.addAttribute("deptList", policeService.deptList());
-//
-//        return "/dept/deptList";
-//    }
-//
-//    @GetMapping("/dept/{id}")
-//    public String deptDetail(@PathVariable Long id,Model model){
-//        DeptDto deptDto = policeService.deptId(id);
-//        PoliceDto dto =policeService.policeDetail(deptDto.getDeptId());
-//
-//       model.addAttribute("deptList",deptDto);
-//       model.addAttribute("policeList",dto);
-//        return "/dept/deptDetail";
-//    }
 }

@@ -184,9 +184,7 @@
     cursor: pointer;
     margin : 2px;
 }
-.dept-container .dept-container-con .dept-form tbody > tr > td .dept-btn > button a{
-    color: white;
-}
+
 
 .dept-container .dept-container-con .dept-form tbody > tr > td .dept-btn > form > button{
     background-color : #003478;
@@ -201,6 +199,11 @@
     border : none;
     outline : none;
 }
+.dept-container .dept-container-con .dept-form tbody > tr > td:nth-of-type(4)> input{
+    border : none;
+    outline : none;
+}
+
 .dept-container .dept-container-con .dept-form tbody > tr > td input{
     text-align : center;
     width: 50%;

@@ -64,24 +64,6 @@ public class PoliceService {
 
     }
 
-// =================================부서 테스트중======================
-//    public List<DeptDto> deptList(){
-//        List<DeptDto> deptDtoList = new ArrayList<>();
-//       List<DeptEntity> list= deptRepository.findAll();
-//
-//       for(DeptEntity deptEntity : list){
-//
-//           deptDtoList.add(DeptDto.deptView2(deptEntity,deptEntity.getPoliceList().size()));
-//       }
-//       return deptDtoList;
-//    }
-//
-//    public DeptDto deptId(Long id){
-//      DeptEntity dept=deptRepository.findByDeptId(id);
-//
-//      return DeptDto.deptView2(dept,dept.getPoliceList().size());
-//
-//    }
 
 
 

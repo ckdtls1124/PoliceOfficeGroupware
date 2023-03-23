@@ -91,18 +91,18 @@
                                 <h1>부서 관리</h1>
                             </div>
 
-                            <div class="dept-create" >
-                                <div class="dept-create-con" th:each="dept : ${deptList}">
-                                <a th:href="@{|/dept/${dept.deptId}|}" th:text="${dept.deptName}"></a>
-                            </div>
-                            </div>
+<!--                            <div class="dept-create" >-->
+<!--                                <div class="dept-create-con" th:each="dept : ${deptList}">-->
+<!--                                <span th:text="${dept.deptId}+'팀'"></span>-->
+<!--                            </div>-->
+<!--                            </div>-->
                     <div class="dept-form-data">
                         <table>
                            <thead>
                         
                             <tr>
                                 <th>소속 인원</th>
-                                <th>직챙</th>
+                                <th>직책</th>
                                 <th>부서위치</th>
                                 <th>부서명</th>
                             </tr>

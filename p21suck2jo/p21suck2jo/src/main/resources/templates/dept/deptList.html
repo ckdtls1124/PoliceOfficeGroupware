@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/dept/deptList.css}">
     <script th:src="@{/js/dept/deptList.js}" defer></script>
+
     <title>Document</title>
 
 </head>
@@ -113,8 +114,13 @@
                                                    onfocus="this.placeholder=''" onblur="this.placeholder='부서위치 입력'">
                                         </li>
                                         <div class="insert-btn">
-                                            <button type="submit">부서 등록하기</button>
+                                            <button type="submit" id="insert-btn">부서 등록하기</button>
                                         </div>
+                                        <script>
+                                               document.getElementById("insert-btn").onclick = function () {
+                                                  alert("부서가 추가되었습니다.");
+                                                 };
+                                          </script>
                                     </ul>
                                 </form>
                             </div>
@@ -132,18 +138,33 @@
                                     </tr>
 
                                     </thead>
-
+<!--                                    <form th:action="@{dept/update}" method="post" th:object="${deptDto}">-->
                                     <tbody>
+
+                                    <div class="list-view">
                                     <tr th:each="dept : ${deptList}">
-                                        <td th:text="${dept.deptId}"></td>
+                                        <td th:text="${dept.deptId}" ></td>
                                         <td>
                                             <a th:href="@{|/dept/detail/${dept.deptId}|}" th:text="${dept.deptName}"></a>
                                         </td>
+
                                         <td th:text="${dept.deptLocation}"></td>
                                         <td th:text="${dept.policeNM}"> </td>
-                                        <td><a href="">부서수정</a></td>
+                                        <td>
+                                            <div class="dept-btn">
+                                            <button type="button">
+                                                <a th:href="@{|/dept/update/view/${dept.deptId}|}">수정</a></button>
+
+                                                <form th:action="@{|/dept/delete/${dept.deptId}|}" method="post" onsubmit="return confirmDelete()">
+                                                    <button type="submit" >삭제</button>
+                                                </form>
+                                            </div>
+                                        </td>
+
                                     </tr>
+                                    </div>
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -153,3 +174,4 @@
         </div>
     </div>
 
+</div>

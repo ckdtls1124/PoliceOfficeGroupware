@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -58,5 +59,18 @@ public class DeptService {
         return policeDtos;
     }
 
+
+    public void deptUpdate(DeptDto deptDto){
+       DeptEntity dept= DeptEntity.deptCreate(deptDto);
+        deptRepository.save(dept);
+    }
+
+
+    public void depteDelete(Long id){
+         DeptEntity deptEntity = deptRepository.findByDeptId(id);
+         deptRepository.delete(deptEntity);
+
+
+    }
 
 }
