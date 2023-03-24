@@ -17,7 +17,7 @@
 
 .mypage-container .mypage-container-con .mypage-table{
     width: 66%;
-    height: 80%;
+    height: 90%;
     padding: 10px 10px;
     box-sizing: border-box;
     border-top: 3px solid #003478;
@@ -79,10 +79,19 @@
     border-bottom: 1px solid rgb(172, 161, 161);
     padding: 3px;
 }
-.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(8){
+/*.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(8){
+    border : none;
+}*/
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(9){
     border : none;
 }
-.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(9){
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(10){
+    border : none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(11){
+    border : none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(12){
     border : none;
 }
 

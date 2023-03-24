@@ -80,6 +80,7 @@ public class PoliceService {
         police.setDetailAddress(policeDto.getDetailAddress());
         police.setPolicePhone(policeDto.getPolicePhone());
         police.setDept(policeDto.getDept());
+        police.setCreateTime(policeDto.getCreateTime());
         return police;
     }
 

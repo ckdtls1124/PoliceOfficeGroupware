@@ -32,16 +32,21 @@ public class PoliceEntity extends BaseEntity{
 
 
     private String policeName;
+
     @Column(nullable = false, unique = true)
     private String email;
+
     @Column(nullable = false, unique = true)
     private int policeNumber; //사원번호
+
     private String ranks; //직책 <- table
 
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
     private String policePhone;
+
+private LocalDateTime createTime;
 
     @ManyToOne
     @JoinColumn(name ="dept_id")
@@ -72,13 +77,13 @@ public class PoliceEntity extends BaseEntity{
 
 
 
-    public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {
-        PoliceEntity policeEntity = new PoliceEntity();
-
-        policeEntity.setPoliceId(policeDto.getPoliceId());
-        policeEntity.setEmail(policeDto.getEmail());
-        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
-        policeEntity.setPassword(policeDto.getPassword());
-        return policeEntity;
-    }
+//    public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {
+//        PoliceEntity policeEntity = new PoliceEntity();
+//
+//        policeEntity.setPoliceId(policeDto.getPoliceId());
+//        policeEntity.setEmail(policeDto.getEmail());
+//        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
+//        policeEntity.setPassword(policeDto.getPassword());
+//        return policeEntity;
+//    }
 }

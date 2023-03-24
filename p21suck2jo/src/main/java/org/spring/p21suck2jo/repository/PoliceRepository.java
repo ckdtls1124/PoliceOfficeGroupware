@@ -29,4 +29,6 @@ public interface PoliceRepository extends JpaRepository<PoliceEntity,Long> {
             "on p.dept_id=d.dept_id " +
             "where p.dept_id=:deptId " ,nativeQuery = true )
     List<PoliceEntity> findAlldeptId(@Param("deptId") Long deptId);
+
+    Optional<PoliceEntity> findByEmail(String email);
 }
