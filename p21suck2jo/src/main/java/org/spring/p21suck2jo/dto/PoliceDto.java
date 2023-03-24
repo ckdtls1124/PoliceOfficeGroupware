@@ -22,9 +22,9 @@ public class PoliceDto {
     private Long policeId;
 
 
+    private String email;
     private String password;
     private String policeName;
-    private String email;
     private int policeNumber; //사원번호
     private String ranks; //직책 <- table
     private String zip_code;
@@ -55,5 +55,21 @@ public class PoliceDto {
         police.setDept(policeEntity.getDept());
         return police;
     }
+    public static PoliceDto teamDtoid(PoliceEntity policeEntity) {
 
+        PoliceDto policeDto = new PoliceDto();
+        policeDto.setEmail(policeEntity.getEmail());
+        policeDto.setPoliceNumber(policeEntity.getPoliceNumber());
+        return policeDto;
+    }
+
+    public static PoliceDto teamDtopw(PoliceEntity policeEntity) {
+
+        PoliceDto policeDto=new PoliceDto();
+        policeDto.setPoliceId(policeEntity.getPoliceId());
+        policeDto.setEmail(policeEntity.getEmail());
+        policeDto.setPassword(policeEntity.getPassword());
+        policeDto.setPoliceNumber(policeEntity.getPoliceNumber());
+        return policeDto;
+    }
 }

@@ -14,7 +14,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -24,4 +24,7 @@ spring:
       max-file-size: 500MB
       max-request-size: 500MB
 
+  #필수 oauth.yml이랑연결
+  profiles:
+    include: oauth
 

@@ -2,6 +2,7 @@ package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 import org.spring.p21suck2jo.dto.PoliceDto;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 //import org.spring.p21suck2jo.convert.PoliceConvert;
 //import org.spring.p21suck2jo.dto.PoliceDto;
@@ -31,7 +32,9 @@ public class PoliceEntity extends BaseEntity{
 
 
     private String policeName;
+    @Column(nullable = false, unique = true)
     private String email;
+    @Column(nullable = false, unique = true)
     private int policeNumber; //사원번호
     private String ranks; //직책 <- table
 
@@ -69,7 +72,13 @@ public class PoliceEntity extends BaseEntity{
 
 
 
+    public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {
+        PoliceEntity policeEntity = new PoliceEntity();
 
-
-
+        policeEntity.setPoliceId(policeDto.getPoliceId());
+        policeEntity.setEmail(policeDto.getEmail());
+        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
+        policeEntity.setPassword(policeDto.getPassword());
+        return policeEntity;
+    }
 }
