@@ -367,7 +367,7 @@ button {
 	.reply-update {
 	position: absolute;
 	left: 0;
-	transform: translateY(6px);
+	/* transform: translateY(6px); */
 }
 .boardDetail-container
 	.boardDetail
@@ -384,7 +384,7 @@ button {
 	form
 	input:nth-child(4) {
 	padding: 3px 0;
-	width: 638px;
+	width: 617px;
 	font-size: 14px;
 	border: 1px solid #cccccc;
 	border-radius: 3px;
@@ -404,6 +404,41 @@ button {
 	form
 	.comment-btn {
 	display: inline-block;
+	transform: translateY(-2px);
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-list
+	ul
+	li
+	.button-group
+	.reply-update
+	form
+	.updateCancel {
+	display: inline-block;
+	cursor: pointer;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-list
+	ul
+	li
+	.button-group
+	.reply-update
+	form
+	.updateCancel
+	img {
+	transform: translate(-2px, 6px);
 }
 
 .boardDetail-container
@@ -520,11 +555,25 @@ button {
 	.comment-btn
 	button {
 	border-radius: 5px;
-	padding: 3px;
+	padding: 5px;
 	box-sizing: border-box;
-	background-color: #555555;
-	color: #ffffff;
+	background-color: #d4d4d48c;
 	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.boardDetail-container
+	.boardDetail
+	.detail-box
+	.box-bottom
+	.reply
+	.reply-con
+	.comment-box
+	.reply-write
+	ul
+	.comment-btn
+	.writeCancel {
+	transform: translate(5px, 2px);
 	cursor: pointer;
 }
 
