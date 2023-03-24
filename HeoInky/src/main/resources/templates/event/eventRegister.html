@@ -31,28 +31,20 @@
                 </div>
 
                 <li>
-                  <span>사건현장</span><input type="file" th:field="*{eventFile}" name="" id="">
+                  <span>사건현장</span><input type="file" th:field="*{eventFile}">
                 </li>
                 <li>
-                  <span>사건장소</span><input type="text" th:field="*{eventLocation}" id="">
+                  <span>사건장소</span><input type="text" th:field="*{eventLocation}">
                 </li>
                 <li>
-                  <span>발생일시</span><input type="datetime-local" th:field="*{eventDate}" name="" id=""
-                    value="yyyy-MM-dd HH:mm">
+                  <span>발생일시</span><input type="datetime-local" th:field="*{eventDate}" value="yyyy-MM-dd HH:mm">
                 </li>
                 <li>
                   <span>사건분류</span>
-                  <select th:field="*{eventGroup}" name="" id="">
+                  <select th:field="*{eventGroup}">
                     <option value="">::정확하게 선택하시오::</option>
-                    <option value="1">음주운전</option>
-                    <option value="2">인근소란</option>
-                    <option value="3">불안감조성</option>
-                    <option value="4">무단투기</option>
-                    <option value="5">업무방해</option>
-                    <option value="6">공무집행방해</option>
-                    <option value="7">불법노점상</option>
-                    <option value="8">폭행</option>
-                    <option value="9">기타(담당부서 확인)</option>
+                    <option th:each="group : ${eventGroup}" th:value="${group.eventGroupId}"
+                      th:text="${group.eventGroupName}"></option>
                   </select>
                 </li>
                 <li>

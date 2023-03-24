@@ -1,7 +1,9 @@
 package org.project.groupware.service;
 
 import lombok.RequiredArgsConstructor;
+import org.project.groupware.constructor.EventConstructors;
 import org.project.groupware.dto.EventDto;
+import org.project.groupware.dto.EventGroupDto;
 import org.project.groupware.entity.*;
 import org.project.groupware.repository.*;
 import org.springframework.data.domain.Page;
@@ -12,9 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -27,85 +29,18 @@ public class EventService {
 	private final PoliceRepository policeRepository;
 	private final PersonRepository personRepository;
 
-	public static EventEntity eventDtoToEntityFile(EventDto eventDto) {
-		//첨부된 파일이 있을 때
-		EventEntity eventEntity = new EventEntity();
 
-		eventEntity.setEventNumber(new Random().nextInt(1000000000));
-		eventEntity.setEventLocation(eventDto.getEventLocation());
-		eventEntity.setEventDate(eventDto.getEventDate());
-		eventEntity.setEventSettle(eventDto.getEventSettle());
-		eventEntity.setEventNote(eventDto.getEventNote());
+	public List<EventGroupDto> eventRegisterSelect() {
 
-		eventEntity.setEventJoinGroup(eventDto.getEventJoinGroup());
-		eventEntity.setEventJoinDept(eventDto.getEventJoinDept());
-		eventEntity.setEventJoinPolice(eventDto.getEventJoinPolice());
-		eventEntity.setEventJoinPerson(eventDto.getEventJoinPerson());
+		List<EventGroupEntity> eventEntities = eventGroupRepository.findAll();
+		List<EventGroupDto> eventGroupDto = new ArrayList<>();
 
-		eventEntity.setEventAttachFile(1);
-
-		return eventEntity;
-
-	}
-
-	public static EventEntity eventDtoToEntity(EventDto eventDto) {
-		//첨부된 파일X
-		EventEntity eventEntity = new EventEntity();
-
-		eventEntity.setEventNumber(new Random().nextInt(1000000000));
-		eventEntity.setEventLocation(eventDto.getEventLocation());
-		eventEntity.setEventDate(eventDto.getEventDate());
-		eventEntity.setEventSettle(eventDto.getEventSettle());
-		eventEntity.setEventNote(eventDto.getEventNote());
-
-		eventEntity.setEventJoinGroup(eventDto.getEventJoinGroup());
-		eventEntity.setEventJoinDept(eventDto.getEventJoinDept());
-		eventEntity.setEventJoinPolice(eventDto.getEventJoinPolice());
-		eventEntity.setEventJoinPerson(eventDto.getEventJoinPerson());
-
-		eventEntity.setEventAttachFile(0);
-
-		return eventEntity;
-
-	}
-
-	public static EventFileEntity eventFileUpload(EventEntity eventEntity, String eventFileName) {
-
-		EventFileEntity eventFileEntity = new EventFileEntity();
-
-		eventFileEntity.setFileJoinEvent(eventEntity);
-		eventFileEntity.setEventFileName(eventFileName);
-
-		return eventFileEntity;
-
-	}
-
-	public static EventDto eventEntityToDto(EventEntity eventEntity) {
-
-		EventDto eventDto = new EventDto();
-
-		eventDto.setEventId(eventEntity.getEventId());
-		eventDto.setEventNumber(eventEntity.getEventNumber());
-		eventDto.setEventLocation(eventEntity.getEventLocation());
-		eventDto.setEventDate(eventEntity.getEventDate());
-		eventDto.setEventSettle(eventEntity.getEventSettle());
-		eventDto.setEventNote(eventEntity.getEventNote());
-
-		eventDto.setEventGroupName(eventEntity.getEventJoinGroup().getEventGroupName());
-		eventDto.setDeptName(eventEntity.getEventJoinDept().getDeptName());
-		eventDto.setPoliceName(eventEntity.getEventJoinPolice().getPoliceName());
-		eventDto.setPersonName(eventEntity.getEventJoinPerson().getPersonName());
-
-		if(eventEntity.getEventAttachFile()==0){
-			eventDto.setEventAttachFile(eventDto.getEventAttachFile());
-		}else {
-			eventDto.setEventAttachFile(eventDto.getEventAttachFile());
-			eventDto.setEventFileName(eventEntity.getEventFileEntities().get(0).getEventFileName());
+		for(EventGroupEntity eventGroupEntity : eventEntities){
+			eventGroupDto.add(EventConstructors.eventGroupEntityToDto(eventGroupEntity));
 		}
 
-		return eventDto;
+		return eventGroupDto;
 	}
-
 
 	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
@@ -129,17 +64,17 @@ public class EventService {
 		//파일업로드 처리
 		if(eventDto.getEventFile().isEmpty()){
 			//파일이 없을 때
-			eventRepository.save(eventDtoToEntity(eventDto));
+			eventRepository.save(EventConstructors.eventDtoToEntity(eventDto));
 		}else{
 			//파일이 있을 때
 			//1. 파일을 저장 장치(c:드라이브의 지정된 폴더)에 저장
 			MultipartFile eventFile = eventDto.getEventFile();
 			String fileName = eventFile.getOriginalFilename();
-			String filePath = "c:/saveEventFiles" + fileName;
+			String filePath = "C:/saveEventFiles/" + fileName;
 			eventFile.transferTo(new File(filePath));
-			
+
 			//2. 사건을 테이블에 저장
-			EventEntity eventEntity = eventDtoToEntityFile(eventDto);
+			EventEntity eventEntity = EventConstructors.eventDtoToEntityFile(eventDto);
 			//3. 사건의 id 정보를 get
 			Long eventId = eventRepository.save(eventEntity).getEventId();
 
@@ -147,7 +82,7 @@ public class EventService {
 			Optional<EventEntity> eventFind = eventRepository.findById(eventId);
 			EventEntity eventGet = eventFind.get();
 			//5. 해당하는 사건의 파일 테이블에 정보 저장
-			EventFileEntity file = eventFileUpload(eventGet, fileName);
+			EventFileEntity file = EventConstructors.eventFileUpload(eventGet, fileName);
 			eventFileRepository.save(file);
 		}
 
@@ -157,7 +92,7 @@ public class EventService {
 	public Page<EventDto> allEventsView(Pageable pageable) {
 
 		Page<EventEntity> eventEntityList = eventRepository.findAll(pageable);
-		Page<EventDto> eventDtoList = eventEntityList.map(EventService::eventEntityToDto);
+		Page<EventDto> eventDtoList = eventEntityList.map(EventConstructors::eventEntityToDto);
 
 		return eventDtoList;
 	}
@@ -168,7 +103,7 @@ public class EventService {
 		Optional<EventEntity> optionalEventEntity = eventRepository.findById(eventId);
 
 		if(optionalEventEntity.isPresent()){
-			EventDto eventDto = eventEntityToDto(optionalEventEntity.get());
+			EventDto eventDto = EventConstructors.eventEntityToDto(optionalEventEntity.get());
 			return eventDto;
 		}else {
 			return null;
@@ -176,6 +111,7 @@ public class EventService {
 
 	}
 
+	//사건 업데이트
 	@Transactional
 	public void eventUpdateDo(Long eventId, EventDto eventDto) {
 
@@ -186,7 +122,12 @@ public class EventService {
 	}
 
 	//사건 검색(날짜, 해결 여부)
-	public List<EventDto> eventSearchDateOrSettle(EventDto eventDto) {
+	public Page<EventDto> eventSearchDateOrSettle(Pageable pageable, String startDate, String endDate, Long eventSettle) {
 
+		Page<EventEntity> eventSearchEntity = eventRepository.findEventSearch(pageable, startDate, endDate, eventSettle);
+		Page<EventDto> eventSearchDto = eventSearchEntity.map(EventConstructors::eventEntityToDto);
+
+		return eventSearchDto;
 	}
+
 }

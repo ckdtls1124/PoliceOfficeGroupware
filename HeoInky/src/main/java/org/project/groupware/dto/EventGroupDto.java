@@ -12,7 +12,7 @@ public class EventGroupDto {
 
 	private Long eventGroupId;
 
-	private String evenGroupName;
+	private String eventGroupName;
 
 	private EventEntity eventList;
 
