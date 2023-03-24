@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.spring.p21suck2jo.entity.BoardEntity;
 import org.spring.p21suck2jo.entity.DeptEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
+import org.spring.p21suck2jo.role.Role;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -26,11 +27,13 @@ public class PoliceDto {
     private String password;
     private String policeName;
     private int policeNumber; //사원번호
-    private String ranks; //직책 <- table
+//    private String ranks; //직책 <- table
+    private Role ranks; //직책 <- table
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
     private String policePhone;
+
 
     private LocalDateTime createTime;
 
@@ -69,7 +72,13 @@ public class PoliceDto {
         policeDto.setPoliceId(policeEntity.getPoliceId());
         policeDto.setEmail(policeEntity.getEmail());
         policeDto.setPassword(policeEntity.getPassword());
+        policeDto.setPoliceName(policeEntity.getPoliceName());
         policeDto.setPoliceNumber(policeEntity.getPoliceNumber());
+        policeDto.setPoliceAddress(policeEntity.getPoliceAddress());
+        policeDto.setDetailAddress(policeEntity.getDetailAddress());
+        policeDto.setPolicePhone(policeEntity.getPolicePhone());
+        policeDto.setCreateTime(policeEntity.getCreateTime());
+        policeDto.setUpdateTime(policeEntity.getUpdateTime());
         return policeDto;
     }
 }
