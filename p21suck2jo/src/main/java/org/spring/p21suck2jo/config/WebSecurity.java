@@ -24,8 +24,8 @@ public class WebSecurity {
         //권한
         http.authorizeHttpRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/police/**","/index/**").authenticated()
-//                .antMatchers("/member/**").hasAnyRole("MEMBER","ADMIN")
+                .antMatchers("/police/**","/index").authenticated()
+                .antMatchers("/index").hasAnyRole("순경")
                 .antMatchers("/admin/**").hasRole("ADMIN");
 
         http.formLogin()
@@ -42,7 +42,7 @@ public class WebSecurity {
 //                .userService(principalOauth2UserService)	//사용자정보를 처리할 때 사용한다
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/");
         return http.build();
     }

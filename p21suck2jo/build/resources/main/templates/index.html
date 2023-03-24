@@ -59,8 +59,11 @@
                 <img src="/static/img/store.png" alt=""><a href="#">영업점관리</a>
               </li>
 
-              <li class="menu-login">
-                <img src="/static/img/login.png" alt=""><a href="#">LOGIN</a>
+              <li class="menu-login" sec:authorize="isAnonymous()">
+                <img src="/static/img/login.png" alt=""><a href="/login">LOGIN</a>
+              </li>
+              <li class="menu-login" sec:authorize="isAuthenticated()">
+                <img src="/static/img/login.png" alt=""><a href="/logout">LogOut</a>
               </li>
 
             </ul>

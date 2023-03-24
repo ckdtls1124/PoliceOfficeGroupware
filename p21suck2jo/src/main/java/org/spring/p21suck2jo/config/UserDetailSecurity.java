@@ -23,15 +23,16 @@ public class UserDetailSecurity implements UserDetailsService {
 
     @Override           //loadUserByUsername메서드는 "이런 정보가 들어왔는데 얘 혹시 회원이야?" 라고 묻는 메서드이다.
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<PoliceEntity> webId = policeRepository.findById(Long.valueOf(email));
+        Optional<PoliceEntity> police = policeRepository.findByEmail(email);
 
-        if (!webId.isPresent()){
+        if (!police.isPresent()){
             throw new UsernameNotFoundException("사용자가 없습니다.");
     }
-        PoliceEntity policeEntity=webId.get();
+        PoliceEntity policeEntity=police.get();
         return User.builder()    //스프링관리자 User 역할을 빌더로 간단하게만듬
                 .username(policeEntity.getEmail())
                 .password(policeEntity.getPassword())
+                .roles(policeEntity.getRanks().toString())
                 .build();
 }
 

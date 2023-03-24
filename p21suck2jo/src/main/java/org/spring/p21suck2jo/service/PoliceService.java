@@ -1,17 +1,15 @@
 package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
-import org.spring.p21suck2jo.dto.DeptDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
 
-import org.spring.p21suck2jo.entity.DeptEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.print.DocFlavor;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +22,11 @@ public class PoliceService {
     private final PoliceRepository policeRepository;
     private final DeptRepository deptRepository;
 
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
+    @Transactional
     public void policeAdd(PoliceDto policeDto){
-        PoliceEntity police = PoliceService.createOfficer(policeDto);
+        PoliceEntity police = PoliceService.createOfficer(policeDto,passwordEncoder);
         policeRepository.save(police);
 
     }
@@ -50,7 +49,7 @@ public class PoliceService {
 
     //회원수정(myPage)
     public void policeUpdate(PoliceDto policeDto){
-     PoliceEntity police=   PoliceService.createOfficer(policeDto);
+     PoliceEntity police=   PoliceService.createOfficer(policeDto, passwordEncoder);
         policeRepository.save(police);
     }
 
@@ -65,12 +64,12 @@ public class PoliceService {
     }
 
 
-    public static PoliceEntity createOfficer(PoliceDto policeDto){ //test 끝나면 passwordEncoder
+    public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
 
         PoliceEntity police = new PoliceEntity();
         police.setPoliceId(policeDto.getPoliceId());
-//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-        police.setPassword(policeDto.getPassword());
+        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+//        police.setPassword(policeDto.getPassword());
         police.setPoliceName(policeDto.getPoliceName());
         police.setEmail(policeDto.getEmail());
         police.setPoliceNumber(policeDto.getPoliceNumber());
@@ -79,6 +78,7 @@ public class PoliceService {
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());
         police.setPolicePhone(policeDto.getPolicePhone());
+        police.setCreateTime(policeDto.getCreateTime());
         police.setDept(policeDto.getDept());
         return police;
     }

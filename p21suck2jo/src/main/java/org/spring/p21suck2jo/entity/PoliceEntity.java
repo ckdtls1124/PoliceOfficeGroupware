@@ -2,6 +2,7 @@ package org.spring.p21suck2jo.entity;
 
 import lombok.*;
 import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.role.Role;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 //import org.spring.p21suck2jo.convert.PoliceConvert;
@@ -10,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,22 +29,23 @@ public class PoliceEntity extends BaseEntity{
     @Column(name = "police_id")
     private Long policeId;
 
-    @Column(nullable = true)
+    @Column(nullable = false, unique = true)
+    private String email;
+//    @Column(nullable = true)
     private String password;
 
 
     private String policeName;
     @Column(nullable = false, unique = true)
-    private String email;
-    @Column(nullable = false, unique = true)
     private int policeNumber; //사원번호
-    private String ranks; //직책 <- table
+//    private String ranks; //직책 <- table
+    private Role ranks; //직책 <- table
 
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
     private String policePhone;
-
+    private LocalDateTime createTime;
     @ManyToOne
     @JoinColumn(name ="dept_id")
     private DeptEntity dept;
@@ -78,7 +81,8 @@ public class PoliceEntity extends BaseEntity{
         policeEntity.setPoliceId(policeDto.getPoliceId());
         policeEntity.setEmail(policeDto.getEmail());
         policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
-        policeEntity.setPassword(policeDto.getPassword());
+        policeEntity.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+        policeEntity.setCreateTime(policeDto.getCreateTime());
         return policeEntity;
     }
 }
