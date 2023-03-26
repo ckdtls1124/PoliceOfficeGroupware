@@ -29,7 +29,6 @@ public class EventService {
 	private final PoliceRepository policeRepository;
 	private final PersonRepository personRepository;
 
-
 	public List<EventGroupDto> eventRegisterSelect() {
 
 		List<EventGroupEntity> eventEntities = eventGroupRepository.findAll();
@@ -42,6 +41,7 @@ public class EventService {
 		return eventGroupDto;
 	}
 
+	//사건 등록
 	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
 
