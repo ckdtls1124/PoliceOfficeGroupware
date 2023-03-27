@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>일석이조 지구대 :: 사건등록</title>
-  <link rel="stylesheet" th:href="@{/css/eventRegister.css}">
+  <link rel="stylesheet" th:href="@{/css/event/eventRegister.css}">
 </head>
 
 <body>
@@ -55,22 +55,14 @@
                   <span>담당부서</span>
                   <select th:field="*{dept}" required>
                     <option value="">::정확하게 선택하시오::</option>
-                    <!-- <option th:each="" th:value="" th:text=""></option> -->
-                    <option value="1">경비교통반</option>
-                    <option value="2">민원해결반</option>
-                    <option value="3">생활안전반</option>
-                    <option value="4">인권감사실</option>
+                    <option th:each="${dept}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
                   </select>
                 </li>
                 <li>
                   <span>담당경관</span>
                   <select th:field="*{police}" required>
                     <option value="">::정확하게 선택하시오::</option>
-                    <option value="1">김경찰</option>
-                    <option value="2">이경찰</option>
-                    <option value="3">박경찰</option>
-                    <option value="4">최경찰</option>
-                    <option value="5">밥경찰</option>
+                    <option th:each="${police}" th:value="${police.policeId}" th:text="${police.policeName}"></option>
                   </select>
                 </li>
                 <li>
