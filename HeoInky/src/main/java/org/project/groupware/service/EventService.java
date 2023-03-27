@@ -41,6 +41,7 @@ public class EventService {
 		return eventGroupDto;
 	}
 
+	//사건 등록
 	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
 
