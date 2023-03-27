@@ -20,7 +20,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "police_officer")
 public class PoliceEntity extends BaseEntity{
 
@@ -38,14 +37,16 @@ public class PoliceEntity extends BaseEntity{
     private String policeName;
     @Column(nullable = false, unique = true)
     private int policeNumber; //사원번호
-//    private String ranks; //직책 <- table
-    private Role ranks; //직책 <- table
+    private String ranks; //직책 <- table
+
+    @Enumerated(EnumType.STRING)
+    private Role role; //권한
 
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
     private String policePhone;
-    private LocalDateTime createTime;
+
     @ManyToOne
     @JoinColumn(name ="dept_id")
     private DeptEntity dept;
@@ -73,6 +74,25 @@ public class PoliceEntity extends BaseEntity{
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
 
+//    public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
+//
+//        PoliceEntity police = new PoliceEntity();
+//
+//        police.setPoliceId(policeDto.getPoliceId());
+//        police.setEmail(policeDto.getEmail());
+//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+//        police.setPoliceName(policeDto.getPoliceName());
+//        police.setPoliceNumber(policeDto.getPoliceNumber());
+//        police.setRanks(policeDto.getRanks());
+//        police.setRole(Role.MEMBER);
+//        police.setZip_code(policeDto.getZip_code());
+//        police.setPoliceAddress(policeDto.getPoliceAddress());
+//        police.setDetailAddress(policeDto.getDetailAddress());
+//        police.setPolicePhone(policeDto.getPolicePhone());
+//        police.setCreateTime(policeDto.getCreateTime());
+//        police.setDept(policeDto.getDept());
+//        return police;
+//    }
 
 
     public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {
@@ -80,9 +100,13 @@ public class PoliceEntity extends BaseEntity{
 
         policeEntity.setPoliceId(policeDto.getPoliceId());
         policeEntity.setEmail(policeDto.getEmail());
-        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
         policeEntity.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-        policeEntity.setCreateTime(policeDto.getCreateTime());
+        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
+        policeEntity.setPoliceName(policeDto.getPoliceName());
+        policeEntity.setRanks(policeDto.getRanks());
+        policeEntity.setRole(Role.MEMBER);
+//        policeEntity.setCreateTime(policeDto.getCreateTime());
+//        policeEntity.setUpdateTime(policeDto.getUpdateTime());
         return policeEntity;
     }
 }
