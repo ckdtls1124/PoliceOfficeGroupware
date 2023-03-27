@@ -75,7 +75,7 @@ public class LoginController {
     @PostMapping("/pwSearch1")
     public String pwUpdate(@ModelAttribute PoliceDto policeDto){
         policeLoginService.pwUpdate(policeDto);
-        System.out.println("수정 성공");
+        System.out.println("수정 성공!!!");
         return "redirect:/login";
     }
 }
