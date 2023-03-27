@@ -160,7 +160,8 @@
                                         <option th:value="경감">경감</option>
                                     </select>
                                     </li>
-                                    <li><input type="text"  th:value="${police.createTime}" th:field="${police.createTime}"> </li>
+<!--                                    <li><input type="text"  th:value="${police.createTime}" th:field="${police.createTime}" readonly> </li>-->
+                                    <li><input type="text"  th:text="${police.createTime}"  readonly> </li>
                                     <li><input type="hidden"  th:value="${police.policeId}" th:field="${police.policeId}"></li>
                                     <div class="btn2">
                                         <button type="submit" id="updatebtn" >직책 변경</button>

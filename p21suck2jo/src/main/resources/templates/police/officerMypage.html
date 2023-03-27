@@ -118,16 +118,10 @@
                                 <li><input type="text" id="sample4_detailAddress" th:field="${police.DetailAddress}" placeholder="상세주소" size="30"></li>
                                 <li><input type="hidden" th:value="${police.policeId}" th:field="${police.policeId}"name="policeId" ></li>
                                 <li><input type="hidden" th:value="${police.password}" th:field="${police.password}" name="password"></li>
-                                <li><input type="hidden" th:value="${police.createTime}" th:field="${police.createTime}" name="createTime"></li>
-                                <li><input type="hidden" th:value="${police.dept}" th:field="${police.dept}"></li>
                                 <div class="btn">
-                                <button type="submit" id="update-btn" >내 정보 수정</button>
+                                <button type="submit" >내 정보 수정</button>
                                 </div>
-                                <script>
-                               document.getElementById("update-btn").onclick = function () {
-                                 alert("정보가 수정되었습니다.");
-                                };
-                           </script>
+
                             </ul>
                 </form>
                         </div>
@@ -194,7 +188,7 @@
                                     <li th:text="${police.dept.getDeptName()}" th:field="${police.dept}"></li>
                                     <li th:text="${police.policeNumber}" th:field="${police.policeNumber}"></li>
                                     <li th:text="${police.ranks}" th:field="${police.ranks}"></li>
-                                    <li th:text="${police.createTime}" th:field="${police.createTime}"></li>
+<!--                                    <li th:text="${police.createTime}" th:field="${police.createTime]"></li>-->
                                 </ul>
                             </div>
 
