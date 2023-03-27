@@ -42,6 +42,7 @@ public class PoliceEntity extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Role role; //권한
 
+    private LocalDateTime createTime;
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
@@ -74,25 +75,7 @@ public class PoliceEntity extends BaseEntity{
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
 
-//    public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
-//
-//        PoliceEntity police = new PoliceEntity();
-//
-//        police.setPoliceId(policeDto.getPoliceId());
-//        police.setEmail(policeDto.getEmail());
-//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-//        police.setPoliceName(policeDto.getPoliceName());
-//        police.setPoliceNumber(policeDto.getPoliceNumber());
-//        police.setRanks(policeDto.getRanks());
-//        police.setRole(Role.MEMBER);
-//        police.setZip_code(policeDto.getZip_code());
-//        police.setPoliceAddress(policeDto.getPoliceAddress());
-//        police.setDetailAddress(policeDto.getDetailAddress());
-//        police.setPolicePhone(policeDto.getPolicePhone());
-//        police.setCreateTime(policeDto.getCreateTime());
-//        police.setDept(policeDto.getDept());
-//        return police;
-//    }
+
 
 
     public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {

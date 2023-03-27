@@ -64,6 +64,11 @@ public class PoliceService {
 
     }
 
+    public PoliceDto policeEmailSearch(String email){
+        Optional<PoliceEntity> police= policeRepository.findByEmail(email);
+        PoliceEntity policeEntity= police.get();
+        return PoliceDto.officerView(policeEntity);
+    }
 
     public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
 
@@ -80,7 +85,7 @@ public class PoliceService {
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());
         police.setPolicePhone(policeDto.getPolicePhone());
-//        police.setCreateTime(policeDto.getCreateTime());
+        police.setCreateTime(policeDto.getCreateTime());
         police.setDept(policeDto.getDept());
         return police;
     }

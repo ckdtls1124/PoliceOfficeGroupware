@@ -81,7 +81,7 @@
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right .btn{
     padding: 8px;
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right button{
     float: right;
@@ -100,7 +100,7 @@
     border: 1px solid rgb(172, 161, 161);
     border-radius: 4px;
     width: 100%;
-    height: 33%;
+    height: 36%;
     box-sizing: border-box;
     display: flex;
 }
@@ -108,14 +108,23 @@
     width: 20%;
     padding: 16px;
     background-color: rgb(192, 184, 184);
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li>input{
     border-bottom: 1px solid rgb(172, 161, 161);
+   border-radius: 3px;
+        border-color: rgb(243 237 237);
 
+/*    border: none;
+    outline: none;*/
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(4) input{
+    border-bottom: 1px solid rgb(172, 161, 161);
+   border-radius: 3px;
     border: none;
     outline: none;
 }
+
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-left ul>li{
     border-bottom: 1px solid rgb(172, 161, 161);
     padding: 8px;
@@ -123,20 +132,21 @@
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right{
     width: 80%;
     padding: 16px;
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li{
     border-bottom: 1px solid rgb(172, 161, 161);
     padding: 8px;
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li>select{
     width: 100px;
 }
 
-.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right .btn2{
+/*.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right .btn2{
     padding: 8px;
-    
-}
+
+}*/
 
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right button{
     float: right;
@@ -149,8 +159,9 @@
 	cursor: pointer;
 	font-size: 14px;
 }
-.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(5){
-border: none;
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-left ul>li:nth-child(5){
+    color : red;
+    font-weight : bold;
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(6){
 border: none;
@@ -175,5 +186,8 @@ border: none;
 border: none;
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(13){
+border: none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li:nth-child(14){
 border: none;
 }

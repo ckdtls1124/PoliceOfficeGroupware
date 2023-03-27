@@ -25,8 +25,10 @@ public class WebSecurity {
         http.authorizeHttpRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/police/**","/index").authenticated()
-                .antMatchers("/index").hasAnyRole("ADMIN","MEMBER")
+                .antMatchers("/index","/police/**").hasAnyRole("ADMIN","MEMBER")
                 .antMatchers("/admin/**").hasRole("ADMIN");
+
+
 
         http.formLogin()
                 .loginPage("/login")

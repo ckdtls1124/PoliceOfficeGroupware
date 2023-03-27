@@ -73,11 +73,12 @@ public class PoliceController {
 
 
 
-    @GetMapping("/mypage/{id}")
-    public String policeList(@PathVariable Long id,Model model){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //security 되면 위 방법으로
-        model.addAttribute("police",policeService.policeDetail(id));
+    @GetMapping("/mypage")
+    public String policeList2(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        model.addAttribute("police",policeService.policeEmailSearch(email));
+
         return "/police/officerMypage";
 
     }

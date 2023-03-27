@@ -17,7 +17,7 @@
 
 .mypage-container .mypage-container-con .mypage-table{
     width: 66%;
-    height: 80%;
+    height: 90%;
     padding: 10px 10px;
     box-sizing: border-box;
     border-top: 3px solid #003478;
@@ -52,13 +52,13 @@
     height: 47%;
     box-sizing: border-box;
     display: flex;
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-left{
     width: 20%;
     padding: 16px;
     background-color: rgb(192, 184, 184);
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-left ul>li{
     border-bottom: 1px solid rgb(172, 161, 161);
@@ -72,23 +72,32 @@
     border-bottom: 1px solid rgb(172, 161, 161);
     padding: 8px;
     border: none;
-    
+
 }
 
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li{
     border-bottom: 1px solid rgb(172, 161, 161);
     padding: 3px;
 }
-.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(8){
+/*.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(8){
+    border : none;
+}*/
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(9){
     border : none;
 }
-.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(9){
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(10){
+    border : none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(11){
+    border : none;
+}
+.mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right ul>li:nth-child(12){
     border : none;
 }
 
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right .btn{
     padding: 8px;
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-basicInfo .basicInfo-right button{
     float: right;
@@ -115,7 +124,7 @@
     width: 20%;
     padding: 16px;
     background-color: rgb(192, 184, 184);
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-left ul>li{
     border-bottom: 1px solid rgb(172, 161, 161);
@@ -124,7 +133,7 @@
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right{
     width: 80%;
     padding: 16px;
-    
+
 }
 .mypage-container .mypage-container-con .mypage-table .mypage-companyInfo .companyInfo-right ul>li{
     border-bottom: 1px solid rgb(172, 161, 161);
