@@ -64,16 +64,15 @@ public class EventController {
 
 	//사건 등록
 	@PostMapping("/register")
-	public String eventWriteDo(EventDto eventDto) throws IOException {
+	public String eventWriteDo(@Valid EventDto eventDto, BindingResult bindingResult) throws IOException {
 
 		//유효성처리
-//		if(bindingResult.hasErrors()){
-//			return "event/eventRegister";
-//		}
+		if(bindingResult.hasErrors()){
+			return "event/eventRegister";
+		}
 
 		eventService.eventRegister(eventDto);
 		return "redirect:/event/";
-
 	}
 
 	//사건 상세조회
@@ -113,7 +112,11 @@ public class EventController {
 															@PageableDefault(page = 0, size = 10, sort = "event_id", direction = Sort.Direction.DESC) Pageable pageable,
 															Model model){
 
-		Page<EventDto> eventSearchView = eventService.eventSearchDateOrSettle(pageable, startDate, endDate, eventSettle);;
+		if(startDate.isEmpty() && endDate.isEmpty() && eventSettle==null){
+			return "redirect:/event/";
+		}
+
+		Page<EventDto> eventSearchView = eventService.eventSearchDateOrSettle(pageable, startDate, endDate, eventSettle);
 
 		int block = 5;
 		int nowPage = eventSearchView.getNumber() + 1;

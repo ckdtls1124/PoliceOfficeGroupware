@@ -29,7 +29,6 @@ public class EventService {
 	private final PoliceRepository policeRepository;
 	private final PersonRepository personRepository;
 
-
 	public List<EventGroupDto> eventRegisterSelect() {
 
 		List<EventGroupEntity> eventEntities = eventGroupRepository.findAll();
@@ -124,10 +123,24 @@ public class EventService {
 	//사건 검색(날짜, 해결 여부)
 	public Page<EventDto> eventSearchDateOrSettle(Pageable pageable, String startDate, String endDate, Long eventSettle) {
 
-		Page<EventEntity> eventSearchEntity = eventRepository.findEventSearch(pageable, startDate, endDate, eventSettle);
-		Page<EventDto> eventSearchDto = eventSearchEntity.map(EventConstructors::eventEntityToDto);
-
-		return eventSearchDto;
+		if(startDate.isEmpty() && endDate.isEmpty() && eventSettle!=null){
+			//해결 여부만 체크했을 때
+			Page<EventEntity> onlySettleSearch = eventRepository.findEventSettle(pageable, eventSettle);
+			Page<EventDto> eventSearchDto = onlySettleSearch.map(EventConstructors::eventEntityToDto);
+			return eventSearchDto;
+		}else if (startDate!=null && endDate!=null && eventSettle==null){
+			//날짜만 체크했을 때
+			Page<EventEntity> onlyDateSearch = eventRepository.findEventDate(pageable, startDate, endDate);
+			Page<EventDto> eventSearchDto = onlyDateSearch.map(EventConstructors::eventEntityToDto);
+			return eventSearchDto;
+		} else if (startDate!=null && endDate!=null && eventSettle!=null) {
+			//날짜, 해결 여부 모두 체크했을 때
+			Page<EventEntity> eventSearchAll = eventRepository.findEventSearch(pageable, startDate, endDate, eventSettle);
+			Page<EventDto> eventSearchDto = eventSearchAll.map(EventConstructors::eventEntityToDto);
+			return eventSearchDto;
+		}else {
+			return null;
+		}
 	}
 
 }

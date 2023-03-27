@@ -47,6 +47,7 @@
 .event-wrap .event-container .event-container-items .event-regist {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .event-wrap .event-container .event-container-items .event-regist>form {
@@ -147,4 +148,11 @@
   font-weight: bold;
   border-radius: 5px 5px 5px 5px;
   cursor: pointer;
+}
+
+.event-wrap .event-container .event-container-items .event-regist>form>ul>li .error {
+  position: absolute;
+  right: 390px;
+  font-size: small;
+  color: crimson;
 }

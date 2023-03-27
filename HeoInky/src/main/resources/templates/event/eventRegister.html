@@ -35,13 +35,17 @@
                 </li>
                 <li>
                   <span>사건장소</span><input type="text" th:field="*{eventLocation}">
+                  <div th:if="${#fields.hasErrors('eventLocation')}" th:errors="*{eventLocation}" class="error"></div>
                 </li>
+
                 <li>
                   <span>발생일시</span><input type="datetime-local" th:field="*{eventDate}" value="yyyy-MM-dd HH:mm">
+                  <div th:if="${#fields.hasErrors('eventDate')}" th:errors="*{eventDate}" class="error"></div>
                 </li>
+
                 <li>
                   <span>사건분류</span>
-                  <select th:field="*{eventGroup}">
+                  <select th:field="*{eventGroup}" required>
                     <option value="">::정확하게 선택하시오::</option>
                     <option th:each="group : ${eventGroup}" th:value="${group.eventGroupId}"
                       th:text="${group.eventGroupName}"></option>
@@ -49,8 +53,9 @@
                 </li>
                 <li>
                   <span>담당부서</span>
-                  <select th:field="*{dept}" name="" id="">
+                  <select th:field="*{dept}" required>
                     <option value="">::정확하게 선택하시오::</option>
+                    <!-- <option th:each="" th:value="" th:text=""></option> -->
                     <option value="1">경비교통반</option>
                     <option value="2">민원해결반</option>
                     <option value="3">생활안전반</option>
@@ -59,7 +64,7 @@
                 </li>
                 <li>
                   <span>담당경관</span>
-                  <select th:field="*{police}" name="" id="">
+                  <select th:field="*{police}" required>
                     <option value="">::정확하게 선택하시오::</option>
                     <option value="1">김경찰</option>
                     <option value="2">이경찰</option>
@@ -70,7 +75,7 @@
                 </li>
                 <li>
                   <span>관련인</span>
-                  <select th:field="*{person}" name="" id="">
+                  <select th:field="*{person}" required>
                     <option value="">::정확하게 선택하시오::</option>
                     <option value="1">김시민</option>
                     <option value="2">이시민</option>
@@ -89,7 +94,9 @@
                   <label for="0">
                     <input type="radio" th:field="*{eventSettle}" name="eventSettle" id="0" value="0"> 미해결
                   </label>
+                  <div th:if="${#fields.hasErrors('eventSettle')}" th:errors="*{eventSettle}" class="error"></div>
                 </li>
+
                 <li class="textarea">
                   <span>상세사항</span>
                   <textarea th:field="*{eventNote}" name="" id="" cols="36" rows="4" resize="none"></textarea>
