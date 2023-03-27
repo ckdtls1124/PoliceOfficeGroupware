@@ -37,9 +37,9 @@ public class BoardEntity extends BaseEntity{
     @Column(nullable = false)
     private String boardWriter;
 
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "police_id")
-    private PoliceEntity police;*/
+    private PoliceEntity police;
 
     @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL)
     private List<ReplyEntity> replyList = new ArrayList<>();
@@ -53,6 +53,7 @@ public class BoardEntity extends BaseEntity{
         boardEntity.setBoardContent(boardDto.getBoardContent());
         boardEntity.setBoardWriter(boardDto.getBoardWriter());
         boardEntity.setViews(boardDto.getViews());
+        boardEntity.setPolice(boardDto.getPolice());
 
         return boardEntity;
     }
@@ -65,6 +66,7 @@ public class BoardEntity extends BaseEntity{
         boardEntity.setBoardContent(boardDto.getBoardContent());
         boardEntity.setBoardWriter(boardDto.getBoardWriter());
         boardEntity.setViews(boardDto.getViews());
+        boardEntity.setPolice(boardDto.getPolice());
 
         return boardEntity;
     }

@@ -32,9 +32,9 @@ public class ReplyEntity extends BaseEntity{
     private BoardEntity boardEntity;
 
 
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "police_id")
-    private PoliceEntity police;*/
+    private PoliceEntity police;
 
     public static ReplyEntity toReplyEntity(ReplyDto replyDto, BoardEntity boardEntity){
 
@@ -43,16 +43,7 @@ public class ReplyEntity extends BaseEntity{
         replyEntity.setReplyContent(replyDto.getReplyContent());
         replyEntity.setReplyWriter(replyDto.getReplyWriter());
         replyEntity.setBoardEntity(boardEntity);
-
-        return replyEntity;
-    }
-
-    public static ReplyEntity toGetReplyEntity(ReplyDto replyDto){
-
-        ReplyEntity replyEntity =new ReplyEntity();
-
-        replyEntity.setReplyContent(replyDto.getReplyContent());
-        replyEntity.setReplyWriter(replyDto.getReplyWriter());
+        replyEntity.setPolice(replyDto.getPolice());
 
         return replyEntity;
     }

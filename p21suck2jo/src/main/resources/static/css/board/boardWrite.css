@@ -45,6 +45,7 @@
 }
 .boardWrite-container .boardWrite .write-form .write-box .box-top h3 img {
 	transform: translateY(-1px);
+	width:24px;
 }
 .boardWrite-container .boardWrite .write-form .write-box .box-middle {
 	/* width: 100%; */
@@ -122,8 +123,10 @@ button {
 	.button-left
 	a {
 	width: 100%;
-	display: block;
+	display: flex;
 	padding: 3px;
+	justify-content:center;
+	gap:3px;
 	box-sizing: border-box;
 	border-radius: 3px;
 	background-color: #003478;
@@ -152,7 +155,7 @@ button {
 	img {
 	width: 15px;
 	height: auto;
-	transform: translateY(2px);
+	transform: translateY(1px);
 }
 .boardWrite-container
 	.boardWrite

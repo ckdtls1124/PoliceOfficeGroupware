@@ -1,0 +1,41 @@
+@import url(/css/common/reset.css);
+
+.login-container{
+  /* background-color: aqua; */
+ width: 100%;
+ height: 100vh;
+ display: flex;   /*옆으로 정렬*/
+ justify-content: center; /*가로가운데*/
+ align-items: center; /*세로가운데*/
+}
+.login-container .login{
+  width: 50%;
+  height: 50%;
+  /* background-color: #003478; */
+}
+.login-container .header-home{
+  /*밑으로 떨어지게설정*/
+  margin-bottom: 10px;
+  width: 100%;
+  height:auto;
+  border-radius:15px;
+  border: 1px solid;
+  background-color: #003478;
+
+}
+.login-container .login .login-list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+.login-container .login .text{
+  width: 100%;
+  height: 50%;
+  border: 3px solid #003478;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

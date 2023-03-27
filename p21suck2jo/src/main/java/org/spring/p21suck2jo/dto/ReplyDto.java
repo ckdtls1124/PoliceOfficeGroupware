@@ -1,6 +1,7 @@
 package org.spring.p21suck2jo.dto;
 
 import lombok.*;
+import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.entity.ReplyEntity;
 
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ public class ReplyDto {
     public Long boardId;
     public LocalDateTime createTime;
     public LocalDateTime updateTime;
+    public PoliceEntity police;
 
 
     public static ReplyDto toReplyDto(ReplyEntity replyEntity, Long boardId){

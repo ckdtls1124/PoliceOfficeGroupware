@@ -2,6 +2,7 @@ package org.spring.p21suck2jo.dto;
 
 import lombok.*;
 import org.spring.p21suck2jo.entity.BoardEntity;
+import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.entity.ReplyEntity;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ public class BoardDto {
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
     private ReplyEntity replyEntity;
+    private PoliceEntity police;
 
 //    private MemberEntity memberId;
 

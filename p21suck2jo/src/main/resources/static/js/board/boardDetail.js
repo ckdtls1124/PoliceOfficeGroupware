@@ -17,17 +17,6 @@ function hideReplyWrite() {
 
 writeCancelBtn.addEventListener("click", hideReplyWrite);
 
-//const updateBtn=document.querySelector(".update-btn");
-//const replyUpdate=document.querySelector(".reply-update");
-//
-//function showReplyUpdate(e){
-//    e.preventDefault();
-////    e.target.nextElementSibling.classList.toggle("updateHide");
-//    replyUpdate.classList.toggle("updateHide");
-//}
-//
-//
-//updateBtn.addEventListener("click",showReplyUpdate);
 
 const updateBtns = document.querySelectorAll(".update-btn");
 const replyUpdates = document.querySelector(".reply-update");
@@ -41,14 +30,15 @@ updateBtns.forEach((el, idx) => {
 function showReplyUpdate(e) {
 	e.preventDefault();
 	e.target.nextElementSibling.classList.remove("updateHide");
-	//    replyUpdate.classList.toggle("updateHide");
+	console.log(e.target.nextElementSibling)
 }
 
 function hideReplyUpdate(e) {
-	e.target.nextElementSibling.classList.add("updateHide");
-	//    replyUpdate.classList.toggle("updateHide");
+	e.target.closest(".reply-update").classList.add("updateHide");
 }
 
 updateCancelBtn.forEach((el, idx) => {
 	el.addEventListener("click", hideReplyUpdate);
 });
+
+
