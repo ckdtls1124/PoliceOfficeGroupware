@@ -1,4 +1,5 @@
-@import url(/static/css/index.css);
+@import url(/css/index.css);
+@import url(/css/common/reset.css);
 
 .officerList-container{
     width: 100%;
