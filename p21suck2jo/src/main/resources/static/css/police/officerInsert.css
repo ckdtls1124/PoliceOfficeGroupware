@@ -1,5 +1,5 @@
-@import url(/static/css/index.css);
-@import url(/static/css/common/reset.css);
+@import url(/css/index.css);
+@import url(/css/common/reset.css);
 .Pinsert-container {
     width: 100%;
     height: 100%;
