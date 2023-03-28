@@ -68,7 +68,7 @@ public class PoliceController {
     public String policeUpdate(@ModelAttribute PoliceDto policeDto){
 
         policeService.policeUpdate(policeDto);
-        return "redirect:/police/list";
+        return "redirect:/index";
     }
 
 

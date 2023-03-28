@@ -36,32 +36,41 @@
                             <li>이름</li>
                             <li>휴대 전화번호</li>
                             <li>이메일</li>
+                            <li>계정 비밀번호</li>
                             <li>주소</li>
                         </ul>
                         </div>
 
                         <div class="basicInfo-right">
-                         <form th:action="@{/police/update}" method="post" th:object="${policeDto}">
+                         <form th:action="@{/police/update}" method="post" >
                             <ul>
                                 <li><input type="text" th:value="${police.policeName}" th:field="${police.policeName}"name="policeName"></li>
                                 <li><input type="text" th:value="${police.policePhone}" th:field="${police.policePhone}" name="policePhone"></li>
                                 <li><input type="text" th:value="${police.email}" th:field="${police.email}" name="email"></li>
+                                <li><input type="text" name="password"></li>
                                 <li><input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br></li>
                                 <li><input type="text" id="sample4_postcode" th:field="${police.zip_code}" placeholder="우편번호"></li>
                                 <li><input type="text" id="sample4_roadAddress" th:field="${police.policeAddress}" placeholder="도로명주소" size="30"></li>
                                 <span id="guide" style="color:#999;display:none"></span>
                                 <li><input type="text" id="sample4_detailAddress" th:field="${police.DetailAddress}" placeholder="상세주소" size="30"></li>
                                 <li><input type="hidden" th:value="${police.policeId}" th:field="${police.policeId}"name="policeId" ></li>
-                                <!--                                <li><input type="hidden" th:value="${police.password}" th:field="${police.password}" name="password"></li>-->
                                 <li><input type="hidden" th:value="${police.createTime}" th:field="${police.createTime}" name="createTime"></li>
                                 <li><input type="hidden" th:value="${police.dept}" th:field="${police.dept}"></li>
+                                <li><input type="hidden" th:value="${police.role}" th:field="${police.role}"></li>
                                 <li><input type="hidden" th:value="${police.policeNumber}" th:field="${police.policeNumber}"></li>
+                                <li><input type="hidden" th:value="${police.ranks}" th:field="${police.ranks}"></li>
+
 
                                 <div class="btn">
-                                <button type="submit" >내 정보 수정</button>
+                                <button type="submit" id="updatebtn" >내 정보 수정</button>
                                 </div>
 
                             </ul>
+                             <script>
+                                         document.getElementById("updatebtn").onclick = function () {
+                                          alert("인사 정보가 수정되었습니다.");
+                                         };
+                                    </script>
                 </form>
                         </div>
                         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
