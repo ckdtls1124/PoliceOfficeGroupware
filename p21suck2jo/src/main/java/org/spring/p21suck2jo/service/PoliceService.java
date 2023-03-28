@@ -80,7 +80,7 @@ public class PoliceService {
         police.setEmail(policeDto.getEmail());
         police.setPoliceNumber(policeDto.getPoliceNumber());
         police.setRanks(policeDto.getRanks());
-        police.setRole(Role.MEMBER);
+        police.setRole(policeDto.getRole());
         police.setZip_code(policeDto.getZip_code());
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());

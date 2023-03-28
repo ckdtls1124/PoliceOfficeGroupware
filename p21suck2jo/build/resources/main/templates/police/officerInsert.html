@@ -73,6 +73,14 @@
                                 <span id="guide" style="color:#999;display:none"></span>
                                 <input type="text" id="sample4_detailAddress" th:field="${police.DetailAddress}" placeholder="상세주소" size="30">
                             </div>
+                                <div class="role">
+                                    <label for="#">계정 권한</label>
+                                    <select th:field="${police.role}" id="role">
+                                        <option th:value="직급">권한 선택...</option>
+                                        <option th:value="ADMIN">관리자</option>
+                                        <option th:value="MEMBER">사원</option>
+                                    </select>
+                                </div>
                           </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
