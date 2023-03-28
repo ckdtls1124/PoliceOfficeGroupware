@@ -56,6 +56,7 @@ public class ReplyEntity extends BaseEntity{
         replyEntity.setReplyContent(replyDto.getReplyContent());
         replyEntity.setReplyWriter(replyDto.getReplyWriter());
         replyEntity.setBoardEntity(boardEntity);
+        replyEntity.setPolice(replyDto.getPolice());
 
         return replyEntity;
     }

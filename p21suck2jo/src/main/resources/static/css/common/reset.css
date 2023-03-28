@@ -1,21 +1,19 @@
-/* @import url("https://webfontworld.github.io/ChosunGs/ChosunGs.css"); */
 * {
-	margin: 0;
-	padding: 0;
-	/* font-family: "ChosunGs"; */
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	width: 100%;
-	height: auto;
+  width: 100%;
+  height: auto;
 }
 
 a {
-	text-decoration: none;
-	color: #000000;
+  text-decoration: none;
+  color: #000000;
 }
 
 ul,
 li {
-	list-style: none;
+  list-style: none;
 }

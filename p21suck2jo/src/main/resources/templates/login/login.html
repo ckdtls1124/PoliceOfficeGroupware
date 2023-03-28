@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--<link rel="stylesheet" href="/css/login.css">-->
+<!--<link rel="stylesheet" href="/static/css/login.css">-->
       <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 
@@ -14,7 +14,7 @@
     <div class="login">
       <div class="header-home">
            <a href="#"><img th:src="@{/img/logo.png}" alt=""></a>
-<!--      <a href="#"><img src="/css/img/logo1.png" alt=""></a>-->
+<!--      <a href="#"><img src="/static/css/img/logo.png" alt=""></a>-->
       </div>
       <div class="login-content">
         <form th:action="@{/login}" method="post" id="loginForm">
@@ -39,9 +39,9 @@
       </ul>
       <div class="oauth">
           <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/img/google.png}"></a>
-<!--       <a th:href="@{/oauth2/authorization/google}"><img src="/img/google.png" ></a>-->
+<!--       <a th:href="@{/oauth2/authorization/google}"><img src="/static/img/google.png" ></a>-->
         <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/img/naver1.png}"></a>
-<!--       <a th:href="@{/oauth2/authorization/naver}"><img src="/img/naver1.png"></a>-->
+<!--       <a th:href="@{/oauth2/authorization/naver}"><img src="/static/img/naver1.png"></a>-->
       </div>
 
     </div>

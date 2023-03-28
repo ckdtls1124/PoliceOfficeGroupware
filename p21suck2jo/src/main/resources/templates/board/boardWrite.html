@@ -42,7 +42,8 @@
                     </div>
                     <div class="box-con">
                       <label th:for="boardWriter">등록자</label>
-                      <input type="text" th:field="*{boardWriter}">
+<!--                      <input type="hidden" th:value="${loginUserId}" name="boardWriter" readonly>-->
+                      <input type="text" th:value="${policeName}" name="boardWriter" readonly>
                     </div>
                   </div>
                   <div class="box-bottom">

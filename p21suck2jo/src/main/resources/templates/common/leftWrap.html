@@ -8,7 +8,8 @@
 <div id="all-container-wrap" th:fragment="left-wrap">
 
   <!--왼쪽 메뉴바-->
-  <div class="left-wrap">
+    <link rel="stylesheet" th:href="@{/css/common/reset.css}">
+  <div class="left-wrap" >
 
     <div class="left-menu">
       <div class="left-con">
@@ -44,7 +45,7 @@
               </li>
 
               <li class="menu-board">
-                <img src="/img/board.png" alt=""><a href="#">게시판</a>
+                <img src="/img/board.png" alt=""><a th:href="@{/board}">게시판</a>
               </li>
 
               <li class="menu-sign">

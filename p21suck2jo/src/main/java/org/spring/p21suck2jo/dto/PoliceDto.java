@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -81,5 +82,14 @@ public class PoliceDto {
         policeDto.setCreateTime(policeEntity.getCreateTime());
 //        policeDto.setUpdateTime(policeEntity.getUpdateTime());
         return policeDto;
+    }
+
+    public static PoliceDto toDto(PoliceEntity policeEntity) {
+        PoliceDto policeDto=new PoliceDto();
+
+        policeDto.setPoliceName(policeEntity.getPoliceName());
+
+        return  policeDto;
+
     }
 }

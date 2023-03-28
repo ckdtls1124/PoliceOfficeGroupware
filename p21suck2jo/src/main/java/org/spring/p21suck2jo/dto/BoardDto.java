@@ -36,6 +36,7 @@ public class BoardDto {
         boardDto.setBoardWriter(boardEntity.getBoardWriter());
         boardDto.setViews(boardEntity.getViews());
         boardDto.setCreateTime(boardEntity.getCreateTime());
+        boardDto.setPolice(boardEntity.getPolice());
 
         return boardDto;
     }

@@ -7,11 +7,18 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.spring.p21suck2jo.role.Role;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.AccountException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import java.util.Optional;
@@ -26,17 +33,17 @@ public class PoliceService {
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
-    public void policeAdd(PoliceDto policeDto){
-        PoliceEntity police = PoliceService.createOfficer(policeDto,passwordEncoder);
+    public void policeAdd(PoliceDto policeDto) {
+        PoliceEntity police = PoliceService.createOfficer(policeDto, passwordEncoder);
         policeRepository.save(police);
 
     }
 
-    public List<PoliceDto> policeList(){
+    public List<PoliceDto> policeList() {
         List<PoliceDto> policeList = new ArrayList<>();
         List<PoliceEntity> policesSearch = policeRepository.findAll();
 
-        for(PoliceEntity polices : policesSearch){
+        for (PoliceEntity polices : policesSearch) {
             policeList.add(PoliceDto.officerView(polices));
         }
         return policeList;
@@ -49,28 +56,27 @@ public class PoliceService {
     }
 
     //회원수정(myPage)
-    public void policeUpdate(PoliceDto policeDto){
-     PoliceEntity police=   PoliceService.createOfficer(policeDto, passwordEncoder);
+    public void policeUpdate(PoliceDto policeDto) {
+        PoliceEntity police = PoliceService.createOfficer(policeDto, passwordEncoder);
         policeRepository.save(police);
     }
 
 
-
-    public void policeDelete(Long id){
-        Optional<PoliceEntity> policeIdSearch=policeRepository.findByPoliceId(id);
+    public void policeDelete(Long id) {
+        Optional<PoliceEntity> policeIdSearch = policeRepository.findByPoliceId(id);
         PoliceEntity policeEntity = policeIdSearch.get();
 
-         policeRepository.delete(policeEntity);
+        policeRepository.delete(policeEntity);
 
     }
 
-    public PoliceDto policeEmailSearch(String email){
-        Optional<PoliceEntity> police= policeRepository.findByEmail(email);
-        PoliceEntity policeEntity= police.get();
+    public PoliceDto policeEmailSearch(String email) {
+        Optional<PoliceEntity> police = policeRepository.findByEmail(email);
+        PoliceEntity policeEntity = police.get();
         return PoliceDto.officerView(policeEntity);
     }
 
-    public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
+    public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder) { //test 끝나면 passwordEncoder
 
         PoliceEntity police = new PoliceEntity();
         police.setPoliceId(policeDto.getPoliceId());
@@ -80,7 +86,7 @@ public class PoliceService {
         police.setEmail(policeDto.getEmail());
         police.setPoliceNumber(policeDto.getPoliceNumber());
         police.setRanks(policeDto.getRanks());
-        police.setRole(Role.MEMBER);
+        police.setRole(policeDto.getRole());
         police.setZip_code(policeDto.getZip_code());
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());
@@ -90,4 +96,15 @@ public class PoliceService {
         return police;
     }
 
+    public PoliceDto findByPoliceName(String email) {
+
+        Optional<PoliceEntity> policeEntity=policeRepository.findByEmail(email);
+
+        if(policeEntity.isPresent()){
+            return  PoliceDto.toDto(policeEntity.get());
+        }
+
+        return null;
+
+    }
 }

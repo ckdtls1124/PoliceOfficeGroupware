@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="dept">
-                              <label for="#">부서</label>
+                              <label th:for="dept">부서</label>
                                 <select  th:field="${police.dept}">
                                     <option value="">부서 선택...</option>
                                     <option th:each="dept : ${deptList}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
@@ -55,7 +55,7 @@
                             </div>
 
                             <div class="rank">
-                              <label for="#">직급</label>
+                              <label th:for="ranks">직급</label>
                                 <select th:field="${police.ranks}" id="ranks">
                                     <option th:value="직급">직급 선택...</option>
                                     <option th:value="순경">순경</option>
@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="adrress-box">
-                            <label for="#">주소</label>
+                            <label th:for="zip_code">주소</label>
                             <div class="adrress">
                                 <input type="text" id="sample4_postcode" th:field="${police.zip_code}" placeholder="우편번호">
                                 <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -73,6 +73,14 @@
                                 <span id="guide" style="color:#999;display:none"></span>
                                 <input type="text" id="sample4_detailAddress" th:field="${police.DetailAddress}" placeholder="상세주소" size="30">
                             </div>
+                                <div class="role">
+                                    <label th:for="role">계정 권한</label>
+                                    <select th:field="${police.role}" id="role">
+                                        <option th:value="직급">권한 선택...</option>
+                                        <option th:value="ADMIN">관리자</option>
+                                        <option th:value="MEMBER">사원</option>
+                                    </select>
+                                </div>
                           </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -121,7 +129,7 @@
 </script>
 
     <!-- <div class="officer-img">
-        <img src="/img/worker.png" alt="#">
+        <img src="/static/img/worker.png" alt="#">
     </div> -->
                           <div class="button-class">
                        <button type="submit" value="" id="insertbtn">사용자 추가</button>

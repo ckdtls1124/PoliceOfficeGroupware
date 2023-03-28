@@ -32,34 +32,10 @@ public class ReplyDto {
         replyDto.setReplyWriter(replyEntity.getReplyWriter());
         replyDto.setCreateTime(replyEntity.getCreateTime());
         replyDto.setBoardId(boardId);
-
-        return replyDto;
-    }
-    public static ReplyDto toGetReplyDto(ReplyEntity replyEntity){
-
-        ReplyDto replyDto =new ReplyDto();
-
-        replyDto.setReplyId(replyEntity.getReplyId());
-        replyDto.setReplyContent(replyEntity.getReplyContent());
-        replyDto.setReplyWriter(replyEntity.getReplyWriter());
-        replyDto.setCreateTime(replyEntity.getCreateTime());
-
+        replyDto.setPolice(replyEntity.getPolice());
 
         return replyDto;
     }
 
-
-    public static ReplyDto toUpdateReplyDto(ReplyEntity replyEntity, Long boardId){
-
-        ReplyDto replyDto =new ReplyDto();
-
-        replyDto.setReplyId(replyEntity.getReplyId());
-        replyDto.setReplyContent(replyEntity.getReplyContent());
-        replyDto.setReplyWriter(replyEntity.getReplyWriter());
-        replyDto.setCreateTime(replyEntity.getCreateTime());
-        replyDto.setBoardId(boardId);
-
-        return replyDto;
-    }
 }
 

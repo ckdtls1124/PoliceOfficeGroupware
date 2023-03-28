@@ -3,6 +3,7 @@ package org.spring.p21suck2jo.entity;
 import lombok.*;
 import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.role.Role;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 //import org.spring.p21suck2jo.convert.PoliceConvert;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -74,7 +76,6 @@ public class PoliceEntity extends BaseEntity{
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
-
 
 
 

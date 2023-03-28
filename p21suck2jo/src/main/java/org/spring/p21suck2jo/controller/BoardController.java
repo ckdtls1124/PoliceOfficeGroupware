@@ -1,15 +1,24 @@
 package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.config.UserDetailSecurity;
 import org.spring.p21suck2jo.dto.BoardDto;
+import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.dto.ReplyDto;
+import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.BoardService;
+import org.spring.p21suck2jo.service.PoliceService;
 import org.spring.p21suck2jo.service.ReplyService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +28,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -27,9 +37,17 @@ public class BoardController {
 
     private final BoardService boardService;
     private final ReplyService replyService;
+    private final PoliceService policeService;
 
     @GetMapping("/boardWrite")
-    public String boardWriteView(Model model){
+    public String boardWriteView(@AuthenticationPrincipal UserDetails user, Model model ){
+
+
+        PoliceDto policeDto= policeService.findByPoliceName(user.getUsername());
+
+        if(policeDto!=null){
+            model.addAttribute("policeName",policeDto.getPoliceName());
+        }
 
         model.addAttribute("boardDto", new BoardDto());
         return "/board/boardWrite";

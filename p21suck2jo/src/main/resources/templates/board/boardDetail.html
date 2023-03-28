@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="UTF-8">
@@ -67,8 +67,8 @@
                 <div class="box-bottom">
 
                   <div class="button" th:each="list: ${boardDtos}">
-                    <button><a th:href="@{|/boardUpdate/${list.boardId}|}">수정</a></button>
-                    <button><a th:href="@{|/boardDelete/${list.boardId}|}">삭제</a></button>
+                    <button><a sec:authorize="hasRole('ADMIN')" th:href="@{|/boardUpdate/${list.boardId}|}">수정</a></button>
+                    <button><a sec:authorize="hasRole('ADMIN')" th:href="@{|/boardDelete/${list.boardId}|}">삭제</a></button>
                     <button><a th:href="@{/board}"><img src="/img/board/list.png" alt=""> 목록</a></button>
                   </div>
 
