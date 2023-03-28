@@ -12,7 +12,7 @@
 <body>
   <div id="all-container-wrap">
 
-    <div th:replace="/common/menuIndex :: leftMain"></div>
+    <div th:replace="/common/leftWrap :: left-wrap"></div>
 
     <div class="event-wrap">
       <div class="event-container">
@@ -55,27 +55,22 @@
                   <span>담당부서</span>
                   <select th:field="*{dept}" required>
                     <option value="">::정확하게 선택하시오::</option>
-                    <option th:each="${dept}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
+                    <option th:each="dept : ${dept}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
                   </select>
                 </li>
                 <li>
                   <span>담당경관</span>
                   <select th:field="*{police}" required>
                     <option value="">::정확하게 선택하시오::</option>
-                    <option th:each="${police}" th:value="${police.policeId}" th:text="${police.policeName}"></option>
+                    <option th:each="police : ${police}" th:value="${police.policeId}" th:text="${police.policeName}">
+                    </option>
                   </select>
                 </li>
                 <li>
                   <span>관련인</span>
                   <select th:field="*{person}" required>
                     <option value="">::정확하게 선택하시오::</option>
-                    <option value="1">김시민</option>
-                    <option value="2">이시민</option>
-                    <option value="3">박시민</option>
-                    <option value="4">최시민</option>
-                    <option value="5">임시민</option>
-                    <option value="6">정시민</option>
-                    <option value="7">주시민</option>
+                    <option th:each="person : ${person}" th:value="${person.personId}" th:text="${person.personName}">
                   </select>
                 </li>
                 <li>

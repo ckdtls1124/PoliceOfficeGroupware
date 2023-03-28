@@ -12,7 +12,7 @@
 <body>
   <div id="all-container-wrap">
 
-    <div th:replace="/common/menuIndex :: leftMain"></div>
+    <div th:replace="/common/leftWrap :: left-wrap"></div>
 
     <div class="event-wrap">
       <div class="event-container">
@@ -55,7 +55,7 @@
                 <ul>
                   <a th:href="@{|/event/detail/${list.eventId}|}">
                     <img th:src="@{|/upload/${list.eventFileName}|}" alt="사건이미지"
-                      onerror="this.src='https://via.placeholder.com/200x200'">
+                      onerror="this.src='https://via.placeholder.com/280x250'">
                   </a>
                   <li>
                     <span>No.</span><span th:text="${list.eventNumber}"></span>
@@ -106,6 +106,7 @@
       </div>
 
     </div>
+  </div>
 </body>
 
 </html>

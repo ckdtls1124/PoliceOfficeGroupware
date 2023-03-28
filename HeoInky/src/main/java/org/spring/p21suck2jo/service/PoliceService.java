@@ -6,6 +6,7 @@ import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
+import org.spring.p21suck2jo.role.Role;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +64,11 @@ public class PoliceService {
 
     }
 
+    public PoliceDto policeEmailSearch(String email){
+        Optional<PoliceEntity> police= policeRepository.findByEmail(email);
+        PoliceEntity policeEntity= police.get();
+        return PoliceDto.officerView(policeEntity);
+    }
 
     public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
 
@@ -74,6 +80,7 @@ public class PoliceService {
         police.setEmail(policeDto.getEmail());
         police.setPoliceNumber(policeDto.getPoliceNumber());
         police.setRanks(policeDto.getRanks());
+        police.setRole(policeDto.getRole());
         police.setZip_code(policeDto.getZip_code());
         police.setPoliceAddress(policeDto.getPoliceAddress());
         police.setDetailAddress(policeDto.getDetailAddress());

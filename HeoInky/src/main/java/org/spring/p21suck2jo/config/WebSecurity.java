@@ -16,7 +16,6 @@ public class WebSecurity {
 
     private final UserDetailSecurity userDetailSecurity;
     private final AuthenticationFailureHandler customFailHandler;
-
     @Bean
     public SecurityFilterChain fileChain(HttpSecurity http) throws Exception{
         http.csrf().disable(); //페이지보안설정 Exception 예외처리
@@ -25,9 +24,11 @@ public class WebSecurity {
         //권한
         http.authorizeHttpRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/police/**","/index","/event").authenticated()
-                .antMatchers("/index").hasAnyRole("순경")
+                .antMatchers("/police/**","/index").authenticated()
+                .antMatchers("/index","/police/**","/event/**").hasAnyRole("ADMIN","MEMBER")
                 .antMatchers("/admin/**").hasRole("ADMIN");
+
+
 
         http.formLogin()
                 .loginPage("/login")

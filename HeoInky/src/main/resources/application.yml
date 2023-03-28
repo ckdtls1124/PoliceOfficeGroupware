@@ -1,10 +1,11 @@
 server:
   port: 8099
 
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/groupware?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/policeoffice?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: 1234
 
@@ -20,9 +21,10 @@ spring:
 
   servlet:
     multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 500MB
+      max-request-size: 500MB
 
   #필수 oauth.yml이랑연결
   profiles:
     include: oauth
+

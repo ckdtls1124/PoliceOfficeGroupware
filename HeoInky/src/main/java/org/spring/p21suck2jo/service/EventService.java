@@ -2,10 +2,7 @@ package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.constructor.EventConstructors;
-import org.spring.p21suck2jo.dto.DeptDto;
-import org.spring.p21suck2jo.dto.EventDto;
-import org.spring.p21suck2jo.dto.EventGroupDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.*;
 import org.spring.p21suck2jo.repository.*;
 import org.springframework.data.domain.Page;
@@ -60,6 +57,19 @@ public class EventService {
 			deptDto.add(DeptDto.deptView(deptEntity));
 		}
 		return deptDto;
+	}
+
+	public List<PersonDto> eventRegisterSelectPerson() {
+		List<PersonEntity> personEntities = personRepository.findAll();
+		List<PersonDto> personDto = new ArrayList<>();
+
+		for(PersonEntity personEntity : personEntities){
+			personDto.add(PersonDto.builder()
+											.personId(personEntity.getPersonId())
+											.personName(personEntity.getPersonName())
+							.build());
+		}
+		return personDto;
 	}
 
 	//사건 등록
@@ -165,4 +175,15 @@ public class EventService {
 		}
 	}
 
+	public Page<EventDto> myEventView(Pageable pageable, String nowPolice) {
+
+		//policeId 뽑음
+		Long policeId = eventRepository.findByEmail(nowPolice);
+
+		//해당하는 policeId를 가지고있는 event 목록을 뽑음
+		Page<EventEntity> myEventEntities = eventRepository.findMyEvent(pageable, policeId);
+		Page<EventDto> myEventDto = myEventEntities.map(EventConstructors::eventEntityToDto);
+
+		return myEventDto;
+	}
 }

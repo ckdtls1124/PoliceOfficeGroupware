@@ -1,16 +1,15 @@
 package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.spring.p21suck2jo.dto.DeptDto;
-import org.spring.p21suck2jo.dto.EventDto;
-import org.spring.p21suck2jo.dto.EventGroupDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.EventService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,13 +56,14 @@ public class EventController {
 		List<EventGroupDto> eventGroupDto = eventService.eventRegisterSelectGroup();
 		List<PoliceDto> eventPoliceDto = eventService.eventRegisterSelectPolice();
 		List<DeptDto> eventDeptDto = eventService.eventRegisterSelectDept();
-		//시민 Dto 필요
-		
+		List<PersonDto> eventPersonDto = eventService.eventRegisterSelectPerson();
+
 		model.addAttribute("eventDto", new EventDto());
 
 		model.addAttribute("eventGroup", eventGroupDto);
 		model.addAttribute("police", eventPoliceDto);
 		model.addAttribute("dept", eventDeptDto);
+		model.addAttribute("person", eventPersonDto);
 
 		return "event/eventRegister";
 	}
@@ -136,6 +136,30 @@ public class EventController {
 		model.addAttribute("totalPage", totalPage);
 
 		model.addAttribute("eventMainView", eventSearchView);
+
+		return "event/eventMain";
+	}
+
+	@GetMapping("/myevent")
+	public String myEventView(@PageableDefault(page = 0, size = 10, sort = "event_id", direction = Sort.Direction.DESC) Pageable pageable,
+														@AuthenticationPrincipal UserDetails user, Model model){
+
+		String nowPolice = user.getUsername();
+
+		Page<EventDto> myEventView = eventService.myEventView(pageable, nowPolice);
+
+		int block = 5;
+		int nowPage = myEventView.getNumber() + 1;
+		int startPage = Math.max(1, myEventView.getNumber() - block);
+		int endPage = myEventView.getTotalPages();
+		int totalPage = myEventView.getTotalPages();
+
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("totalPage", totalPage);
+
+		model.addAttribute("eventMainView", myEventView);
 
 		return "event/eventMain";
 	}

@@ -32,7 +32,7 @@ public class UserDetailSecurity implements UserDetailsService {
         return User.builder()    //스프링관리자 User 역할을 빌더로 간단하게만듬
                 .username(policeEntity.getEmail())
                 .password(policeEntity.getPassword())
-                .roles(policeEntity.getRanks().toString())
+                .roles(policeEntity.getRole().toString())
                 .build();
 }
 

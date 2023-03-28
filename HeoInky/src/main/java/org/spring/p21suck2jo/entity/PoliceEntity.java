@@ -20,9 +20,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "police_officer")
-public class PoliceEntity extends BaseEntity {
+public class PoliceEntity extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +37,17 @@ public class PoliceEntity extends BaseEntity {
     private String policeName;
     @Column(nullable = false, unique = true)
     private int policeNumber; //사원번호
-//    private String ranks; //직책 <- table
-    private Role ranks; //직책 <- table
+    private String ranks; //직책 <- table
 
+    @Enumerated(EnumType.STRING)
+    private Role role; //권한
+
+    private LocalDateTime createTime;
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
     private String policePhone;
-    private LocalDateTime createTime;
+
     @ManyToOne
     @JoinColumn(name ="dept_id")
     private DeptEntity dept;
@@ -75,14 +77,19 @@ public class PoliceEntity extends BaseEntity {
 
 
 
+
     public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {
         PoliceEntity policeEntity = new PoliceEntity();
 
         policeEntity.setPoliceId(policeDto.getPoliceId());
         policeEntity.setEmail(policeDto.getEmail());
-        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
         policeEntity.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-        policeEntity.setCreateTime(policeDto.getCreateTime());
+        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
+        policeEntity.setPoliceName(policeDto.getPoliceName());
+        policeEntity.setRanks(policeDto.getRanks());
+        policeEntity.setRole(Role.MEMBER);
+//        policeEntity.setCreateTime(policeDto.getCreateTime());
+//        policeEntity.setUpdateTime(policeDto.getUpdateTime());
         return policeEntity;
     }
 }

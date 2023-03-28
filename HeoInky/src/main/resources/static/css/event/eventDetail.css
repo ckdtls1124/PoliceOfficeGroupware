@@ -1,5 +1,4 @@
-@import url(/css/common/reset.css);
-@import url(/css/menuIndex.css);
+@import url(/css/common/leftWrap.css);
 
 .event-wrap {
   width: 100%;
@@ -99,6 +98,12 @@
   color: #003478;
   font-size: large;
   font-weight: bold;
+  width: 80px;
+}
+
+.event-wrap .event-container .event-container-items .event-detail-items .event-data>ul>li>span:nth-child(2) {
+  width: 240px;
+  text-align: end;
 }
 
 .event-wrap .event-container .event-container-items .event-detail-items .event-settle>a {

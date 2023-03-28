@@ -27,8 +27,8 @@ public class PoliceDto {
     private String password;
     private String policeName;
     private int policeNumber; //사원번호
-//    private String ranks; //직책 <- table
-    private Role ranks; //직책 <- table
+    private String ranks; //직책 <- table
+    private Role role; //권한
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
@@ -50,6 +50,7 @@ public class PoliceDto {
         police.setEmail(policeEntity.getEmail());
         police.setPoliceNumber(policeEntity.getPoliceNumber());
         police.setRanks(policeEntity.getRanks());
+	police.setRole(policeEntity.getRole());
         police.setZip_code(policeEntity.getZip_code());
         police.setPoliceAddress(policeEntity.getPoliceAddress());
         police.setDetailAddress(policeEntity.getDetailAddress());
@@ -69,6 +70,7 @@ public class PoliceDto {
     public static PoliceDto teamDtopw(PoliceEntity policeEntity) {
 
         PoliceDto policeDto=new PoliceDto();
+
         policeDto.setPoliceId(policeEntity.getPoliceId());
         policeDto.setEmail(policeEntity.getEmail());
         policeDto.setPassword(policeEntity.getPassword());
@@ -78,7 +80,7 @@ public class PoliceDto {
         policeDto.setDetailAddress(policeEntity.getDetailAddress());
         policeDto.setPolicePhone(policeEntity.getPolicePhone());
         policeDto.setCreateTime(policeEntity.getCreateTime());
-        policeDto.setUpdateTime(policeEntity.getUpdateTime());
+//        policeDto.setUpdateTime(policeEntity.getUpdateTime());
         return policeDto;
     }
 }

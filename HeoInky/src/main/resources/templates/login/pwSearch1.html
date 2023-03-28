@@ -14,19 +14,23 @@
     <div class="login">
       <div class="header-home">
 
-          <a href="#"><img th:src="@{/img/logo1.png}" alt=""></h1></a>
-      <!-- <a href="#"><img src="/static/css/img/logo1.png" alt=""></h1></a> -->
+          <a href="#"><img th:src="@{/img/logo.png}" alt=""></h1></a>
+      <!-- <a href="#"><img src="/static/css/img/logo.png" alt=""></h1></a> -->
       </div>
       <div class="login-content">
         <form th:action="@{/pwSearch1}" method="post" >
           <ul>
-<!--            <li th:text="${teamDto.email}"></li>-->
-<!--            <li th:text="${teamDto.policeNumber}"></li>-->
+
             <li><input type="hidden" th:value="${teamDto.policeId}" name="policeId" readonly ></li>
             <li><input type="email" th:value="${teamDto.email}" name="email" readonly ></li>
             <li><input type="text" th:value="${teamDto.policeNumber}" name="policeNumber" readonly ></li>
             <li><input type="password" name="password" id="password" placeholder="새로운비밀번호 입력"></li>
-<!--              <li><input type="hidden" th:value="${teamDto.createTime}" name="createTime" id="createTime"></li>-->
+              <li><input type="hidden" th:value="${teamDto.policeName}" name="policeName" id="policeName"></li>
+              <li><input type="hidden" th:value="${teamDto.ranks}" name="ranks" id="ranks"></li>
+              <li><input type="hidden" th:value="${teamDto.role}" name="role" id="role"></li>
+              <li><input type="hidden" th:value="${teamDto.createTime}" name="createTime" id="createTime"></li>
+<!--              <li><input type="hidden" th:value="${teamDto.updateTime}" name="updateTime" id="updateTime"></li>-->
+
           </ul>
           <div class="button">
             <button class="btn" type="submit">

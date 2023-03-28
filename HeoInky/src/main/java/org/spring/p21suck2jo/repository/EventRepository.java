@@ -19,4 +19,10 @@ public interface EventRepository extends JpaRepository<EventEntity, Long> {
 					nativeQuery = true)
 	Page<EventEntity> findEventSearch(Pageable pageable, String startDate, String endDate, Long eventSettle);
 
+	@Query(value = "select police_id from police_officer where email=:nowPolice", nativeQuery = true)
+	Long findByEmail(String nowPolice);
+
+	@Query(value = "select * from event where police_id=:policeId", nativeQuery = true)
+	Page<EventEntity> findMyEvent(Pageable pageable, Long policeId);
+
 }

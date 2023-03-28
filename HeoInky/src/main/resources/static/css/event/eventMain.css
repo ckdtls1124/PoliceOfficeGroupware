@@ -1,5 +1,4 @@
-@import url(/css/common/reset.css);
-@import url(/css/menuIndex.css);
+@import url(/css/common/leftWrap.css);
 
 .event-wrap {
   width: 100%;
@@ -126,10 +125,6 @@
   box-sizing: border-box;
 }
 
-.event-wrap .event-container .event-container-items .event-list .event-content>ul>a>img {
-  height: 230px;
-}
-
 .event-wrap .event-container .event-container-items .event-list .event-content>ul>li {
   display: flex;
   justify-content: space-between;
@@ -154,6 +149,11 @@
   word-break: break-all;
   width: 200px;
   text-align: end;
+}
+
+.event-wrap .event-container .event-container-items .event-list .event-content>ul>a>img {
+  width: 280px;
+  height: 250px;
 }
 
 .event-wrap .event-container .event-container-items .event-end-item {
