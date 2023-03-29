@@ -15,7 +15,7 @@
 
       <div class="left-menu">
         <div class="left-con">
-          <h1 class="logo"><a href="#"><img src="/img/logo.png" alt="logo"></a></h1>
+          <h1 class="logo"><a th:href="@{/index}"><img src="/img/logo.png" alt="logo"></a></h1>
 
           <div class="dash-board">
             <h3 class="title">DASHBOARD</h3>
@@ -48,6 +48,9 @@
 
                 <li class="menu-board">
                   <img src="/img/board.png" alt=""><a th:href="@{/board}">게시판</a>
+                  <ul>
+                    <li sec:authorize="hasRole('ADMIN')"><a th:href="@{boardWrite}">게시글 등록</a></li>
+                  </ul>
                 </li>
 
                 <li class="menu-sign">
