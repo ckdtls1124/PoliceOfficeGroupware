@@ -116,7 +116,7 @@
                           alert("인사 정보가 수정되었습니다.");
                         };
                       </script>
-
+		<li><input type="hidden" th:value="${police.role}" th:field="${police.role}"></li>
                       <li><input type="hidden" th:value="${police.policeName}" th:field="${police.policeName}"></li>
                       <li><input type="hidden" th:value="${police.policePhone}" th:field="${police.policePhone}"></li>
                       <li><input type="hidden" th:value="${police.email}" th:field="${police.email}"></li>
@@ -125,6 +125,7 @@
                       </li>
                       <li><input type="hidden" th:value="${police.DetailAddress}" th:field="${police.DetailAddress}">
                       </li>
+		
                     </ul>
                   </form>
                 </div>
