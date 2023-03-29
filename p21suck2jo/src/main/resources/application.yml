@@ -27,3 +27,4 @@ spring:
   #필수 oauth.yml이랑연결
   profiles:
     include: oauth
+

@@ -22,39 +22,36 @@ public class ReplyController {
     private final PoliceService policeService;
 
     @PostMapping("/replyWrite")
-    public String replyWrite(@ModelAttribute ReplyDto replyDto, Model model,@AuthenticationPrincipal UserDetails user){
+    public String replyWrite(@ModelAttribute ReplyDto replyDto, Model model,
+                             @RequestParam(value = "key",required = false) String key){
+
 
         replyService.insertReply(replyDto);
-        PoliceDto police= policeService.findByPoliceName(user.getUsername());
-
-
-        if(police!=null){
-            model.addAttribute("police",police);
-        }
 
         List<ReplyDto> replyList= replyService.replyList(replyDto.getBoardId());
 
         model.addAttribute("replyList",replyList);
 
-        return "redirect:/boardDetail/"+ replyDto.getBoardId();
+        return "redirect:/boardDetail/"+ replyDto.getBoardId()+"/"+key;
     }
 
     @PostMapping("/replyUpdate")
-    public String replyUpdate(@ModelAttribute ReplyDto replyDto, Model model){
+    public String replyUpdate(@ModelAttribute ReplyDto replyDto, Model model,
+                              @RequestParam(value = "key",required = false) String key){
 
         Long updateReply=replyService.updateReply(replyDto);
 
         model.addAttribute("updateReply",updateReply);
 
-        return "redirect:/boardDetail/"+ replyDto.getBoardId();
+        return "redirect:/boardDetail/"+ replyDto.getBoardId()+"/"+key;
     }
 
     @GetMapping("/replyDelete")
-    public String replyDelete(@RequestParam Long boardId, @RequestParam long replyId, Model model){
+    public String replyDelete(@RequestParam Long boardId, @RequestParam Long replyId, @RequestParam String key){
 
         replyService.replyDelete(replyId,boardId);
 
-        return "redirect:/boardDetail/"+boardId;
+        return "redirect:/boardDetail/"+boardId+"/"+key;
     }
 
 

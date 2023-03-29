@@ -51,6 +51,7 @@ public class PoliceDto {
         police.setEmail(policeEntity.getEmail());
         police.setPoliceNumber(policeEntity.getPoliceNumber());
         police.setRanks(policeEntity.getRanks());
+        police.setRole(policeEntity.getRole());
         police.setZip_code(policeEntity.getZip_code());
         police.setPoliceAddress(policeEntity.getPoliceAddress());
         police.setDetailAddress(policeEntity.getDetailAddress());

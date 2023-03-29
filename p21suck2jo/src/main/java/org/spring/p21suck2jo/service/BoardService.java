@@ -59,11 +59,17 @@ public class BoardService{
 
 
     @Transactional
-    public int upViews(Long boardId) {
+    public void upViews(Long boardId) {
 
         boardRepository.updateViews(boardId);
 
-        return 0;
+    }
+
+    @Transactional
+    public void upViews2(Long boardId) {
+
+        boardRepository.updateViews2(boardId);
+
     }
 
     @Transactional

@@ -46,7 +46,7 @@ public class PoliceController {
     @PostMapping("/insert")
     public String policeAdd(@Valid PoliceDto policeDto){
         policeService.policeAdd(policeDto);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping("/list")
@@ -68,7 +68,7 @@ public class PoliceController {
     public String policeUpdate(@ModelAttribute PoliceDto policeDto){
 
         policeService.policeUpdate(policeDto);
-        return "redirect:/police/list";
+        return "redirect:/index";
     }
 
 

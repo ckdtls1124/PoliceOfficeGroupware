@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 
 import java.util.List;
@@ -24,4 +25,9 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
     @Modifying
     @Query(value = "update BoardEntity b set b.views=b.views+1 where b.boardId=:boardId")
     void updateViews(Long boardId);
+
+
+    @Modifying
+    @Query(value = "update BoardEntity b set b.views=b.views where b.boardId=:boardId")
+    void updateViews2(Long boardId);
 }

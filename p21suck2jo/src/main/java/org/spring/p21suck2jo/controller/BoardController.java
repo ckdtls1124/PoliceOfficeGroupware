@@ -101,55 +101,61 @@ public class BoardController {
         return "/board/board";
     }
 
-    @GetMapping("/boardDetail/{boardId}")
-    public String boardDetail(@PathVariable("boardId") Long boardId,@AuthenticationPrincipal UserDetails user, Model model, HttpServletRequest request
-                            , HttpServletResponse response){
+    @GetMapping("/boardDetail/{boardId}/{key}")
+    public String boardDetail(@PathVariable("boardId") Long boardId,@AuthenticationPrincipal UserDetails user,
+                              @PathVariable(value = "key", required = false) String key,
+                              Model model){
+
+        // key값이 true이거나 null이 아닌경우 조회수 카운팅 X
+        if(key.equals("true") && key!=null) {
+
+            boardService.upViews2(boardId);
+        // key값이 true가 아니거나 null인 경우 조회수 카운팅 O
+        }else{
+            boardService.upViews(boardId);
+        }
         // 해당 게시판 번호를 받아 리뷰 상세페이지로 넘겨줌
         BoardDto boardDtos= boardService.boardDetail(boardId);
-        PoliceDto police=policeService.findByPoliceId(user.getUsername());
 
-        Cookie[] cookies= request.getCookies();
+        PoliceDto policeName= policeService.findByPoliceIdAndName(user.getUsername());
 
-        // 비교하기 위해 새로운 쿠키
-        Cookie oldCookie=null;
+        model.addAttribute("policeReplyName",policeName.getPoliceName());
+        model.addAttribute("boardDtos",boardDtos);
 
-        //쿠키가 있을 경우
-        if(cookies!=null && cookies.length>0){
-            for(int i=0;i< cookies.length;i++){
-                // Cookie의 name이 cookie + boardId와 일치하는 쿠키를 oldCookie에 넣어줌
-                if(cookies[i].getName().equals("cookie"+police.getPoliceId())){
-                    oldCookie=cookies[i];
-                }
-            }
-        }
+//        Cookie[] cookies= request.getCookies();
+//
+//        // 비교하기 위해 새로운 쿠키
+//        Cookie oldCookie=null;
+//
+//        //cookies가 null이 아니면 cookie의 이름이 postView인지 확인하고, 맞으면 oldCookie에 이 cookie를 대입
+//        if(cookies!=null){
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("postView")) {
+//                    oldCookie = cookie;
+//                }
+//            }
+//        }
         if(boardDtos!=null){
             model.addAttribute("boardDtos",boardDtos);
-
-            // 만일 oldCookie가 null일 경우 쿠키를 생성해서 조회수 증가 로직을 처리
-            if (oldCookie==null) {
-
-                // 쿠키 생성(이름, 값)
-                Cookie newCookie = new Cookie("cookie" + police.getPoliceId(), "|" + police.getPoliceId() + "|");
-
-                //쿠키 추가
-                response.addCookie(newCookie);
-
-                //쿠기를 추가 시키고 조회수 증가시킴
-                int rs = boardService.upViews(boardId);
-
-                if (rs > 0) {
-                    System.out.println("View up");
-                } else {
-                    System.out.println("View up error");
-                }
-                // oldCookie가 null이 아닐경우 쿠키가 있으므로 조회수 증가 로직을 처리하지 않음
-            }else{
-
-                String value= oldCookie.getValue();
-
-                System.out.println("cookie value : "+value);
-            }
-
+//
+//            // 만일 oldCookie가 null이 아니고 oldCookie값에 id값이 없을 때 (있다면 이미 조회한 게시물로 조회수가 올라가지 않음) 조회수 올리는 메소드 호출
+//            if (oldCookie!=null) {
+//
+//                if(!oldCookie.getValue().contains("["+ boardId.toString() +"]")){
+//                    oldCookie.setValue(oldCookie.getValue() + "_[" + boardId + "]");
+//                    oldCookie.setMaxAge(-1);//브라우저 닫으면 쿠키 삭제 닫기전까진 살아있음
+//                    response.addCookie(oldCookie);
+//                    //쿠기를 추가 시키고 조회수 증가시킴
+//                    boardService.upViews(boardId);
+//                }
+//                // oldCookie가 null일 경우 postView라는 이름으로 쿠키를 만들고 조회수 올리는 메소드 호출
+//            }else{
+//                Cookie newCookie = new Cookie("postView", "[" + boardId + "]");
+//                newCookie.setMaxAge(-1);
+//                response.addCookie(newCookie);
+//
+//                boardService.upViews(boardId);
+//            }
             List<ReplyDto> replyList=replyService.replyList(boardId);
             model.addAttribute("replyList",replyList);
             return "/board/boardDetail";
@@ -169,11 +175,12 @@ public class BoardController {
     }
 
     @PostMapping("/boardUpdate")
-    public String boardUpdateOk(@ModelAttribute BoardDto boardDto){
+    public String boardUpdateOk(@ModelAttribute BoardDto boardDto,
+                                @RequestParam(value = "key",required = false) String key){
 
         boardService.boardUpdateOk(boardDto);
 
-        return "redirect:/boardDetail/"+boardDto.getBoardId();
+        return "redirect:/boardDetail/"+boardDto.getBoardId()+"/"+key;
     }
 
     @GetMapping("/boardDelete/{boardId}")

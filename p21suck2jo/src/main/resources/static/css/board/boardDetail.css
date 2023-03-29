@@ -415,7 +415,7 @@ display: flex;
 	.button-group
 	.reply-update
 	form
-	input:nth-child(4) {
+	input:nth-child(5) {
 	padding: 3px 0;
 	width: 617px;
 	font-size: 14px;

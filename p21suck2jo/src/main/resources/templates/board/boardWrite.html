@@ -42,7 +42,6 @@
                     </div>
                     <div class="box-con">
                       <label th:for="boardWriter">등록자</label>
-                      <input type="hidden" th:value="${loginUserId}" name="boardWriter" readonly>
                       <input type="text" th:value="${policeName}" name="boardWriter" readonly>
                     </div>
                   </div>
@@ -51,6 +50,7 @@
                       <button><a th:href="@{/board}"><img src="/img/board/list.png" alt=""> 목록</a></button>
                     </div>
                     <div class="button-right">
+                      <input hidden="hidden" name="key" value="true">
                       <button type="submit">글등록</button>
                     </div>
                   </div>
