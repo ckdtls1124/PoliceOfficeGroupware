@@ -101,10 +101,22 @@ public class PoliceService {
         Optional<PoliceEntity> policeEntity=policeRepository.findByEmail(email);
 
         if(policeEntity.isPresent()){
-            return  PoliceDto.toDto(policeEntity.get());
+            return  PoliceDto.toDtoName(policeEntity.get());
         }
 
         return null;
 
     }
+    public PoliceDto findByPoliceId(String email) {
+
+        Optional<PoliceEntity> policeEntity=policeRepository.findByEmail(email);
+
+        if(policeEntity.isPresent()){
+            return  PoliceDto.toDtoId(policeEntity.get());
+        }
+
+        return null;
+
+    }
+
 }

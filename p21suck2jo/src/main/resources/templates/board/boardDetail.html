@@ -127,9 +127,8 @@
                             <input hidden="hidden" readonly name="boardId" th:value="${boardId}">
                             <ul>
                               <li>
-                                <label for="replyWriter">작성자</label>
-                                <input type="text" name="replyWriter" id="replyWriter" placeholder="작성자"
-                                  onfocus="this.placeholder=''" onblur="this.placeholder='작성자'">
+                                <label th:for="replyWriter">작성자</label>
+                                <input type="text" name="replyWriter" th:value="${ReplyPoliceName}" readonly>
                               </li>
                               <li>
                                 <label for="replyContent">댓글내용</label>

@@ -2,8 +2,12 @@ package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.BoardDto;
+import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.dto.ReplyDto;
+import org.spring.p21suck2jo.service.PoliceService;
 import org.spring.p21suck2jo.service.ReplyService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +19,21 @@ import java.util.List;
 public class ReplyController {
 
     private final ReplyService replyService;
+    private final PoliceService policeService;
 
     @PostMapping("/replyWrite")
-    public String replyWrite(@ModelAttribute ReplyDto replyDto, Model model){
+    public String replyWrite(@ModelAttribute ReplyDto replyDto, Model model,@AuthenticationPrincipal UserDetails user){
 
         replyService.insertReply(replyDto);
+
+        PoliceDto policeDto= policeService.findByPoliceName(user.getUsername());
+
+        if(policeDto!=null){
+            model.addAttribute("ReplyPoliceName",policeDto.getPoliceName());
+            System.out.println("ReplyPoliceName = "+policeDto.getPoliceName());
+        }else{
+            System.out.println("ReplyPoliceName = "+policeDto.getPoliceName());
+        }
 
         List<ReplyDto> replyList= replyService.replyList(replyDto.getBoardId());
 

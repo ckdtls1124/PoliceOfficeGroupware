@@ -102,10 +102,11 @@ public class BoardController {
     }
 
     @GetMapping("/boardDetail/{boardId}")
-    public String boardDetail(@PathVariable("boardId") Long boardId, Model model, HttpServletRequest request
+    public String boardDetail(@PathVariable("boardId") Long boardId,@AuthenticationPrincipal UserDetails user, Model model, HttpServletRequest request
                             , HttpServletResponse response){
         // 해당 게시판 번호를 받아 리뷰 상세페이지로 넘겨줌
         BoardDto boardDtos= boardService.boardDetail(boardId);
+        PoliceDto police=policeService.findByPoliceId(user.getUsername());
 
         Cookie[] cookies= request.getCookies();
 
@@ -116,7 +117,7 @@ public class BoardController {
         if(cookies!=null && cookies.length>0){
             for(int i=0;i< cookies.length;i++){
                 // Cookie의 name이 cookie + boardId와 일치하는 쿠키를 oldCookie에 넣어줌
-                if(cookies[i].getName().equals("cookie"+boardId)){
+                if(cookies[i].getName().equals("cookie"+police.getPoliceId())){
                     oldCookie=cookies[i];
                 }
             }
@@ -128,7 +129,7 @@ public class BoardController {
             if (oldCookie==null) {
 
                 // 쿠키 생성(이름, 값)
-                Cookie newCookie = new Cookie("cookie" + boardId, "|" + boardId + "|");
+                Cookie newCookie = new Cookie("cookie" + police.getPoliceId(), "|" + police.getPoliceId() + "|");
 
                 //쿠키 추가
                 response.addCookie(newCookie);
