@@ -88,16 +88,18 @@
 
                           <ul>
                             <li th:each="list: ${replyList}" class="write">
+                              <input hidden="hidden" name="key" value="true">
                               <div class="writer" th:text="${list.replyWriter}"></div>
                               <div class="date" th:text="*{#temporals.format(list.createTime, 'yyyy-MM-dd HH:mm:ss')}">
                               </div>
                               <div class="button-group" th:if="${#authentication.principal.username} == ${policeReplyName}
-                              or ${policeReplyName} == ${list.replyWriter}">
+                              or ${policeReplyName} == ${list.replyWriter}" >
                                 <button class="update-btn"><img src="/img/board/write.png" alt="">수정</button>
                                 <div class="reply-update updateHide">
                                   <form th:action="@{/replyUpdate}" method="post">
                                     <input hidden="hidden" name="replyId" th:value="${list.replyId}">
                                     <input hidden="hidden" name="boardId" th:value="${list.boardId}">
+                                    <input hidden="hidden" name="key" value="true">
                                     <input type="hidden" name="replyWriter" th:value="${list.replyWriter}">
                                     <input type="text" name="replyContent" id="replyContent2" placeholder="수정 댓글입력"
                                       onfocus="this.placeholder=''" onblur="this.placeholder='수정 댓글입력'"
@@ -110,9 +112,11 @@
                                     </div>
                                   </form>
                                 </div>
-                                <button><a
-                                    th:href="@{/replyDelete(boardId=${list.boardId},replyId=${list.replyId})}" onclick="javascript:alert('삭제가 완료되었습니다.')"><img
-                                      src="/img/board/delete.png" alt="">삭제</a></button>
+                                  <button>
+                                    <a th:href="@{/replyDelete(boardId=${list.boardId},replyId=${list.replyId},key=true)}"
+                                       onclick="javascript:alert('삭제가 완료되었습니다.')">
+                                      <img src="/img/board/delete.png" alt="">삭제</a>
+                                  </button>
                               </div>
                               <div class="message" th:text="${list.replyContent}"></div>
                             </li>
@@ -123,8 +127,9 @@
 
                         <div class="reply-write boardHide">
                           <form th:action="@{/replyWrite}" method="post">
-                            <input hidden="hidden" readonly name="replyId" th:value="${replyId}">
-                            <input hidden="hidden" readonly name="boardId" th:value="${boardId}">
+                            <input hidden="hidden" name="replyId" th:value="${replyId}">
+                            <input hidden="hidden" name="boardId" th:value="${boardId}">
+                            <input hidden="hidden" name="key" value="true">
                             <ul>
                               <li>
                                 <label th:for="replyWriter">작성자</label>

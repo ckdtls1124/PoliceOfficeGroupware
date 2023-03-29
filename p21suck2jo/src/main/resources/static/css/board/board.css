@@ -220,10 +220,10 @@ button {
 }
 
 .board-container .board .board-box .box-bottom .paging .first:hover {
-	background-color: #ad0000;
+	background-color: #003478;
 	color: #ffffff;
 }
 .board-container .board .board-box .box-bottom .paging .next:hover {
-	background-color: #ad0000;
+	background-color: #003478;
 	color: #ffffff;
 }
