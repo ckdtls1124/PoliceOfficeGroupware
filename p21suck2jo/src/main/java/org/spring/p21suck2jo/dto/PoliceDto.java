@@ -97,6 +97,7 @@ public class PoliceDto {
         PoliceDto policeDto=new PoliceDto();
 
         policeDto.setPoliceId(policeEntity.getPoliceId());
+        policeDto.setPoliceName(policeEntity.getPoliceName());
 
         return  policeDto;
 

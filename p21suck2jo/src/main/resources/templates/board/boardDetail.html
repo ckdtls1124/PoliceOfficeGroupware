@@ -128,7 +128,7 @@
                             <ul>
                               <li>
                                 <label th:for="replyWriter">작성자</label>
-                                <input type="text" name="replyWriter" th:value="${ReplyPoliceName}" readonly>
+                                <input type="text" name="replyWriter" th:value="${police.getPoliceName()}" readonly>
                               </li>
                               <li>
                                 <label for="replyContent">댓글내용</label>

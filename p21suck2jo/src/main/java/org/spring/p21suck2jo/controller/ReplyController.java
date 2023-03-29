@@ -25,14 +25,11 @@ public class ReplyController {
     public String replyWrite(@ModelAttribute ReplyDto replyDto, Model model,@AuthenticationPrincipal UserDetails user){
 
         replyService.insertReply(replyDto);
+        PoliceDto police= policeService.findByPoliceName(user.getUsername());
 
-        PoliceDto policeDto= policeService.findByPoliceName(user.getUsername());
 
-        if(policeDto!=null){
-            model.addAttribute("ReplyPoliceName",policeDto.getPoliceName());
-            System.out.println("ReplyPoliceName = "+policeDto.getPoliceName());
-        }else{
-            System.out.println("ReplyPoliceName = "+policeDto.getPoliceName());
+        if(police!=null){
+            model.addAttribute("police",police);
         }
 
         List<ReplyDto> replyList= replyService.replyList(replyDto.getBoardId());
