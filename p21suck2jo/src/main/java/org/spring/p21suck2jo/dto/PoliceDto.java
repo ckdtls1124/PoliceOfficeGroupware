@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -50,7 +51,6 @@ public class PoliceDto {
         police.setEmail(policeEntity.getEmail());
         police.setPoliceNumber(policeEntity.getPoliceNumber());
         police.setRanks(policeEntity.getRanks());
-	police.setRole(policeEntity.getRole());
         police.setZip_code(policeEntity.getZip_code());
         police.setPoliceAddress(policeEntity.getPoliceAddress());
         police.setDetailAddress(policeEntity.getDetailAddress());
@@ -82,5 +82,24 @@ public class PoliceDto {
         policeDto.setCreateTime(policeEntity.getCreateTime());
 //        policeDto.setUpdateTime(policeEntity.getUpdateTime());
         return policeDto;
+    }
+
+    public static PoliceDto toDtoName(PoliceEntity policeEntity) {
+        PoliceDto policeDto=new PoliceDto();
+
+        policeDto.setPoliceName(policeEntity.getPoliceName());
+
+        return  policeDto;
+
+    }
+
+    public static PoliceDto toDtoId(PoliceEntity policeEntity) {
+        PoliceDto policeDto=new PoliceDto();
+
+        policeDto.setPoliceId(policeEntity.getPoliceId());
+        policeDto.setPoliceName(policeEntity.getPoliceName());
+
+        return  policeDto;
+
     }
 }
