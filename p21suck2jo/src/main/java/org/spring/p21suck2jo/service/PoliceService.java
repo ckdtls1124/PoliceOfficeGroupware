@@ -101,7 +101,7 @@ public class PoliceService {
         Optional<PoliceEntity> policeEntity=policeRepository.findByEmail(email);
 
         if(policeEntity.isPresent()){
-            return  PoliceDto.toDtoId(policeEntity.get());
+            return  PoliceDto.toDtoName(policeEntity.get());
         }
 
         return null;
