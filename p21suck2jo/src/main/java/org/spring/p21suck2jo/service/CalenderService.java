@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.spring.p21suck2jo.dto.CalenderDto;
 import org.spring.p21suck2jo.entity.CalendarEntity;
+import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.CalendarRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,12 +36,19 @@ public class CalenderService {
   }
 
 
-  public void setCalendar(CalenderDto calenderDto) {
+  public void setCalendar(CalenderDto calenderDto, Long sessionPoliceIdLong) {
+
+    // 경찰 Entity를 만들어서 CalenderEntity에 주입
+    PoliceEntity policeEntity = new PoliceEntity();
+    policeEntity.setPoliceId(sessionPoliceIdLong);
+
+
     CalendarEntity entity=CalendarEntity
             .builder()
             .content(calenderDto.getContent())
             .start(calenderDto.getStart())
             .end(calenderDto.getEnd())
+            .police(policeEntity)
             .build();
 
     CalendarEntity calendarEntity=calendarRepository.save(entity);

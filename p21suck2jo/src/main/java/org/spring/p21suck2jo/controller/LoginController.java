@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,8 +25,13 @@ public class LoginController {
         return "login/login";
     }
 
+    //    현재 로그인한 경찰관에 대한, ID 값을 Session에 넣는다.
     @GetMapping("/index")
-    public String index(){
+    public String index(HttpServletRequest request, HttpSession currentPoliceIdSession){
+        Principal principal = request.getUserPrincipal();
+        Long policeId= policeLoginService.findPoliceIdByEmail(principal.getName());
+        currentPoliceIdSession.setAttribute("currentPoliceId", policeId.toString());
+
         return "index";
     }
 

@@ -37,6 +37,7 @@ public class MemorandumEntity {
 //  작성자 정보
     @ManyToOne
     @JoinColumn(name = "police_id")
+    //@EmbeddedId
     private PoliceEntity police;
 
     //    승인을 해주는 member의 list를 가진다.
