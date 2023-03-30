@@ -132,7 +132,7 @@
 .right-wrap .right-menu {
   min-height: 100vh;
   /*ㄴ높이 최솟값이 100vh*/
-  background-color: rgb(231, 231, 231);
+  background-color: #3b5f8f36;
   box-sizing: border-box;
 }
 
