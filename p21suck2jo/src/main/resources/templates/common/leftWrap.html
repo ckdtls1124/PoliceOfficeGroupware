@@ -66,6 +66,10 @@
                   </ul>
                 </li>
 
+                <li class="menu-calendar">
+                  <img src="/img/calendar.png" alt=""><a th:href="@{/my/schedule}">일정 관리</a>
+                </li>
+
                 <li class="menu-login" sec:authorize="isAnonymous()">
                   <img src="/img/login.png" alt=""><a href="/login">LOGIN</a>
                 </li>
