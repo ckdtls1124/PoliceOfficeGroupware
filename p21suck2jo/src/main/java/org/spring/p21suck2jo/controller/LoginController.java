@@ -3,6 +3,9 @@ package org.spring.p21suck2jo.controller;
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.service.PoliceLoginService;
+import org.spring.p21suck2jo.service.PoliceService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,20 +13,33 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
     private final PoliceLoginService policeLoginService;
+    private final PoliceService policeService;
 
     @GetMapping({"/",""})
     public String basic(){
         return "login/login";
     }
 
+    //    현재 로그인한 경찰관에 대한, ID 값을 Session에 넣는다.
     @GetMapping("/index")
-    public String index(){
+    public String index(HttpServletRequest request, HttpSession currentPoliceIdSession,
+                        @AuthenticationPrincipal UserDetails user,Model model){
+        PoliceDto policeDto=policeService.findByPoliceName(user.getUsername());
+        model.addAttribute("loginUser",policeDto.getPoliceName());
+
+        Principal principal = request.getUserPrincipal();
+        Long policeId= policeLoginService.findPoliceIdByEmail(principal.getName());
+        currentPoliceIdSession.setAttribute("currentPoliceId", policeId.toString());
+
         return "index";
     }
 

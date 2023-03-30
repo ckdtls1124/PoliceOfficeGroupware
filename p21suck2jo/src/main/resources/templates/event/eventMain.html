@@ -86,7 +86,7 @@
               <!--페이징-->
               <div class="pagingIndex">
                 <a th:href="${eventMainView.first} ? '#' : @{/event/main(page=${eventMainView.number-1})}">
-                  <img th:src="@{/img/prev.png}" alt="이전">
+                  <img th:src="@{/img/event/prev.png}" alt="이전">
                 </a>
                 <th:block th:each="page:${#numbers.sequence(startPage, endPage)}">
                   <span th:if="${page==nowPage}" th:text="${page}" th:classappend="nowPage"></span>
@@ -94,7 +94,7 @@
                       th:text="${page}"></a></span>
                 </th:block>
                 <a th:href="${eventMainView.last} ? '#' : @{/event/main(page=${eventMainView.number+1})}">
-                  <img th:src="@{/img/next.png}" alt="다음">
+                  <img th:src="@{/img/event/next.png}" alt="다음">
                 </a>
               </div>
             </div>

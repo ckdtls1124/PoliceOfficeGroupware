@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      $(function () {
+        var request = $.ajax({
+          url: '/api/events/', // 변경하기
+          method: "GET",
+          dataType: "json"
+        });
+
+        request.done(function (data) {
+          console.log(data); // log 로 데이터 찍어주기.
+
+          var calendarEl = document.getElementById('calendar');
+
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialDate: '2023-03-24',
+            initialView: 'dayGridMonth',
+            //initialView: 'timeGridWeek',
+            headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'AddEventButton'
+            },
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar
+            drop: function (arg) {
+              // is the "remove after drop" checkbox checked?
+              if (document.getElementById('drop-remove').checked) {
+                // if so, remove the element from the "Draggable Events" list
+                arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+              }
+            },
+
+            events: data
+          });
+
+
+
+          calendar.render();
+        });
+
+
+        request.fail(function (jqXHR, textStatus) {
+          alert("Request failed: " + textStatus);
+        });
+      });
+
+
+    });
+  </script>
+  <style>
+    #content {
+      width: 80vw;
+      text-align: center;
+      margin: 0 auto
+    }
+
+    h1.title {
+      text-align: center;
+      background-color: #3788d8;
+      color: #ffffff;
+      padding: 10px 0;
+    }
+
+    #calendar {
+      width: 80vw;
+      height: 80vh;
+      margin: 0 auto
+    }
+  </style>
+
+</head>
+
+<body>
+<main>
+  <div id="content">
+    <h1 class="title">
+      전체 일정
+    </h1>
+    <div class="img">
+    </div>
+    <div id='calendar-container'>
+      <div id='calendar'></div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+
+</html>

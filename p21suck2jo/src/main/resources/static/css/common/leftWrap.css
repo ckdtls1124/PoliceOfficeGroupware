@@ -21,7 +21,7 @@
 .left-wrap .left-menu {
   /*위치 고정(스크롤해도 변화X)*/
   height: calc(100vh - 20px);
-  background-color: rgb(45, 50, 111);
+  background-color: #003478;
   box-sizing: border-box;
 }
 
@@ -132,7 +132,7 @@
 .right-wrap .right-menu {
   min-height: 100vh;
   /*ㄴ높이 최솟값이 100vh*/
-  background-color: rgb(231, 231, 231);
+  background-color: #3b5f8f36;
   box-sizing: border-box;
 }
 

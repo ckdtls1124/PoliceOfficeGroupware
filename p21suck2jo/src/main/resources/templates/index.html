@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="UTF-8">
   <title>관리자 페이지</title>
   <link rel="stylesheet" th:href="@{/css/index.css}">
+  <script src="/js/index/Index.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
 </head>
 
 <body>
@@ -18,6 +20,11 @@
       <div class="right-con">
 
         <div class="main-container">
+          <div class="loginUser" sec:authorize="isAuthenticated()">
+            <img src="/img/profile.png" alt="">
+            <input readonly="readonly" name="policeName" th:value="${loginUser}">
+            <span>님</span>
+          </div>
           <div class="myMenuContainer">
             <button type="button" class="myMenuBtn"><img src="/img/menu.png" alt="">마이메뉴</button>
           </div>
@@ -25,15 +32,23 @@
           <div class="myMenuContainer-content">
             <ul>
               <!-- 출근누르면 업무종료로 변경 -->
-              <li><a href="#"><img src="/img/stamp.png" alt="">출근</a></li>
+              <li><a href="#" id="workStatusCon"><img src="/img/stamp.png" alt="">
+                <div id="workStatus">업무 시작</div></a></li>
               <li><a href="#"><img src="/img/user.png" alt="">내 정보</a></li>
               <li><a href="#"><img src="/img/clock.png" alt="">출결 관리</a></li>
             </ul>
             <ul>
-              <li><a href="#"><img src="/img/drawer.png" alt="">결재문서</a></li>
+              <li><a th:href="@{/memo/all}"><img src="/img/drawer.png"
+                                                                          alt="">결재문서</a></li>
               <li><a href="#"><img src="/img/clipboard.png" alt="">업무 관리</a></li>
-              <li><a href="#"><img src="/img/megaphone.png" alt="">게시판 관리</a></li>
+              <li><a th:href="@{/board}"><img src="/img/megaphone.png" alt="">게시판 관리</a></li>
             </ul>
+            <ul>
+              <li><a th:href="@{/my/schedule}"><img src="/img/myCalendar.png" alt="">나의 일정</a></li>
+              <li></li>
+              <li></li>
+            </ul>
+
           </div>
 
           <div class="main">
