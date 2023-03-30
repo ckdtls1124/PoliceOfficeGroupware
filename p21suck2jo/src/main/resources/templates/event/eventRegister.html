@@ -7,6 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>일석이조 지구대 :: 사건등록</title>
   <link rel="stylesheet" th:href="@{/css/event/eventRegister.css}">
+  <script type="text/javascript"
+    th:src="@{//dapi.kakao.com/v2/maps/sdk.js?appkey=777886c1044b0589356709d34fc3254c&libraries=services,clusterer,drawing}"></script>
+  <script th:src="@{/js/event/kakaoMap.js}" defer></script>
+  <script th:src="@{/js/event/eventRegister.js}" defer></script>
 </head>
 
 <body>
@@ -34,7 +38,17 @@
                   <span>사건현장</span><input type="file" th:field="*{eventFile}">
                 </li>
                 <li>
-                  <span>사건장소</span><input type="text" th:field="*{eventLocation}">
+                  <span>사건장소</span>
+                  <button type="button" class="map-open"><img th:src="@{/img/event/map.png}" alt="map-icon"></button>
+                  <input type="text" id="eventLocation" th:field="*{eventLocation}" readonly>
+
+                  <div class="map-wrap hidden">
+                    <button type="button" class="map-close"><img th:src="@{/img/event/map-close.png}" alt="close-icon">
+                      <span>CLOSE</span></button>
+                    <div id="map">
+                    </div>
+                  </div>
+
                   <div th:if="${#fields.hasErrors('eventLocation')}" th:errors="*{eventLocation}" class="error"></div>
                 </li>
 
