@@ -34,6 +34,7 @@ public class MemorandumDto {
 
         MemorandumDto memorandumDto = new MemorandumDto();
 
+        memorandumDto.setMemorandumId(memorandumEntity.getMemorandumId());
         memorandumDto.setMemorandumTitle(memorandumEntity.getMemorandumTitle());
         memorandumDto.setMemorandumContent(memorandumEntity.getMemorandumContent());
         memorandumDto.setApproval(memorandumEntity.getApproval());

@@ -109,7 +109,7 @@ public class MemorandumController {
         }
 
 
-        return "redirect:/memo/" + currentSession.getAttribute("currentPoliceId");
+        return "redirect:/memo/all";
     }
 
 
@@ -179,7 +179,7 @@ public class MemorandumController {
             memorandumFileService.putFileIntoDB(multipartFile, memorandumDto, memorandumId, sessionPoliceIdLong);
         }
 
-        return "redirect:/memo/" + sessionPoliceIdLong;
+        return "redirect:/memo/all";
     }
 
 
@@ -235,7 +235,7 @@ public class MemorandumController {
 //        Long으로 변환된 Session의 경찰 아이디는 결재문서 테이블, 결재문서 파일 테이블에 주입된다.
         Long sessionPoliceIdLong = Long.valueOf(String.valueOf(currentSession.getAttribute("currentPoliceId")));
 
-        return "redirect:/memo/" + sessionPoliceIdLong;
+        return "redirect:/memo/all";
     }
 
 

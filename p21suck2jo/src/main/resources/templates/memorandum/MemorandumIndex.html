@@ -39,10 +39,6 @@
                                 </button>
                             </div>
                             <div class="search-bar">
-
-                                <!--                                    현재로그인한 경찰의 번호를 Session값으로 가져온다.-->
-                                <input th:value="${session.currentPoliceId}" name="policeId" hidden="hidden">
-
                                 <form th:action="@{/memo/all}" method="get">
                                     <input type="search" name="search" id="search" placeholder="검색어를 입력해주세요"
                                            onfocus="this.placeholder=''" onblur="this.placeholder='검색어를 입력해주세요'">
@@ -79,8 +75,7 @@
                                 <tbody>
                                 <tr th:each="list: ${memorandumDtoPage}">
 
-                                    <td th:text="${list.memorandumId}">
-                                        <input hidden="hidden" th:value="${list.memorandumId}" class="memoId">
+                                    <td th:text="${list.memorandumId}" class="memoId">
                                     </td>
 
                                     <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}|}"
