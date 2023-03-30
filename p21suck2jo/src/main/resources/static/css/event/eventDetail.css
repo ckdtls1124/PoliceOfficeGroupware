@@ -30,6 +30,21 @@
   box-sizing: border-box;
 }
 
+.event-wrap .event-container .event-container-items>a {
+  position: absolute;
+  /* top: 0; */
+  bottom: 17%;
+  left: 31%;
+  background: #003478;
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
 .event-wrap .event-container .event-container-items .event-header-items {
   display: flex;
   justify-content: center;
