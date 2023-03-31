@@ -14,72 +14,7 @@
 </head>
 
 <body>
-<div id="all-container-wrap">
-
-  <!--왼쪽 메뉴바-->
-  <div class="left-wrap">
-
-    <div class="left-menu">
-      <div class="left-con">
-        <h1 class="logo"><a href="#"><img src="/img/logo.png" alt="logo"></a></h1>
-
-        <div class="dash-board">
-          <h3 class="title">DASHBOARD</h3>
-
-          <div class="menu">
-            <!--이 부분에 들어갈 항목은 어떤 기업인지에 따라 달라짐-->
-
-            <ul>
-              <!--메뉴 리스트-->
-              <li class="menu-worker">
-                <img src="/img/worker.png" alt="worker"><a href="#">사원관리</a>
-                <ul class="menu-worker-sub">
-                  <li><a href="#">사원조회</a></li>
-                  <li><a href="#">사원등록</a></li>
-                  <li><a href="#">사원삭제</a></li>
-                </ul>
-              </li>
-
-              <li class="menu-pay">
-                <img src="/img/pay.png" alt=""><a href="#">급여관리</a>
-              </li>
-
-              <li class="menu-dal">
-                <img src="/img/dal.png" alt=""><a href="#">근태관리</a>
-              </li>
-
-              <li class="menu-depart">
-                <img src="/img/depart.png" alt=""><a href="#">사건사고</a>
-              </li>
-
-              <li class="menu-board">
-                <img src="/img/board.png" alt=""><a href="#">사내 게시판</a>
-              </li>
-
-              <li class="menu-sign">
-                <img src="/img/sign.png" alt=""><a href="#">결재관리</a>
-              </li>
-
-              <li class="menu-store">
-                <img src="/img/store.png" alt=""><a href="#">민원관리</a>
-              </li>
-
-              <li class="menu-login">
-                <img src="/img/login.png" alt=""><a href="#">LOGIN(Or Logout)</a>
-              </li>
-
-            </ul>
-          </div>
-
-          <div class="naver-api">
-            <img src="/img/naver.png" alt="naver-logo"><a href="#">NAVER WORKPLACE</a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
+<div id="all-container-wrap" th:replace="/common/leftWrap :: left-wrap"></div>
   <!--왼쪽 메뉴바-->
   <div class="right-wrap">
     <div class="right-menu">
@@ -119,10 +54,15 @@
                       <td><input type="text" th:value="${dept.deptName}" name="deptName" id="deptName"></td>
                       <td><input type="text" th:value="${dept.deptLocation}" name="deptLocation" id="deptLocation"></td>
                       <td><input type="text" th:value="${dept.policeNM}"  readonly></td>
-                      <td><button type="submit">수정</button></td>
+                      <td><button type="submit" id="update-btn">수정</button></td>
                     </tr>
                   </div>
                   </form>
+                          <script>
+                               document.getElementById("update-btn").onclick = function () {
+                                 alert("부서정보가 수정되었습니다.");
+                                };
+                          </script>
 
                   </tbody>
 
@@ -136,3 +76,5 @@
   </div>
 
 </div>
+</body>
+</html>

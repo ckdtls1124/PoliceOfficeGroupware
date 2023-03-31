@@ -14,48 +14,63 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "event_tb")
+@Table(name = "event")
 public class EventEntity {
 //사건 엔티티
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "eventId")
-    public Long event_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "eventId")
+	public Long eventId;
 
-    //사건 넘버
-    @Column(nullable = false)
-    private Long eventNumber;
+	//사건 넘버
+	@Column(nullable = false)
+	private int eventNumber;
 
-    //사건 발생 장소
-    @Column(nullable = false)
-    private String eventLocation;
+	//사건 발생 장소
+	@Column(nullable = false)
+	private String eventLocation;
 
-    //사건 발생 일시
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    @Column(nullable = false)
-    private LocalDateTime eventDate;
+	//사건 발생 일시
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	@Column(nullable = false)
+	private LocalDateTime eventDate;
 
-    //사건 해결 여부(해결 = 1, 미해결 = 0)
-    @Column(nullable = false)
-    private int eventSettle;
+	//사건 해결 여부(해결 = 1, 미해결 = 0)
+	@Column(nullable = false)
+	private int eventSettle;
 
-    //사건 정보(비고)
-    @Column(nullable = false, length = 5000)
-    private String eventNote;
+	//사건 정보(비고)
+	@Column(nullable = false, length = 5000)
+	private String eventNote;
 
+	//파일 첨부 여부(첨부 = 1, 미첨부 = 0)
+	@Column(nullable = false)
+	private int eventAttachFile;
 
-    //사건 분류 그룹과 N:1 관계
-    @ManyToOne
-    @JoinColumn(name = "eventGroup_id")
-    private EventGroupEntity eventGroup;
+	//사건 현장 파일과 1:N 관계
+	//사건은 삭제될 수 없기에 cascade, orphanRemoval은 따로 설정하지 않는다
+	@OneToMany(mappedBy = "fileJoinEvent")
+	private List<EventFileEntity> eventFileEntities = new ArrayList<>();
 
-    //부서와 N:1 관계(추가해야함)
+	//사건 분류 그룹과 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "eventGroup_id")
+	private EventGroupEntity eventJoinGroup;
 
+	//부서와 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "dept_id")
+	private DeptEntity eventJoinDept;
 
-    //시민과 N:1 관계(추가해야함)
-    @ManyToOne
-    @JoinColumn(name="personId")
-    private PersonEntity personEntity;
+	//경찰관(사원)과 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "police_id")
+	private PoliceEntity eventJoinPolice;
+
+	//시민과 N:1 관계
+	@ManyToOne
+	@JoinColumn(name = "person_id")
+	private PersonEntity eventJoinPerson;
 
 }

@@ -1,18 +1,16 @@
 server:
   port: 8099
 
+  servlet:
+    session:
+      timeout: 1m
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/membercrud?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/policeoffice?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: 1234
-
-  thymeleaf:
-    prefix: classpath:templates/
-    suffix: .html
-    cache: false
-    check-template-location: true
 
   jpa:
     database: mysql
@@ -23,3 +21,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+      location: C:\Users\Public\PoliceOfficeUploadFiles\Files
+
+  #필수 oauth.yml이랑연결
+  profiles:
+    include: oauth
+

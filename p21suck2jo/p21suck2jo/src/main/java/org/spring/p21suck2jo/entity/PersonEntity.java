@@ -28,8 +28,7 @@ public class PersonEntity extends BaseEntity{
     private String personAddress;
 
 
-
-    @OneToMany(mappedBy = "event_id",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "eventJoinPerson",cascade = CascadeType.ALL)
     private List<EventEntity> eventList = new ArrayList<>();
 
     @OneToMany(mappedBy = "person" ,cascade = CascadeType.ALL)

@@ -186,7 +186,7 @@
 }
 
 
-.dept-container .dept-container-con .dept-form tbody > tr > td .dept-btn > form > button{
+.dept-container .dept-container-con .dept-form tbody > tr > td button{
     background-color : #003478;
     border-radius : 5px ;
     color : white;
@@ -209,6 +209,7 @@
     width: 50%;
    padding: 2px;
     border-radius: 4px;
+    border-color: #f3f3f3;
 }
 
 

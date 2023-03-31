@@ -1,14 +1,20 @@
 package org.spring.p21suck2jo.entity;
 
 import lombok.*;
+import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.role.Role;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 //import org.spring.p21suck2jo.convert.PoliceConvert;
 //import org.spring.p21suck2jo.dto.PoliceDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.spring.p21suck2jo.dto.PoliceDto;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -16,8 +22,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "police_officer")
+//@Embeddable
 public class PoliceEntity extends BaseEntity{
 
     @Id
@@ -25,15 +31,21 @@ public class PoliceEntity extends BaseEntity{
     @Column(name = "police_id")
     private Long policeId;
 
-    @Column(nullable = true)
+    @Column(nullable = false, unique = true)
+    private String email;
+//    @Column(nullable = true)
     private String password;
 
 
     private String policeName;
-    private String email;
+    @Column(nullable = false, unique = true)
     private int policeNumber; //사원번호
     private String ranks; //직책 <- table
 
+    @Enumerated(EnumType.STRING)
+    private Role role; //권한
+
+    private LocalDateTime createTime;
     private String zip_code;
     private String policeAddress;
     private String DetailAddress;
@@ -45,6 +57,9 @@ public class PoliceEntity extends BaseEntity{
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<BoardEntity> boardList = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
+    private List<ReplyEntity> replyList = new ArrayList<>();
 
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<AttendEntity> attendList = new ArrayList<>();
@@ -56,7 +71,7 @@ public class PoliceEntity extends BaseEntity{
     private List<MemorandumEntity> moMemorandumList = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "event_id",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "eventJoinPolice",cascade = CascadeType.ALL)
     private List<EventEntity> EventList = new ArrayList<>();
 
 
@@ -65,25 +80,18 @@ public class PoliceEntity extends BaseEntity{
 
 
 
+    public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {
+        PoliceEntity policeEntity = new PoliceEntity();
 
-
-
-    public static PoliceEntity createOfficer(PoliceDto policeDto){ //test 끝나면 passwordEncoder
-
-        PoliceEntity police = new PoliceEntity();
-        police.setPoliceId(policeDto.getPoliceId());
-//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-        police.setPassword(policeDto.getPassword());
-        police.setPoliceName(policeDto.getPoliceName());
-        police.setEmail(policeDto.getEmail());
-        police.setPoliceNumber(policeDto.getPoliceNumber());
-        police.setRanks(policeDto.getRanks());
-        police.setZip_code(policeDto.getZip_code());
-        police.setPoliceAddress(policeDto.getPoliceAddress());
-        police.setDetailAddress(policeDto.getDetailAddress());
-        police.setPolicePhone(policeDto.getPolicePhone());
-        police.setDept(policeDto.getDept());
-        return police;
+        policeEntity.setPoliceId(policeDto.getPoliceId());
+        policeEntity.setEmail(policeDto.getEmail());
+        policeEntity.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+        policeEntity.setPoliceNumber(policeDto.getPoliceNumber());
+        policeEntity.setPoliceName(policeDto.getPoliceName());
+        policeEntity.setRanks(policeDto.getRanks());
+        policeEntity.setRole(Role.MEMBER);
+//        policeEntity.setCreateTime(policeDto.getCreateTime());
+//        policeEntity.setUpdateTime(policeDto.getUpdateTime());
+        return policeEntity;
     }
-
 }

@@ -23,7 +23,7 @@ public class DeptService {
 
 
     public void deptInsert(DeptDto deptDto){
-      deptRepository.save(DeptEntity.deptCreate(deptDto));
+      deptRepository.save(DeptService.deptCreate(deptDto));
     }
 
 
@@ -61,7 +61,7 @@ public class DeptService {
 
 
     public void deptUpdate(DeptDto deptDto){
-       DeptEntity dept= DeptEntity.deptCreate(deptDto);
+       DeptEntity dept= DeptService.deptCreate(deptDto);
         deptRepository.save(dept);
     }
 
@@ -73,4 +73,12 @@ public class DeptService {
 
     }
 
+
+    public static DeptEntity deptCreate(DeptDto deptDto){
+        DeptEntity deptEntity = new DeptEntity();
+        deptEntity.setDeptId(deptDto.getDeptId());
+        deptEntity.setDeptName(deptDto.getDeptName());
+        deptEntity.setDeptLocation(deptDto.getDeptLocation());
+        return deptEntity;
+    }
 }

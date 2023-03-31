@@ -10,7 +10,7 @@ deptInsertBtn.addEventListener("click", showDeptInsert);
 
 
 function confirmDelete() {
-  if (confirm("정말 삭제하시겠습니까?")) {
+  if (confirm("※경고 : 해당 부서를 삭제하시겠습니까? 이 작업은 번복할 수 없습니다.")) {
     document.forms[0].submit();
   } else {
     return false; //

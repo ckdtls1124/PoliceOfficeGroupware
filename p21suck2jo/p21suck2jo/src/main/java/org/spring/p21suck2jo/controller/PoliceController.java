@@ -5,6 +5,7 @@ import org.spring.p21suck2jo.dto.DeptDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
 
 import org.spring.p21suck2jo.entity.PoliceEntity;
+import org.spring.p21suck2jo.service.DeptService;
 import org.spring.p21suck2jo.service.PoliceService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,17 +34,19 @@ import java.util.Optional;
 public class PoliceController {
 
     private final PoliceService policeService;
+    private final DeptService deptService;
 
     @GetMapping("/insert")
     public String policeAddView(Model model){
         model.addAttribute("police",new PoliceDto());
+        model.addAttribute("deptList",deptService.deptList());
         return "/police/officerInsert";
     }
 
     @PostMapping("/insert")
     public String policeAdd(@Valid PoliceDto policeDto){
         policeService.policeAdd(policeDto);
-        return "index";
+        return "redirect:/index";
     }
 
     @GetMapping("/list")
@@ -56,7 +59,7 @@ public class PoliceController {
     public String adminPoliceUpdate(@PathVariable("id") Long id,Model model){
         PoliceDto dto = policeService.policeDetail(id);
         model.addAttribute("police",dto);
-
+        model.addAttribute("deptList",deptService.deptList());
         return "/police/adminOfficerUpdate";
     }
 
@@ -65,16 +68,17 @@ public class PoliceController {
     public String policeUpdate(@ModelAttribute PoliceDto policeDto){
 
         policeService.policeUpdate(policeDto);
-        return "redirect:/police/list";
+        return "redirect:/index";
     }
 
 
 
-    @GetMapping("/mypage/{id}")
-    public String policeList(@PathVariable Long id,Model model){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //security 되면 위 방법으로
-        model.addAttribute("police",policeService.policeDetail(id));
+    @GetMapping("/mypage")
+    public String policeList2(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+        model.addAttribute("police",policeService.policeEmailSearch(email));
+
         return "/police/officerMypage";
 
     }

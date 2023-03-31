@@ -22,8 +22,8 @@ public class InquiryEntity extends BaseEntity{
 
     private String inquiryTitle;
 
-    @OneToOne
-    private InquiryAnswerEntity inquiryAnswer;
+//    @OneToOne
+//    private InquiryAnswerEntity inquiryAnswer;
 
     @Column(columnDefinition = "TEXT")
     private String inquiryContent;
@@ -31,7 +31,6 @@ public class InquiryEntity extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "police_id")
     private PoliceEntity police;
-
 
 
     @ManyToOne
