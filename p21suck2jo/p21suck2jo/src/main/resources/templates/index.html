@@ -47,18 +47,22 @@
 
                 <li>
                   <div class="first-container">
-                    <ul>
-                      <li>data1</li>
-                      <li>data1</li>
-                    </ul>
-                    <ul>
-                      <li>data2</li>
-                      <li>data2</li>
-                    </ul>
+                    <div class="logo">
+                      <h3>오늘 일정</h3>
+                      <h5 th:text="${today}"></h5>
+                    </div>
+
+                    <div class="today-works" th:each=" work : ${works}">
+                      <p th:text="${work.content}" class="detail">일정내용</p>
+                      <p th:text="${#dates.format(work.start, 'MM/dd HH:mm')} + ' ~ ' + ${#dates.format(work.end, 'MM/dd HH:mm')}" class="start"></p>
+                    </div>
+
                   </div>
                 </li>
 
-                <li></li>
+                <li>
+
+                </li>
                 <li></li>
                 <li></li>
                 <li></li>

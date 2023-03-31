@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,8 +35,11 @@ public class LoginController {
         Long policeId= policeLoginService.findPoliceIdByEmail(principal.getName());
         currentPoliceIdSession.setAttribute("currentPoliceId", policeId.toString());
 
+        //오늘자 기준 스케줄과 현재 세션(policeId)를 가지고 보낸다
         model.addAttribute("works",calenderService.todayWorks(policeId));
-//        System.out.println(calenderService.todayWorks(policeId).toString()+"<---");
+        LocalDate today = LocalDate.now(); //현재 날짜를 변수에 담아서
+        model.addAttribute("today",today); //모델로 보낸다
+
         return "index";
     }
 
