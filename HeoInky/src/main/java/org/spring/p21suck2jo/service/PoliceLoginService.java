@@ -45,6 +45,13 @@ public class PoliceLoginService {
         PoliceEntity policeEntity=PoliceEntity.pwUpdateEntity(policeDto,passwordEncoder);
         policeRepository.save(policeEntity);
     }
+
+    public Long findPoliceIdByEmail(String email) {
+
+        Optional<PoliceEntity> policeEntity= policeRepository.findByEmail(email);
+
+        return policeEntity.get().getPoliceId();
+    }
 }
 
 

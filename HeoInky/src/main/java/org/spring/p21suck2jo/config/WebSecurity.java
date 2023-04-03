@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -21,10 +22,13 @@ public class WebSecurity {
         http.csrf().disable(); //페이지보안설정 Exception 예외처리
         http.userDetailsService(userDetailSecurity);
 
+//        Control when the session is created or not / ifRequired: A session will be created only if required.
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
         //권한
         http.authorizeHttpRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/police/**","/index").authenticated()
+                .antMatchers("/police/**","/event/**","/index").authenticated()
                 .antMatchers("/index","/police/**","/event/**").hasAnyRole("ADMIN","MEMBER")
                 .antMatchers("/admin/**").hasRole("ADMIN");
 

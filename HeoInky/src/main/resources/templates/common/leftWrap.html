@@ -11,15 +11,17 @@
 
     <!--왼쪽 메뉴바-->
     <link rel="stylesheet" th:href="@{/css/common/reset.css}">
+    <script src="/js/leftWrap/leftWrap.js" defer></script>
     <div class="left-wrap">
 
       <div class="left-menu">
         <div class="left-con">
-          <h1 class="logo"><a href="#"><img src="/img/logo.png" alt="logo"></a></h1>
+          <h1 class="logo"><a th:href="@{/index}"><img src="/img/logo.png" alt="logo"></a></h1>
 
           <div class="dash-board">
             <h3 class="title">DASHBOARD</h3>
-
+            <!--                    현재 시간-->
+            <div class="currentTime" style="color:white;"></div>
             <div class="menu">
               <!--이 부분에 들어갈 항목은 어떤 기업인지에 따라 달라짐-->
 
@@ -47,7 +49,10 @@
                 </li>
 
                 <li class="menu-board">
-                  <img src="/img/board.png" alt=""><a href="#">게시판</a>
+                  <img src="/img/board.png" alt=""><a th:href="@{/board}">게시판</a>
+                  <ul>
+                    <li sec:authorize="hasRole('ADMIN')"><a th:href="@{boardWrite}">게시글 등록</a></li>
+                  </ul>
                 </li>
 
                 <li class="menu-sign">
@@ -60,6 +65,13 @@
                     <li><a th:href="@{/event/}">사건·사고관리</a></li>
                     <li><a th:href="@{/event/register}">사건등록</a></li>
                     <li><a th:href="@{/event/myevent}">나의사건</a></li>
+                  </ul>
+                </li>
+
+                <li class="menu-calendar">
+                  <img src="/img/calendar.png" alt=""><a th:href="@{/my/schedule/list}">전체 일정</a>
+                  <ul>
+                    <li><a th:href="@{/my/schedule}">나의 일정</a></li>
                   </ul>
                 </li>
 

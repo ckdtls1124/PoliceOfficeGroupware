@@ -1,7 +1,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
   mapOption = {
-    center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-    level: 1 // 지도의 확대 레벨
+    center: new kakao.maps.LatLng(37.65430563266166, 127.0605939276184), // 지도의 중심좌표
+    level: 4 // 지도의 확대 레벨
   };
 
 // 지도를 생성합니다    
@@ -22,6 +22,9 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     if (status === kakao.maps.services.Status.OK) {
       var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
       detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+
+      console.log(result[0].address.address_name);
+      document.getElementById('eventLocation').value = result[0].address.address_name;
 
       var content = '<div class="bAddr">' +
         '<span class="title">법정동 주소정보</span>' +

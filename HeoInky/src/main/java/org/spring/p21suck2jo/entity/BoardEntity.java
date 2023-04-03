@@ -1,7 +1,7 @@
 package org.spring.p21suck2jo.entity;
 
 import lombok.*;
-//import org.spring.p21suck2jo.dto.BoardDto;
+import org.spring.p21suck2jo.dto.BoardDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -41,35 +41,35 @@ public class BoardEntity extends BaseEntity{
     @JoinColumn(name = "police_id")
     private PoliceEntity police;
 
-    @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL)
     private List<ReplyEntity> replyList = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private List<ReplyEntity> replyList = new ArrayList<>();
 
-//    public static BoardEntity toboardEntity(BoardDto boardDto){
-//
-//        BoardEntity boardEntity=new BoardEntity();
-//
-//        boardEntity.setBoardTitle(boardDto.getBoardTitle());
-//        boardEntity.setBoardContent(boardDto.getBoardContent());
-//        boardEntity.setBoardWriter(boardDto.getBoardWriter());
-//        boardEntity.setViews(boardDto.getViews());
-//
-//        return boardEntity;
-//    }
-//    public static BoardEntity toAllboardEntity(BoardDto boardDto){
-//
-//        BoardEntity boardEntity=new BoardEntity();
-//
-//        boardEntity.setBoardId(boardDto.getBoardId());
-//        boardEntity.setBoardTitle(boardDto.getBoardTitle());
-//        boardEntity.setBoardContent(boardDto.getBoardContent());
-//        boardEntity.setBoardWriter(boardDto.getBoardWriter());
-//        boardEntity.setViews(boardDto.getViews());
-//
-//        return boardEntity;
-//    }
+    public static BoardEntity toboardEntity(BoardDto boardDto){
+
+        BoardEntity boardEntity=new BoardEntity();
+
+        boardEntity.setBoardTitle(boardDto.getBoardTitle());
+        boardEntity.setBoardContent(boardDto.getBoardContent());
+        boardEntity.setBoardWriter(boardDto.getBoardWriter());
+        boardEntity.setViews(boardDto.getViews());
+        boardEntity.setPolice(boardDto.getPolice());
+
+        return boardEntity;
+    }
+    public static BoardEntity toAllboardEntity(BoardDto boardDto){
+
+        BoardEntity boardEntity=new BoardEntity();
+
+        boardEntity.setBoardId(boardDto.getBoardId());
+        boardEntity.setBoardTitle(boardDto.getBoardTitle());
+        boardEntity.setBoardContent(boardDto.getBoardContent());
+        boardEntity.setBoardWriter(boardDto.getBoardWriter());
+        boardEntity.setViews(boardDto.getViews());
+        boardEntity.setPolice(boardDto.getPolice());
+
+        return boardEntity;
+    }
 
 
 }

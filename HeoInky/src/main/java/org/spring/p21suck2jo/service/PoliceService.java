@@ -7,11 +7,18 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.spring.p21suck2jo.role.Role;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.AccountException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import java.util.Optional;
@@ -50,7 +57,7 @@ public class PoliceService {
 
     //회원수정(myPage)
     public void policeUpdate(PoliceDto policeDto){
-     PoliceEntity police=   PoliceService.createOfficer(policeDto, passwordEncoder);
+        PoliceEntity police=   PoliceService.createOfficer(policeDto, passwordEncoder);
         policeRepository.save(police);
     }
 
@@ -60,7 +67,7 @@ public class PoliceService {
         Optional<PoliceEntity> policeIdSearch=policeRepository.findByPoliceId(id);
         PoliceEntity policeEntity = policeIdSearch.get();
 
-         policeRepository.delete(policeEntity);
+        policeRepository.delete(policeEntity);
 
     }
 
@@ -88,6 +95,30 @@ public class PoliceService {
         police.setCreateTime(policeDto.getCreateTime());
         police.setDept(policeDto.getDept());
         return police;
+    }
+
+
+    public PoliceDto findByPoliceName(String email) {
+
+        Optional<PoliceEntity> policeEntity=policeRepository.findByEmail(email);
+
+        if(policeEntity.isPresent()){
+            return  PoliceDto.toDtoName(policeEntity.get());
+        }
+
+        return null;
+
+    }
+    public PoliceDto findByPoliceIdAndName(String email) {
+
+        Optional<PoliceEntity> policeEntity=policeRepository.findByEmail(email);
+
+        if(policeEntity.isPresent()){
+            return  PoliceDto.toDtoId(policeEntity.get());
+        }
+
+        return null;
+
     }
 
 }
