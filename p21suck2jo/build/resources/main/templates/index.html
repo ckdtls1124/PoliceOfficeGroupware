@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <title>관리자 페이지</title>
   <link rel="stylesheet" th:href="@{/css/index.css}">
+  <link rel="stylesheet" th:href="@{/css/chatbot/chatbot.css}">
   <script src="/js/index/Index.js" defer></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+  <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js}" defer></script>
+  <script th:src="@{/js/chatbot/chat.js}"></script>
 </head>
 
 <body>
@@ -28,13 +30,12 @@
             <ul>
               <!-- 출근누르면 업무종료로 변경 -->
               <li><a href="#" id="workStatusCon"><img src="/img/stamp.png" alt="">
-                <div id="workStatus">업무 시작</div>
+                  <div id="workStatus">업무 시작</div>
               <li><a href="#"><img src="/img/user.png" alt="">내 정보</a></li>
               <li><a href="#"><img src="/img/clock.png" alt="">출결 관리</a></li>
             </ul>
             <ul>
-              <li><a th:href="@{/memo/all}"><img src="/img/drawer.png"
-                                                                          alt="">결재문서</a></li>
+              <li><a th:href="@{/memo/all}"><img src="/img/drawer.png" alt="">결재문서</a></li>
               <li><a href="#"><img src="/img/clipboard.png" alt="">업무 관리</a></li>
               <li><a th:href="@{/board}"><img src="/img/megaphone.png" alt="">게시판 관리</a></li>
             </ul>
@@ -56,10 +57,14 @@
         </div>
 
       </div>
+      <div class="wrap">
+        <button type="button" id="btn-chat-open" onclick="openChat()">Bot-GO</button>
+        <th:block th:insert="~{chatbot/chat-bot::#chat-disp}" />
+      </div>
     </div>
   </div>
   <!--오른쪽 컨테이너-->
-</div>
+  </div>
 
 </body>
 

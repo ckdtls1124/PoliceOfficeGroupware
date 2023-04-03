@@ -28,7 +28,7 @@ public class WebSecurity {
         //권한
         http.authorizeHttpRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/police/**","/index").authenticated()
+                .antMatchers("/police/**","/event/**","/index").authenticated()
                 .antMatchers("/index","/police/**","/event/**").hasAnyRole("ADMIN","MEMBER")
                 .antMatchers("/admin/**").hasRole("ADMIN");
 

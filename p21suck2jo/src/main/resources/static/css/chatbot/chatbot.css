@@ -1,0 +1,163 @@
+@charset "UTF-8";
+@import url(/css/common/reset.css);
+
+.bot-con {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chat-bot>.wrap {
+  font-size: 14px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px 0 rgb(0 0 0 / 30%);
+}
+
+#chat-bot>.wrap button {
+  color: #ffffff;
+  border: none;
+  background-color: #000000;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#chat-bot>.wrap button#btn-chat-open {
+  color: #ffffff;
+  border: none;
+  background-color: #000000;
+  cursor: pointer;
+  padding: 5px 15px !important;
+  border-radius: 5px;
+}
+
+#chat-bot>.wrap>#chat-disp {
+  display: none;
+  width: 360px;
+  height: 760px;
+}
+
+#chat-content {
+  padding: 15px;
+  line-height: 1.8em;
+  overflow-y: auto;
+  max-height: 640px;
+}
+
+#chat-header {
+  position: relative;
+  text-align: center;
+  background-color: #4368ef;
+  color: #fff;
+  height: 60px;
+  line-height: 60px;
+}
+
+#chat-header .btn-wrap {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  top: 15px;
+  right: 15px;
+  line-height: 30px;
+}
+
+#chat-header .btn-wrap button {
+  width: 100%;
+  height: 100%;
+}
+
+#chat-disp {
+  position: relative;
+}
+
+#chat-disp .msg {
+  margin-bottom: 15px;
+}
+
+#chat-disp .msg .icon {
+  margin-right: 10px;
+}
+
+#chat-disp .msg .icon img {
+  width: 30px;
+  height: 30px;
+}
+
+#chat-disp .date,
+#chat-disp .time {
+  margin-bottom: 5px;
+  color: #777;
+  font-size: 12px;
+}
+
+#chat-disp .user .time {
+  text-align: right;
+}
+
+#chat-disp .part {
+  background-color: #fff;
+  color: #222;
+  max-width: 270px;
+  padding: 6px 20px 6px 10px;
+  text-align: left;
+  letter-spacing: -0.5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+}
+
+#chat-disp .menu .menu-item {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background-color: rgb(0 255 255 / 5%);
+  border: 1px solid #e5e5e5;
+}
+
+#chat-question {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  height: 60px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5vw;
+}
+
+#chat-question #question {
+  border: none;
+  background-color: #e9e9e9;
+  border-radius: 18px;
+  height: 36px;
+  vertical-align: middle;
+  width: calc(100% - 80px);
+  padding: 0 1em;
+}
+
+#chat-question span {
+  width: 40px;
+  height: 40px;
+  background: url("/images/icon/question.svg") no-repeat 50%/contain;
+}
+
+#chat-question button {
+  width: 40px;
+  border: 1px solid #e9e9e9;
+  background-color: rgb(0 255 255 / 5%);
+  cursor: pointer;
+}
+
+#chat-content {
+  min-height: 670px;
+}
+
+#chat-content .bot .message {
+  width: 100%;
+}
