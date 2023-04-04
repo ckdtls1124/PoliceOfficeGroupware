@@ -30,4 +30,7 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
     @Modifying
     @Query(value = "update BoardEntity b set b.views=b.views where b.boardId=:boardId")
     void updateViews2(Long boardId);
+
+    @Query(value = "select * from board where create_time > current_date()",nativeQuery = true)
+    List<BoardEntity> findTodayBoard();
 }

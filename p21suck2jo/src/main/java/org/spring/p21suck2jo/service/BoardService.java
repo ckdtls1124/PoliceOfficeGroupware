@@ -101,5 +101,16 @@ public class BoardService{
         boardRepository.deleteByBoardId(boardId);
     }
 
+    public List<BoardDto> todayBoard() {
+
+        List<BoardEntity> boardEntities = boardRepository.findTodayBoard();
+        List<BoardDto> boardDtos = new ArrayList<>();
+
+        for(BoardEntity boardEntity : boardEntities){
+            boardDtos.add(BoardDto.toboardDto(boardEntity));
+        }
+        return boardDtos;
+    }
+
 
 }
