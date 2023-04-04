@@ -18,7 +18,7 @@ spring:
             - nickname
           client-name: Naver
         kakao:
-          client-id: 8d1bfff0893723a74b9b690f2047a0f1
+          client-id: 8d1bfff0893723a74b9b690f2047a0f1   #본인꺼등록
           redirect-uri: "http://localhost:8099/login/oauth2/code/kakao"
           client-authentication-method: POST
           authorization-grant-type: authorization_code
