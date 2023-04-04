@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--<link rel="stylesheet" href="/static/css/login.css">-->
+<!-- <link rel="stylesheet" href="/static/css/login.css"> -->
       <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 
@@ -39,9 +39,11 @@
       </ul>
       <div class="oauth">
           <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/img/google.png}"></a>
-<!--       <a th:href="@{/oauth2/authorization/google}"><img src="/static/img/google.png" ></a>-->
+      <!-- <a th:href="@{/oauth2/authorization/google}"><img src="/static/img/google.png" ></a> -->
         <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/img/naver1.png}"></a>
-<!--       <a th:href="@{/oauth2/authorization/naver}"><img src="/static/img/naver1.png"></a>-->
+      <!-- <a th:href="@{/oauth2/authorization/naver}"><img src="/static/img/naver1.png"></a> -->
+        <a th:href="@{/oauth2/authorization/kakao}"><img th:src="@{/img/kakao.jpg}"></a>
+              <!-- <a th:href="@{/oauth2/authorization/naver}"><img src="/static/img/kakao.jpg"></a> -->
       </div>
 
     </div>
