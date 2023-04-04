@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<div class="flex center date" th:if="${messages.today}" th:text="${messages.today}"></div>
+<div class="msg bot flex">
+  <div class="icon">
+    <img th:src="@{/img/chatBot/chat.png}">
+  </div>
+  <div class="message">
+    <div class="part" th:if="${messages.answer.keyword ne '연락처' or messages.answer.secondAnswer != null}">
+      <p th:utext="${messages.answer.content}"></p>
+    </div>
+    <div th:if="${messages.answer.keyword eq '연락처'}">
+      <div class="part" th:if="${messages.answer.secondAnswer != null}">
+        <p>
+          <span th:text="${messages.answer.secondAnswer.deptName}"></span>&nbsp;/&nbsp;
+          <span th:text="${messages.answer.secondAnswer.officerName}"></span>&nbsp;/&nbsp;
+          <span th:text="${messages.answer.secondAnswer.officerPhone}"></span>
+        </p>
+      </div>
+      <div class="part" th:if="${messages.answer.secondAnswer.officerName == null}">
+        <p>
+          존재하지 않는 경관입니다.
+        </p>
+      </div>
+    </div>
+    <div class="time" th:text="${messages.time}">메세지 작성 시간</div>
+  </div>
+</div>
+
+</html>

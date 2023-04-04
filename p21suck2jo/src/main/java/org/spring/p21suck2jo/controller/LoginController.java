@@ -1,11 +1,13 @@
 package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.dto.BoardDto;
+import org.spring.p21suck2jo.dto.EventDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.service.BoardService;
+import org.spring.p21suck2jo.service.CalenderService;
+import org.spring.p21suck2jo.service.EventService;
 import org.spring.p21suck2jo.service.PoliceLoginService;
-import org.spring.p21suck2jo.service.PoliceService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +19,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
     private final PoliceLoginService policeLoginService;
-    private final PoliceService policeService;
+    private final CalenderService calenderService;
+    private final EventService eventService;
+    private final BoardService boardService;
 
     @GetMapping({"/",""})
     public String basic(){
@@ -31,14 +37,21 @@ public class LoginController {
 
     //    현재 로그인한 경찰관에 대한, ID 값을 Session에 넣는다.
     @GetMapping("/index")
-    public String index(HttpServletRequest request, HttpSession currentPoliceIdSession,
-                        @AuthenticationPrincipal UserDetails user,Model model){
-        PoliceDto policeDto=policeService.findByPoliceName(user.getUsername());
-        model.addAttribute("loginUser",policeDto.getPoliceName());
-
+    public String index(HttpServletRequest request, HttpSession currentPoliceIdSession, Model model){
         Principal principal = request.getUserPrincipal();
         Long policeId= policeLoginService.findPoliceIdByEmail(principal.getName());
         currentPoliceIdSession.setAttribute("currentPoliceId", policeId.toString());
+
+        //오늘자 기준 스케줄과 현재 세션(policeId)를 가지고 보낸다
+        model.addAttribute("works",calenderService.todayWorks(policeId));
+        LocalDate today = LocalDate.now(); //현재 날짜를 변수에 담아서
+        model.addAttribute("today",today); //모델로 보낸다
+
+        List<EventDto> todayEvent = eventService.todayEvent();
+        model.addAttribute("event", todayEvent);
+
+        List<BoardDto> todayBoard=boardService.todayBoard();
+        model.addAttribute("board",todayBoard);
 
         return "index";
     }

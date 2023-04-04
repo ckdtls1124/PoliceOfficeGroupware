@@ -15,7 +15,16 @@ public class MainController {
 
   @GetMapping("schedule")
   public String schedule(){
-    return "myCalender";
+
+
+    return "/calendar/myCalender";
+  }
+
+  @GetMapping("schedule/list")
+  public String schedule2(){
+
+
+    return "/calendar/AllCalender";
   }
 
 

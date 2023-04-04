@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -99,6 +101,17 @@ public class BoardService{
     public void boardDelete(Long boardId) {
 
         boardRepository.deleteByBoardId(boardId);
+    }
+
+    public List<BoardDto> todayBoard() {
+
+        List<BoardEntity> boardEntities = boardRepository.findTodayBoard();
+        List<BoardDto> boardDtos = new ArrayList<>();
+
+        for(BoardEntity boardEntity : boardEntities){
+            boardDtos.add(BoardDto.toboardDto(boardEntity));
+        }
+        return boardDtos;
     }
 
 

@@ -48,7 +48,7 @@
   gap: 30px;
 }
 
-.left-menu .left-con .dash-board h3.title {
+.left-menu .left-con .dash-board h4 {
   padding: 10px;
   color: rgb(255, 255, 255);
 }
@@ -130,12 +130,12 @@
 }
 
 .right-wrap .right-menu {
-  min-height: 100vh;
+  min-height: 100%;
   /*ㄴ높이 최솟값이 100vh*/
-  background-color: #3b5f8f36;
+  background-color: #00347845;
   box-sizing: border-box;
 }
 
 .right-menu .right-con {
-  height: 1000px;
+  min-height: 100%;
 }

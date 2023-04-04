@@ -26,4 +26,6 @@ public class CalenderDto {
 
   private PoliceEntity police;
 
+  private Long policeId;
+
 }
