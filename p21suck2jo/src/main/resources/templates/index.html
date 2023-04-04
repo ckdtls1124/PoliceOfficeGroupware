@@ -50,10 +50,39 @@
           <div class="main">
             <div class="main-grid">
               <ul>
+                <li>
+                  <div class="first-container">
+                    <div class="logo">
+                      <h3>오늘 일정</h3>
+                      <h5 th:text="${today}"></h5>
+                    </div>
+
+                    <div class="today-works" th:each=" work : ${works}">
+                      <p th:text="${work.content}" class="detail">일정내용</p>
+                      <p th:text="${#dates.format(work.start, 'MM/dd HH:mm')} + ' ~ ' + ${#dates.format(work.end, 'MM/dd HH:mm')}"
+                         class="start"></p>
+                    </div>
+
+                  </div>
+                </li>
+
                 <li></li>
                 <li></li>
-                <li></li>
-                <li></li>
+                <li>
+                  <div class="first-container">
+                    <div class="logo">
+                      <h3>오늘의 사건</h3>
+                      <h5 th:text="${today}"></h5>
+                    </div>
+
+                    <div class="today-event" th:each="event : ${event}">
+                      <!--오늘 일어난 사건만-->
+                      <p th:text="${event.eventGroupName}">사건분류</p>
+                      <p th:text="${event.eventLocation}" class="info">사건발생장소</p>
+                      <p th:text="*{#temporals.format(event.eventDate, 'HH:mm')}" class="info">시간</p>
+                    </div>
+                  </div>
+                </li>
                 <li></li>
                 <li></li>
               </ul>

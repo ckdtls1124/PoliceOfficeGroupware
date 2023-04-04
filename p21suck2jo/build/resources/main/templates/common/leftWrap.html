@@ -21,7 +21,7 @@
           <div class="dash-board">
             <h3 class="title">DASHBOARD</h3>
             <!--                    현재 시간-->
-            <div class="currentTime" style="color:white;"></div>
+            <div class="currentTime" style="color:white; margin-left:10px;"></div>
             <div class="menu">
               <!--이 부분에 들어갈 항목은 어떤 기업인지에 따라 달라짐-->
 
@@ -70,9 +70,6 @@
 
                 <li class="menu-calendar">
                   <img src="/img/calendar.png" alt=""><a th:href="@{/my/schedule/list}">전체 일정</a>
-                  <ul>
-                    <li><a th:href="@{/my/schedule}">나의 일정</a></li>
-                  </ul>
                 </li>
 
                 <li class="menu-login" sec:authorize="isAnonymous()">

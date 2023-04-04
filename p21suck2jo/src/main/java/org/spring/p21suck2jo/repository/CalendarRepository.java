@@ -17,4 +17,9 @@ public interface CalendarRepository extends JpaRepository<CalendarEntity,Integer
     List<CalendarEntity> findByPoliceId(@Param("id") Long id);
 
 
+	@Query(value = "select * " +
+					" from calender c join police_officer p " +
+					" on c.police_id = p.police_id " +
+					" where c.police_id =:id and DATE(c.start) = CURDATE() ",nativeQuery = true)
+	List<CalendarEntity> findByTodayWorks(Long id);
 }

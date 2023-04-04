@@ -81,4 +81,25 @@ public class CalenderService {
     CalendarEntity calendarEntity=calendarRepository.save(entity);
 
   }
+
+  public List<CalenderDto> todayWorks(Long id) {
+
+    Optional<PoliceEntity> policeEntity= policeRepository.findByPoliceId(id);
+
+    List<CalenderDto> calenderDtos = new ArrayList<>();
+    List<CalendarEntity> calendarEntities = calendarRepository.findByTodayWorks(id);
+
+    for (CalendarEntity entity : calendarEntities) {
+      CalenderDto calenderDto = CalenderDto.builder()
+              .id(entity.getId())
+              .start(entity.getStart())
+              .content(entity.getContent())
+              .end(entity.getEnd())
+              .policeId(policeEntity.get().getPoliceId())
+              .build();
+      calenderDtos.add(calenderDto);
+    }
+    return calenderDtos;
+  }
+
 }

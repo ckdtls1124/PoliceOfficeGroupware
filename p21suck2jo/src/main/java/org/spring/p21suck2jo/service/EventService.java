@@ -186,4 +186,16 @@ public class EventService {
 
 		return myEventDto;
 	}
+
+	public List<EventDto> todayEvent() {
+
+		List<EventEntity> eventEntityList = eventRepository.findTodayEvent();
+		List<EventDto> todayEventDto = new ArrayList<>();
+
+		for(EventEntity eventEntity : eventEntityList){
+			todayEventDto.add(EventConstructors.eventEntityToDto(eventEntity));
+		}
+		return todayEventDto;
+	}
+
 }
