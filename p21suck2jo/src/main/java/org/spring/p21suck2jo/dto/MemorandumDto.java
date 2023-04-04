@@ -5,6 +5,7 @@ import org.spring.p21suck2jo.entity.ApprovingMember;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class MemorandumDto {
 
     private String memorandumContent;
 
+    private LocalDateTime createTime;
 
     //    승인 여부 확인
     private int approval;

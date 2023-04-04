@@ -21,13 +21,14 @@ public interface PoliceRepository extends JpaRepository<PoliceEntity,Long> {
     Optional<PoliceEntity> findByPoliceId(Long policeId);
 
 
-//    List<PoliceEntity> findAllByDept(Long deptId);
-//
-//    List<PoliceEntity> findAllByDeptId(Long deptId);
-
 
     @Query(value = " select * from police_officer p inner join dept d " +
             "on p.dept_id=d.dept_id " +
             "where p.dept_id=:deptId " ,nativeQuery = true )
     List<PoliceEntity> findAlldeptId(@Param("deptId") Long deptId);
+
+
+    List<PoliceEntity> findByDept(DeptEntity i);
+
+    Optional<PoliceEntity> findByPoliceName(String policeName);
 }

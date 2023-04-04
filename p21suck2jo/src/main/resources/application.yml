@@ -4,6 +4,8 @@ server:
   servlet:
     session:
       timeout: 1m
+    encoding:
+      force-response: true
 
 spring:
   datasource:
@@ -31,3 +33,6 @@ spring:
   #필수 oauth.yml이랑연결
   profiles:
     include: oauth
+
+naver.api.client-id: qGBOH7ox4kxR1NI1SMag
+naver.api.client-secret: WMIFp0Pi_X

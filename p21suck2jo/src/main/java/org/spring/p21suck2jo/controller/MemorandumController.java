@@ -1,8 +1,10 @@
 package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.dto.ApprovingMemberNameDept;
 import org.spring.p21suck2jo.dto.MemorandumDto;
 import org.spring.p21suck2jo.dto.MemorandumFileDto;
+import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.MemorandumFileEntity;
 import org.spring.p21suck2jo.repository.MemorandumFileRepository;
@@ -29,7 +31,6 @@ public class MemorandumController {
 
     private final MemorandumFileService memorandumFileService;
     private final MemorandumService memorandumService;
-    private final MemorandumFileRepository memorandumFileRepository;
 
     //    나의 결재함(검색어가 있고 없고의 차이로 보여준다.)
     @GetMapping("/all")
@@ -79,21 +80,29 @@ public class MemorandumController {
 
 
     //    결재 문서 작성 페이지 이동
-    @GetMapping("/memoWritePage")
+    @GetMapping({"/memoWritePage"})
     public String MemoWritePage(MemorandumDto memorandumDto, Model model) {
+        List<PoliceDto> policeDtos = memorandumService.findDeptAndPolice();
+        List<ApprovingMemberNameDept> approvingMemberNameDeptList = new ArrayList();
 
-//        결재문서를 작성하면, 승인 여부는 0으로 Default한다.
+
+        for(PoliceDto i: policeDtos) {
+            ApprovingMemberNameDept approvingMemberNameDept = new ApprovingMemberNameDept();
+            approvingMemberNameDept.setDeptName(i.getDept().getDeptName());
+            approvingMemberNameDept.setPoliceName(i.getPoliceName());
+            approvingMemberNameDeptList.add(approvingMemberNameDept);
+        }
+
+        model.addAttribute("approveMember", new ApprovingMemberNameDept());
+        model.addAttribute("approveMemberNameDept", approvingMemberNameDeptList);
         memorandumDto.setApproval(0);
-
-//        결재문서 DTO를 보내서 유효성 처리 가능
         model.addAttribute("MemorandumDto", memorandumDto);
         return "memorandum/MemorandumWrite";
     }
 
-
     //    결재 문서 작성
     @PostMapping("/write")
-    public String writeMemorandum(MemorandumDto memorandumDto, @RequestParam("file") List<MultipartFile> files, HttpSession currentSession) throws IOException {
+    public String writeMemorandum(MemorandumDto memorandumDto, @RequestParam("file") List<MultipartFile> files, HttpSession currentSession, @RequestParam("policeName") String policeName) throws IOException {
 
 //        Long으로 변환된 Session의 경찰 아이디는 결재문서 테이블, 결재문서 파일 테이블에 주입된다.
         Long sessionPoliceIdLong = Long.valueOf(String.valueOf(currentSession.getAttribute("currentPoliceId")));
@@ -108,7 +117,7 @@ public class MemorandumController {
             memorandumFileService.putFileIntoDB(multipartFile, memorandumDto, memorandumId, sessionPoliceIdLong);
         }
 
-
+        memorandumService.setApprovingMember(policeName, memorandumId);
         return "redirect:/memo/all";
     }
 
@@ -196,6 +205,7 @@ public class MemorandumController {
                 .memorandumTitle(memorandumEntity.getMemorandumTitle())
                 .memorandumContent(memorandumEntity.getMemorandumContent())
                 .approval(memorandumEntity.getApproval())
+                .createTime(memorandumEntity.getCreateTime())
                 .build();
 
         model.addAttribute("detailMemo", memorandumDto);
@@ -212,7 +222,8 @@ public class MemorandumController {
         }
 
         model.addAttribute("fileInDetailMemo", memorandumFileDtoList);
-
+        String policeName = memorandumService.findApprovingMember(memorandumIdLong);
+        model.addAttribute("policeName", policeName);
 
         return "memorandum/MemorandumDetail";
 

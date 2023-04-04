@@ -37,6 +37,7 @@
                                     <col width="auto">
                                     <col width="15%">
                                     <col width="auto">
+                                    <col width="auto">
                                 </colgroup>
                                 <thead>
                                 <tr>
@@ -52,40 +53,40 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <th>승인여부</th>
-                                    <td th:text="${detailMemo.approval}"></td>
+                                    <th>결재자</th>
+                                    <td th:text="${policeName}"></td>
                                 </tr>
                                 <tr>
-                                    <!--                                                등록일 오류남. 수정 필요-->
                                     <th>등록일</th>
-                                    <!--                                                <td colspan="3" th:text="*{#temporals.format(detailMemo.createTime, 'yyyy-MM-dd HH:mm:ss')}">-->
-                                    <!--                                                </td>-->
+                                    <td colspan="3" th:text="*{#temporals.format(detailMemo.createTime, 'yyyy-MM-dd HH:mm:ss')}">
                                 </tr>
                                 <tr>
                                     <th><a th:href="@{|/memo/updateMemoPage/${detailMemo.memorandumId}|}">수정하기</a></th>
                                 </tr>
                                 <tr>
-                                    <!--                                                결재 문서 내용-->
+                                    <td><a th:href="@{|/memo/delete/${detailMemo.memorandumId}|}" class="deletMemo"
+                                           onclick="if(!confirm('문서를 삭제하시겠습니까?')){return false;}">문서 삭제</a></td>
+                                </tr>
+                                <tr>
+                                    <th>첨부 파일</th>
                                     <td colspan="4">
-                                        <textarea th:value="${detailMemo.memorandumContent}"
-                                                  th:text="${detailMemo.memorandumContent}"> </textarea>
+                                        <div th:each="file : ${fileInDetailMemo}" class="FileListContainer">
+                                            <a th:href="|/memo/file/attach/${file.memorandumFileId}|"
+                                               th:text="${file.memorandumFileOriginalName}"></a>
+                                            <input hidden="hidden" th:value="${file.memorandumFileId}"
+                                                   class="numberOfFile">
+                                            <button class="deleteFile">Delete</button>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
+                        </div>
 
-                            <!--                                    결재 문서에 첨부된 파일 리스트-->
-                            <div class="box-bottom">
-
-                                <!--        파일 다운로드 하기 위해서, 파일을 받아옴-->
-                                <div th:each="file : ${fileInDetailMemo}" class="FileListContainer">
-                                    <a th:href="|/memo/file/attach/${file.memorandumFileId}|"
-                                       th:text="${file.memorandumFileOriginalName}"></a>
-                                    <input hidden="hidden" th:value="${file.memorandumFileId}"
-                                           class="numberOfFile">
-                                    <button class="deleteFile">Delete</button>
-                                </div>
-                            </div>
+                        <div class="box-bottom">
+                                <textarea th:value="${detailMemo.memorandumContent}"
+                                          th:text="${detailMemo.memorandumContent}"
+                                          style="width: 100%; height: 550px; resize: none;"> </textarea>
                         </div>
 
                     </div>

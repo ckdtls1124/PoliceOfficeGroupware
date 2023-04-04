@@ -1,11 +1,11 @@
 package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.dto.BoardDto;
 import org.spring.p21suck2jo.dto.EventDto;
+import org.spring.p21suck2jo.dto.MemorandumDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
-import org.spring.p21suck2jo.service.CalenderService;
-import org.spring.p21suck2jo.service.EventService;
-import org.spring.p21suck2jo.service.PoliceLoginService;
+import org.spring.p21suck2jo.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +27,8 @@ public class LoginController {
     private final CalenderService calenderService;
     private final EventService eventService;
     private final BoardService boardService;
+
+    private final MemorandumService memorandumService;
 
     @GetMapping({"/",""})
     public String basic(){
@@ -50,6 +52,9 @@ public class LoginController {
 
         List<BoardDto> todayBoard=boardService.todayBoard();
         model.addAttribute("board",todayBoard);
+
+        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.ReceivedfindAllMemo(policeId);
+        model.addAttribute("receivedMemorandumDtoPage", receivedMemorandumDtoPage);
 
         return "index";
     }

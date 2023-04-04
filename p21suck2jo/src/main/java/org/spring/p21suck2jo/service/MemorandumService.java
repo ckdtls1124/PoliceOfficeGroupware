@@ -2,15 +2,22 @@ package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.MemorandumDto;
+import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.entity.ApprovingMember;
+import org.spring.p21suck2jo.entity.DeptEntity;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
+import org.spring.p21suck2jo.repository.ApprovingMemberRepository;
+import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.MemorandumRepository;
+import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +28,9 @@ public class MemorandumService {
     private String uploadPath;
     private final MemorandumRepository memorandumRepository;
 
+    private final PoliceRepository policeRepository;
+    private final DeptRepository deptRepository;
+    private final ApprovingMemberRepository approvingMemberRepository;
 
 
 //    나의 결재함(검색어가 없을 경우)
@@ -48,6 +58,37 @@ public class MemorandumService {
         return memorandumDtoPage;
     }
 
+    public List<MemorandumDto> ReceivedfindAllMemo(Long policeId) {
+        PoliceEntity policeEntity = new PoliceEntity();
+        policeEntity.setPoliceId(policeId);
+        List<ApprovingMember> approvingMemberList = approvingMemberRepository.findByPolice(policeEntity);
+        List<MemorandumDto> memorandumDtos = new ArrayList();
+
+
+        for(ApprovingMember approvingMember: approvingMemberList) {
+            MemorandumEntity memorandumEntity = approvingMember.getMemorandum();
+            MemorandumDto memorandumDto = MemorandumDto.toMemorandumDto(memorandumEntity);
+            memorandumDtos.add(memorandumDto);
+        }
+
+        return memorandumDtos;
+    }
+
+    public List<PoliceDto> findDeptAndPolice() {
+        List<DeptEntity> deptEntities = deptRepository.findAll();
+        List<PoliceDto> policeDtos = new ArrayList();
+
+
+        for(DeptEntity i: deptEntities) {
+            List<PoliceEntity> policeEntityList = policeRepository.findByDept(i);
+            for(PoliceEntity j:policeEntityList) {
+                PoliceDto policeDto = PoliceDto.officerView(j);
+                policeDtos.add(policeDto);
+            }
+        }
+
+        return policeDtos;
+    }
 //    결재 문서 작성
     public Long writeMemorandum(MemorandumDto memorandumDto, Long sessionPoliceId) throws IOException {
 
@@ -68,7 +109,24 @@ public class MemorandumService {
 
     }
 
-//    결재 문서 수정
+    public void setApprovingMember(String policeName, Long memrandumId) {
+        Optional<PoliceEntity> policeEntity = policeRepository.findByPoliceName(policeName);
+        Optional<MemorandumEntity> memorandumEntity = memorandumRepository.findById(memrandumId);
+        ApprovingMember approvingMember = new ApprovingMember();
+        approvingMember.setPolice(policeEntity.get());
+        approvingMember.setMemorandum(memorandumEntity.get());
+        approvingMemberRepository.save(approvingMember);
+    }
+
+    public String findApprovingMember(Long memorandumIdLong) {
+        MemorandumEntity memorandumEntity = new MemorandumEntity();
+        memorandumEntity.setMemorandumId(memorandumIdLong);
+        Optional<ApprovingMember> approvingMember = approvingMemberRepository.findByMemorandum(memorandumEntity);
+        return (approvingMember.get()).getPolice().getPoliceName();
+    }
+
+
+    //    결재 문서 수정
     public void updateMemorandum(MemorandumEntity memorandumEntity, Long sessionPoliceId) {
         PoliceEntity policeEntity = new PoliceEntity();
         policeEntity.setPoliceId(sessionPoliceId);
