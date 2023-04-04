@@ -1,4 +1,5 @@
 @import url(/css/common/leftWrap.css);
+@import url(/css/common/reset.css);
 
 .event-wrap {
   width: 100%;
@@ -12,7 +13,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgb(241, 243, 245);
+  background-color: #00347845;
   padding: 30px 100px 30px 30px;
   box-sizing: border-box;
 }

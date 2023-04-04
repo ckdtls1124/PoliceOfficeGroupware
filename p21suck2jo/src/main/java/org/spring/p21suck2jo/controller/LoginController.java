@@ -26,6 +26,7 @@ public class LoginController {
     private final PoliceLoginService policeLoginService;
     private final CalenderService calenderService;
     private final EventService eventService;
+    private final BoardService boardService;
 
     @GetMapping({"/",""})
     public String basic(){
@@ -46,6 +47,9 @@ public class LoginController {
 
         List<EventDto> todayEvent = eventService.todayEvent();
         model.addAttribute("event", todayEvent);
+
+        List<BoardDto> todayBoard=boardService.todayBoard();
+        model.addAttribute("board",todayBoard);
 
         return "index";
     }
