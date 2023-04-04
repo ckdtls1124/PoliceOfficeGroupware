@@ -231,11 +231,15 @@
 	box-sizing: border-box;
 }
 .myMenuContainer-content ul:nth-child(1) {
-	padding-top: 20px;
+	padding: 20px;
 	box-sizing: border-box;
 }
 .myMenuContainer-content ul:nth-child(2) {
-	padding-bottom: 20px;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+.myMenuContainer-content ul:nth-child(3) {
+	padding: 20px;
 	box-sizing: border-box;
 }
 .myMenuContainer-content ul li {
@@ -270,3 +274,23 @@
     z-index: 0;
     bottom: 6.6em;
   } */
+
+/* chat */
+.wrap{
+    position:relative;
+}
+.wrap #btn-chat-open{
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    cursor:pointer;
+}
+.wrap #speech-bubble{
+    position: fixed;
+        bottom: 115px;
+        right: 13px;
+            visibility: hidden;
+}
+.wrap #btn-chat-open:hover ~ #speech-bubble{
+    visibility: visible;
+}
