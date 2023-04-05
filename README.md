@@ -90,3 +90,14 @@ insert into chat_officer(officer_name, officer_phone, dept_id) values('장효선
 insert into chat_officer(officer_name, officer_phone, dept_id) values('허인경', '010-8765-4321', 1);
 
 insert into chat_officer(officer_name, officer_phone, dept_id) values('김득주', '010-3458-1628', 2);
+
+
+### 사용자사전
+이지창	NNP
+생활안전반	NNP
+신고대응반	NNP
+장효선	NNP
+허인경	NNP
+강창신	NNP
+민원해결반	NNP
+김득주	NNP
