@@ -2,11 +2,11 @@
 
 
 ### Dept
-insert into dept(dept_location,dept_name) values("서욽특별시 노원구","생활안전팀");
+insert into dept(dept_location,dept_name) values("서울특별시 노원구","생활안전팀");
 
-insert into dept(dept_location,dept_name) values("서욽특별시 노원구","신고대응팀");
+insert into dept(dept_location,dept_name) values("서울특별시 노원구","신고대응팀");
 
-insert into dept(dept_location,dept_name) values("서욽특별시 노원구","민원해결팀");
+insert into dept(dept_location,dept_name) values("서울특별시 노원구","민원해결팀");
 
 
 ### Police_officer
