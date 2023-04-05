@@ -70,12 +70,13 @@
                   <div class="first-container">
                     <div class="logo">
                       <h3>결재문서 수신함</h3>
-                      <!--                      <h5 th:text="${today}"></h5>-->
+                      <h5 th:text="${today}"></h5>
                     </div>
 
                     <div class="today-works" th:each=" memo : ${receivedMemorandumDtoPage}">
                       <a th:href="@{|/memo/memoDetail/${memo.memorandumId}|}"
                          th:text="${memo.memorandumTitle}">받은 메일</a>
+                      <p th:text="${#temporals.format(memo.createTime, 'yyyy-MM-dd HH:mm')}" class="start"></p>
                     </div>
 
                   </div>

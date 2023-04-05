@@ -41,6 +41,7 @@ public class MemorandumDto {
         memorandumDto.setMemorandumContent(memorandumEntity.getMemorandumContent());
         memorandumDto.setApproval(memorandumEntity.getApproval());
         memorandumDto.setPolice(memorandumEntity.getPolice());
+        memorandumDto.setCreateTime(memorandumEntity.getCreateTime());
         memorandumDto.setApprovingMemberList(memorandumEntity.getApprovingMemberList());
 
         return memorandumDto;

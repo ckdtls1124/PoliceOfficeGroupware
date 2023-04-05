@@ -5,9 +5,13 @@ import org.spring.p21suck2jo.dto.ApprovingMemberNameDept;
 import org.spring.p21suck2jo.dto.MemorandumDto;
 import org.spring.p21suck2jo.dto.MemorandumFileDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.entity.ApprovingMember;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.MemorandumFileEntity;
+import org.spring.p21suck2jo.entity.PoliceEntity;
+import org.spring.p21suck2jo.repository.ApprovingMemberRepository;
 import org.spring.p21suck2jo.repository.MemorandumFileRepository;
+import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.spring.p21suck2jo.service.MemorandumFileService;
 import org.spring.p21suck2jo.service.MemorandumService;
 import org.springframework.data.domain.Page;
@@ -20,9 +24,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/memo")
@@ -31,6 +37,8 @@ public class MemorandumController {
 
     private final MemorandumFileService memorandumFileService;
     private final MemorandumService memorandumService;
+    private final ApprovingMemberRepository approvingMemberRepository;
+    private final PoliceRepository policeRepository;
 
     //    나의 결재함(검색어가 있고 없고의 차이로 보여준다.)
     @GetMapping("/all")
@@ -149,13 +157,28 @@ public class MemorandumController {
         model.addAttribute("fileInDetailMemo", memorandumFileDtoList);
         model.addAttribute("memorandumId", memorandumId);
 
+//        결재자 수정을 위해 모든 경찰의 정보를 전달
+        List<PoliceDto> policeDtos = memorandumService.findDeptAndPolice();
+        List<ApprovingMemberNameDept> approvingMemberNameDeptList = new ArrayList();
+
+
+        for(PoliceDto i: policeDtos) {
+            ApprovingMemberNameDept approvingMemberNameDept = new ApprovingMemberNameDept();
+            approvingMemberNameDept.setDeptName(i.getDept().getDeptName());
+            approvingMemberNameDept.setPoliceName(i.getPoliceName());
+            approvingMemberNameDeptList.add(approvingMemberNameDept);
+        }
+
+        model.addAttribute("approveMember", new ApprovingMemberNameDept());
+        model.addAttribute("approveMemberNameDept", approvingMemberNameDeptList);
+
 
         return "memorandum/MemorandumUpdate";
     }
 
     //    결재 문서 수정하기
     @PostMapping("/updateMemo/{memorandumId}")
-    public String updateMemo(@PathVariable Long memorandumId, @RequestParam("file") List<MultipartFile> files, HttpSession currentSession, MemorandumDto memorandumDto) throws IOException {
+    public String updateMemo(@PathVariable Long memorandumId, @RequestParam("file") List<MultipartFile> files, HttpSession currentSession, MemorandumDto memorandumDto, @RequestParam("policeName") String approvingPoliceName) throws IOException {
 
 
         //Long memorandumIdLong = Long.valueOf(String.valueOf(memorandumId));
@@ -165,6 +188,16 @@ public class MemorandumController {
 //        수정할 결재 문서에 제목, 내용 등을 View에서 받은 값으로 저장
         memorandumEntity.setMemorandumTitle(memorandumDto.getMemorandumTitle());
         memorandumEntity.setMemorandumContent(memorandumDto.getMemorandumContent());
+
+//        수정할 결재 문서에 해당하는 Approving Member찾기
+        MemorandumEntity memoInApprovingMember = new MemorandumEntity();
+        memoInApprovingMember.setMemorandumId(memorandumId);
+        ApprovingMember updatedApprovingMember = approvingMemberRepository.findByMemorandum(memoInApprovingMember).get();
+        Optional<PoliceEntity> updatedApprovingPolice = policeRepository.findByPoliceName(approvingPoliceName);
+        updatedApprovingMember.setPolice(updatedApprovingPolice.get());
+
+        approvingMemberRepository.save(updatedApprovingMember);
+
 
 //      session의 getAttribute Object를 Long으로 변환
 //        Long으로 변환된 Session의 경찰 아이디는 결재문서 테이블, 결재문서 파일 테이블에 주입된다.

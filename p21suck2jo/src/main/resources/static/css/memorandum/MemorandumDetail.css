@@ -36,7 +36,6 @@
 }
 .boardDetail-container .boardDetail .detail-box .box-middle {
 	width: 100%;
-	height: 660px;
 	padding: 20px;
 	box-sizing: border-box;
 }
@@ -50,7 +49,7 @@
 	height: auto;
 }
 .boardDetail-container .boardDetail .detail-box .box-middle thead tr {
-	background-color: #cccccc85;
+	BACKGROUND-COLOR: #CCCCCC85;
 	border-bottom: 2px solid #55555552;
 	box-sizing: border-box;
 }
