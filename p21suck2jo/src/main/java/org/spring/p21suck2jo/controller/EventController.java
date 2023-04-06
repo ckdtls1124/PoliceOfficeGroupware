@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.EventService;
+import org.spring.p21suck2jo.service.PoliceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,6 +26,7 @@ import java.util.List;
 public class EventController {
 
 	private final EventService eventService;
+	private final PoliceService policeService;
 
 	//메인페이지(사건사고 목록)
 	@GetMapping({"/", "/list", "/main"})
@@ -51,18 +53,24 @@ public class EventController {
 
 	//사건 등록 페이지로 이동
 	@GetMapping("/register")
-	public String eventWriteView(Model model) {
+	public String eventWriteView(@AuthenticationPrincipal UserDetails user, Model model) {
+
+		String nowPolice = user.getUsername();
+
+		PoliceDto policeInfo = eventService.eventRegisterSelectPoliceForMember(nowPolice);
+		Long policeDeptId = policeInfo.getDept().getDeptId();
 
 		List<EventGroupDto> eventGroupDto = eventService.eventRegisterSelectGroup();
-		List<PoliceDto> eventPoliceDto = eventService.eventRegisterSelectPolice();
-		List<DeptDto> eventDeptDto = eventService.eventRegisterSelectDept();
+//		List<PoliceDto> eventPoliceDto = eventService.eventRegisterSelectPolice();
+//		List<DeptDto> eventDeptDto = eventService.eventRegisterSelectDept();
 		List<PersonDto> eventPersonDto = eventService.eventRegisterSelectPerson();
 
 		model.addAttribute("eventDto", new EventDto());
 
 		model.addAttribute("eventGroup", eventGroupDto);
-		model.addAttribute("police", eventPoliceDto);
-		model.addAttribute("dept", eventDeptDto);
+//		model.addAttribute("police", eventPoliceDto);
+//		model.addAttribute("dept", eventDeptDto);
+		model.addAttribute("police", policeInfo);
 		model.addAttribute("person", eventPersonDto);
 
 		return "event/eventRegister";

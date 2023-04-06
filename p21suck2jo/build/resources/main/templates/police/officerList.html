@@ -38,8 +38,8 @@
                   <li th:text="${police.policeNumber}"></li>
                   <li th:text="${police.policeName}"></li>
                   <li th:text="${police.policePhone}"></li>
-                  <li><a th:href="@{|/police/list/${police.policeId}|}">직원수정</a></li>
-                  <!--sec:authorize="hasRole('ADMIN')" -->
+                  <li><a sec:authorize="hasRole('ADMIN')" th:href="@{|/police/list/${police.policeId}|}">직원수정</a></li>
+
                 </ul>
 
               </div>

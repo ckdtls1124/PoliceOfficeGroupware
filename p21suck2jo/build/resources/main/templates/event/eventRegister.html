@@ -66,20 +66,22 @@
                   </select>
                 </li>
                 <li>
+                  <span>담당경관</span>
+                  <input type="text" th:value="${police.policeName}" id="police" name="police" readonly>
+                  <!-- <select th:field="*{police}" required>
+                    <option value="">::정확하게 선택하시오::</option>
+                    <option th:each="police : ${police}" th:value="${police.policeId}" th:text="${police.policeName}">
+                    </option>
+                  </select> -->
+                </li>
+                <input type="text" th:value="${police.dept.deptId}" th:field="*{dept}" hidden>
+                <!-- <li>
                   <span>담당부서</span>
                   <select th:field="*{dept}" required>
                     <option value="">::정확하게 선택하시오::</option>
                     <option th:each="dept : ${dept}" th:value="${dept.deptId}" th:text="${dept.deptName}"></option>
                   </select>
-                </li>
-                <li>
-                  <span>담당경관</span>
-                  <select th:field="*{police}" required>
-                    <option value="">::정확하게 선택하시오::</option>
-                    <option th:each="police : ${police}" th:value="${police.policeId}" th:text="${police.policeName}">
-                    </option>
-                  </select>
-                </li>
+                </li> -->
                 <li>
                   <span>관련인</span>
                   <select th:field="*{person}" required>

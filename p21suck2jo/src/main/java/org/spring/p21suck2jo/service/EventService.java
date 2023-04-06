@@ -198,4 +198,16 @@ public class EventService {
 		return todayEventDto;
 	}
 
+	//현재 로그인한 경찰의 정보가 사건의 등록 정보와 매핑되도록
+	public PoliceDto eventRegisterSelectPoliceForMember(String nowPolice) {
+
+		Optional<PoliceEntity> getPolice =  policeRepository.findByEmail(nowPolice);
+
+		if(getPolice.isPresent()){
+			PoliceDto policeDto = PoliceDto.officerView(getPolice.get());
+			return policeDto;
+		}
+		return null;
+	}
+
 }
