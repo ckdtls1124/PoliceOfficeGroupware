@@ -76,20 +76,16 @@ public class EventService {
 	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
 
-		Long eventGroupNo = eventDto.getEventGroup();
-		EventGroupEntity eventGroupEntity = eventGroupRepository.findById(eventGroupNo).get();
+		EventGroupEntity eventGroupEntity = eventGroupRepository.findById(eventDto.getEventGroup()).get();
 		eventDto.setEventJoinGroup(eventGroupEntity);
 
-		Long deptNo = eventDto.getDept();
-		DeptEntity deptEntity = deptRepository.findById(deptNo).get();
-		eventDto.setEventJoinDept(deptEntity);
-
-		Long policeNo = eventDto.getPolice();
-		PoliceEntity policeEntity = policeRepository.findById(policeNo).get();
+		PoliceEntity policeEntity = policeRepository.findById(eventDto.getPolice()).get();
 		eventDto.setEventJoinPolice(policeEntity);
 
-		Long personNo = eventDto.getPerson();
-		PersonEntity personEntity = personRepository.findById(personNo).get();
+		DeptEntity deptEntity = deptRepository.findById(eventDto.getDept()).get();
+		eventDto.setEventJoinDept(deptEntity);
+
+		PersonEntity personEntity = personRepository.findById(eventDto.getPerson()).get();
 		eventDto.setEventJoinPerson(personEntity);
 
 		//파일업로드 처리
@@ -199,7 +195,7 @@ public class EventService {
 	}
 
 	//현재 로그인한 경찰의 정보가 사건의 등록 정보와 매핑되도록
-	public PoliceDto eventRegisterSelectPoliceForMember(String nowPolice) {
+	public PoliceDto eventRegisterPolice(String nowPolice) {
 
 		Optional<PoliceEntity> getPolice =  policeRepository.findByEmail(nowPolice);
 

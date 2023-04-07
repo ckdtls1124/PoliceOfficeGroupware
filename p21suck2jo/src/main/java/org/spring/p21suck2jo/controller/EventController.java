@@ -57,19 +57,18 @@ public class EventController {
 
 		String nowPolice = user.getUsername();
 
-		PoliceDto policeInfo = eventService.eventRegisterSelectPoliceForMember(nowPolice);
-		Long policeDeptId = policeInfo.getDept().getDeptId();
+		PoliceDto policeInfo = eventService.eventRegisterPolice(nowPolice);
+		Long policeDept = policeInfo.getDept().getDeptId();
+
+		System.out.println("\n" + ">>>>> 현재 로그인한 경찰의 기본키 : " + policeInfo.getPoliceId());
+		System.out.println(">>>>> 현재 로그인한 경찰의 부서 기본키 : " + policeInfo.getDept().getDeptId() + "\n");
 
 		List<EventGroupDto> eventGroupDto = eventService.eventRegisterSelectGroup();
-//		List<PoliceDto> eventPoliceDto = eventService.eventRegisterSelectPolice();
-//		List<DeptDto> eventDeptDto = eventService.eventRegisterSelectDept();
 		List<PersonDto> eventPersonDto = eventService.eventRegisterSelectPerson();
 
 		model.addAttribute("eventDto", new EventDto());
 
 		model.addAttribute("eventGroup", eventGroupDto);
-//		model.addAttribute("police", eventPoliceDto);
-//		model.addAttribute("dept", eventDeptDto);
 		model.addAttribute("police", policeInfo);
 		model.addAttribute("person", eventPersonDto);
 
