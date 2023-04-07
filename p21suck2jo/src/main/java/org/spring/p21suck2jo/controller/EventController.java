@@ -50,7 +50,6 @@ public class EventController {
 		return "event/eventMain";
 	}
 
-
 	//사건 등록 페이지로 이동
 	@GetMapping("/register")
 	public String eventWriteView(@AuthenticationPrincipal UserDetails user, Model model) {
@@ -58,16 +57,16 @@ public class EventController {
 		String nowPolice = user.getUsername();
 
 		PoliceDto policeInfo = eventService.eventRegisterPolice(nowPolice);
-		Long policeDept = policeInfo.getDept().getDeptId();
 
-		System.out.println("\n" + ">>>>> 현재 로그인한 경찰의 기본키 : " + policeInfo.getPoliceId());
-		System.out.println(">>>>> 현재 로그인한 경찰의 부서 기본키 : " + policeInfo.getDept().getDeptId() + "\n");
+		System.out.println("\n" + ">>>>> 현재 로그인한 경찰의 이름 : " + policeInfo.getPoliceName());
+		System.out.println(">>>>> 현재 로그인한 경찰의 Id : " + policeInfo.getPoliceId());
+		System.out.println(">>>>> 현재 로그인한 경찰의 소속 부서 : " + policeInfo.getDept().getDeptName());
+		System.out.println(">>>>> 현재 로그인한 경찰의 소속 부서 Id : " + policeInfo.getDept().getDeptId() + "\n");
 
 		List<EventGroupDto> eventGroupDto = eventService.eventRegisterSelectGroup();
 		List<PersonDto> eventPersonDto = eventService.eventRegisterSelectPerson();
 
 		model.addAttribute("eventDto", new EventDto());
-
 		model.addAttribute("eventGroup", eventGroupDto);
 		model.addAttribute("police", policeInfo);
 		model.addAttribute("person", eventPersonDto);
@@ -147,6 +146,7 @@ public class EventController {
 		return "event/eventMain";
 	}
 
+	//나의 사건 조회
 	@GetMapping("/myevent")
 	public String myEventView(@PageableDefault(page = 0, size = 10, sort = "event_id", direction = Sort.Direction.DESC) Pageable pageable,
 														@AuthenticationPrincipal UserDetails user, Model model){
