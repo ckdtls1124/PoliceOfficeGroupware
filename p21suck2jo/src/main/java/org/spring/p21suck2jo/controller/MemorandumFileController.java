@@ -54,11 +54,6 @@ public class MemorandumFileController {
     @GetMapping("/delete/{memorandumFileId}")
     public ResponseEntity<String> deleteSelectedFile(@PathVariable Long memorandumFileId){
 
-        if(memorandumFileId != null){
-            System.out.println("!!!!!!!!!!!!Number of the file exists");
-        } else {
-            System.out.println("!!!!!!!!!!!!!!Number of the file doesn't exist");
-        }
 
         if(memorandumFileService.deleteSelectedFile(memorandumFileId) == 1){
             return new ResponseEntity<>("", HttpStatus.OK);

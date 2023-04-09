@@ -53,7 +53,7 @@ public class LoginController {
         List<BoardDto> todayBoard=boardService.todayBoard();
         model.addAttribute("board",todayBoard);
 
-        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.ReceivedfindAllMemo(policeId);
+        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.findReceivedAllMemo(policeId);
         model.addAttribute("receivedMemorandumDtoPage", receivedMemorandumDtoPage);
 
         return "index";

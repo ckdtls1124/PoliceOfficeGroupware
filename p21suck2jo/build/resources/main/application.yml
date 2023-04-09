@@ -1,9 +1,10 @@
 server:
   port: 8099
 
+#  timeout 설정으로 로그온 시간 설정 (최소 1분)
   servlet:
     session:
-      timeout: 1m
+      timeout: 10m
     encoding:
       force-response: true
 
@@ -19,7 +20,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true

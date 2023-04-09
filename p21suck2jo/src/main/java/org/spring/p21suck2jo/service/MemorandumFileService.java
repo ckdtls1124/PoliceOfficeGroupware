@@ -27,6 +27,20 @@ public class MemorandumFileService {
     private final MemorandumFileRepository memorandumFileRepository;
     private final MemorandumRepository memorandumRepository;
 
+
+//   조회============================================
+    public List<MemorandumFileEntity> findAllFilesInSelectedMemo(Long memoId) {
+//        결재 문서를 찾는다.
+        Optional<MemorandumEntity> memorandumEntity = memorandumRepository.findById(memoId);
+
+//       찾은 결재 문서에 해당하는 파일을 찾는다.
+        List<MemorandumFileEntity> memorandumFileEntityList = memorandumFileRepository.findAllByMemorandumEntity(memorandumEntity.get());
+        return memorandumFileEntityList;
+    }
+//   조회============================================
+
+
+//   작성============================================
     public Long putFileIntoDB(MultipartFile mulFile, MemorandumDto memorandumDto, Long memorandumId, Long sessionPoliceIdLong) throws IOException {
 
 //        작성한 결재 문서 찾기
@@ -70,35 +84,16 @@ public class MemorandumFileService {
             return null;
         }
     }
+//   작성============================================
 
-    public List<MemorandumFileEntity> findAllFilesInSelectedMemo(Long memoId) {
-//        결재 문서를 찾는다.
-        Optional<MemorandumEntity> memorandumEntity = memorandumRepository.findById(memoId);
 
-//       찾은 결재 문서에 해당하는 파일을 찾는다.
-        List<MemorandumFileEntity> memorandumFileEntityList = memorandumFileRepository.findAllByMemorandumEntity(memorandumEntity.get());
-        return memorandumFileEntityList;
-    }
-
+//   삭제============================================
 //    결재 문서를 삭제할 때, 해당 결제 문서의 파일을 전체 삭제
     public void deleteFilesInSelectedMemo(Long memoId) {
-
-//        결재 문서를 찾는다.
-//        Optional<MemorandumEntity> memorandumEntity = memorandumRepository.findById(id);
-
-//       찾은 결재 문서에 해당하는 파일을 찾는다.
-//        List<MemorandumFileEntity> selectedMemoFiles = memorandumFileRepository.findAllByMemorandumEntity(memorandumEntity.get());
-
-//        if (selectedMemoFiles != null) {
-//            for (MemorandumFileEntity fileEntity : selectedMemoFiles) {
                 MemorandumEntity memorandumEntity = new MemorandumEntity();
                 memorandumEntity.setMemorandumId(memoId);
                 memorandumFileRepository.deleteByMemorandumEntity(memorandumEntity);
-//            }
-//            return 1;
-//        } else {
-//            return 0;
-//        }
+
     }
 
 //    결재 문서에서 선택한 파일 삭제
@@ -111,7 +106,7 @@ public class MemorandumFileService {
             return 0;
         }
     }
-
+//   삭제============================================
 
 
 }
