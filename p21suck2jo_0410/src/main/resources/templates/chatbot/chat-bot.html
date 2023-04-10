@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+</head>
+
+<body>
+  <dl id="chat-disp">
+    <dt id="chat-header">
+      <span>포돌이</span>
+      <span class="btn-wrap">
+        <button type="button" id="btn-chat-close" onclick="disconnect()">X</button>
+      </span>
+    </dt>
+    <dd id="chat-content">
+      <!--bot-message에서 받은 메시지를 출력할 공간-->
+    </dd>
+    <dd id="chat-question" class="flex between">
+      <input type="text" id="question" placeholder="Send Message">
+      <button type="button" id="btn-msg-send" onclick="btnMsgSendClicked()">전송</button>
+    </dd>
+  </dl>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Officer List</title>
+  <link rel="stylesheet" th:href="@{/css/police/officerList.css}">
+</head>
+
+<body>
+
+  <div id="all-container-wrap" th:replace="/common/leftWrap :: left-wrap"></div>
+  <!--왼쪽 메뉴바-->
+
+  <!--오른쪽 컨테이너-->
+  <div class="right-wrap">
+    <div class="right-menu">
+      <div class="right-con">
+        <div class="officerList-container">
+          <div class="officerList-container-con">
+
+            <div class="List-form">
+              <h1>직원 목록</h1>
+              <div class="List-column">
+                <ul>
+                  <li></li>
+                  <li>사번</li>
+                  <li>이름</li>
+                  <li>연락처</li>
+                  <li></li>
+                  <!-- <li>상세정보</li> -->
+                </ul>
+              </div>
+
+              <div class="List-info">
+                <ul th:each="police : ${policeList}">
+                  <li><img th:src="@{/img/worker.png}" alt="#"></li>
+                  <li th:text="${police.policeNumber}"></li>
+                  <li th:text="${police.policeName}"></li>
+                  <li th:text="${police.policePhone}"></li>
+                  <li><a sec:authorize="hasRole('ADMIN')" th:href="@{|/police/list/${police.policeId}|}">직원수정</a></li>
+
+                </ul>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--오른쪽 컨테이너-->
+  </div>
+
+</body>
+
+</html>

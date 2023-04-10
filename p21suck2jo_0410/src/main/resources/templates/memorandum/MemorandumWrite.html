@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+<link rel="stylesheet" href="/css/memorandum/MemorandumWrite.css">
+<head>
+    <meta charset="UTF-8">
+    <title>File Write Page</title>
+    <script src="../js/FilePage.js"></script>
+</head>
+<body>
+<div id="all-container-wrap" th:replace="/common/leftWrap :: left-wrap"></div>
+
+
+<!--오른쪽 컨테이너-->
+<div class="right-wrap">
+    <div class="right-menu">
+        <div class="right-con">
+
+            <!--오른쪽 컨테이너-->
+
+            <div class="boardWrite-container">
+                <div class="boardWrite">
+
+                    <form th:action="@{/memo/write}" method="post" class="write-form" th:object="${MemorandumDto}"
+                          enctype="multipart/form-data">
+                        <div class="write-box">
+                            <div class="box-top">
+                                <h3>결재 문서 작성</h3>
+                            </div>
+                            <div class="box-middle">
+                                <div class="box-con">
+                                    <label th:for="memorandumTitle">제목</label>
+                                    <input type="text" th:field="*{memorandumTitle}" placeholder="제목을 입력해주세요"
+                                           onfocus="this.placeholder=''"
+                                           onblur="this.placeholder='제목을 입력해주세요'">
+                                </div>
+                                <div class="box-con">
+                                    <!--                      파일 올리기-->
+                                    <input type="file" name="file" multiple="multiple">
+                                    <div th:each="file : ${fileInDetailMemo}" class="FileListContainer">
+                                        <a th:href="|/memo/file/attach/${file.memorandumFileId}|"
+                                           th:text="${file.memorandumFileOriginalName}"></a>
+                                        <input hidden="hidden" th:value="${file.memorandumFileId}"
+                                               class="numberOfFile">
+                                        <button class="deleteFile">Delete</button>
+                                    </div>
+                                    <!--        결재 승인자를 특정-->
+                                    <label>결재선 지정</label>
+                                    <select th:field="${approveMember.policeName}">
+                                        <option value="">결재자 선택...</option>
+                                        <option th:each="nameDept : ${approveMemberNameDept}" th:value="${nameDept.policeName}">
+                                            <span th:text="${nameDept.deptName}"></span> -
+                                            <span th:text="${nameDept.policeName}"></span>
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="box-con">
+                                    <label th:for="memorandumContent">내용</label>
+                                    <textarea th:field="*{memorandumContent}" rows="34" placeholder="내용을 입력해주세요"
+                                              onfocus="this.placeholder=''"
+                                              onblur="this.placeholder='내용을 입력해주세요'"></textarea>
+                                </div>
+                            </div>
+                            <div class="box-bottom">
+                                <div class="button-left">
+                                    <button><a th:href="@{/board}"><img src="/img/board/list.png" alt=""> 목록</a>
+                                    </button>
+                                </div>
+                                <div class="button-right">
+                                    <button type="submit">글등록</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- <form action="/uploadFileInMemo" enctype="multipart/form-data" method="post">
+  You can upload many files here. <input type="file" name="file" multiple="multiple">
+  <button>Submit file</button>
+</form> -->
+
+
+</body>
+</html>

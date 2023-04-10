@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/dept/deptList.css}">
+    <title>Document</title>
+
+</head>
+
+<body>
+<div id="all-container-wrap" th:replace="/common/leftWrap :: left-wrap"></div>
+        <!--왼쪽 메뉴바-->
+        <div class="right-wrap">
+            <div class="right-menu">
+              <div class="right-con">
+                
+                 <div class="dept-container">
+                    <div class="dept-container-con">
+                            
+                        <div class="dept-form">
+
+                            <div class="dept-h1">
+                                <h1>부서 관리</h1>
+                            </div>
+
+<!--                            <div class="dept-create" >-->
+<!--                                <div class="dept-create-con" th:each="dept : ${deptList}">-->
+<!--                                <span th:text="${dept.deptId}+'팀'"></span>-->
+<!--                            </div>-->
+<!--                            </div>-->
+                    <div class="dept-form-data">
+                        <table>
+                           <thead>
+                        
+                            <tr>
+                                <th>소속 인원</th>
+                                <th>직책</th>
+                                <th>부서위치</th>
+                                <th>부서명</th>
+                            </tr>
+                    
+                           </thead>
+
+                           <tbody>
+                            <tr th:each="police : ${policeList}">
+                                <td th:text="${police.policeName}"></td>
+                                <td th:text="${police.ranks}"></td>
+                                <td>
+                                    <span th:each="dept : ${deptList}">
+                                        <p th:text="${dept.deptLocation}"></p>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span th:each="dept : ${deptList}">
+                                        <p th:text="${dept.deptName}"></p>
+                                    </span>
+                                </td>
+                            </tr>
+                           </tbody>
+
+                        </table>
+                    </div>
+                        </div>
+
+                    </div>
+                 </div>
+
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+
+</html>

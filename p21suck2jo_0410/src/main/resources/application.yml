@@ -1,0 +1,39 @@
+server:
+  port: 8099
+
+#  timeout 설정으로 로그온 시간 설정 (최소 1분)
+  servlet:
+    session:
+      timeout: 10m
+    encoding:
+      force-response: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/policeoffice?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+      location: C:\Users\Public\PoliceOfficeUploadFiles\Files
+
+  #필수 oauth.yml이랑연결
+  profiles:
+    include: oauth
+
+naver.api.client-id: qGBOH7ox4kxR1NI1SMag
+naver.api.client-secret: WMIFp0Pi_X
