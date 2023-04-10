@@ -60,8 +60,6 @@
                                     </col>
                                     <col width="20%">
                                     </col>
-                                    <col width="10%">
-                                    </col>
                                 </colgroup>
                                 <thead>
                                 <tr>
@@ -81,11 +79,13 @@
                                     <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}|}"
                                            th:text="${list.memorandumTitle}"></a></td>
 
-                                    <td th:each="approve : ${approvedNum}">
-                                        <th:block th:switch="${approve.approved}">
-                                            <span th:case="0">대기</span>
-                                            <span th:case="1">반려</span>
-                                            <span th:case="2">승인</span>
+                                    <td>
+                                        <th:block th:if="${list.memorandumId eq approve.memorandum.memorandumId}" th:each="approve : ${approvedNum}">
+                                            <div th:switch="${approve.approved}">
+                                                <span th:case="0">대기</span>
+                                                <span th:case="1">반려</span>
+                                                <span th:case="2">승인</span>
+                                            </div>
                                         </th:block>
                                     </td>
 

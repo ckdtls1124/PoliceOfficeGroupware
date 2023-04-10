@@ -1,9 +1,6 @@
 package org.spring.p21suck2jo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 
@@ -11,6 +8,7 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class MemoApprovingMemberDto {
     private Long approvingMemberId;
     private PoliceEntity police;

@@ -12,5 +12,7 @@ public interface ApprovingMemberRepository extends JpaRepository<MemoApprovingMe
     Optional<MemoApprovingMember> findByMemorandum(MemorandumEntity memorandumEntity);
 
     List<MemoApprovingMember> findByPolice(PoliceEntity policeEntity);
+
+    Optional<MemoApprovingMember> findByMemorandumAndPolice(MemorandumEntity memorandumEntity, PoliceEntity policeEntity);
 }
 

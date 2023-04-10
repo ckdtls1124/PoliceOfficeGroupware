@@ -2,6 +2,7 @@ package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.ApprovingMemberNameDept;
+import org.spring.p21suck2jo.dto.MemoApprovingMemberDto;
 import org.spring.p21suck2jo.dto.MemorandumDto;
 import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.MemoApprovingMember;
@@ -99,18 +100,30 @@ public class MemorandumService {
     }
 
 //    각 문서에 대해서, 결재 여부을 보여주기 위해 MemoApprovingMember에서 approved 항목을 가져온다.
-    public List<MemoApprovingMember> findApprovingMemberApproveNum(Long policeId, Pageable pageable) {
+    public List<MemoApprovingMemberDto> findApprovingMemberApproveNum(Long policeId, Pageable pageable) {
 
         PoliceEntity policeEntity = new PoliceEntity();
         policeEntity.setPoliceId(policeId);
         Page<MemorandumEntity> memorandumEntityPage = memorandumRepository.findByPolice(policeEntity, pageable);
 
-        List<MemoApprovingMember> approvingMemberList = new ArrayList<>();
+        List<MemoApprovingMemberDto> approvingMemberList = new ArrayList<>();
 
         for(MemorandumEntity i: memorandumEntityPage){
             Optional<MemoApprovingMember> approvingMember = approvingMemberRepository.findByMemorandum(i);
-            approvingMemberList.add(approvingMember.get());
+
+            MemoApprovingMemberDto memoApprovingMemberDto = MemoApprovingMemberDto.builder()
+                    .police(approvingMember.get().getPolice())
+                    .memorandum(approvingMember.get().getMemorandum())
+                    .approved(approvingMember.get().getApproved())
+                    .build();
+
+
+            approvingMemberList.add(memoApprovingMemberDto);
         }
+
+
+
+
         return approvingMemberList;
     }
 
@@ -210,6 +223,34 @@ public class MemorandumService {
         }
         return policeDtoList;
     }
+
+//    결재 문서 승인 또는 반려 처리
+    public void updateApprovedInMemoApprovingMember(String index, Long policeIdLong, String memorandumId) {
+
+//        approvingMember를 찾기 위해, policeEntity, MemorandumEntity를 넣는다.
+
+        PoliceEntity policeEntity = new PoliceEntity();
+        policeEntity.setPoliceId(policeIdLong);
+
+        MemorandumEntity memorandumEntity = new MemorandumEntity();
+        memorandumEntity.setMemorandumId(Long.valueOf(String.valueOf(memorandumId)));
+
+        Optional<MemoApprovingMember> memoApprovingMember =  approvingMemberRepository.findByMemorandumAndPolice(memorandumEntity, policeEntity);
+
+
+        Integer approvedNum = Integer.valueOf(String.valueOf(index));
+
+        if(approvedNum == 0){
+            memoApprovingMember.get().setApproved(2);
+        } else {
+            memoApprovingMember.get().setApproved(1);
+        }
+
+
+        approvingMemberRepository.save(memoApprovingMember.get());
+    }
+
+
 //   수정============================================
 
 //   삭제============================================
@@ -219,6 +260,8 @@ public class MemorandumService {
         memorandumRepository.deleteById(id);
 
     }
+
+
 
 //   삭제============================================
 

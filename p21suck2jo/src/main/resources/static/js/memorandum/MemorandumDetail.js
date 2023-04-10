@@ -29,6 +29,7 @@ document.querySelectorAll(".deleteFile").forEach((fileEl, fileIndex) => {
 
 // Memo 승인/반려 처리
 const approveMemo = document.querySelectorAll('.approveMemo');
+const memorandumId = document.querySelector('.currentMemoId');
 
 approveMemo.forEach((el, index)=>{
     el.addEventListener('click', (e)=>{
@@ -41,7 +42,8 @@ approveMemo.forEach((el, index)=>{
                 url: "/memo/approve",
                 method: "post",
                 dataType: "JSON",
-                data: {"approveNum" : index},
+                data: {"approveNum" : index,
+                        "currentMemoId" : memorandumId.value},
                 success: function(successData){
                     if(successData == '0'){
                         confirm("승인 하시겠습니까?");

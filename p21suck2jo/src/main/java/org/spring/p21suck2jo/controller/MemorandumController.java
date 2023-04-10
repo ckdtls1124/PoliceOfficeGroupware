@@ -1,10 +1,7 @@
 package org.spring.p21suck2jo.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.spring.p21suck2jo.dto.ApprovingMemberNameDept;
-import org.spring.p21suck2jo.dto.MemorandumDto;
-import org.spring.p21suck2jo.dto.MemorandumFileDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
+import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.MemoApprovingMember;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.MemorandumFileEntity;
@@ -52,7 +49,7 @@ public class MemorandumController {
 //         Pagination 처리
         if (search == null) {
             Page<MemorandumDto> memorandumDtoPage = memorandumService.findAllMemo(sessionPoliceIdLong, pageable);
-            List<MemoApprovingMember> memoApprovingMemberList = memorandumService.findApprovingMemberApproveNum(sessionPoliceIdLong, pageable);
+            List<MemoApprovingMemberDto> memoApprovingMemberList = memorandumService.findApprovingMemberApproveNum(sessionPoliceIdLong, pageable);
 
             Long total = memorandumDtoPage.getTotalElements();
             int bockNum = 4;
@@ -71,7 +68,7 @@ public class MemorandumController {
 
         } else {
             Page<MemorandumDto> memorandumDtoPage = memorandumService.memoListSearchPage(search, pageable);
-            List<MemoApprovingMember> memoApprovingMemberList = memorandumService.findApprovingMemberApproveNum(sessionPoliceIdLong, pageable);
+            List<MemoApprovingMemberDto> memoApprovingMemberList = memorandumService.findApprovingMemberApproveNum(sessionPoliceIdLong, pageable);
 
             Long total = memorandumDtoPage.getTotalElements();
             int bockNum = 4;
