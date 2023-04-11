@@ -1,5 +1,5 @@
+@import url(/css/common/leftWrap.css);
 @import url(/css/common/reset.css);
-@import url(/css/index.css);
 .board-container {
 	width: 100%;
 	height: 100%;

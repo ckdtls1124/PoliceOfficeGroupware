@@ -33,7 +33,8 @@ public class KomoranService {
 		nouns.forEach((noun) -> {
 			System.out.println(">>>> " + noun);
 		});
-
+		
+		System.out.println("1. 분석된 명사 : " + nouns + " -> DB에 있는지 확인");
 		return analyzeToken(nouns);
 
 	}
@@ -52,7 +53,6 @@ public class KomoranService {
 			Optional<IntentionEntity> result = decisionTree(token, null);
 
 			if (result.isEmpty()) continue;
-			System.out.println(">>>>1차:" + token);
 			Set<String> next = nouns.stream().collect(Collectors.toSet());
 			next.remove(token);
 
@@ -61,11 +61,15 @@ public class KomoranService {
 			if (token.contains("연락처")) {
 				//연락처 키워드가 있으면 -> analyzeTokenIsPhone(next)
 				SecondAnswer phone = analyzeTokenIsPhone(next);
+
+				System.out.println("phone -> "+phone);
+
 				answer.phone(phone);
 
 			} else if (token.contains("안녕")) {
 				DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
 				messageDto.today(today.format(dateFormatter));
+
 			}
 			messageDto.answer(answer);
 			return messageDto;
@@ -83,6 +87,7 @@ public class KomoranService {
 	IntentionRepository intention;
 	//의도가 존재하는지 DB에서 파악 -> 키워드 값이 존재 하는지 -> DB에 키워드가 있는지 확인
 	private Optional<IntentionEntity> decisionTree(String token, IntentionEntity upper) {
+		System.out.println("의도 파악 Token(DB에서 확인) : " + token);
 		return intention.findByKeywordAndUpperNo(token, upper);
 	}
 
@@ -94,10 +99,8 @@ public class KomoranService {
 
 			Optional<IntentionEntity> result = decisionTree(token, upper.get());
 			if (result.isEmpty()) continue;
-
 			return result.get().getAnswerId();
 		}
-
 		return upper.get().getAnswerId();
 	}
 
@@ -110,11 +113,17 @@ public class KomoranService {
 
 			Optional<OfficerEntity> m = officer.findByOfficerName(name);
 
+			System.out.println("최종적으로 받은 사원의 이름 : " + m.get().getOfficerName());
+
 			if (m.isEmpty()) continue;
 			//존재하면
 			String deptName = m.get().getDeptId().getDeptName();
 			String officerPhone = m.get().getOfficerPhone();
 			String officerName = m.get().getOfficerName();
+
+			System.out.println("deptName : " +deptName);
+			System.out.println("officerPhone : " +officerPhone);
+			System.out.println("officerName : " +officerName);
 
 			return SecondAnswer.builder()
 							.deptName(deptName)

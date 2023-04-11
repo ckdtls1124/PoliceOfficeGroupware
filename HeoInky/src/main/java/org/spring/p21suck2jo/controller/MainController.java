@@ -27,5 +27,9 @@ public class MainController {
     return "/calendar/AllCalender";
   }
 
+  @GetMapping("/weather")
+  public String weather(){
+    return "/api/weatherApi";
+  }
 
 }

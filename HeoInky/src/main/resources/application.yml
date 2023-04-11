@@ -1,9 +1,12 @@
 server:
   port: 8099
 
+#  timeout 설정으로 로그온 시간 설정 (최소 1분)
   servlet:
     session:
-      timeout: 1m
+      timeout: 10m
+    encoding:
+      force-response: true
 
 spring:
   datasource:
@@ -31,3 +34,6 @@ spring:
   #필수 oauth.yml이랑연결
   profiles:
     include: oauth
+
+naver.api.client-id: qGBOH7ox4kxR1NI1SMag
+naver.api.client-secret: WMIFp0Pi_X

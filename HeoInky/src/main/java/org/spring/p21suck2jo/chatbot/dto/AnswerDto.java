@@ -17,10 +17,10 @@ public class AnswerDto {
 
 	private String keyword;
 
-	private String phone;
+	private SecondAnswer secondAnswer;
 
 	public AnswerDto phone(SecondAnswer secondAnswer){
-		this.phone = phone;
+		this.secondAnswer = secondAnswer;
 		return this;
 	}
 

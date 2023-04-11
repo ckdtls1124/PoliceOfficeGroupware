@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface EventRepository extends JpaRepository<EventEntity, Long> {
 
 	@Query(value = "select * from event where event_settle=:eventSettle", nativeQuery = true)
@@ -25,4 +27,6 @@ public interface EventRepository extends JpaRepository<EventEntity, Long> {
 	@Query(value = "select * from event where police_id=:policeId", nativeQuery = true)
 	Page<EventEntity> findMyEvent(Pageable pageable, Long policeId);
 
+	@Query(value = "select * from event where event_date > current_date()", nativeQuery = true)
+	List<EventEntity> findTodayEvent();
 }

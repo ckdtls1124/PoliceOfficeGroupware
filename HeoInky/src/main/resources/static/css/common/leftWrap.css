@@ -100,19 +100,29 @@
   left: 0px;
 }
 
-.left-menu .left-con .dash-board .naver-api {
+.left-menu .left-con .dash-board .api {
   padding: 5px;
   box-sizing: border-box;
 }
 
-.left-menu .left-con .dash-board .naver-api>img {
-  width: 18px;
+.left-menu .left-con .dash-board .api>ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left-menu .left-con .dash-board .api>ul>li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.left-menu .left-con .dash-board .api>ul>li>img {
+  width: 20px;
   height: 18px;
 }
 
-.left-menu .left-con .dash-board .naver-api>a {
-  padding: 10px;
-  box-sizing: border-box;
+.left-menu .left-con .dash-board .api>ul>li>a {
   font-weight: bold;
   color: #ffffff;
 }
