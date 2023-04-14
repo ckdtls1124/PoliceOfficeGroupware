@@ -1,0 +1,141 @@
+@import url(reset.css);
+
+#all-container-wrap {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*왼쪽 메뉴*/
+.left-wrap {
+  padding: 10px;
+  flex: 0 0 300px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+.left-wrap .left-menu {
+  /*위치 고정(스크롤해도 변화X)*/
+  height: calc(100vh - 20px);
+  background-color: #003478;
+  box-sizing: border-box;
+}
+
+.left-menu .left-con {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+}
+
+.left-menu .left-con h1.logo {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left-menu .left-con h1.logo>a>img {
+  width: 200px;
+  height: 50px;
+}
+
+.left-menu .left-con .dash-board {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.left-menu .left-con .dash-board h4 {
+  padding: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.left-menu .left-con .dash-board .menu>ul {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.left-menu .left-con .dash-board .menu>ul>li {
+  gap: 10px;
+  position: relative;
+}
+
+.left-menu .left-con .dash-board .menu>ul>li>ul {
+  padding: 7px 0 0;
+  box-sizing: border-box;
+  display: none;
+}
+
+.left-menu .left-con .dash-board .menu>ul>li:hover>ul {
+  display: block;
+}
+
+.left-menu .left-con .dash-board .menu>ul>li>ul>li>a {
+  padding: 3px 0;
+  box-sizing: border-box;
+  font-size: small;
+  display: block;
+  text-indent: 30px;
+  color: #ffffff;
+}
+
+.left-menu .left-con .dash-board .menu>ul>li>a {
+  display: block;
+  text-indent: 25px;
+  color: #ffffff;
+  font-size: small;
+  font-weight: bold;
+}
+
+.left-menu .left-con .dash-board .menu>ul>li>img {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 0px;
+}
+
+.left-menu .left-con .dash-board .naver-api {
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.left-menu .left-con .dash-board .naver-api>img {
+  width: 18px;
+  height: 18px;
+}
+
+.left-menu .left-con .dash-board .naver-api>a {
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+
+
+
+
+/*오른쪽 컨테이너*/
+
+.right-wrap {
+  flex: 1;
+  padding: 10px 10px 10px 0;
+  height: auto;
+}
+
+.right-wrap .right-menu {
+  min-height: 100%;
+  /*ㄴ높이 최솟값이 100vh*/
+  background-color: #00347845;
+  box-sizing: border-box;
+}
+
+.right-menu .right-con {
+  min-height: 100%;
+}
