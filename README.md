@@ -111,19 +111,14 @@
         int result = numberList[0];
 
         for (int i = 0; i < calSymbolList.length; ++i) {
-            int CalResult;
             if (calSymbolList[i].equals("+")) {
-                CalResult = add(result, numberList[i + 1]);
-                result = CalResult;
+                result = add(result, numberList[i + 1]);
             } else if (calSymbolList[i].equals("-")) {
-                CalResult = subtract(result, numberList[i + 1]);
-                result = CalResult;
+                result = subtract(result, numberList[i + 1]);
             } else if (calSymbolList[i].equals("*")) {
-                CalResult = multiple(result, numberList[i + 1]);
-                result = CalResult;
+                result = multiple(result, numberList[i + 1]);
             } else if (calSymbolList[i].equals("/")) {
-                CalResult = divide(result, numberList[i + 1]);
-                result = CalResult;
+                result = divide(result, numberList[i + 1]);
             }
         }
 
