@@ -40,13 +40,13 @@ public class BoardController {
     private final PoliceService policeService;
 
     @GetMapping("/boardWrite")
-    public String boardWriteView(@AuthenticationPrincipal UserDetails user, Model model ){
+    public String boardWriteView(@AuthenticationPrincipal UserDetails user, Model model) {
 
 
-        PoliceDto policeDto= policeService.findByPoliceName(user.getUsername());
+        PoliceDto policeDto = policeService.findByPoliceName(user.getUsername());
 
-        if(policeDto!=null){
-            model.addAttribute("policeName",policeDto.getPoliceName());
+        if (policeDto != null) {
+            model.addAttribute("policeName", policeDto.getPoliceName());
         }
 
         model.addAttribute("boardDto", new BoardDto());
@@ -54,9 +54,9 @@ public class BoardController {
     }
 
     @PostMapping("/boardWrite")
-    public String boardWrite(BoardDto boardDto, Model model){
+    public String boardWrite(BoardDto boardDto, Model model) {
 
-        if(boardDto==null){
+        if (boardDto == null) {
             return "/board/boardWrite";
         }
         boardService.boardWrite(boardDto);
@@ -65,62 +65,61 @@ public class BoardController {
     }
 
     @GetMapping("/board")
-    public String boardList(Model model, @PageableDefault(page=0,size=15,sort="boardId",
-            direction = Sort.Direction.DESC)Pageable pageable,
-                            @RequestParam(value="search",required = false)String search){
+    public String boardList(Model model, @PageableDefault(page = 0, size = 15, sort = "boardId", direction = Sort.Direction.DESC) Pageable pageable, @RequestParam(value = "search", required = false) String search) {
 
-        if(search==null){
-            Page<BoardDto> boardDtos=boardService.boarListPaging(pageable);
+        Page<BoardDto> boardDtos = boardService.boarListPaging(pageable);
 
-            Long total=boardDtos.getTotalElements();
-            int bockNum=4;
-            int nowPage= boardDtos.getNumber()+1 ;
-            int startPage=Math.max(1,boardDtos.getNumber()-bockNum);
-            int endPage=boardDtos.getTotalPages();
+        Long total = boardDtos.getTotalElements();
+        int bockNum = 4;
+        int nowPage = boardDtos.getNumber() + 1;
+        int startPage = Math.max(1, boardDtos.getNumber() - bockNum);
+        int endPage = boardDtos.getTotalPages();
 
-            model.addAttribute("boardDtos",boardDtos);
-            model.addAttribute("total",total);
-            model.addAttribute("nowPage",nowPage);
-            model.addAttribute("startPage",startPage);
-            model.addAttribute("endPage",endPage);
-        }else{
-            Page<BoardDto> boardDtos=boardService.boarListSearchPaging(search,pageable);
+        model.addAttribute("boardDtos", boardDtos);
+        model.addAttribute("total", total);
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
 
-            Long total=boardDtos.getTotalElements();
-            int bockNum=4;
-            int nowPage= boardDtos.getNumber()+1 ;
-            int startPage=Math.max(1,boardDtos.getNumber()-bockNum);
-            int endPage=boardDtos.getTotalPages();
+        if (search != null) {
+            Page<BoardDto> boardDtos1 = boardService.boarListSearchPaging(search, pageable);
 
-            model.addAttribute("boardDtos",boardDtos);
-            model.addAttribute("total",total);
-            model.addAttribute("nowPage",nowPage);
-            model.addAttribute("startPage",startPage);
-            model.addAttribute("endPage",endPage);
+            Long total1 = boardDtos1.getTotalElements();
+            int bockNum1 = 4;
+            int nowPage1 = boardDtos1.getNumber() + 1;
+            int startPage1 = Math.max(1, boardDtos1.getNumber() - bockNum1);
+            int endPage1 = boardDtos1.getTotalPages();
+
+            model.addAttribute("boardDtos", boardDtos1);
+            model.addAttribute("total", total1);
+            model.addAttribute("nowPage", nowPage1);
+            model.addAttribute("startPage", startPage1);
+            model.addAttribute("endPage", endPage1);
         }
+
+
+
         return "/board/board";
     }
 
     @GetMapping("/boardDetail/{boardId}/{key}")
-    public String boardDetail(@PathVariable("boardId") Long boardId,@AuthenticationPrincipal UserDetails user,
-                              @PathVariable(value = "key", required = false) String key,
-                              Model model){
+    public String boardDetail(@PathVariable("boardId") Long boardId, @AuthenticationPrincipal UserDetails user, @PathVariable(value = "key", required = false) String key, Model model) {
 
         // key값이 true이거나 null이 아닌경우 조회수 카운팅 X
-        if(key.equals("true") && key!=null) {
+        if (key.equals("true") && key != null) {
 
             boardService.upViews2(boardId);
-        // key값이 true가 아니거나 null인 경우 조회수 카운팅 O
-        }else{
+            // key값이 true가 아니거나 null인 경우 조회수 카운팅 O
+        } else {
             boardService.upViews(boardId);
         }
         // 해당 게시판 번호를 받아 리뷰 상세페이지로 넘겨줌
-        BoardDto boardDtos= boardService.boardDetail(boardId);
+        BoardDto boardDtos = boardService.boardDetail(boardId);
 
-        PoliceDto policeName= policeService.findByPoliceIdAndName(user.getUsername());
+        PoliceDto policeName = policeService.findByPoliceIdAndName(user.getUsername());
 
-        model.addAttribute("policeReplyName",policeName.getPoliceName());
-        model.addAttribute("boardDtos",boardDtos);
+        model.addAttribute("policeReplyName", policeName.getPoliceName());
+        model.addAttribute("boardDtos", boardDtos);
 
 //        Cookie[] cookies= request.getCookies();
 //
@@ -135,8 +134,8 @@ public class BoardController {
 //                }
 //            }
 //        }
-        if(boardDtos!=null){
-            model.addAttribute("boardDtos",boardDtos);
+        if (boardDtos != null) {
+            model.addAttribute("boardDtos", boardDtos);
 //
 //            // 만일 oldCookie가 null이 아니고 oldCookie값에 id값이 없을 때 (있다면 이미 조회한 게시물로 조회수가 올라가지 않음) 조회수 올리는 메소드 호출
 //            if (oldCookie!=null) {
@@ -156,35 +155,34 @@ public class BoardController {
 //
 //                boardService.upViews(boardId);
 //            }
-            List<ReplyDto> replyList=replyService.replyList(boardId);
-            model.addAttribute("replyList",replyList);
+            List<ReplyDto> replyList = replyService.replyList(boardId);
+            model.addAttribute("replyList", replyList);
             return "/board/boardDetail";
-        }else{
+        } else {
             return null;
         }
     }
 
     @GetMapping("/boardUpdate/{boardId}")
-    public String boardUpdate(@PathVariable("boardId") Long boardId, Model model){
+    public String boardUpdate(@PathVariable("boardId") Long boardId, Model model) {
 
-        BoardDto boardDto=boardService.boardUpdate(boardId);
+        BoardDto boardDto = boardService.boardUpdate(boardId);
 
-        model.addAttribute("boardDto",boardDto);
+        model.addAttribute("boardDto", boardDto);
 
         return "board/boardUpdate";
     }
 
     @PostMapping("/boardUpdate")
-    public String boardUpdateOk(@ModelAttribute BoardDto boardDto,
-                                @RequestParam(value = "key",required = false) String key){
+    public String boardUpdateOk(@ModelAttribute BoardDto boardDto, @RequestParam(value = "key", required = false) String key) {
 
         boardService.boardUpdateOk(boardDto);
 
-        return "redirect:/boardDetail/"+boardDto.getBoardId()+"/"+key;
+        return "redirect:/boardDetail/" + boardDto.getBoardId() + "/" + key;
     }
 
     @GetMapping("/boardDelete/{boardId}")
-    public String boardDelete(@PathVariable("boardId") Long boardId){
+    public String boardDelete(@PathVariable("boardId") Long boardId) {
 
         boardService.boardDelete(boardId);
 

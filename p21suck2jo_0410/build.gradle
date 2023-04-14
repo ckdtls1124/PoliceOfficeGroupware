@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+	implementation files ('libs/kobis-opcl-rest-v1.0.jar')
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
