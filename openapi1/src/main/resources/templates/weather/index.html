@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>날씨API</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script th:src="@{/js/weather.js}" defer> </script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=34ff576f78440aab7f99134fe4c07b65"></script>
+
+</head>
+<body>
+<h1>OpenWeather API</h1>
+<div class="weather-con">
+  <div class="city-search">
+    <select name="search" id="search">
+      <option value="Seoul">서울</option>
+      <option value="Busan">부산</option>
+      <option value="ChunCheon">춘천</option>
+    </select>
+    <input type="button" onclick="weatherSearch()" value="검색">
+  </div>
+  <div class="weather-list">
+    <div
+      style="background-color : rgb(101, 178, 255); box-sizing: border-box; padding : 10px;color : #fff; width:300px; height : 150px">
+      <div style="float : left;">
+        <div class="weather_icon con"></div>
+      </div><br>
+      <div style="float : right; margin : -5px 0px 0px 60px; font-size : 11pt">
+        <div class="temp_min con"></div>
+        <div class="temp_max con"></div>
+        <div class="humidity con"></div>
+        <div class="wind con"></div>
+        <div class="cloud con"></div>
+      </div>
+      <div style="float : right; margin-top : -45px;">
+        <div class="current_temp con" style="font-size : 50pt"></div>
+        <div class="weather_description con" style="font-size : 20pt"></div>
+        <div class="city con" style="font-size : 13pt"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="map-con">
+  <div id="map" style="width:100%;height:350px;"></div>
+
+</div>
+</body>
+</html>
