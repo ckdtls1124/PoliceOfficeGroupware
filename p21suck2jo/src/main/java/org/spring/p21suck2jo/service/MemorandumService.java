@@ -83,7 +83,7 @@ public class MemorandumService {
         for(DeptEntity i: deptEntities) {
             List<PoliceEntity> policeEntityList = policeRepository.findByDept(i);
             for(PoliceEntity j:policeEntityList) {
-                PoliceDto policeDto = PoliceConstructors.officerView(j);
+                PoliceDto policeDto = PoliceConstructors.entityToDto(j);
                 policeDtos.add(policeDto);
             }
         }

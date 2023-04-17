@@ -46,7 +46,7 @@ public class EventService {
 		List<PoliceDto> policeDto = new ArrayList<>();
 
 		for(PoliceEntity policeEntity : policeEntities){
-			policeDto.add(PoliceConstructors.officerView(policeEntity));
+			policeDto.add(PoliceConstructors.entityToDto(policeEntity));
 		}
 		return policeDto;
 	}

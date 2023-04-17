@@ -7,19 +7,10 @@ import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
-import org.spring.p21suck2jo.role.Role;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.security.auth.login.AccountException;
-import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import java.util.Optional;
@@ -35,7 +26,7 @@ public class PoliceService {
 
     //경찰관 추가
     public void policeAdd(PoliceDto policeDto){
-        PoliceEntity police = PoliceConstructors.createOfficer(policeDto,passwordEncoder);
+        PoliceEntity police = PoliceConstructors.dtoToEntityPasswordEncryp(policeDto,passwordEncoder);
         policeRepository.save(police);
     }
 
@@ -45,7 +36,7 @@ public class PoliceService {
         List<PoliceEntity> policesSearch = policeRepository.findAll();
 
         for(PoliceEntity polices : policesSearch){
-            policeList.add(PoliceConstructors.officerView(polices));
+            policeList.add(PoliceConstructors.entityToDto(polices));
         }
         return policeList;
     }
@@ -53,7 +44,7 @@ public class PoliceService {
     // id(PK)로 경찰관 상세정보 조회
     public PoliceDto policeDetail(Long id) {
         Optional<PoliceEntity> policeIdSearch = policeRepository.findByPoliceId(id);
-        return PoliceConstructors.officerView(policeIdSearch.get());
+        return PoliceConstructors.entityToDto(policeIdSearch.get());
 
     }
 
@@ -61,7 +52,7 @@ public class PoliceService {
     public PoliceDto policeEmailSearch(String email){
         Optional<PoliceEntity> police= policeRepository.findByEmail(email);
         PoliceEntity policeEntity= police.get();
-        return PoliceConstructors.officerView(policeEntity);
+        return PoliceConstructors.entityToDto(policeEntity);
     }
 
     //내 정보 수정

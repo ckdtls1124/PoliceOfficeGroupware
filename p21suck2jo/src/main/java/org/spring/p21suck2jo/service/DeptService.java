@@ -10,11 +10,9 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +42,7 @@ public class DeptService {
         List<PoliceDto> policeDtos = new ArrayList<>();
 
         for (PoliceEntity policeEntity : policeEntities) {
-            PoliceDto policeDto = PoliceConstructors.officerView(policeEntity);
+            PoliceDto policeDto = PoliceConstructors.entityToDto(policeEntity);
             policeDtos.add(policeDto);
         }
         return policeDtos;
