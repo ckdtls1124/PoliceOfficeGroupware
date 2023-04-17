@@ -28,6 +28,7 @@ public class EventService {
 	private final PoliceRepository policeRepository;
 	private final PersonRepository personRepository;
 
+	//사건 등록 시 사건 분류를 선택할 수 있도록 분류 리스트를 등록 페이지로 가져간다
 	public List<EventGroupDto> eventRegisterSelectGroup() {
 
 		List<EventGroupEntity> eventEntities = eventGroupRepository.findAll();
@@ -39,26 +40,27 @@ public class EventService {
 		return eventGroupDto;
 	}
 
-	public List<PoliceDto> eventRegisterSelectPolice() {
-		List<PoliceEntity> policeEntities = policeRepository.findAll();
-		List<PoliceDto> policeDto = new ArrayList<>();
+//	public List<PoliceDto> eventRegisterSelectPolice() {
+//		List<PoliceEntity> policeEntities = policeRepository.findAll();
+//		List<PoliceDto> policeDto = new ArrayList<>();
+//
+//		for(PoliceEntity policeEntity : policeEntities){
+//			policeDto.add(PoliceDto.officerView(policeEntity));
+//		}
+//		return policeDto;
+//	}
+//
+//	public List<DeptDto> eventRegisterSelectDept() {
+//		List<DeptEntity> deptEntities = deptRepository.findAll();
+//		List<DeptDto> deptDto = new ArrayList<>();
+//
+//		for(DeptEntity deptEntity : deptEntities){
+//			deptDto.add(DeptDto.deptView(deptEntity));
+//		}
+//		return deptDto;
+//	}
 
-		for(PoliceEntity policeEntity : policeEntities){
-			policeDto.add(PoliceDto.officerView(policeEntity));
-		}
-		return policeDto;
-	}
-
-	public List<DeptDto> eventRegisterSelectDept() {
-		List<DeptEntity> deptEntities = deptRepository.findAll();
-		List<DeptDto> deptDto = new ArrayList<>();
-
-		for(DeptEntity deptEntity : deptEntities){
-			deptDto.add(DeptDto.deptView(deptEntity));
-		}
-		return deptDto;
-	}
-
+	//사건 등록 시 관련 시민을 선택할 수 있도록 시민 리스트를 등록 페이지로 가져간다
 	public List<PersonDto> eventRegisterSelectPerson() {
 		List<PersonEntity> personEntities = personRepository.findAll();
 		List<PersonDto> personDto = new ArrayList<>();
@@ -72,7 +74,20 @@ public class EventService {
 		return personDto;
 	}
 
-	//사건 등록
+	//현재 로그인한 경찰의 정보가 사건의 등록 정보와 매핑되도록 처리
+	public PoliceDto eventRegisterPolice(String nowPolice) {
+
+		Optional<PoliceEntity> getPolice =  policeRepository.findByEmail(nowPolice);
+
+		PoliceDto policeDto = null;
+
+		if(getPolice.isPresent()){
+			policeDto = PoliceDto.officerView(getPolice.get());
+		}
+		return policeDto;
+	}
+	
+	//사건 등록 수행
 	@Transactional
 	public void eventRegister(EventDto eventDto) throws IOException {
 
@@ -88,12 +103,12 @@ public class EventService {
 		PersonEntity personEntity = personRepository.findById(eventDto.getPerson()).get();
 		eventDto.setEventJoinPerson(personEntity);
 
-		//파일업로드 처리
+		//파일 업로드 처리
 		if(eventDto.getEventFile().isEmpty()){
-			//파일이 없을 때
+			//첨부된 파일이 없을 때(사건만 저장한다)
 			eventRepository.save(EventConstructors.eventDtoToEntity(eventDto));
 		}else{
-			//파일이 있을 때
+			//첨부된 파일이 있을 때
 			//1. 파일을 저장 장치(c:드라이브의 지정된 폴더)에 저장
 			MultipartFile eventFile = eventDto.getEventFile();
 			String fileName = eventFile.getOriginalFilename();
@@ -129,13 +144,12 @@ public class EventService {
 
 		Optional<EventEntity> optionalEventEntity = eventRepository.findById(eventId);
 
-		if(optionalEventEntity.isPresent()){
-			EventDto eventDto = EventConstructors.eventEntityToDto(optionalEventEntity.get());
-			return eventDto;
-		}else {
-			return null;
-		}
+		EventDto eventDto = null;
 
+		if(optionalEventEntity.isPresent()){
+			eventDto = EventConstructors.eventEntityToDto(optionalEventEntity.get());
+		}
+		return eventDto;
 	}
 
 	//사건 업데이트
@@ -143,6 +157,7 @@ public class EventService {
 	public void eventUpdateDo(Long eventId, EventDto eventDto) {
 
 		EventEntity eventEntity = eventRepository.findById(eventId).get();
+		
 		eventEntity.setEventSettle(eventDto.getEventSettle());
 		eventEntity.setEventNote(eventDto.getEventNote());
 
@@ -173,16 +188,17 @@ public class EventService {
 
 	public Page<EventDto> myEventView(Pageable pageable, String nowPolice) {
 
-		//policeId 뽑음
+		//이메일을 기준으로 경찰관의 기본키(policeId)를 뽑는다
 		Long policeId = eventRepository.findByEmail(nowPolice);
 
-		//해당하는 policeId를 가지고있는 event 목록을 뽑음
+		//해당하는 기본키(policeId)를 외래키로 가지고있는 사건 목록을 뽑는다
 		Page<EventEntity> myEventEntities = eventRepository.findMyEvent(pageable, policeId);
 		Page<EventDto> myEventDto = myEventEntities.map(EventConstructors::eventEntityToDto);
 
 		return myEventDto;
 	}
 
+	//오늘 등록된 사건 조회
 	public List<EventDto> todayEvent() {
 
 		List<EventEntity> eventEntityList = eventRepository.findTodayEvent();
@@ -192,18 +208,6 @@ public class EventService {
 			todayEventDto.add(EventConstructors.eventEntityToDto(eventEntity));
 		}
 		return todayEventDto;
-	}
-
-	//현재 로그인한 경찰의 정보가 사건의 등록 정보와 매핑되도록
-	public PoliceDto eventRegisterPolice(String nowPolice) {
-
-		Optional<PoliceEntity> getPolice =  policeRepository.findByEmail(nowPolice);
-
-		if(getPolice.isPresent()){
-			PoliceDto policeDto = PoliceDto.officerView(getPolice.get());
-			return policeDto;
-		}
-		return null;
 	}
 
 }
