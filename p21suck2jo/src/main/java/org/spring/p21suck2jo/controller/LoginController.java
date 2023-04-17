@@ -110,4 +110,10 @@ public class LoginController {
         System.out.println("수정 성공!!!");
         return "redirect:/login";
     }
+
+
+    @GetMapping("/weather")
+    public String weather(){
+        return "";
+    }
 }
