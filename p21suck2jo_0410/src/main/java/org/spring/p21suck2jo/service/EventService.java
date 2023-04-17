@@ -44,7 +44,7 @@ public class EventService {
 		List<PoliceDto> policeDto = new ArrayList<>();
 
 		for(PoliceEntity policeEntity : policeEntities){
-			policeDto.add(PoliceDto.officerView(policeEntity));
+			policeDto.add(PoliceDto.entityToDtoNoPassword(policeEntity));
 		}
 		return policeDto;
 	}
@@ -200,7 +200,7 @@ public class EventService {
 		Optional<PoliceEntity> getPolice =  policeRepository.findByEmail(nowPolice);
 
 		if(getPolice.isPresent()){
-			PoliceDto policeDto = PoliceDto.officerView(getPolice.get());
+			PoliceDto policeDto = PoliceDto.entityToDtoNoPassword(getPolice.get());
 			return policeDto;
 		}
 		return null;

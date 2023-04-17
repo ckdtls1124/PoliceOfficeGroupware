@@ -1,7 +1,6 @@
 server:
   port: 8099
 
-#  timeout 설정으로 로그온 시간 설정 (최소 1분)
   servlet:
     session:
       timeout: 10m

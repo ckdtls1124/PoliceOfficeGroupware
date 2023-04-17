@@ -1,18 +1,11 @@
 package org.spring.p21suck2jo.dto;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.spring.p21suck2jo.entity.BoardEntity;
 import org.spring.p21suck2jo.entity.DeptEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.role.Role;
 
-import javax.persistence.Column;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Getter
 @Setter
@@ -42,7 +35,7 @@ public class PoliceDto {
 
     private DeptEntity dept;
 
-    public static PoliceDto officerView(PoliceEntity policeEntity){
+    public static PoliceDto entityToDtoNoPassword(PoliceEntity policeEntity){
         PoliceDto police = new PoliceDto();
         police.setPoliceId(policeEntity.getPoliceId());
 //        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));

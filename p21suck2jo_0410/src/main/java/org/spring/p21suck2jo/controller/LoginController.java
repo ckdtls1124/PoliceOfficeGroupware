@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
@@ -53,7 +52,7 @@ public class LoginController {
         List<BoardDto> todayBoard=boardService.todayBoard();
         model.addAttribute("board",todayBoard);
 
-        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.findReceivedAllMemo(policeId);
+        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.findReceivedAllMemoByLogInPoliceId(policeId);
         model.addAttribute("receivedMemorandumDtoPage", receivedMemorandumDtoPage);
 
         return "index";
