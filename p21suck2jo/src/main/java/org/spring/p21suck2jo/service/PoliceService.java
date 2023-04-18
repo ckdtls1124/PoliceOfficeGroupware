@@ -7,6 +7,8 @@ import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,6 @@ import java.util.Optional;
 public class PoliceService {
 
     private final PoliceRepository policeRepository;
-    private final DeptRepository deptRepository;
     private final PasswordEncoder passwordEncoder;
 
 
@@ -30,16 +31,20 @@ public class PoliceService {
         policeRepository.save(police);
     }
 
-    //경찰관 전체 목록
-    public List<PoliceDto> policeList(){
-        List<PoliceDto> policeList = new ArrayList<>();
-        List<PoliceEntity> policesSearch = policeRepository.findAll();
-
-        for(PoliceEntity polices : policesSearch){
-            policeList.add(PoliceConstructors.entityToDto(polices));
-        }
+    //경찰관 목록(paging)
+    public Page<PoliceDto> PoliceListPaging(Pageable pageable){
+        Page<PoliceEntity> police = policeRepository.findAll(pageable);
+        Page<PoliceDto> policeList = police.map(PoliceConstructors :: entityToDto);
         return policeList;
     }
+
+   //경찰관 목록에서 이름 검색
+    public Page<PoliceDto> policeListSearch(Pageable pageable,String search){
+        Page<PoliceEntity> police = policeRepository.findByPoliceNameContaining(pageable,search);
+        Page<PoliceDto> policeList = police.map(PoliceConstructors :: entityToDto);
+        return policeList;
+    }
+
 
     // id(PK)로 경찰관 상세정보 조회
     public PoliceDto policeDetail(Long id) {
@@ -55,8 +60,9 @@ public class PoliceService {
         return PoliceConstructors.entityToDto(policeEntity);
     }
 
+
     //내 정보 수정
-    public void myPageUpdate(PoliceDto policeDto){
+    public void myPageUpdate(PoliceDto policeDto) {
 
         Optional<PoliceEntity> optionalPolice = policeRepository.findByPoliceId(policeDto.getPoliceId());
         if (optionalPolice.isPresent()) {

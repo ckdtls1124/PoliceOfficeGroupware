@@ -86,3 +86,17 @@
   color: blue;
   font-weight: 500;
 }
+
+.page-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.search-box{
+  display : flex;
+  justify-content: right;
+   padding-top : 10px;
+}

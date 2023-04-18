@@ -17,4 +17,5 @@ public class ApprovingMemberDto {
     private PoliceEntity police;
     private MemorandumEntity memorandum;
 
+
 }

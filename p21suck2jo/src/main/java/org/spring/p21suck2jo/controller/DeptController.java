@@ -36,11 +36,11 @@ public class DeptController {
 
     //부서 상세목록 List view
     @GetMapping("/detail/{id}")
-    public String deptDetail(@PathVariable Long id, Model model){
+    public String deptDetail(@PathVariable Long id, Model model) {
         DeptDto deptDto = deptService.beLongToDept(id);
         List<PoliceDto> dto = deptService.deptDetail(deptDto.getDeptId());
-        model.addAttribute("deptList",deptDto);
-        model.addAttribute("policeList",dto);
+        model.addAttribute("deptList", deptDto);
+        model.addAttribute("policeList", dto);
         return "/dept/deptDetail";
     }
 

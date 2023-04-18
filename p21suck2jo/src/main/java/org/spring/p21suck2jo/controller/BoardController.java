@@ -48,7 +48,6 @@ public class BoardController {
         if(policeDto!=null){
             model.addAttribute("policeName",policeDto.getPoliceName());
         }
-
         model.addAttribute("boardDto", new BoardDto());
         return "/board/boardWrite";
     }
