@@ -17,7 +17,7 @@ public class ReplyDto {
     public Long replyId;
     public String replyWriter;
     public String replyContent;
-    public Long boardId;
+    public Long boardId; // BoardEntity의 boardId -> 게시글 조회시
     public LocalDateTime createTime;
     public LocalDateTime updateTime;
     public PoliceEntity police;

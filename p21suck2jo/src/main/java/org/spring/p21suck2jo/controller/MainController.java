@@ -27,5 +27,10 @@ public class MainController {
     return "/calendar/AllCalender";
   }
 
+  @GetMapping("/sceen")
+  public String sceen(){
+    return "/api/sceen";
+  }
+
 
 }

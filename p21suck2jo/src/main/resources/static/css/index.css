@@ -160,98 +160,98 @@
   } */
 
 /* chat */
-.wrap{
-    position:relative;
+.wrap {
+	position: relative;
 }
-.wrap #btn-chat-open{
-    position: fixed;
-    bottom: 20px;
-    right: 0;
-    cursor:pointer;
+.wrap #btn-chat-open {
+	position: fixed;
+	bottom: 20px;
+	right: 0;
+	cursor: pointer;
 }
-.wrap #speech-bubble{
-    position: fixed;
-        bottom: 115px;
-        right: 13px;
-            visibility: hidden;
+.wrap #speech-bubble {
+	position: fixed;
+	bottom: 115px;
+	right: 13px;
+	visibility: hidden;
 }
-.wrap #btn-chat-open:hover ~ #speech-bubble{
-    visibility: visible;
+.wrap #btn-chat-open:hover ~ #speech-bubble {
+	visibility: visible;
 }
 
 /*================================first-container=========================*/
 .main .main-grid ul li .first-container {
-  /* border : 1px solid; */
-  padding: 10px;
+	/* border : 1px solid; */
+	padding: 10px;
 }
 
 .main .main-grid ul li .first-container .logo {
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
 }
 
 .main .main-grid ul li .first-container .logo h5 {
-  text-align: center;
-  padding: 10px;
-  color: #888;
+	text-align: center;
+	padding: 10px;
+	color: #888;
 }
 
 .main .main-grid ul li .first-container .today-works {
-  display: flex;
-  width: 90%;
-  justify-content: space-between;
-  border-bottom: #ededed 1px solid;
-  margin-left: 18px;
-  border-bottom-width: 0.5px;
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+	border-bottom: #ededed 1px solid;
+	margin-left: 18px;
+	border-bottom-width: 0.5px;
 }
 
 .main .main-grid ul li .first-container .today-works p.start {
-  color: #888;
+	color: #888;
 }
 
 .main .main-grid ul li .first-container .today-works p {
-  padding: 13px;
-  font-size: 15px;
-  font-weight: bold;
+	padding: 13px;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .main .main-grid ul li .first-container .today-event {
-  display: flex;
-  width: 90%;
-  justify-content: space-between;
-  border-bottom: #ededed 1px solid;
-  margin-left: 18px;
-  border-bottom-width: 0.5px;
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+	border-bottom: #ededed 1px solid;
+	margin-left: 18px;
+	border-bottom-width: 0.5px;
 }
 
 .main .main-grid ul li .first-container .today-event p.info {
-  color: #888;
+	color: #888;
 }
 
 .main .main-grid ul li .first-container .today-event p {
-  padding: 13px;
-  font-size: 15px;
-  font-weight: bold;
+	padding: 13px;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .main .main-grid ul li .first-container .today-board {
-  display: flex;
-  width: 90%;
-  justify-content: space-between;
-  border-bottom: #ededed 1px solid;
-  margin-left: 18px;
-  border-bottom-width: 0.5px;
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+	border-bottom: #ededed 1px solid;
+	margin-left: 18px;
+	border-bottom-width: 0.5px;
 }
 
 .main .main-grid ul li .first-container .today-board p:nth-child(2) {
-  color: #888;
+	color: #888;
 }
 
 .main .main-grid ul li .first-container .today-board p {
-  padding: 13px;
-  font-size: 15px;
-  font-weight: bold;
+	padding: 13px;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 /*================================first-container=========================*/

@@ -37,8 +37,6 @@
                                 <div class="box-con">
                                     <!--                      파일 올리기-->
                                     <input type="file" name="file" multiple="multiple">
-
-                                    <!--                    해당 문서에 속한 첨부파일을 전체 가져온다.-->
                                     <div th:each="file : ${fileInDetailMemo}" class="FileListContainer">
                                         <a th:href="|/memo/file/attach/${file.memorandumFileId}|"
                                            th:text="${file.memorandumFileOriginalName}"></a>
@@ -46,7 +44,15 @@
                                                class="numberOfFile">
                                         <button class="deleteFile">Delete</button>
                                     </div>
-
+                                    <!--        결재 승인자를 특정-->
+                                    <label>결재선 지정</label>
+                                    <select th:field="${approveMember.policeName}">
+                                        <option value="">결재자 선택...</option>
+                                        <option th:each="nameDept : ${approveMemberNameDept}" th:value="${nameDept.policeName}">
+                                            <span th:text="${nameDept.deptName}"></span> -
+                                            <span th:text="${nameDept.policeName}"></span>
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="box-con">
                                     <label th:for="memorandumContent">내용</label>

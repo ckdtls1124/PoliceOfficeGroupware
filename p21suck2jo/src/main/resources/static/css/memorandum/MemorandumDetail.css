@@ -5,7 +5,7 @@
 	height: 100%;
 	/* border: 1px solid; */
 	box-sizing: border-box;
-	padding: 30px 80px 30px 30px;
+	padding: 30px 100px 30px 30px;
 }
 .boardDetail-container .boardDetail {
 	width: 100%;
@@ -36,7 +36,6 @@
 }
 .boardDetail-container .boardDetail .detail-box .box-middle {
 	width: 100%;
-	height: 660px;
 	padding: 20px;
 	box-sizing: border-box;
 }
@@ -108,13 +107,14 @@
 	.box-middle
 	tbody
 	tr:nth-child(4)
-	td textarea{
-	    	width: 100%;
-	    	height: 100%;
-        	padding: 3px 5px;
-        	box-sizing: border-box;
-        	resize: none;
-	}
+	td
+	textarea {
+	width: 100%;
+	height: 100%;
+	padding: 3px 5px;
+	box-sizing: border-box;
+	resize: none;
+}
 .boardDetail-container .boardDetail .detail-box .box-bottom {
 	width: 100%;
 	padding: 0 20px;

@@ -45,7 +45,7 @@
 }
 .boardUpdate-container .boardUpdate .update-form .update-box .box-top h3 img {
 	transform: translateY(-1px);
-	width:24px;
+	width: 24px;
 }
 .boardUpdate-container .boardUpdate .update-form .update-box .box-middle {
 	/* width: 100%; */
@@ -129,8 +129,8 @@ button {
 	a {
 	width: 100%;
 	display: flex;
-	justify-content:center;
-	gap:3px;
+	justify-content: center;
+	gap: 3px;
 	padding: 3px;
 	box-sizing: border-box;
 	border-radius: 3px;

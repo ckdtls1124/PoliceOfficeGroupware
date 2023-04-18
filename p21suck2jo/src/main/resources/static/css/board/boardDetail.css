@@ -5,7 +5,7 @@
 	height: 100%;
 	/* border: 1px solid; */
 	box-sizing: border-box;
-	padding: 30px 80px 30px 30px;
+	padding: 30px 100px 30px 30px;
 }
 .boardDetail-container .boardDetail {
 	width: 100%;
@@ -41,7 +41,7 @@
 }
 .boardDetail-container .boardDetail .detail-box .box-top h3 img {
 	transform: translateY(-1px);
-	width:24px;
+	width: 24px;
 }
 .boardDetail-container .boardDetail .detail-box .box-middle {
 	width: 100%;
@@ -71,16 +71,9 @@
 	font-size: 20px;
 	font-weight: bold;
 }
-.boardDetail-container
-	.boardDetail
-	.detail-box
-	.box-middle
-	thead
-	tr
-	td
-	span{
+.boardDetail-container .boardDetail .detail-box .box-middle thead tr td span {
 	display: inline-block;
-	}
+}
 .boardDetail-container
 	.boardDetail
 	.detail-box
@@ -91,7 +84,7 @@
 	span
 	img {
 	transform: translateY(4px);
-	width:24px;
+	width: 24px;
 }
 .boardDetail-container .boardDetail .detail-box .box-middle tbody > tr {
 	width: 100%;
@@ -137,8 +130,8 @@
 	width: 100%;
 	gap: 10px;
 }
-.boardDetail-container .boardDetail .detail-box .box-bottom .button{
-  height: fit-content;
+.boardDetail-container .boardDetail .detail-box .box-bottom .button {
+	height: fit-content;
 }
 .boardDetail-container .boardDetail .detail-box .box-bottom .button button a {
 	width: 60px;
@@ -183,8 +176,8 @@ button {
 	background-color: #003478;
 	color: #ffffff;
 	display: flex;
-  justify-content: center;
-  gap: 3px;
+	justify-content: center;
+	gap: 3px;
 }
 .boardDetail-container .boardDetail .detail-box .box-bottom .button a img {
 	width: 15px;
@@ -370,8 +363,8 @@ button {
 	button
 	img {
 	transform: translateY(3px);
-	    width: 16px;
-      display: inline-block;
+	width: 16px;
+	display: inline-block;
 }
 .boardDetail-container
 	.boardDetail
@@ -399,9 +392,9 @@ button {
 	.reply-list
 	ul
 	li
-	.button-group:nth-child(2){
-display: flex;
-	}
+	.button-group:nth-child(2) {
+	display: flex;
+}
 .boardDetail-container
 	.boardDetail
 	.detail-box

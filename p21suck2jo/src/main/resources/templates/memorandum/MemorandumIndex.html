@@ -52,36 +52,43 @@
 
                             <table>
                                 <colgroup>
-                                    <col width="10%">
-                                    </col>
+                                    <!--                                    <col width="10%">-->
+                                    <!--                                    </col>-->
                                     <col width="auto">
                                     </col>
                                     <col width="10%">
                                     </col>
                                     <col width="20%">
                                     </col>
-                                    <col width="10%">
-                                    </col>
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>순번</th>
+                                    <!--                                    <th>순번</th>-->
                                     <th>제목</th>
-                                    <!--                                        <th>등록자</th>-->
-                                    <th>승인여부</th>
+
+                                    <th>결재자</th>
                                     <th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="list: ${memorandumDtoPage}">
 
-                                    <td th:text="${list.memorandumId}" class="memoId">
-                                    </td>
+                                    <!--                                    <td th:text="${list.memorandumId}" class="memoId">-->
+                                    <!--                                    </td>-->
 
                                     <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}|}"
                                            th:text="${list.memorandumTitle}"></a></td>
 
-                                    <td th:text="${list.approval}"></td>
+                                    <td>
+                                        <th:block th:if="${list.memorandumId eq approve.memorandum.memorandumId}" th:each="approve : ${approvedNum}">
+                                            <div th:switch="${approve.approved}">
+                                                <span th:case="0">대기</span>
+                                                <span th:case="1">반려</span>
+                                                <span th:case="2">승인</span>
+                                            </div>
+                                        </th:block>
+                                    </td>
+
 
                                     <td><a th:href="@{|/memo/delete/${list.memorandumId}|}" class="deletMemo"
                                            onclick="if(!confirm('문서를 삭제하시겠습니까?')){return false;}">문서 삭제</a></td>
@@ -95,7 +102,8 @@
                             <a th:href="${memorandumDtoPage.first} ? '#' : @{/memo/all(page=${memorandumDtoPage.number - 1})}"
                                class="box1 first">이전</a>
                             <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
-                                <input type="text" th:value="${memorandumDtoPage.number}" hidden="hidden" id="listNumber">
+                                <input type="text" th:value="${memorandumDtoPage.number}" hidden="hidden"
+                                       id="listNumber">
                                 <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1" class="box1"
                                       style="color: #ffffff; background-color: #ad0000 "></span>
                                 <span th:unless="${page == nowPage}" class="box1">

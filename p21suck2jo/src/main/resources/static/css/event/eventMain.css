@@ -1,5 +1,6 @@
 @import url(/css/common/leftWrap.css);
 @import url(/css/common/reset.css);
+
 .event-wrap {
   width: 100%;
   height: auto;
@@ -152,7 +153,7 @@
 }
 
 .event-wrap .event-container .event-container-items .event-list .event-content>ul>a>img {
-  width: 280px;
+  width: 270px;
   height: 250px;
 }
 

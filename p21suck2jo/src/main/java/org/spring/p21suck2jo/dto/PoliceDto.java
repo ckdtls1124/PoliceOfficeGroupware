@@ -85,16 +85,8 @@ public class PoliceDto {
         return policeDto;
     }
 
-    public static PoliceDto toDtoName(PoliceEntity policeEntity) {
-        PoliceDto policeDto=new PoliceDto();
 
-        policeDto.setPoliceName(policeEntity.getPoliceName());
-
-        return  policeDto;
-
-    }
-
-    public static PoliceDto toDtoId(PoliceEntity policeEntity) {
+    public static PoliceDto toDtoIdAndName(PoliceEntity policeEntity) {
         PoliceDto policeDto=new PoliceDto();
 
         policeDto.setPoliceId(policeEntity.getPoliceId());

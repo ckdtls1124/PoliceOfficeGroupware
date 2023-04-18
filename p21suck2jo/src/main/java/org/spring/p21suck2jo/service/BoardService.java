@@ -46,7 +46,7 @@ public class BoardService{
         return boardDtos;
     }
 
-    public BoardDto boardDetail(Long boardId) {
+    public BoardDto boardDetailList(Long boardId) {
 
         Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(boardId);
 
@@ -68,7 +68,7 @@ public class BoardService{
     }
 
     @Transactional
-    public void upViews2(Long boardId) {
+    public void noUpViews(Long boardId) {
 
         boardRepository.updateViews2(boardId);
 

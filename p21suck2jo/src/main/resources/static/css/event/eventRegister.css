@@ -137,6 +137,12 @@
   text-align: center;
 }
 
+.event-wrap .event-container .event-container-items .event-regist>form>ul>li>span:nth-child(2) {
+  text-align: start;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
 .event-wrap .event-container .event-container-items .event-regist>form>ul>li>input {
   width: 280px;
   height: 30px;
