@@ -108,3 +108,15 @@ insert into chat_officer(officer_name, officer_phone, dept_id) values('김득주
 강창신	NNP
 
 김득주	NNP
+
+영화 NNP
+
+오늘 NNP
+
+박스오피스 NNP
+
+개봉 NNP
+
+이번 주 NNP
+
+배우 NNP
