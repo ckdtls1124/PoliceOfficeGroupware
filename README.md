@@ -18,3 +18,6 @@ Kobis Movie API와 Chatbot 접목 방식
 키워드 :
 - 주 키워드 : 영화, 
 - 보조 키워드 : 오늘, 박스오피스, 개봉, 이번 주, (영화이름), 배우
+
+Komoran 작동 방식
+setUserDic에 사전 정의된 단어를 바탕으로, analyze(Param) 메소드가 사용된다.
