@@ -1,4 +1,4 @@
-package org.spring.p21suck2jo.chatbot.entity;
+package org.spring.p21suck2jo.chatbotOriginal.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,11 +15,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ChatDeptEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long deptId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long deptId;
 
-	@Column(nullable = false)
-	private String deptName;
+    @Column(nullable = false)
+    private String deptName;
 
 }

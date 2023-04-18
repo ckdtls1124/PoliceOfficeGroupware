@@ -1,10 +1,10 @@
-package org.spring.p21suck2jo.chatbot.entity;
+package org.spring.p21suck2jo.chatbotOriginal.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.spring.p21suck2jo.chatbot.dto.AnswerDto;
+import org.spring.p21suck2jo.chatbotOriginal.dto.AnswerDto;
 
 import javax.persistence.*;
 

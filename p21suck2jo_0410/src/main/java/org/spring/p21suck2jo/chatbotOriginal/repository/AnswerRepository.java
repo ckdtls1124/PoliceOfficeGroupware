@@ -1,6 +1,6 @@
-package org.spring.p21suck2jo.chatbot.repository;
+package org.spring.p21suck2jo.chatbotOriginal.repository;
 
-import org.spring.p21suck2jo.chatbot.entity.AnswerEntity;
+import org.spring.p21suck2jo.chatbotOriginal.entity.AnswerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnswerRepository extends JpaRepository<AnswerEntity, Long> {

@@ -1,4 +1,4 @@
-package org.spring.p21suck2jo.chatbot.dto;
+package org.spring.p21suck2jo.chatbotOriginal.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

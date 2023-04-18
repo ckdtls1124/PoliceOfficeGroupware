@@ -1,4 +1,4 @@
-package org.spring.p21suck2jo.chatbot.entity;
+package org.spring.p21suck2jo.chatbotOriginal.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,23 +10,24 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Builder
-@Table(name = "chat_officer")
+@Table(name = "chat_intention")
 @AllArgsConstructor
 @NoArgsConstructor
-public class OfficerEntity {
+public class IntentionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long officerId;
+	private Long intentId;
 
 	@Column(nullable = false)
-	private String officerName;
+	private String keyword;
 
-	@Column(nullable = false)
-	private String officerPhone;
-
-	@JoinColumn(name = "dept_id")
+	@JoinColumn(name = "answer_id")
 	@ManyToOne
-	private ChatDeptEntity deptId;
+	private AnswerEntity answerId;
+
+	@JoinColumn
+	@ManyToOne
+	private IntentionEntity upperNo;
 
 }

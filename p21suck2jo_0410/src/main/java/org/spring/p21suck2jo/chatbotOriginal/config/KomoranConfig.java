@@ -1,9 +1,9 @@
-package org.spring.p21suck2jo.chatbot.config;
+package org.spring.p21suck2jo.chatbotOriginal.config;
 
 import kr.co.shineware.nlp.komoran.constant.DEFAULT_MODEL;
 import kr.co.shineware.nlp.komoran.core.Komoran;
-import org.spring.p21suck2jo.chatbot.repository.ChatDeptRepository;
-import org.spring.p21suck2jo.chatbot.repository.OfficerRepository;
+import org.spring.p21suck2jo.chatbotOriginal.repository.ChatDeptRepository;
+import org.spring.p21suck2jo.chatbotOriginal.repository.OfficerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -29,14 +29,25 @@ function disconnect() {
 }
 // 연결
 function connect() {
-  sendMessage("안녕");
+  sendMessageForContact("안녕");
 }
 
-function sendMessage(message) {
+function sendMessageForContact(message) {
   $.ajax({
     url: "/goChatbot",
     type: "post",
     data: { message: message },
+    success: function (responsedHtml) {
+      showMessage(responsedHtml);
+    }
+  });
+}
+
+function sendMessageForMovie(message){
+  $.ajax({
+    url: "/goChatbotForMovie",
+    type: "post",
+    data: { dateAndTime: message },
     success: function (responsedHtml) {
       showMessage(responsedHtml);
     }
@@ -76,10 +87,16 @@ function questionKeyuped(event) {
 
 //전송버튼 클릭이되면 질문을 텍스트 화면에 표현
 function btnMsgSendClicked() {
-  var question = $("#question").val().trim();
+  let question = document.querySelector('#question').value.trim();
+  
   if (question == "" || question.length < 2) return;
+
+  if(!isNaN(question)){
+    sendMessageForMovie(question);
+  } else {
   //메세지 서버로 전달
-  sendMessage(question);
+    sendMessageForContact(question);
+  }
 
   var message = inputTagString(question);
   showMessage(message);//사용자가 입력한 메세지 채팅창에 출력

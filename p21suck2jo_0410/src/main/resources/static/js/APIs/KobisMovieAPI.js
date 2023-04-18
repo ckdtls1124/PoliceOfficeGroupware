@@ -10,9 +10,6 @@ function getMovieList(){
     fetch(`http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${key}`)
     .then((response) => response.json())
     .then((data) => {
-        // data.movieListResult.movieList.forEach((element) => {
-        //     return element;
-        // })
         data.movieListResult.movieList.forEach((element) => {
             movieNames.push(element.movieNm);
         });
@@ -27,9 +24,6 @@ function getMovieList(){
             <li>${movieNames[2]}</li>
         </ul>`;
     })
-
-
-    // return movieNames;
     
 }
 
