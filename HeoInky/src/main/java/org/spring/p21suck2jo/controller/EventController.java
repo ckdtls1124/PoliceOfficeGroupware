@@ -26,7 +26,6 @@ import java.util.List;
 public class EventController {
 
 	private final EventService eventService;
-	private final PoliceService policeService;
 
 	//메인페이지(사건사고 목록)
 	@GetMapping({"/", "/list", "/main"})
@@ -48,6 +47,7 @@ public class EventController {
 		model.addAttribute("eventMainView", eventMainView);
 
 		return "event/eventMain";
+
 	}
 
 	//사건 등록 페이지로 이동
@@ -59,7 +59,7 @@ public class EventController {
 		//이메일을 파라미터로 받아 해당하는 경찰관의 레코드를 가져온다
 		PoliceDto policeInfo = eventService.eventRegisterPolice(nowPolice);
 
-		//현재 로그인한 경찰관의 이름과 기본키, 소속 부서, 부서 기본키 등을 출력(올바른 값이 들어가는지 확인하기 위함)
+		//현재 로그인한 경찰관의 이름과 기본키, 소속 부서, 부서 기본키 등을 콘솔에 출력(올바른 값이 왔는지 확인하기 위함)
 		System.out.println("\n" + ">>>>> 현재 로그인한 경찰의 이름 : " + policeInfo.getPoliceName());
 		System.out.println(">>>>> 현재 로그인한 경찰의 Id : " + policeInfo.getPoliceId());
 		System.out.println(">>>>> 현재 로그인한 경찰의 소속 부서 : " + policeInfo.getDept().getDeptName());
@@ -76,6 +76,7 @@ public class EventController {
 		model.addAttribute("person", eventPersonDto);
 
 		return "event/eventRegister";
+
 	}
 
 	//사건 등록 실행
@@ -89,6 +90,7 @@ public class EventController {
 
 		eventService.eventRegister(eventDto);
 		return "redirect:/event/";
+
 	}
 
 	//사건 상세조회
@@ -99,6 +101,7 @@ public class EventController {
 		model.addAttribute("detail", eventDetailDto);
 
 		return "event/eventDetail";
+
 	}
 
 	//사건 업데이트 페이지로 이동
@@ -109,6 +112,7 @@ public class EventController {
 		model.addAttribute("detail", eventDetailDto);
 
 		return "event/eventUpdate";
+
 	}
 
 	//사건 업데이트 실행
@@ -118,6 +122,7 @@ public class EventController {
 		eventService.eventUpdateDo(eventId, eventDto);
 
 		return "redirect:/event/detail/{eventId}";
+
 	}
 
 	//사건 검색(날짜, 해결 여부)
@@ -149,6 +154,7 @@ public class EventController {
 		model.addAttribute("eventMainView", eventSearchView);
 
 		return "event/eventMain";
+
 	}
 
 	//나의 사건 조회
@@ -175,6 +181,7 @@ public class EventController {
 		model.addAttribute("eventMainView", myEventView);
 
 		return "event/eventMain";
+
 	}
 
 }
