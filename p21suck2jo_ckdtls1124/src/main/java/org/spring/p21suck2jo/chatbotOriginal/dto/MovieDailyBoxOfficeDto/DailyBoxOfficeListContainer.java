@@ -1,8 +1,6 @@
-package org.spring.p21suck2jo.chatbotOriginal.dto;
+package org.spring.p21suck2jo.chatbotOriginal.dto.MovieDailyBoxOfficeDto;
 
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class DailyBoxOfficeListContainer {

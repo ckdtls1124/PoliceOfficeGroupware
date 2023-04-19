@@ -43,11 +43,22 @@ function sendMessageForContact(message) {
   });
 }
 
-function sendMessageForMovie(message) {
+function sendMessageForMovieDailyBoxOffice(message) {
   $.ajax({
-    url: "/goChatbotForMovie",
+    url: "/findMovieDailyBoxOffice",
     type: "post",
     data: { dateAndTime: message },
+    success: function (responsedHtml) {
+      showMessage(responsedHtml);
+    }
+  });
+}
+
+function sendMessageForMovieComingSoon(message) {
+  $.ajax({
+    url: "/findMovieComingSoon",
+    type: "post",
+    data: { term: message },
     success: function (responsedHtml) {
       showMessage(responsedHtml);
     }
@@ -93,10 +104,14 @@ function btnMsgSendClicked() {
 
   // 영화 API를 사용하여, 박스오피스 조회를 위해, yyyyMMdd 입력을 분류한다.
   if (!isNaN(question)) {
-  sendMessageForMovie(question);
+    sendMessageForMovieDailyBoxOffice(question);
+  } 
+  // 영화  API를 사용하여, 이번/다음 주 개봉 예정작을 보여주기 위해, '이번', '다음' 키워드를 분류한다.
+  else if (question.includes("이번") || question.includes("다음")) {
+    sendMessageForMovieComingSoon(question);
   } else {
-  //그외 메세지 서버로 전달
-  sendMessageForContact(question);
+    //그외 메세지 서버로 전달
+    sendMessageForContact(question);
   }
 
 

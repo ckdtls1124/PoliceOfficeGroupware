@@ -45,6 +45,21 @@
             </div>
         </th:block>
 
+<!--        개봉 예정작 조회-->
+        <th:block th:if="${comingSoonMovieList}">
+            <div class="part" >
+                <p>조회하신 주의 개봉작입니다.</p>
+            </div>
+            <div>
+                <div class="part">
+                    <p th:each="eachMovie : ${comingSoonMovieList}">
+                        <span th:text="${eachMovie.value}"></span>&nbsp;
+                        <span th:text="${eachMovie.key}"></span>&nbsp;
+                    </p>
+                </div>
+            </div>
+        </th:block>
+
     </div>
 
 </html>

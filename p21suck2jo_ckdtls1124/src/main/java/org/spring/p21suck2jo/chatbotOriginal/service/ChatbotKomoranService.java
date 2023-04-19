@@ -4,6 +4,10 @@ import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
 import org.spring.p21suck2jo.chatbotMovie.dataReceiver.MovieAPIExplorerJava;
 import org.spring.p21suck2jo.chatbotOriginal.dto.*;
+import org.spring.p21suck2jo.chatbotOriginal.dto.MovieComingSoonListDto.ComingSoonMovieAllLists;
+import org.spring.p21suck2jo.chatbotOriginal.dto.MovieComingSoonListDto.ComingSoonMovieNmOpenDtContainer;
+import org.spring.p21suck2jo.chatbotOriginal.dto.MovieComingSoonListDto.ComingSoonMovieResultContainer;
+import org.spring.p21suck2jo.chatbotOriginal.dto.MovieDailyBoxOfficeDto.DailyBoxOfficeListContainer;
 import org.spring.p21suck2jo.chatbotOriginal.entity.AnswerEntity;
 import org.spring.p21suck2jo.chatbotOriginal.entity.IntentionEntity;
 import org.spring.p21suck2jo.chatbotOriginal.entity.OfficerEntity;
@@ -13,10 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import java.util.Set;
+import java.time.temporal.WeekFields;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -135,20 +140,86 @@ public class ChatbotKomoranService {
 //    Movie API ========================================================================
 
     public DailyBoxOfficeListContainer findDailyBoxOfficeList(String dateAndTime) throws IOException {
-        String dailyListString = MovieAPIExplorerJava.getMovieDataWithTodayBoxOffice(dateAndTime);
-        DailyBoxOfficeListContainer dailyListInResult = MovieAPIExplorerJava.returnMovieResponse(dailyListString);
+        String dailyListString = MovieAPIExplorerJava.getMovieDataWithSelectedDateBoxOffice(dateAndTime);
+        DailyBoxOfficeListContainer dailyListInResult = MovieAPIExplorerJava.returnDailyMovieBoxOfficeList(dailyListString);
 
         return dailyListInResult;
     }
 
-    public MessageDto showCurrentDateTime(){
+    public String findComingSoonMovies() throws IOException {
+        String comingSoonMoviesList = MovieAPIExplorerJava.getComingSoonMovies();
+
+        return comingSoonMoviesList;
+    }
+
+    public MessageDto showCurrentDateTime() {
         MessageDto messageDto = new MessageDto();
         LocalDateTime today = LocalDateTime.now();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("a H:mm");
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
         messageDto.today(today.format(dateFormatter));
 
         return messageDto;
+    }
+
+    public int returnWeekNumBasedOnSubmittedDate(String term) {
+        LocalDateTime toLocalDateTime = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String todayString = toLocalDateTime.format(dateFormatter);
+
+        LocalDate today = this.stringDateTimeLocalDateTimeFormatter(todayString);
+        int result = 0;
+        if (term.contains("이번")) {
+            result = returnTheWeekNumberOfCertainDate(today);
+        } else if (term.contains("다음")) {
+//            '다음' 단어가 변수에 포함되어 있으면, '다음 주'로 인식하고, 현재 날짜에 7일을 더하여, 다음주를 잡는다.
+            LocalDate nextWeek = today.plusDays(7);
+            result = returnTheWeekNumberOfCertainDate(nextWeek);
+        }
+
+        return result;
+    }
+
+
+    public Map<String, String> returnComingSoonMoviesByCertainTerm(String term) throws IOException {
+        String comingSoonMovieList = this.findComingSoonMovies();
+        ComingSoonMovieResultContainer result = MovieAPIExplorerJava.returnComingSoonMovieList(comingSoonMovieList);
+
+        int weekNumOfSubmittedDate = this.returnWeekNumBasedOnSubmittedDate(term);
+        Map<String, String> weekNumOfFoundMovieOpenDt = this.listOfOpenDateOfEachMovie(result);
+
+        Map<String, String> filteredMapOfComingSoonMovies = new HashMap<>();
+        for (String key : weekNumOfFoundMovieOpenDt.keySet()) {
+            if (this.returnTheWeekNumberOfCertainDate(this.stringDateTimeLocalDateTimeFormatter(key)) == weekNumOfSubmittedDate) {
+                filteredMapOfComingSoonMovies.put(key, weekNumOfFoundMovieOpenDt.get(key));
+            }
+        }
+
+
+        return filteredMapOfComingSoonMovies;
+    }
+
+    public int returnTheWeekNumberOfCertainDate(LocalDate today) {
+        int weekOfYear = today.get(WeekFields.ISO.weekOfYear());
+        return weekOfYear;
+    }
+
+    public LocalDate stringDateTimeLocalDateTimeFormatter(String stringLocalDateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate formattedLocalDateTime = LocalDate.parse(stringLocalDateTime, formatter);
+        return formattedLocalDateTime;
+    }
+
+    public Map<String, String> listOfOpenDateOfEachMovie(ComingSoonMovieResultContainer result) {
+        //        출력된 값 중에서, 영화 제목과 개봉일을 Map으로 변환
+        Map<String, String> mapMovieNmOpenDt = new HashMap<>();
+        for (ComingSoonMovieAllLists movieDetail : result.getMovieListResult().getMovieList()) {
+            String eachMovieOpenDate = movieDetail.getOpenDt();
+            String eachMovieNm = movieDetail.getMovieNm();
+
+            ComingSoonMovieNmOpenDtContainer comingSoonMovieNmOpenDtContainer = new ComingSoonMovieNmOpenDtContainer(eachMovieOpenDate, eachMovieNm);
+            mapMovieNmOpenDt.put(comingSoonMovieNmOpenDtContainer.getOpenDt(), comingSoonMovieNmOpenDtContainer.getMovieNm());
+        }
+        return mapMovieNmOpenDt;
     }
 
 
