@@ -4,6 +4,12 @@ import lombok.Data;
 
 @Data
 public class DailyBoxOfficeListItem {
+
+    private String boxofficeType; // 박스오피스 종류
+
+    private String showRange; // 박스오피스 조회 일자
+
+
     private String rnum; // 순번
 
     private String rank; // 해당일자의 박스오피스 순위

@@ -1,0 +1,229 @@
+@import url(/css/common/leftWrap.css);
+@import url(/css/common/reset.css);
+.board-container {
+	width: 100%;
+	height: 100%;
+	/* border: 1px solid; */
+	box-sizing: border-box;
+	padding: 30px 100px 30px 30px;
+}
+.board-container .board {
+	width: 100%;
+	height: 100%;
+	/* border: 1px solid;
+	box-sizing: border-box; */
+}
+.board-container .board .board-box {
+	width: auto;
+	height: 100%;
+	border-top: 2px solid #003478;
+	border-bottom: 2px solid #003478;
+	box-sizing: border-box;
+	/* margin: 0 15px; */
+	padding: 10px 10px;
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	/* gap: 5px; */
+}
+.board-container .board .board-box .box-top {
+	width: 100%;
+	height: auto;
+	background-color: #003478;
+	color: #ffffff;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+}
+.board-container .board .board-box .box-top h3 {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+}
+.board-container .board .board-box .box-top h3 img {
+	transform: translateY(-1px);
+	width:24px;
+}
+.board-container .board .board-box .search {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-between;
+}
+button {
+	border: none;
+}
+.board-container .board .board-box .search .write-btn {
+	margin-top: 10px;
+}
+.board-container .board .board-box .search .write-btn button a {
+	width: 100%;
+	display: flex;
+	justify-content:center;
+	padding: 3px 5px;
+	box-sizing: border-box;
+	border-radius: 3px;
+	background-color: #003478;
+	color: #ffffff;
+	cursor: pointer;
+	text-align: center;
+	gap:3px;
+}
+.board-container .board .board-box .search .write-btn button a img {
+	transform: translateY(2px);
+	width:16px;
+}
+.board-container .board .board-box .search .write-btn button a:hover {
+	background-color: #ffc400;
+	color: #000000;
+}
+.board-container .board .board-box .search .search-bar {
+	width: 40%;
+	display: flex;
+	justify-content: flex-end;
+	height: auto;
+	padding: 10px 0 0 0;
+	box-sizing: border-box;
+	gap: 5px;
+}
+.board-container .board .board-box .search .search-bar input {
+	width: 300px;
+	padding: 3px 5px;
+	box-sizing: border-box;
+	border: none;
+	border: 1px solid #003478;
+	/* border-radius: 3px; */
+	/* font-size: 11px; */
+}
+.board-container .board .board-box .search .search-bar button {
+	background-color: #003478;
+	padding: 3px 5px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 3px;
+	/* font-size: 11px; */
+	color: #ffffff;
+	cursor: pointer;
+}
+.board-container .board .board-box .search .search-bar button:hover {
+	background-color: #ffc400;
+	color: #000000;
+}
+.board-container .board .board-box .box-middle {
+	width: 100%;
+	height: 690px;
+	margin: 10px 0 30px 0;
+	/* display: flex; */
+}
+.board-container .board .board-box .box-middle table {
+	width: 100%;
+	height: auto;
+	border-collapse: collapse;
+}
+.board-container .board .board-box .box-middle table thead {
+	width: 100%;
+	height: auto;
+}
+.board-container .board .board-box .box-middle table thead tr {
+	width: 100%;
+	height: auto;
+	border-left: none;
+	border-right: none;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	background-color: #477eeb2e;
+}
+.board-container .board .board-box .box-middle table thead tr th {
+	box-sizing: border-box;
+	position: relative;
+	padding: 10px 0;
+}
+.board-container .board .board-box .box-middle table thead tr th:nth-child(2) {
+	text-align: left;
+	padding-left: 20px;
+}
+.board-container .board .board-box .box-middle table thead tr th::after {
+	content: "";
+	width: 1px;
+	height: 50%;
+	position: absolute;
+	right: 0;
+	top: 8px;
+	background: rgba(0, 0, 0, 0.2);
+}
+.board-container .board .board-box .box-middle table tbody tr {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.board-container .board .board-box .box-middle table tbody tr td {
+	text-align: center;
+	padding: 10px 0;
+}
+.board-container .board .board-box .box-middle table tbody tr td:nth-child(2) {
+	padding-left: 20px;
+	text-align: left;
+}
+.board-container
+	.board
+	.board-box
+	.box-middle
+	table
+	tbody
+	tr
+	td:nth-child(2)
+	a {
+	color: #3d7ccf;
+	cursor: pointer;
+}
+.board-container
+	.board
+	.board-box
+	.box-middle
+	table
+	tbody
+	tr
+	td:nth-child(2)
+	a:hover {
+	color: #0046a1;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.board-container
+	.board
+	.board-box
+	.box-middle
+	table
+	thead
+	tr
+	th:last-child::after {
+	width: 0;
+	height: 0;
+}
+.board-container .board .board-box .box-bottom {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.board-container .board .board-box .box-bottom .paging {
+	width: auto;
+	display: table;
+	border-collapse: collapse;
+}
+.board-container .board .board-box .box-bottom .paging .box1 {
+	display: table-cell;
+	width: 34px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 12px;
+	letter-spacing: 1px;
+	line-height: 30px;
+}
+
+.board-container .board .board-box .box-bottom .paging .first:hover {
+	background-color: #003478;
+	color: #ffffff;
+}
+.board-container .board .board-box .box-bottom .paging .next:hover {
+	background-color: #003478;
+	color: #ffffff;
+}

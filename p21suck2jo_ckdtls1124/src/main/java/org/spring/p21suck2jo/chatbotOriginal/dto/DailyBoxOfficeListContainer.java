@@ -5,9 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class DailyBoxOfficeListResult {
+public class DailyBoxOfficeListContainer {
 
-    private DailyBoxOfficeListContainer boxOfficeResult;
-
-
+    private DailyBoxOfficeListItemContainer boxOfficeResult;
 }

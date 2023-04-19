@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/memorandum/MemorandumIndex.css">
+<script src="/js/memorandum/MemorandumIndex.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+<head>
+    <meta charset="UTF-8">
+    <title>나의 결재함</title>
+</head>
+
+<body>
+
+
+<div id="all-container-wrap" th:replace="/common/leftWrap :: left-wrap"></div>
+<!--왼쪽 메뉴바-->
+
+<!--오른쪽 컨테이너-->
+<div class="right-wrap">
+    <div class="right-menu">
+        <div class="right-con">
+
+            <!--오른쪽 컨테이너-->
+            <div class="board-container">
+                <div class="board">
+                    <div class="board-box">
+
+                        <div class="box-top">
+                            <h3>나의 결재 문서함</h3>
+
+                        </div>
+
+                        <div class="search">
+                            <div class="write-btn">
+                                <button type="submit"><a th:href="@{/memo/memoWritePage}"><img src="/img/board/plus.png"
+                                                                                               alt=""> 결재 문서 작성</a>
+                                </button>
+                            </div>
+                            <div class="search-bar">
+                                <form th:action="@{/memo/all}" method="get">
+                                    <input type="search" name="search" id="search" placeholder="검색어를 입력해주세요"
+                                           onfocus="this.placeholder=''" onblur="this.placeholder='검색어를 입력해주세요'">
+                                    <button type="submit">검색</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="box-middle">
+
+                            <table>
+                                <colgroup>
+                                    <!--                                    <col width="10%">-->
+                                    <!--                                    </col>-->
+                                    <col width="auto">
+                                    </col>
+                                    <col width="10%">
+                                    </col>
+                                    <col width="20%">
+                                    </col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <!--                                    <th>순번</th>-->
+                                    <th>제목</th>
+
+                                    <th>결재자</th>
+                                    <th>삭제</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="list: ${memorandumDtoPage}">
+
+                                    <!--                                    <td th:text="${list.memorandumId}" class="memoId">-->
+                                    <!--                                    </td>-->
+
+                                    <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}|}"
+                                           th:text="${list.memorandumTitle}"></a></td>
+
+                                    <td>
+                                        <th:block th:if="${list.memorandumId eq approve.memorandum.memorandumId}" th:each="approve : ${approvedNum}">
+                                            <div th:switch="${approve.approved}">
+                                                <span th:case="0">대기</span>
+                                                <span th:case="1">반려</span>
+                                                <span th:case="2">승인</span>
+                                            </div>
+                                        </th:block>
+                                    </td>
+
+
+                                    <td><a th:href="@{|/memo/delete/${list.memorandumId}|}" class="deletMemo"
+                                           onclick="if(!confirm('문서를 삭제하시겠습니까?')){return false;}">문서 삭제</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="box-bottom">
+                            <a th:href="${memorandumDtoPage.first} ? '#' : @{/memo/all(page=${memorandumDtoPage.number - 1})}"
+                               class="box1 first">이전</a>
+                            <th:block th:each="page: ${#numbers.sequence(startPage, endPage)}">
+                                <input type="text" th:value="${memorandumDtoPage.number}" hidden="hidden"
+                                       id="listNumber">
+                                <span th:if="${page == nowPage}" th:text="${page}" th:classappend="class1" class="box1"
+                                      style="color: #ffffff; background-color: #ad0000 "></span>
+                                <span th:unless="${page == nowPage}" class="box1">
+                        <a class="pagingNum" th:href="@{/memo/all(page=${page-1})}" style="color: #000000; background-color:#ffffff;
+                  width: inherit; height: inherit; display:block;" th:text="${page}"></a>
+                      </span>
+                            </th:block>
+                            <a th:href="${memorandumDtoPage.last} ? '#' : @{/memo/all(page=${memorandumDtoPage.number + 1})}"
+                               class="box1 next">다음</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</body>
+</html>
