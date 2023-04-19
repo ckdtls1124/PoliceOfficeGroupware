@@ -26,9 +26,9 @@ public class BoardDto {
 
 //    private MemberEntity memberId;
 
-    public static BoardDto toboardDto(BoardEntity boardEntity){
+    public static BoardDto toboardDto(BoardEntity boardEntity) {
 
-        BoardDto boardDto=new BoardDto();
+        BoardDto boardDto = new BoardDto();
 
         boardDto.setBoardId(boardEntity.getBoardId());
         boardDto.setBoardTitle(boardEntity.getBoardTitle());

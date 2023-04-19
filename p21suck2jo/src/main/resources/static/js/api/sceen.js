@@ -8,6 +8,7 @@ let html1 = "";
 function boxofficeFn() {
 	//http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=&targetDt=
 	let dailyBoxOfficeList = "searchDailyBoxOfficeList.json";
+	let today = new Date().toISOString().substring(1, 10).replace(/-/g, '') - 1;
 	let targetDt = "20230417";
 	let itemPerPage = "10";
 	let apiUrl = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/${dailyBoxOfficeList}?key=${key}&targetDt=${targetDt}&itemPerPage=${itemPerPage}`;
@@ -52,11 +53,12 @@ const popup = document.querySelector(".popup");
 const close = document.querySelector(".close");
 const popupCon = document.querySelector(".popup-con");
 const popupTitle = document.querySelector(".popup-title");
-const mCode = document.querySelector(".mCode");
 const mLocal = document.querySelector(".mLocal");
+const mGenre = document.querySelector(".mGenre");
+const mAudits = document.querySelector(".mAudits");
 const mSday = document.querySelector(".mSday");
-const mDirector = document.querySelector(".mDirector");
 const mTime = document.querySelector(".mTime");
+const mActors = document.querySelector(".mActors");
 
 function sceenDeailFn(movieCode) {
 	popup.classList.add("popup-ani");
@@ -82,16 +84,18 @@ function sceenDeailFn(movieCode) {
 			let movieDetailList = movieDetailListResult.movieInfo;
 
 			popupTitle.innerText = movieDetailList.movieNm;
-			mCode.innerText = movieDetailList.movieCd;
 			mLocal.innerText = movieDetailList.nations[0].nationNm;
+			mGenre.innerText = movieDetailList.genres[0].genreNm;
+			mAudits.innerText = movieDetailList.audits[0].watchGradeNm;
 			mSday.innerText = movieDetailList.openDt;
-			let txt = "";
-			movieDetailList.directors.forEach((el) => {
-				txt += el.peopleNm + " ";
-			});
-			mDirector.innerText = txt;
+			mTime.innerText = movieDetailList.showTm + "분";
 
-			mTime.innerText = movieDetailList.showTm;
+			let txt = "";
+			movieDetailList.actors.forEach((el) => {
+				txt += el.peopleNm + "  ";
+			});
+
+			mActors.innerText = txt;
 		});
 }
 

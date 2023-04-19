@@ -55,8 +55,9 @@
 	flex: 1;
 }
 .detail-header ul li {
-	flex: 2;
+	flex: 3;
 	font-weight: bold;
+	text-align: center;
 }
 .detail-con {
 	display: flex;
@@ -78,7 +79,8 @@
 	flex: 1;
 }
 .detail-con ul li {
-	flex: 2;
+	flex: 3;
+	text-align: center;
 }
 .detail-con ul li span {
 	background-color: #ad0000;
@@ -92,34 +94,79 @@
 .popup {
 	width: 0;
 	height: 0;
-	background-color: rgba(52, 30, 4, 0.501);
+	background-color: #ffffff;
 	position: fixed;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%);
 	z-index: 999;
-	transition: all 0.2s;
+	box-shadow: 0px 0px 8px 2px #7b7b7b;
+	/* transition: all 0.2s; */
 	font-size: 0;
 }
 
+.popup-con h2 {
+	margin-bottom: 30px;
+}
+
+.information {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+}
+
+.information .content .mActors {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+	width: 328px;
+}
+
+.popup-con ul {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.popup-con ul.title {
+	width: 70px;
+}
+
+.popup-con ul.title li {
+	color: #7b7a7a;
+}
+
 .popup-ani {
-	width: auto;
-	height: auto;
+	width: 500px !important;
+	height: 400px !important;
 	left: 55%;
-	top: 24%;
+	top: 30%;
 	font-size: 16px;
+	padding: 40px;
+	box-sizing: border-box;
+	line-height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 span.close {
 	width: 0;
 	height: 0;
 	font-size: 0;
-	background-color: rgb(255, 0, 0);
-	color: #ffffff;
+	display: inline-block;
+	padding: 3px;
+	box-sizing: border-box;
+	color: #ad0000;
+	position: fixed;
+	top: 2px;
+	right: 5px;
+	cursor: pointer;
 }
 
 .close-ani {
-	width: 50px !important;
-	height: 50px !important;
+	width: 20px !important;
+	height: 20px !important;
 	font-size: 20px !important;
 }
