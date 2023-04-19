@@ -5,6 +5,7 @@ import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.EventService;
 import org.spring.p21suck2jo.service.PoliceService;
+import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -81,10 +82,15 @@ public class EventController {
 
 	//사건 등록 실행
 	@PostMapping("/register")
-	public String eventWriteDo(@Valid EventDto eventDto, BindingResult bindingResult) throws IOException {
+	public String eventWriteDo(@Valid EventDto eventDto, BindingResult bindingResult,
+														 @AuthenticationPrincipal UserDetails user, Model model) throws IOException {
+
+		String nowPolice = user.getUsername();
+		PoliceDto policeInfo = eventService.eventRegisterPolice(nowPolice);
 
 		//유효성 확인용(조건을 통과하지 못하면 에러 메시지를 뛰우고 등록 페이지로 돌아간다)
 		if(bindingResult.hasErrors()){
+			model.addAttribute("police", policeInfo);
 			return "event/eventRegister";
 		}
 
