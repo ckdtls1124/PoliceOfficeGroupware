@@ -19,3 +19,12 @@ Kobis Movie API와 Chatbot 접목 방식
 
 Komoran 작동 방식
 setUserDic에 사전 정의된 단어를 바탕으로, analyze(Param) 메소드가 사용된다.
+
+
+----
+
+리팩토링 고려 사항
+1. Interface 사용으로 다형성을 사용하도록 한다.
+2. 하나의 메소드는 하나의 기능만 하도록 한다.
+3. 변수는 2개를 넘지 않도록 한다.
+4. Entity와 DTO의 개념을 이해하도록 한다.
