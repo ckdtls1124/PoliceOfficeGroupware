@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script th:src="@{/js/smtppwSearch.js}" defer></script>
+<!-- <link rel="stylesheet" href="/static/css/login.css"> -->
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+  <!-- #003478 색상통일 -->
+  <div class="login-container">
+    <div class="login">
+      <div class="header-home">
+
+         <a href="#"><img th:src="@{/img/logo.png}" alt=""></h1></a>
+       <!-- <a href="#"><img src="/static/css/img/logo.png" alt=""></h1></a> -->
+      </div>
+      <div class="login-content">
+<!--        <form th:action="@{/pwSearch}" method="post" >-->
+          <ul>
+            <li><label for="email"></label><input type="text" id="email" name="email" placeholder="이메일입력"></li>
+          </ul>
+          <ul>
+            <li><label for="policeNumber"></label><input type="number" id="policeNumber" name="policeNumber" placeholder="사원번호입력"></li>
+          </ul>
+          <div class="button">
+            <button class="btn" type="button" id="btn-find">
+              <span>찾기</span>
+            </button>
+          </div>
+<!--        </form>-->
+      </div>
+      <ul class="login-list">
+        <li><a target="_blank" href="/idSearch">아이디찾기</a></li>
+<!--        <li><p class="before"></p><a target="_blank" href="/join">회원가입</a></li>-->
+      </ul>
+    </div>
+    </div>
+  </body>
+  </html>

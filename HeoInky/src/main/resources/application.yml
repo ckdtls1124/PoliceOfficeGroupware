@@ -31,6 +31,15 @@ spring:
       max-request-size: 500MB
       location: C:\Users\Public\PoliceOfficeUploadFiles\Files
 
+  mail:
+    host: smtp.naver.com    #고정 (구글로할거면 가운데 google)
+    port: 465               #고정 (네이버아니고 구글로할거면 구글전용포트써야함)
+    username: naver.com    #본인 네이버 아이디
+    password:               #본인 네이버 비밀번호 특수문자넣으면 작동안함
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+
   #필수 oauth.yml이랑연결
   profiles:
     include: oauth

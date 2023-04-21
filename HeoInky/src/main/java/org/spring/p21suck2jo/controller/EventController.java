@@ -5,7 +5,6 @@ import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.EventService;
 import org.spring.p21suck2jo.service.PoliceService;
-import org.springframework.boot.Banner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
