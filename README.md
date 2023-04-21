@@ -1,3 +1,14 @@
+## Caution
+
+Help -> Edit Custom VM Option
+
+Add
+```
+-Dfile.encoding=UTF-8
+-Dconsole.encoding=UTF-8
+```
+
+
 ##  DB Insert Query
 
 
