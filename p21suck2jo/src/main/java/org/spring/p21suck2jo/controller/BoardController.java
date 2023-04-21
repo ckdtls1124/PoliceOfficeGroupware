@@ -35,6 +35,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
 
+    // test
+
     private final BoardService boardService;
     private final ReplyService replyService;
     private final PoliceService policeService;
@@ -188,6 +190,6 @@ public class BoardController {
 
         boardService.boardDelete(boardId);
 
-        return "redirect:/boardDetail";
+        return "redirect:/board";
     }
 }
