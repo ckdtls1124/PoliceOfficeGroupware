@@ -8,7 +8,8 @@ let html1 = "";
 function boxofficeFn() {
 	//http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=&targetDt=
 	let dailyBoxOfficeList = "searchDailyBoxOfficeList.json";
-	let today = new Date().toISOString().substring(1, 10).replace(/-/g, '') - 1;
+	let date = new Date().toISOString().substring(0, 10).replace(/-/g, "") - 1;
+	let today=date.toString();
 	let targetDt = "20230417";
 	let itemPerPage = "10";
 	let apiUrl = `http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/${dailyBoxOfficeList}?key=${key}&targetDt=${targetDt}&itemPerPage=${itemPerPage}`;
