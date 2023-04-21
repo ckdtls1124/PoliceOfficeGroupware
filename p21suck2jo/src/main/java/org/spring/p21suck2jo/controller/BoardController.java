@@ -188,6 +188,6 @@ public class BoardController {
 
         boardService.boardDelete(boardId);
 
-        return "redirect:/board";
+        return "redirect:/boardDetail";
     }
 }
