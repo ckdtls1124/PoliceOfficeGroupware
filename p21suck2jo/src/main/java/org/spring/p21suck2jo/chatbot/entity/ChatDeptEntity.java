@@ -15,11 +15,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ChatDeptEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long deptId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long deptId;
 
-	@Column(nullable = false)
-	private String deptName;
+    @Column(nullable = false)
+    private String deptName;
 
 }
