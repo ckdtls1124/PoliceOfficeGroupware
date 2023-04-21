@@ -37,7 +37,7 @@ public class MemorandumEntity extends BaseEntity{
 
     //    승인을 해주는 member의 list를 가진다.
     @OneToMany(mappedBy = "memorandum",cascade = CascadeType.ALL)
-    List<MemoApprovingMember> approvingMemberList = new ArrayList<>();
+    List<MemoApprovedMember> approvingMemberList = new ArrayList<>();
 
 
 }

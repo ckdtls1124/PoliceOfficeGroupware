@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
@@ -53,7 +52,7 @@ public class LoginController {
         List<BoardDto> todayBoard=boardService.todayBoard();
         model.addAttribute("board",todayBoard);
 
-        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.findReceivedAllMemo(policeId);
+        List<MemorandumDto> receivedMemorandumDtoPage = memorandumService.findReceivedAllMemoByLogInPoliceId(policeId);
         model.addAttribute("receivedMemorandumDtoPage", receivedMemorandumDtoPage);
 
         return "index";
@@ -85,36 +84,29 @@ public class LoginController {
             return "login/idSearch1";
         }
     }
-    //smtp
     @GetMapping("/pwSearch")
-    public String pwsearchapi(){
-        return "login/smtppwSearch";
+    public String pwsearch(){
+        return "login/pwSearch";
     }
-    //비밀번호찾기 고전방법
-//    @GetMapping("/pwSearch")
-//    public String pwsearch(){
-//        return "login/pwSearch";
-//    }
-//
-//    @PostMapping("/pwSearch")
-//    public String pwsearch1(@RequestParam String email,
-//                            @RequestParam int policeNumber,
-//                            Model model){
-//
-//        PoliceDto policeDto=policeLoginService.policepw(email,policeNumber);
-//        model.addAttribute("teamDto",policeDto);
-//        if(policeDto==null){
-//            return "login/error";
-//        }else {
-//            System.out.println("조회성공");
-//            return "login/pwSearch1";
-//        }
-//    }
-//    @PostMapping("/pwSearch1")
-//    public String pwUpdate(@ModelAttribute PoliceDto policeDto){
-//        policeLoginService.pwUpdate(policeDto);
-//        System.out.println("수정 성공!!!");
-//        return "redirect:/login";
-//    }
 
+    @PostMapping("/pwSearch")
+    public String pwsearch1(@RequestParam String email,
+                            @RequestParam int policeNumber,
+                            Model model){
+
+        PoliceDto policeDto=policeLoginService.policepw(email,policeNumber);
+        model.addAttribute("teamDto",policeDto);
+        if(policeDto==null){
+            return "login/error";
+        }else {
+            System.out.println("조회성공");
+            return "login/pwSearch1";
+        }
+    }
+    @PostMapping("/pwSearch1")
+    public String pwUpdate(@ModelAttribute PoliceDto policeDto){
+        policeLoginService.pwUpdate(policeDto);
+        System.out.println("수정 성공!!!");
+        return "redirect:/login";
+    }
 }

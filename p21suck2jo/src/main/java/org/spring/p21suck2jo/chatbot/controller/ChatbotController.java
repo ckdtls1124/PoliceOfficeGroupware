@@ -1,8 +1,8 @@
 package org.spring.p21suck2jo.chatbot.controller;
 
-import org.spring.p21suck2jo.chatbot.dto.MessageDto;
 import org.spring.p21suck2jo.chatbot.dto.MovieDailyBoxOfficeDto.DailyBoxOfficeListContainer;
 import org.spring.p21suck2jo.chatbot.dto.MovieDailyBoxOfficeDto.DailyBoxOfficeListItemContainer;
+import org.spring.p21suck2jo.chatbot.dto.MessageDto;
 import org.spring.p21suck2jo.chatbot.service.ChatbotKomoranService;
 import org.spring.p21suck2jo.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;

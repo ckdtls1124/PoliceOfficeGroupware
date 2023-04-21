@@ -1,11 +1,7 @@
 package org.spring.p21suck2jo.repository;
 
-import org.spring.p21suck2jo.dto.DeptDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.DeptEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,9 +14,6 @@ public interface PoliceRepository extends JpaRepository<PoliceEntity,Long> {
     Optional<PoliceEntity> findByPoliceNumber(int policeNumber);
     Optional<PoliceEntity> findByEmailAndPoliceNumber(String email,int policeNumber);
 
-
-    boolean existsByEmail(String email);
-    boolean existsByPoliceNumber(int policeNumber);
     Optional<PoliceEntity> findByEmail(String email);
 
 
@@ -34,10 +27,9 @@ public interface PoliceRepository extends JpaRepository<PoliceEntity,Long> {
     List<PoliceEntity> findAlldeptId(@Param("deptId") Long deptId);
 
 
-    List<PoliceEntity> findByDept(DeptEntity i);
+    List<PoliceEntity> findByDept(DeptEntity dept);
 
     Optional<PoliceEntity> findByPoliceName(String policeName);
 
 
-    Page<PoliceEntity> findByPoliceNameContaining(Pageable pageable, String search);
 }

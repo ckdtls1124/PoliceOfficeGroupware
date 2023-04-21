@@ -1,7 +1,7 @@
 package org.spring.p21suck2jo.dto;
 
 import lombok.*;
-import org.spring.p21suck2jo.entity.MemoApprovingMember;
+import org.spring.p21suck2jo.entity.MemoApprovedMember;
 import org.spring.p21suck2jo.entity.MemorandumEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 
@@ -28,7 +28,7 @@ public class MemorandumDto {
 
     private PoliceEntity police;
     
-    List<MemoApprovingMember> approvingMemberList = new ArrayList<>();
+    List<MemoApprovedMember> approvingMemberList = new ArrayList<>();
 
     public static MemorandumDto toMemorandumDto(MemorandumEntity memorandumEntity){
 

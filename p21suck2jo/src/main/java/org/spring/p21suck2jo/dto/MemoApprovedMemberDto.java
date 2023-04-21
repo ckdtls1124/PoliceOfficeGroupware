@@ -9,8 +9,8 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MemoApprovingMemberDto {
-    private Long approvingMemberId;
+public class MemoApprovedMemberDto {
+    private Long approvedMemberId;
     private PoliceEntity police;
     private MemorandumEntity memorandum;
     private int approved;

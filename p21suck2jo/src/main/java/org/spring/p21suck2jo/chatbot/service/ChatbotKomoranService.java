@@ -2,19 +2,17 @@ package org.spring.p21suck2jo.chatbot.service;
 
 import kr.co.shineware.nlp.komoran.core.Komoran;
 import kr.co.shineware.nlp.komoran.model.KomoranResult;
-import org.spring.p21suck2jo.chatbot.dto.AnswerDto;
-import org.spring.p21suck2jo.chatbot.dto.MessageDto;
+import org.spring.p21suck2jo.movieAPIUsage.dataReceiver.MovieAPIExplorerJava;
+import org.spring.p21suck2jo.chatbot.dto.*;
 import org.spring.p21suck2jo.chatbot.dto.MovieComingSoonListDto.ComingSoonMovieAllLists;
 import org.spring.p21suck2jo.chatbot.dto.MovieComingSoonListDto.ComingSoonMovieNmOpenDtContainer;
 import org.spring.p21suck2jo.chatbot.dto.MovieComingSoonListDto.ComingSoonMovieResultContainer;
 import org.spring.p21suck2jo.chatbot.dto.MovieDailyBoxOfficeDto.DailyBoxOfficeListContainer;
-import org.spring.p21suck2jo.chatbot.dto.SecondAnswer;
 import org.spring.p21suck2jo.chatbot.entity.AnswerEntity;
 import org.spring.p21suck2jo.chatbot.entity.IntentionEntity;
 import org.spring.p21suck2jo.chatbot.entity.OfficerEntity;
 import org.spring.p21suck2jo.chatbot.repository.IntentionRepository;
 import org.spring.p21suck2jo.chatbot.repository.OfficerRepository;
-import org.spring.p21suck2jo.movieAPIUsage.dataReceiver.MovieAPIExplorerJava;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service

@@ -3,24 +3,17 @@ package org.spring.p21suck2jo.service;
 import lombok.RequiredArgsConstructor;
 import org.spring.p21suck2jo.dto.PoliceDto;
 
+import org.spring.p21suck2jo.entity.ApprovingMemberAllEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
+import org.spring.p21suck2jo.repository.ApprovingMemberRepository;
+import org.spring.p21suck2jo.repository.MemoApprovedMemberRepository;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
-import org.spring.p21suck2jo.role.Role;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.security.auth.login.AccountException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import java.util.Optional;
@@ -31,59 +24,59 @@ public class PoliceService {
 
     private final PoliceRepository policeRepository;
     private final DeptRepository deptRepository;
+    private final ApprovingMemberRepository approvingMemberRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void policeAdd(PoliceDto policeDto){
-        PoliceEntity police = PoliceService.createOfficer(policeDto,passwordEncoder);
+        PoliceEntity police = PoliceService.dtoToEntityWithPassword(policeDto,passwordEncoder);
         policeRepository.save(police);
 
+        if(policeDto.getDept() != null){
+            ApprovingMemberAllEntity approvingMemberEntity = new ApprovingMemberAllEntity();
+            approvingMemberEntity.setPoliceName(policeDto.getPoliceName());
+            approvingMemberEntity.setDeptName(policeDto.getDept().getDeptName());
+
+            approvingMemberRepository.save(approvingMemberEntity);
+        }
     }
 
-    //경찰관 목록(paging)
-    public Page<PoliceDto> PoliceListPaging(Pageable pageable){
-        Page<PoliceEntity> police = policeRepository.findAll(pageable);
-        Page<PoliceDto> policeList = police.map(PoliceDto :: officerView);
+    public List<PoliceDto> policeList(){
+        List<PoliceDto> policeList = new ArrayList<>();
+        List<PoliceEntity> policesSearch = policeRepository.findAll();
+
+        for(PoliceEntity polices : policesSearch){
+            policeList.add(PoliceDto.entityToDtoNoPassword(polices));
+        }
         return policeList;
     }
 
-    //경찰관 목록에서 이름 검색
-    public Page<PoliceDto> policeListSearch(Pageable pageable,String search){
-        Page<PoliceEntity> police = policeRepository.findByPoliceNameContaining(pageable,search);
-        Page<PoliceDto> policeList = police.map(PoliceDto :: officerView);
-        return policeList;
-    }
+
+
 
     public PoliceDto policeDetail(Long id) {
         Optional<PoliceEntity> policeIdSearch = policeRepository.findByPoliceId(id);
-        return PoliceDto.officerView(policeIdSearch.get());
+        return PoliceDto.entityToDtoNoPassword(policeIdSearch.get());
 
+    }
+    public PoliceDto policeEmailSearch(String email){
+        Optional<PoliceEntity> police= policeRepository.findByEmail(email);
+        PoliceEntity policeEntity= police.get();
+        return PoliceDto.entityToDtoNoPassword(policeEntity);
     }
 
     //회원수정(myPage)
     public void policeUpdate(PoliceDto policeDto){
-        PoliceEntity police=   PoliceService.createOfficer(policeDto, passwordEncoder);
+        PoliceEntity police=   PoliceService.dtoToEntityWithPassword(policeDto, passwordEncoder);
         policeRepository.save(police);
     }
 
 
 
-    public void policeDelete(Long id){
-        Optional<PoliceEntity> policeIdSearch=policeRepository.findByPoliceId(id);
-        PoliceEntity policeEntity = policeIdSearch.get();
 
-        policeRepository.delete(policeEntity);
 
-    }
-
-    public PoliceDto policeEmailSearch(String email){
-        Optional<PoliceEntity> police= policeRepository.findByEmail(email);
-        PoliceEntity policeEntity= police.get();
-        return PoliceDto.officerView(policeEntity);
-    }
-
-    public static PoliceEntity createOfficer(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
+    public static PoliceEntity dtoToEntityWithPassword(PoliceDto policeDto, PasswordEncoder passwordEncoder){ //test 끝나면 passwordEncoder
 
         PoliceEntity police = new PoliceEntity();
         police.setPoliceId(policeDto.getPoliceId());
@@ -124,6 +117,13 @@ public class PoliceService {
         }
 
         return null;
+
+    }
+    public void policeDelete(Long id){
+        Optional<PoliceEntity> policeIdSearch=policeRepository.findByPoliceId(id);
+        PoliceEntity policeEntity = policeIdSearch.get();
+
+        policeRepository.delete(policeEntity);
 
     }
 
