@@ -7,6 +7,8 @@ import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.repository.DeptRepository;
 import org.spring.p21suck2jo.repository.PoliceRepository;
 import org.spring.p21suck2jo.role.Role;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,13 +41,17 @@ public class PoliceService {
 
     }
 
-    public List<PoliceDto> policeList(){
-        List<PoliceDto> policeList = new ArrayList<>();
-        List<PoliceEntity> policesSearch = policeRepository.findAll();
+    //경찰관 목록(paging)
+    public Page<PoliceDto> PoliceListPaging(Pageable pageable){
+        Page<PoliceEntity> police = policeRepository.findAll(pageable);
+        Page<PoliceDto> policeList = police.map(PoliceDto :: officerView);
+        return policeList;
+    }
 
-        for(PoliceEntity polices : policesSearch){
-            policeList.add(PoliceDto.officerView(polices));
-        }
+    //경찰관 목록에서 이름 검색
+    public Page<PoliceDto> policeListSearch(Pageable pageable,String search){
+        Page<PoliceEntity> police = policeRepository.findByPoliceNameContaining(pageable,search);
+        Page<PoliceDto> policeList = police.map(PoliceDto :: officerView);
         return policeList;
     }
 
