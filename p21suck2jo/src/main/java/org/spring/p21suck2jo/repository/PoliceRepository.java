@@ -1,7 +1,6 @@
 package org.spring.p21suck2jo.repository;
 
 import org.spring.p21suck2jo.dto.DeptDto;
-import org.spring.p21suck2jo.dto.PoliceDto;
 import org.spring.p21suck2jo.entity.DeptEntity;
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.springframework.data.domain.Page;
