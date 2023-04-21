@@ -33,9 +33,9 @@ public class PoliceEntity extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String email;
-//    @Column(nullable = true)
-    private String password;
 
+    @Column(nullable = false,unique = true)
+    private String password;
 
     private String policeName;
     @Column(nullable = false, unique = true)
@@ -78,6 +78,24 @@ public class PoliceEntity extends BaseEntity{
     @OneToMany(mappedBy = "police",cascade = CascadeType.ALL)
     private List<InquiryEntity> inquiryList = new ArrayList<>();
 
+
+
+    public void myPageUpdate(PoliceDto policeDto) {
+        this.setPoliceAddress(policeDto.getPoliceAddress());
+        this.setDetailAddress(policeDto.getDetailAddress());
+        this.setZip_code(policeDto.getZip_code());
+        this.setPolicePhone(policeDto.getPolicePhone());
+        this.setPoliceName(policeDto.getPoliceName());
+        this.setEmail(policeDto.getEmail());
+    }
+
+    public void updatePolice(PoliceDto policeDto,PasswordEncoder passwordEncoder){
+        this.setRanks(policeDto.getRanks());
+        this.setPoliceNumber(policeDto.getPoliceNumber());
+        this.setDept(policeDto.getDept());
+        this.setCreateTime(policeDto.getCreateTime());
+        this.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+    }
 
 
     public static PoliceEntity pwUpdateEntity(PoliceDto policeDto, PasswordEncoder passwordEncoder) {

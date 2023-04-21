@@ -98,4 +98,5 @@
 .search-box{
   display : flex;
   justify-content: right;
-   pad
+   padding-top : 10px;
+}

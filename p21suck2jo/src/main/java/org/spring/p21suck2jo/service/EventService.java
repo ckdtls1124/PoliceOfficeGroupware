@@ -1,7 +1,9 @@
 package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.constructor.DeptConstructors;
 import org.spring.p21suck2jo.constructor.EventConstructors;
+import org.spring.p21suck2jo.constructor.PoliceConstructors;
 import org.spring.p21suck2jo.dto.*;
 import org.spring.p21suck2jo.entity.*;
 import org.spring.p21suck2jo.repository.*;
@@ -44,7 +46,7 @@ public class EventService {
 		List<PoliceDto> policeDto = new ArrayList<>();
 
 		for(PoliceEntity policeEntity : policeEntities){
-			policeDto.add(PoliceDto.officerView(policeEntity));
+			policeDto.add(PoliceConstructors.entityToDto(policeEntity));
 		}
 		return policeDto;
 	}
@@ -54,7 +56,7 @@ public class EventService {
 		List<DeptDto> deptDto = new ArrayList<>();
 
 		for(DeptEntity deptEntity : deptEntities){
-			deptDto.add(DeptDto.deptView(deptEntity));
+			deptDto.add(DeptConstructors.deptView(deptEntity));
 		}
 		return deptDto;
 	}
@@ -200,7 +202,7 @@ public class EventService {
 		Optional<PoliceEntity> getPolice =  policeRepository.findByEmail(nowPolice);
 
 		if(getPolice.isPresent()){
-			PoliceDto policeDto = PoliceDto.officerView(getPolice.get());
+			PoliceDto policeDto = PoliceConstructors.entityToDto(getPolice.get());
 			return policeDto;
 		}
 		return null;

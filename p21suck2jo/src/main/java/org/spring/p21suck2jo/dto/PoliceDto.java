@@ -42,24 +42,8 @@ public class PoliceDto {
 
     private DeptEntity dept;
 
-    public static PoliceDto officerView(PoliceEntity policeEntity){
-        PoliceDto police = new PoliceDto();
-        police.setPoliceId(policeEntity.getPoliceId());
-//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
-        police.setPassword(policeEntity.getPassword());
-        police.setPoliceName(policeEntity.getPoliceName());
-        police.setEmail(policeEntity.getEmail());
-        police.setPoliceNumber(policeEntity.getPoliceNumber());
-        police.setRanks(policeEntity.getRanks());
-        police.setRole(policeEntity.getRole());
-        police.setZip_code(policeEntity.getZip_code());
-        police.setPoliceAddress(policeEntity.getPoliceAddress());
-        police.setDetailAddress(policeEntity.getDetailAddress());
-        police.setPolicePhone(policeEntity.getPolicePhone());
-        police.setCreateTime(policeEntity.getCreateTime());
-        police.setDept(policeEntity.getDept());
-        return police;
-    }
+
+
     public static PoliceDto teamDtoid(PoliceEntity policeEntity) {
 
         PoliceDto policeDto = new PoliceDto();

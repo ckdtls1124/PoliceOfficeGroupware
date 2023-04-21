@@ -45,7 +45,7 @@ public class BoardController {
     public String boardWriteView(@AuthenticationPrincipal UserDetails user, Model model ){
 
 
-        PoliceDto policeDto= policeService.findByPoliceName(user.getUsername());
+        PoliceDto policeDto= policeService.policeEmailSearch(user.getUsername());
 
         if(policeDto!=null){
             model.addAttribute("policeName",policeDto.getPoliceName());
@@ -119,7 +119,7 @@ public class BoardController {
         // 해당 게시판 번호를 받아 리뷰 상세페이지로 넘겨줌
         BoardDto boardDtos= boardService.boardDetail(boardId);
 
-        PoliceDto policeName= policeService.findByPoliceIdAndName(user.getUsername());
+        PoliceDto policeName= policeService.policeEmailSearch(user.getUsername());
 
         model.addAttribute("policeReplyName",policeName.getPoliceName());
         model.addAttribute("boardDtos",boardDtos);

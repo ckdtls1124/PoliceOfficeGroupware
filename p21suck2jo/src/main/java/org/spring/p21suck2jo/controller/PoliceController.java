@@ -40,6 +40,7 @@ public class PoliceController {
     private final PoliceService policeService;
     private final DeptService deptService;
 
+    //경찰관 추가 View
     @GetMapping("/insert")
     public String policeAddView(Model model){
         model.addAttribute("police",new PoliceDto());
@@ -47,15 +48,17 @@ public class PoliceController {
         return "/police/officerInsert";
     }
 
+    //경찰관 추가 form Post
     @PostMapping("/insert")
-    public String policeAdd(@Valid PoliceDto policeDto){
+    public String policeAdd(PoliceDto policeDto) {
         policeService.policeAdd(policeDto);
         return "redirect:/index";
     }
 
+
     @GetMapping("/list")
     public String policeListPage(@PageableDefault(page = 0 , size = 4 , sort = "policeId",
-            direction = Sort.Direction.ASC) Pageable pageable, Model model, @RequestParam(value = "search",required = false) String search){
+            direction = Sort.Direction.ASC)Pageable pageable, Model model,@RequestParam(value = "search",required = false) String search){
 
         Page<PoliceDto> dtoPage= policeService.PoliceListPaging(pageable);
 
@@ -78,6 +81,9 @@ public class PoliceController {
 
     }
 
+
+
+    //경찰관 상세조회
     @GetMapping("/list/{id}")
     public String adminPoliceUpdate(@PathVariable("id") Long id,Model model){
         PoliceDto dto = policeService.policeDetail(id);
@@ -86,33 +92,39 @@ public class PoliceController {
         return "/police/adminOfficerUpdate";
     }
 
-    //회원수정(mypage)
-    @PostMapping("/update")
-    public String policeUpdate(@ModelAttribute PoliceDto policeDto){
-
-        policeService.policeUpdate(policeDto);
-        return "redirect:/index";
-    }
-
-
-
+    //마이페이지 View
     @GetMapping("/mypage")
-    public String policeList2(Model model){
+    public String myPage(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         model.addAttribute("police",policeService.policeEmailSearch(email));
-
         return "/police/officerMypage";
 
     }
 
+    //내 정보 수정 form Post
+    @PostMapping("/mypage/update")
+    public String myPageUpdate(@ModelAttribute PoliceDto policeDto){
+        policeService.myPageUpdate(policeDto);
+        return "redirect:/index";
+    }
 
+    //관리자 회원수정 form Post
+    @PostMapping("/user/update")
+    public String updatePolice(@ModelAttribute PoliceDto policeDto){
+        policeService.updatePolice(policeDto);
+        return "redirect:/index";
+    }
+
+    //관리자 경찰관 정보 삭제
     @PostMapping("/list/delete/{id}")
     public String adminPoliceDelete(@PathVariable Long id){
 
         policeService.policeDelete(id);
         return "redirect:/police/list";
     }
+
+
 
 
 

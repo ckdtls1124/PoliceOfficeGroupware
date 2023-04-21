@@ -1,6 +1,7 @@
 package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.constructor.PoliceConstructors;
 import org.spring.p21suck2jo.dto.ApprovingMemberNameDept;
 import org.spring.p21suck2jo.dto.MemoApprovingMemberDto;
 import org.spring.p21suck2jo.dto.MemorandumDto;
@@ -58,7 +59,7 @@ public class MemorandumService {
             List<PoliceEntity> policeEntityList = policeRepository.findByDept(i);
             for (PoliceEntity j : policeEntityList) {
 //                PoliceEntity -> PoliceDto
-                PoliceDto policeDto = PoliceDto.officerView(j);
+                PoliceDto policeDto = PoliceConstructors.entityToDto(j);
                 policeDtos.add(policeDto);
             }
         }
@@ -164,7 +165,7 @@ public class MemorandumService {
 
     public String findPoliceByName(String policeName) {
         Optional<PoliceEntity> policeEntity = policeRepository.findByPoliceName(policeName);
-        PoliceDto policeDto = PoliceDto.officerView(policeEntity.get());
+        PoliceDto policeDto = PoliceConstructors.entityToDto(policeEntity.get());
 
         return String.valueOf(Long.valueOf(policeDto.getPoliceId()));
     }
@@ -218,7 +219,7 @@ public class MemorandumService {
 
         List<PoliceDto> policeDtoList = new ArrayList<>();
         for (PoliceEntity policeEntity : policeEntityList) {
-            PoliceDto policeDto = PoliceDto.officerView(policeEntity);
+            PoliceDto policeDto = PoliceConstructors.entityToDto(policeEntity);
             policeDtoList.add(policeDto);
         }
         return policeDtoList;
