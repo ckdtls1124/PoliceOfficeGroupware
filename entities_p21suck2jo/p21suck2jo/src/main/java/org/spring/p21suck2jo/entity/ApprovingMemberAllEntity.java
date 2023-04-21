@@ -6,30 +6,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
 @Table(name = "approvingMember")
-public class ApprovingMember {
-
+public class ApprovingMemberAllEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "approvingMember_id")
-    private Long approvingMemberId;
-
-    @ManyToOne
-    @JoinColumn(name = "police_id")
-    private PoliceEntity police;
-
-    @ManyToOne
-    @JoinColumn(name = "memorandum_id")
-    private MemorandumEntity memorandum;
-
-
-
+    private Long id;
+    
+    private String policeName;
+    
+    private String deptName;
 }

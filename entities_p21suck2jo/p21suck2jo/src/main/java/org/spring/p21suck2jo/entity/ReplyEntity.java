@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-//import org.spring.p21suck2jo.dto.ReplyDto;
+import org.spring.p21suck2jo.dto.ReplyDto;
 
 import javax.persistence.*;
 
@@ -36,31 +36,30 @@ public class ReplyEntity extends BaseEntity{
     @JoinColumn(name = "police_id")
     private PoliceEntity police;
 
+    public static ReplyEntity toReplyEntity(ReplyDto replyDto, BoardEntity boardEntity){
+
+        ReplyEntity replyEntity =new ReplyEntity();
+
+        replyEntity.setReplyContent(replyDto.getReplyContent());
+        replyEntity.setReplyWriter(replyDto.getReplyWriter());
+        replyEntity.setBoardEntity(boardEntity);
+        replyEntity.setPolice(replyDto.getPolice());
+
+        return replyEntity;
+    }
+
+    public static ReplyEntity toReplyUpdateEntity(ReplyDto replyDto, BoardEntity boardEntity){
+
+        ReplyEntity replyEntity =new ReplyEntity();
+
+        replyEntity.setReplyId(replyDto.getReplyId());
+        replyEntity.setReplyContent(replyDto.getReplyContent());
+        replyEntity.setReplyWriter(replyDto.getReplyWriter());
+        replyEntity.setBoardEntity(boardEntity);
+        replyEntity.setPolice(replyDto.getPolice());
+
+        return replyEntity;
+    }
+
+
 }
-
-/*    @ManyToOne
-    @JoinColumn(name = "police_id")
-    private PoliceEntity policeEntity;*/
-
-//    public static ReplyEntity toReplyEntity(ReplyDto replyDto, BoardEntity boardEntity){
-//
-//        ReplyEntity replyEntity =new ReplyEntity();
-//
-//        replyEntity.setReplyContent(replyDto.getReplyContent());
-//        replyEntity.setReplyWriter(replyDto.getReplyWriter());
-//        replyEntity.setBoardEntity(boardEntity);
-//
-//        return replyEntity;
-//    }
-//    public static ReplyEntity toGetReplyEntity(ReplyDto replyDto){
-//
-//        ReplyEntity replyEntity =new ReplyEntity();
-//
-//        replyEntity.setReplyContent(replyDto.getReplyContent());
-//        replyEntity.setReplyWriter(replyDto.getReplyWriter());
-//
-//        return replyEntity;
-//    }
-
-
-

@@ -1,14 +1,12 @@
-package org.project.groupware.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.*;
-import org.project.groupware.dto.EventDto;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Entity
 @Getter

@@ -1,4 +1,4 @@
-package org.project.groupware.entity;
+package org.spring.p21suck2jo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
