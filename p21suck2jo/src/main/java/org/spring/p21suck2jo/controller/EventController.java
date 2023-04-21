@@ -26,7 +26,6 @@ import java.util.List;
 public class EventController {
 
 	private final EventService eventService;
-	private final PoliceService policeService;
 
 	//메인페이지(사건사고 목록)
 	@GetMapping({"/", "/list", "/main"})
@@ -48,22 +47,27 @@ public class EventController {
 		model.addAttribute("eventMainView", eventMainView);
 
 		return "event/eventMain";
+
 	}
 
 	//사건 등록 페이지로 이동
 	@GetMapping("/register")
 	public String eventWriteView(@AuthenticationPrincipal UserDetails user, Model model) {
 
+		//현재 로그인한 경찰관의 이메일을 String 타입으로 가져온다
 		String nowPolice = user.getUsername();
-
+		//이메일을 파라미터로 받아 해당하는 경찰관의 레코드를 가져온다
 		PoliceDto policeInfo = eventService.eventRegisterPolice(nowPolice);
 
+		//현재 로그인한 경찰관의 이름과 기본키, 소속 부서, 부서 기본키 등을 콘솔에 출력(올바른 값이 왔는지 확인하기 위함)
 		System.out.println("\n" + ">>>>> 현재 로그인한 경찰의 이름 : " + policeInfo.getPoliceName());
 		System.out.println(">>>>> 현재 로그인한 경찰의 Id : " + policeInfo.getPoliceId());
 		System.out.println(">>>>> 현재 로그인한 경찰의 소속 부서 : " + policeInfo.getDept().getDeptName());
 		System.out.println(">>>>> 현재 로그인한 경찰의 소속 부서 Id : " + policeInfo.getDept().getDeptId() + "\n");
 
+		//사건 분류 그룹 리스트
 		List<EventGroupDto> eventGroupDto = eventService.eventRegisterSelectGroup();
+		//사건 관련인(시민) 리스트
 		List<PersonDto> eventPersonDto = eventService.eventRegisterSelectPerson();
 
 		model.addAttribute("eventDto", new EventDto());
@@ -72,19 +76,26 @@ public class EventController {
 		model.addAttribute("person", eventPersonDto);
 
 		return "event/eventRegister";
+
 	}
 
 	//사건 등록 실행
 	@PostMapping("/register")
-	public String eventWriteDo(@Valid EventDto eventDto, BindingResult bindingResult) throws IOException {
+	public String eventWriteDo(@Valid EventDto eventDto, BindingResult bindingResult,
+														 @AuthenticationPrincipal UserDetails user, Model model) throws IOException {
 
-		//유효성처리
+		String nowPolice = user.getUsername();
+		PoliceDto policeInfo = eventService.eventRegisterPolice(nowPolice);
+
+		//유효성 확인용(조건을 통과하지 못하면 에러 메시지를 뛰우고 등록 페이지로 돌아간다)
 		if(bindingResult.hasErrors()){
+			model.addAttribute("police", policeInfo);
 			return "event/eventRegister";
 		}
 
 		eventService.eventRegister(eventDto);
 		return "redirect:/event/";
+
 	}
 
 	//사건 상세조회
@@ -95,6 +106,7 @@ public class EventController {
 		model.addAttribute("detail", eventDetailDto);
 
 		return "event/eventDetail";
+
 	}
 
 	//사건 업데이트 페이지로 이동
@@ -105,6 +117,7 @@ public class EventController {
 		model.addAttribute("detail", eventDetailDto);
 
 		return "event/eventUpdate";
+
 	}
 
 	//사건 업데이트 실행
@@ -114,6 +127,7 @@ public class EventController {
 		eventService.eventUpdateDo(eventId, eventDto);
 
 		return "redirect:/event/detail/{eventId}";
+
 	}
 
 	//사건 검색(날짜, 해결 여부)
@@ -124,6 +138,7 @@ public class EventController {
 															@PageableDefault(page = 0, size = 10, sort = "event_id", direction = Sort.Direction.DESC) Pageable pageable,
 															Model model){
 
+		//날짜와 해결 여부 모두 체크되어 있지 않은 상태로 조회를 눌렀을 때 사건 메인페이지로 리턴
 		if(startDate.isEmpty() && endDate.isEmpty() && eventSettle==null){
 			return "redirect:/event/";
 		}
@@ -144,6 +159,7 @@ public class EventController {
 		model.addAttribute("eventMainView", eventSearchView);
 
 		return "event/eventMain";
+
 	}
 
 	//나의 사건 조회
@@ -151,6 +167,7 @@ public class EventController {
 	public String myEventView(@PageableDefault(page = 0, size = 10, sort = "event_id", direction = Sort.Direction.DESC) Pageable pageable,
 														@AuthenticationPrincipal UserDetails user, Model model){
 
+		//현재 로그인한 경찰관의 이메일을 String 타입으로 가져온다
 		String nowPolice = user.getUsername();
 
 		Page<EventDto> myEventView = eventService.myEventView(pageable, nowPolice);
@@ -169,6 +186,7 @@ public class EventController {
 		model.addAttribute("eventMainView", myEventView);
 
 		return "event/eventMain";
+
 	}
 
 }
