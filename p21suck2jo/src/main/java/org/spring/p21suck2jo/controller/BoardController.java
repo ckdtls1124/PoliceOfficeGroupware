@@ -35,6 +35,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
 
+    // test
+
     private final BoardService boardService;
     private final ReplyService replyService;
     private final PoliceService policeService;
