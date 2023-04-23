@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MemorandumDto {
+public class  MemorandumDto {
 
     private Long memorandumId;
 

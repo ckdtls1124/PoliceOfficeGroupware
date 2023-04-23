@@ -1,6 +1,7 @@
 package org.spring.p21suck2jo.service;
 
 import lombok.RequiredArgsConstructor;
+import org.spring.p21suck2jo.constructor.MemorandumCRUD;
 import org.spring.p21suck2jo.dto.ApprovingMemberAllDto;
 import org.spring.p21suck2jo.dto.MemoApprovedMemberDto;
 import org.spring.p21suck2jo.dto.MemorandumDto;
@@ -20,11 +21,12 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MemorandumService {
+public class MemorandumService implements MemorandumCRUD {
     private final MemorandumRepository memorandumRepository;
     private final MemoApprovedMemberRepository memoApprovedMemberRepository;
     private final ApprovingMemberRepository approvingMemberRepository;
     private final PoliceRepository policeRepository;
+
 
 // 공통============================================================================================
 
@@ -42,19 +44,19 @@ public class MemorandumService {
     }
 
     //    결재문서 송신함에서 각 문서별 결재자 보여주기
-    public List<MemoApprovedMemberDto> showApprovingMemberList(HttpSession currentSession, Pageable pageable) {
+    public List<MemoApprovedMemberDto> showApprovingMemberListEachMemo(HttpSession currentSession, Pageable pageable) {
         Long sessionPoliceIdLong = this.changeStringPoliceIdLongPoliceId(currentSession);
         List<MemoApprovedMemberDto> memoApprovingMemberList = this.findMemoApprovedMemberApproved(sessionPoliceIdLong, pageable);
         return memoApprovingMemberList;
     }
 
     //    결재문서의 결재자 선택을 위해, 전체 경찰의 이름, 부서명 반환
-    public List<ApprovingMemberAllDto> showAllApprovingMemberNameDept() {
+    public List<ApprovingMemberAllDto> showAllApprovingMemberNameDeptSelectedMemo() {
         return ApprovingMemberAllDto.entityToDto(approvingMemberRepository.findAll());
     }
 
     //    결재 문서 상세 보기(상세 보기 및 수정 작업용)
-    public MemorandumDto findSelectedMemo(Long memoId) {
+    public MemorandumDto showSelectedMemo(Long memoId) {
         MemorandumEntity memorandumEntity = memorandumRepository.findById(memoId).get();
         MemorandumDto memorandumDto = MemorandumDto.builder().memorandumId(memorandumEntity.getMemorandumId()).memorandumTitle(memorandumEntity.getMemorandumTitle()).memorandumContent(memorandumEntity.getMemorandumContent()).createTime(memorandumEntity.getCreateTime()).build();
         return memorandumDto;
@@ -168,16 +170,28 @@ public class MemorandumService {
         MemoApprovedMember approvedMember = memoApprovedMemberRepository.findMemoApprovedMemberByMemorandum(memoInApprovingMember).get();
         return approvedMember;
     }
+//    ==============================================이 부분 부터 Interface에 적용할것 고민하기
 
-    //    수정 시, 결재선을 위한 모든 경찰 리스트 전달
-    public List<PoliceDto> findAllPolice() {
+    //    수정 시, 결재선을 위한 경찰 Entity로 찾은 ApprovingMembers List를 전체 전달
+    public List<ApprovingMemberAllDto> findApprovingMembersByPoliceEntities() {
         List<PoliceEntity> policeEntityList = policeRepository.findAll();
         List<PoliceDto> policeDtoList = new ArrayList<>();
         for (PoliceEntity policeEntity : policeEntityList) {
             PoliceDto policeDto = PoliceDto.entityToDtoNoPassword(policeEntity);
             policeDtoList.add(policeDto);
         }
-        return policeDtoList;
+
+        List<ApprovingMemberAllDto> approvingMemberNameDeptList = new ArrayList();
+
+        for (PoliceDto i : policeDtoList) {
+            ApprovingMemberAllDto approvingMemberNameDept = new ApprovingMemberAllDto();
+            approvingMemberNameDept.setDeptName(i.getDept().getDeptName());
+            approvingMemberNameDept.setPoliceName(i.getPoliceName());
+            approvingMemberNameDeptList.add(approvingMemberNameDept);
+        }
+
+
+        return approvingMemberNameDeptList;
     }
 
 //    결재선 수정하기
