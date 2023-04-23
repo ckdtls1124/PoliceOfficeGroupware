@@ -37,4 +37,9 @@ public class MainController {
     return "/api/weatherApi";
   }
 
+  @GetMapping("/lostGoods")
+  public String lostGoods() {
+    return "/api/lostGoods";
+  }
+
 }
