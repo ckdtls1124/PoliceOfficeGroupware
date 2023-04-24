@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <div id="all-container-wrap" th:fragment="left-wrap">
+<div id="all-container-wrap" th:fragment="left-wrap">
 
     <!--왼쪽 메뉴바-->
     <link rel="stylesheet" th:href="@{/css/common/reset.css}">
@@ -19,7 +19,7 @@
           <h1 class="logo"><a th:href="@{/index}"><img src="/img/logo.png" alt="logo"></a></h1>
 
           <div class="dash-board">
-            <h4>DASHBOARD</h4>
+            <h3 class="title">DASHBOARD</h3>
             <!--                    현재 시간-->
             <div class="currentTime" style="color:white; margin-left:10px;"></div>
             <div class="menu">
@@ -89,6 +89,9 @@
                 </li>
                 <li>
                   <img src="/img/weather.png" alt="weather-icon"><a th:href="@{/my/weather}">날씨조회</a>
+                </li>
+                <li>
+                  <img src="/img/lost.png" alt="lostItem-icon"><a th:href="@{/my/lostGoods}">분실물조회</a>
                 </li>
               </ul>
             </div>

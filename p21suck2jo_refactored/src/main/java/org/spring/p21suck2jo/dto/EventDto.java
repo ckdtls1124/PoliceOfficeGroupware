@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class EventDto {
 
-//--------------순수 사건 관련 Dto------------
+//-------------------순수 사건 관련 Dto-------------------
 	public Long eventId;
 
 	private int eventNumber;
@@ -33,35 +33,35 @@ public class EventDto {
 
 	private String eventNote;
 
-//---------------파일 관련 Dto----------------
+//-------------------파일 관련 Dto-------------------
 	private int eventAttachFile;
 
 	private String eventFileName;
 
 	private MultipartFile eventFile;
 
-//-----------사건 분류 그룹 관련 Dto------------
+//-------------------사건 분류 그룹 관련 Dto-------------------
 	private Long eventGroup;
 
 	private EventGroupEntity eventJoinGroup;
 
 	private String eventGroupName;
 
-//-----------------부서 관련 Dto-----------------
+//-------------------부서 관련 Dto-------------------
 	private Long dept;
 
 	private DeptEntity eventJoinDept;
 
 	private String deptName;
 
-//------------회원(경찰관) 관련 Dto-----------------
+//-------------------회원(경찰관) 관련 Dto-------------------
 	private Long police;
 
 	private PoliceEntity eventJoinPolice;
 
 	private String policeName;
 
-//------------------시민 관련 Dto--------------------
+//-------------------시민 관련 Dto-------------------
 	private Long person;
 
 	private PersonEntity eventJoinPerson;
