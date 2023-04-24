@@ -8,8 +8,6 @@ import org.spring.p21suck2jo.repository.ReplyRepository;
 import org.spring.p21suck2jo.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,64 +20,71 @@ public class ReplyService {
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
 
-
+    // 댓글 등록
     @Transactional
-    public Long insertReply(ReplyDto replyDto) {
+    public Long replyWrite(ReplyDto replyDto) {
 
-        Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(replyDto.getBoardId());
+        // 테이블에 게시글 id가 있는지 확인
+        Optional<BoardEntity> boardEntity = boardRepository.findByBoardId(replyDto.getBoardId());
 
-        if(boardEntity.isPresent()){
-            BoardEntity boardEntity1=boardEntity.get();
+        if (boardEntity.isPresent()) {
+            BoardEntity boardEntity1 = boardEntity.get();
 
-            ReplyEntity replyEntity = ReplyEntity.toReplyEntity(replyDto,boardEntity1);
+            ReplyEntity replyEntity = ReplyEntity.toReplyEntity(replyDto, boardEntity1);
 
-            return replyRepository.save(replyEntity).getReplyId();
-        }else{
-            return null;
+            // 작성자, 내용, 글번호에 해당하는 게시글
+            return replyRepository.save(replyEntity).getReplyId();// id값 반환
         }
+
+        return null;
     }
 
+    // 댓글 목록
     public List<ReplyDto> replyList(Long boardId) {
 
-        BoardEntity boardEntity=boardRepository.findByBoardId(boardId).get();
+        // 연관관계에 있는 게시글 -> BoardEntity
+        BoardEntity boardEntity = boardRepository.findByBoardId(boardId).get();
 
-        List<ReplyEntity> boardReplyEntities= replyRepository.findAllByBoardEntityOrderByReplyIdDesc(boardEntity);
+        // 작성 댓글 게시글 목록
+        List<ReplyEntity> boardReplyEntities = replyRepository.findAllByBoardEntityOrderByReplyIdDesc(boardEntity);
 
-        List<ReplyDto> list =new ArrayList<>();
+        List<ReplyDto> list = new ArrayList<>();
 
-        for(ReplyEntity replyEntity:boardReplyEntities){
-            ReplyDto replyDto= ReplyDto.toReplyDto(replyEntity,boardId);
+        for (ReplyEntity replyEntity : boardReplyEntities) {
+            ReplyDto replyDto = ReplyDto.toReplyDto(replyEntity, boardId);
             list.add(replyDto);
         }
         return list;
     }
+
+    // 댓글 수정
     @Transactional
-    public Long updateReply(ReplyDto replyDto) {
+    public Long replyUpdate(ReplyDto replyDto) {
 
-        Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(replyDto.getBoardId());
+        Optional<BoardEntity> boardEntity = boardRepository.findByBoardId(replyDto.getBoardId());
 
-        if(boardEntity.isPresent()){
-            BoardEntity boardEntity1=boardEntity.get();
+        if (boardEntity.isPresent()) {
+            BoardEntity boardEntity1 = boardEntity.get();
 
-            ReplyEntity replyEntity = ReplyEntity.toReplyUpdateEntity(replyDto,boardEntity1);
+            ReplyEntity replyEntity = ReplyEntity.toReplyUpdateEntity(replyDto, boardEntity1);
 
             return replyRepository.save(replyEntity).getReplyId();
-        }else{
-            return null;
         }
+        return null;
+
     }
 
+    // 댓글 삭제
     @Transactional
-    public void replyDelete(Long replyId,Long boardId) {
+    public void replyDelete(Long replyId, Long boardId) {
 
-        Optional<BoardEntity> boardEntity=boardRepository.findByBoardId(boardId);
+        Optional<BoardEntity> boardEntity = boardRepository.findByBoardId(boardId);
 
-        if(boardEntity.isPresent()){
+        if (boardEntity.isPresent()) {
 
-            Optional<ReplyEntity> replyEntity=replyRepository.findByReplyId(replyId);
+            Optional<ReplyEntity> replyEntity = replyRepository.findByReplyId(replyId);
 
-            if(replyEntity.isPresent()){
-
+            if (replyEntity.isPresent()) {
                 replyRepository.deleteByReplyId(replyEntity.get().replyId);
             }
         }
