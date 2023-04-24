@@ -52,22 +52,22 @@ public class PoliceDto {
         return policeDto;
     }
 
-//    public static PoliceDto teamDtopw(PoliceEntity policeEntity) {
-//
-//        PoliceDto policeDto=new PoliceDto();
-//
-//        policeDto.setPoliceId(policeEntity.getPoliceId());
-//        policeDto.setEmail(policeEntity.getEmail());
-//        policeDto.setPassword(policeEntity.getPassword());
-//        policeDto.setPoliceName(policeEntity.getPoliceName());
-//        policeDto.setPoliceNumber(policeEntity.getPoliceNumber());
-//        policeDto.setPoliceAddress(policeEntity.getPoliceAddress());
-//        policeDto.setDetailAddress(policeEntity.getDetailAddress());
-//        policeDto.setPolicePhone(policeEntity.getPolicePhone());
-//        policeDto.setCreateTime(policeEntity.getCreateTime());
-////        policeDto.setUpdateTime(policeEntity.getUpdateTime());
-//        return policeDto;
-//    }
+    public static PoliceDto teamDtopw(PoliceEntity policeEntity) {
+
+        PoliceDto policeDto=new PoliceDto();
+
+        policeDto.setPoliceId(policeEntity.getPoliceId());
+        policeDto.setEmail(policeEntity.getEmail());
+        policeDto.setPassword(policeEntity.getPassword());
+        policeDto.setPoliceName(policeEntity.getPoliceName());
+        policeDto.setPoliceNumber(policeEntity.getPoliceNumber());
+        policeDto.setPoliceAddress(policeEntity.getPoliceAddress());
+        policeDto.setDetailAddress(policeEntity.getDetailAddress());
+        policeDto.setPolicePhone(policeEntity.getPolicePhone());
+        policeDto.setCreateTime(policeEntity.getCreateTime());
+//        policeDto.setUpdateTime(policeEntity.getUpdateTime());
+        return policeDto;
+    }
 
     public static PoliceDto toDtoName(PoliceEntity policeEntity) {
         PoliceDto policeDto=new PoliceDto();
@@ -86,5 +86,24 @@ public class PoliceDto {
 
         return  policeDto;
 
+    }
+
+    public static PoliceDto entityToDtoNoPassword(PoliceEntity policeEntity){
+        PoliceDto police = new PoliceDto();
+        police.setPoliceId(policeEntity.getPoliceId());
+//        police.setPassword(passwordEncoder.encode(policeDto.getPassword()));
+        police.setPassword(policeEntity.getPassword());
+        police.setPoliceName(policeEntity.getPoliceName());
+        police.setEmail(policeEntity.getEmail());
+        police.setPoliceNumber(policeEntity.getPoliceNumber());
+        police.setRanks(policeEntity.getRanks());
+        police.setRole(policeEntity.getRole());
+        police.setZip_code(policeEntity.getZip_code());
+        police.setPoliceAddress(policeEntity.getPoliceAddress());
+        police.setDetailAddress(policeEntity.getDetailAddress());
+        police.setPolicePhone(policeEntity.getPolicePhone());
+        police.setCreateTime(policeEntity.getCreateTime());
+        police.setDept(policeEntity.getDept());
+        return police;
     }
 }

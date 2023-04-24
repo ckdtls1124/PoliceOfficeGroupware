@@ -36,15 +36,9 @@ public class MemorandumFileController {
     public ResponseEntity<Resource> downloadAttach(@PathVariable Long id) throws MalformedURLException{
 
         MemorandumFileEntity file = memorandumFileRepository.findById(id).orElse(null);
-
         UrlResource resource = new UrlResource("file:"+file.getMemorandumFilePath());
-        System.out.println("Resource :"+resource);
-
         String encodedFileName = UriUtils.encode(file.getMemorandumFileOriginalName(), StandardCharsets.UTF_8);
-        System.out.println("Encoded file name :"+encodedFileName);
-
         String contentDisposition = "attachment; filename=\""+encodedFileName+"\"";
-        System.out.println("Content Disposition :"+contentDisposition);
 
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition).body(resource);
 
@@ -57,9 +51,8 @@ public class MemorandumFileController {
 
         if(memorandumFileService.deleteSelectedFile(memorandumFileId) == 1){
             return new ResponseEntity<>("", HttpStatus.OK);
-        } else {
-            return null;
         }
+        return null;
     }
 
 

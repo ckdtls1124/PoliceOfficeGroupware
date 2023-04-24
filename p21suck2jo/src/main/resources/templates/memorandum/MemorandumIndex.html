@@ -52,8 +52,6 @@
 
                             <table>
                                 <colgroup>
-                                    <!--                                    <col width="10%">-->
-                                    <!--                                    </col>-->
                                     <col width="auto">
                                     </col>
                                     <col width="10%">
@@ -63,22 +61,15 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <!--                                    <th>순번</th>-->
                                     <th>제목</th>
-
                                     <th>결재자</th>
                                     <th>삭제</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="list: ${memorandumDtoPage}">
-
-                                    <!--                                    <td th:text="${list.memorandumId}" class="memoId">-->
-                                    <!--                                    </td>-->
-
                                     <td><a th:href="@{|/memo/memoDetail/${list.memorandumId}|}"
                                            th:text="${list.memorandumTitle}"></a></td>
-
                                     <td>
                                         <th:block th:if="${list.memorandumId eq approve.memorandum.memorandumId}" th:each="approve : ${approvedNum}">
                                             <div th:switch="${approve.approved}">

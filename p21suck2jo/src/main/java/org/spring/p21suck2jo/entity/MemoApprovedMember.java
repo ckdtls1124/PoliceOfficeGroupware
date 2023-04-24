@@ -12,13 +12,13 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "approvingMember")
-public class MemoApprovingMember {
+@Table(name = "approvedMember")
+public class MemoApprovedMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "approvingMember_id")
-    private Long approvingMemberId;
+    @Column(name = "approvedMember_id")
+    private Long approvedMemberId;
 
     @ManyToOne
     @JoinColumn(name = "police_id")

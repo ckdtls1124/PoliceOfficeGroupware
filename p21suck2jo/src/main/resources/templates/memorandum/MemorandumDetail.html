@@ -60,6 +60,11 @@
                                                     <button class="approveMemo">반려</button>
                                                 </td>
                                             </th:block>
+                                            <th:blcok th:unless="${approvingPoliceId eq session.currentPoliceId}">
+                                                <td th:text="${policeName}">
+                                                    결재자 이름
+                                                </td>
+                                            </th:blcok>
                                         </tr>
                                         <tr>
                                             <th>등록일</th>

@@ -6,6 +6,7 @@ import org.spring.p21suck2jo.dto.PoliceDto;
 
 import org.spring.p21suck2jo.entity.PoliceEntity;
 import org.spring.p21suck2jo.service.DeptService;
+import org.spring.p21suck2jo.service.MemorandumService;
 import org.spring.p21suck2jo.service.PoliceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,6 +40,7 @@ public class PoliceController {
 
     private final PoliceService policeService;
     private final DeptService deptService;
+    private final MemorandumService memorandumService;
 
     //경찰관 추가 View
     @GetMapping("/insert")
@@ -51,6 +53,8 @@ public class PoliceController {
     //경찰관 추가 form Post
     @PostMapping("/insert")
     public String policeAdd(PoliceDto policeDto) {
+//        경찰관 가입 시, ApprovingMemberAllEntity에 경찰이름, 부서명 넣기
+        memorandumService.addApprovingMemberAllEntity(policeDto.getPoliceName(), policeDto.getDept().getDeptName());
         policeService.policeAdd(policeDto);
         return "redirect:/index";
     }
