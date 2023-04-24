@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일석이조 지구대 :: 분실물 조회</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script th:src="@{/js/api/lostGoods.js}" defer></script>
+  <link rel="stylesheet" th:href="@{/css/api/lostGoods.css}">
+</head>
+
+<body>
+
+  <div id="all-container-wrap">
+
+    <div th:replace="/common/leftWrap :: left-wrap"></div>
+
+    <div class="lost-wrap">
+      <div class="lost-container">
+
+        <div class="header">
+          <h2>분실물 조회</h2>
+        </div>
+
+        <div class="lost-search">
+          <div class="lost-date">
+            <input type="date" name="search" id="search">
+            <input type="button" onclick="lostDateSearch()" value="조회" id="button">
+          </div>
+          <span>※ 경찰청 산하기관에 신고 접수된 서울시민의 분실품을 조회합니다.</span>
+        </div>
+
+        <div class="lost-goods">
+          <div class="lost-info">
+            <ul>
+              <li>등록ID</li>
+              <li>분실장소</li>
+              <li>분실물</li>
+              <li>설명</li>
+              <li>분실일</li>
+              <li>물품분류</li>
+            </ul>
+          </div>
+
+          <div class="lost-list">
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="box"></div>
+</body>
+
+</html>
