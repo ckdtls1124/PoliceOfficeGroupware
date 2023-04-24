@@ -1,6 +1,10 @@
 "# p.2_1Suck2Jo" 
 This is ckdtls1124's branch file
 
+본 p21suck2jo_ckdtls1124 파일은 결재문서 CRUD에 대해 리팩토링된 내용을 담고 있습니다.
+
+
+----
 Kobis Movie API와 Chatbot 접목 방식
 
 예상 질문 :
