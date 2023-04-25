@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <link rel="stylesheet" href="/static/css/login.css"> -->
+      <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+  <!-- #003478 색상통일 -->
+  <div class="login-container">
+    <div class="login">
+      <div class="header-home">
+           <a href="#"><img th:src="@{/img/logo.png}" alt=""></a>
+<!--      <a href="#"><img src="/static/css/img/logo.png" alt=""></a>-->
+      </div>
+      <div class="login-content">
+        <form th:action="@{/login}" method="post" id="loginForm">
+          <ul>
+            <li><input type="text" name="email" id="email" placeholder="아이디"></li>
+            <li><input type="password" name="password" id="password" placeholder="비밀번호"></li>
+          </ul>
+          <span th:if="error">
+                        <p id="valid" style="color:#ffffff; font-size:12px;" th:text="${exception}"></p>
+                    </span>
+          <div class="button">
+            <button class="btn" type="submit">
+              <span>로그인</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <ul class="login-list">
+          <li><a target="_blank" href="/idSearch">아이디찾기</a></li>
+          <li><p class="before"></p><a target="_blank" href="/pwSearch">비밀번호찾기</a></li>
+<!--          <li><p class="before"></p><a target="_blank" href="/join">회원가입</a></li>-->
+      </ul>
+      <div class="oauth">
+          <a th:href="@{/oauth2/authorization/google}"><img th:src="@{/img/google.png}"></a>
+      <!-- <a th:href="@{/oauth2/authorization/google}"><img src="/static/img/google.png" ></a> -->
+        <a th:href="@{/oauth2/authorization/naver}"><img th:src="@{/img/naver1.png}"></a>
+      <!-- <a th:href="@{/oauth2/authorization/naver}"><img src="/static/img/naver1.png"></a> -->
+        <a th:href="@{/oauth2/authorization/kakao}"><img th:src="@{/img/kakao.jpg}"></a>
+              <!-- <a th:href="@{/oauth2/authorization/naver}"><img src="/static/img/kakao.jpg"></a> -->
+      </div>
+
+    </div>
+    </div>
+  </body>
+  </html>

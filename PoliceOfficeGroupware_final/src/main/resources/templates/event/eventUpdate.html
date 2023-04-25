@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일석이조 지구대 :: 사건업데이트</title>
+  <link rel="stylesheet" th:href="@{/css/event/eventUpdate.css}">
+</head>
+
+<body>
+  <div id="all-container-wrap">
+
+    <div th:replace="/common/leftWrap :: left-wrap"></div>
+
+    <div class="event-wrap">
+      <div class="event-container">
+        <div class="event-container-items">
+
+          <div class="event-header-items">
+            <h2 class="event-title">사건업데이트</h2>
+          </div>
+
+          <div class="event-regist">
+            <form th:action="@{|/event/update/${detail.eventId}|}" method="post" th:object="${eventDto}"
+              enctype="multipart/form-data">
+              <ul>
+
+                <div class="warning">
+                  <h3>※ 신중하고 정확하게 기입하시오.</h3>
+                </div>
+
+                <li>
+                  <span>사건현장</span>
+                  <input type="text" th:value="${detail.eventFileName}" readonly>
+                </li>
+                <li>
+                  <span>사건장소</span>
+                  <input type="text" th:value="${detail.eventLocation}" readonly>
+                </li>
+                <li>
+                  <span>발생일시</span>
+                  <input type="text" th:value="${detail.eventDate}" readonly>
+                </li>
+                <li>
+                  <span>분류</span>
+                  <input type="text" th:value="${detail.eventGroupName}" readonly>
+                </li>
+                <li>
+                  <span>담당부서</span>
+                  <input type="text" th:value="${detail.deptName}" readonly>
+                </li>
+                <li>
+                  <span>담당경관</span>
+                  <input type="text" th:value="${detail.policeName}" readonly>
+                </li>
+                <li>
+                  <span>관련인</span>
+                  <input type="text" th:value="${detail.personName}" readonly>
+                </li>
+                <li>
+                  <span>구분</span>
+                  <label for="1">
+                    <input type="radio" name="eventSettle" id="1" value="1"> 해결
+                  </label>
+                  <label for="0">
+                    <input type="radio" name="eventSettle" id="0" value="0" checked="checked"> 미해결
+                  </label>
+                </li>
+                <li class="textarea">
+                  <span>상세사항</span>
+                  <textarea th:value="${detail.eventNote}" name="eventNote" id="eventNote" cols="36" rows="4"
+                    resize="none"></textarea>
+                </li>
+                <li class="event-btns">
+                  <a th:href="@{|/event/detail/${detail.eventId}}">취소</a>
+                  <div class="event-btns-sub">
+                    <input type="reset" value="초기화">
+                    <input type="submit" value="업데이트">
+                  </div>
+                </li>
+              </ul>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

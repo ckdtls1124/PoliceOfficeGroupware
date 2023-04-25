@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>일석이조 지구대 :: 오늘의 날씨</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=777886c1044b0589356709d34fc3254c"></script>
+  <script th:src="@{/js/api/weather.js}" defer></script>
+  <link rel="stylesheet" th:href="@{/css/api/weatherApi.css}">
+</head>
+
+<body>
+  <div id="all-container-wrap">
+
+    <div th:replace="/common/leftWrap :: left-wrap"></div>
+
+    <div class="weather-wrap">
+      <div class="weather-container">
+
+        <div class="header">
+          <div class="header-catch">
+            <h1 class="title">오늘의 날씨</h1>
+            <span>날씨에 따라 범죄율이 달라진다는 점을 상기하고 늘 날씨를 체크합시다</span>
+          </div>
+        </div>
+
+        <div class="weather-items">
+
+          <div class="weather-info">
+            <div class="weather-list">
+
+              <div style="background-color : #003478; box-sizing: border-box; padding : 10px; 
+                color : #fff; width: 340px; height: 200px; border-radius: 5px;">
+                <div style="float : left;">
+                  <div class="weather_icon con"></div>
+                </div><br>
+                <div style="float: right; margin: 15px 35px 0px 35px; font-size: 11pt">
+                  <div class="temp_min con"></div>
+                  <div class="temp_max con"></div>
+                  <div class="humidity con"></div>
+                  <div class="wind con"></div>
+                  <div class="cloud con"></div>
+                </div>
+                <div style="float: right; margin: -15px 0px 0px 30px;">
+                  <div class="current_temp con" style="font-size: 50pt"></div>
+                  <div class="weather_description con" style="font-size: 20pt"></div>
+                  <div class="city con" style="font-size: 13pt"></div>
+                </div>
+              </div>
+
+              <div class="city-search">
+                <select name="search" id="search">
+                  <option value="">::지역선택::</option>
+                  <option value="seoul">서울</option>
+                  <option value="uijeongbu-si">의정부</option>
+                  <option value="gimpo-si">김포</option>
+                  <option value="incheon">인천</option>
+                  <option value="ganghwa-gun">강화도</option>
+                  <option value="gangneung">강릉</option>
+                  <option value="gwangju">광주</option>
+                  <option value="pohang">포항</option>
+                  <option value="busan">부산</option>
+                  <option value="jeju">제주</option>
+                </select>
+                <input type="button" onclick="weatherSearch()" value="조회">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="weather-map">
+            <div id="map"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

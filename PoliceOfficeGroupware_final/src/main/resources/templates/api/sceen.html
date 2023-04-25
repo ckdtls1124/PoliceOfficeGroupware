@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Movie API</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script th:src="@{/js/api/sceen.js}" defer> </script>
+  <link rel="stylesheet" href="/css/api/sceen.css">
+
+</head>
+
+<body>
+  <div id="all-container-wrap" th:replace="/common/leftWrap :: left-wrap"></div>
+  <!--왼쪽 메뉴바-->
+
+  <!--오른쪽 컨테이너-->
+  <div class="right-wrap">
+    <div class="right-menu">
+      <div class="right-con">
+
+        <!--오른쪽 컨테이너-->
+
+        <div class="api-container">
+          <div class="api">
+            <div class="sceen-box">
+
+              <div class="sceen">
+                <h3>복지 - 일별 박스오피스</h3>
+              </div>
+
+              <div class="sceen-con">
+                <div class="box-con">
+                  <div class="sceen-detail">
+                    <div class="detail-header">
+                      <ul>
+                        <li>순번</li>
+                        <li class="t1">제목</li>
+                        <li>개봉일</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="popup">
+                <div class="popup-con">
+                  <h2 class="popup-title"></h2>
+                  <div class="information">
+                    <ul class="title">
+                      <li>국가</li>
+                      <li>장르</li>
+                      <li>관람등급</li>
+                      <li>개봉</li>
+                      <li>러닝타임</li>
+                      <li>출연</li>
+                    </ul>
+                    <ul class="content">
+                      <li class="mLocal"></li>
+                      <li class="mGenre"></li>
+                      <li class="mAudits"></li>
+                      <li class="mSday"></li>
+                      <li class="mTime"></li>
+                      <li class="mActors"></li>
+                    </ul>
+                  </div>
+                  <span class="close">X</span>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+
+</html>
