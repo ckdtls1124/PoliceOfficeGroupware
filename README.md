@@ -82,7 +82,7 @@ Police Office Groupware : Team project
 2. 결재문서 CRUD [Memorandum CRUD](https://github.com/ckdtls1124/Groupware_Project/wiki/Memorandum-CRUD) 
 3. 근태 기능
 4. naver-API
-5. 영화 API(Kobis API) [Movie API(Kobis API)] (https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
+5. 영화 API(Kobis API) [Movie API(Kobis API)](https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
 6. Chatbot
 </details>
 <details>
