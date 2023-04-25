@@ -44,13 +44,6 @@ Police Office Groupware : Team project
   ```
   $ git clone https://github.com/ckdtls1124/Groupware_Project.git
   ```
-## **Requirements(Tools)**
-  - OS : Windows10
-  - Backend : Java11
-  - Frontend : HTML5, Javascript 
-  - Framework : Spring Boot (2.x)
-  - Database : MySQL 8.0.X
-  
 ## **Usage Example**
 ![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
 
