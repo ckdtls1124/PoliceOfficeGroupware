@@ -80,10 +80,9 @@ Police Office Groupware : Team project
   
 1. 팀장
 2. 결재문서 CRUD [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Memorandum-CRUD) 
-3. 근태 기능
-4. naver-API
-5. 영화 API(Kobis API) [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
-6. Chatbot
+3. naver-API
+4. 영화 API(Kobis API) [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
+5. Chatbot [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Chatbot)
 </details>
 <details>
 <summary> 김득주 </summary>
