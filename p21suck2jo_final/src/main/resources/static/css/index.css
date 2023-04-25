@@ -1,0 +1,257 @@
+@import url(/css/common/reset.css);
+@import url(/css/common/leftWrap.css);
+
+/*오른쪽 컨테이너*/
+
+.right-wrap {
+	flex: 1;
+	padding: 10px 10px 10px 0;
+	height: auto;
+}
+
+.right-wrap .right-menu {
+	min-height: 100%;
+	/*ㄴ높이 최솟값이 100vh*/
+	background-color: #00347845;
+	box-sizing: border-box;
+	/* border: 1px solid #00ff00; */
+}
+
+.right-menu .right-con {
+	min-height: 100%;
+}
+
+/* main-container */
+.right-menu .right-con .main-container {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 30px 100px 30px 30px;
+}
+
+.right-menu .right-con .main-container .main {
+	width: 100%;
+	height: 870px;
+}
+
+.right-menu .right-con .main-container .main .main-grid {
+	width: auto;
+	height: 100%;
+
+	padding: 10px 10px;
+}
+
+.right-menu .right-con .main-container .main .main-grid ul {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 350);
+	grid-auto-rows: minmax(350px, auto);
+	gap: 40px;
+	margin-top: 65px;
+	/* border: 1px solid; */
+}
+
+.right-menu .right-con .main-container .main .main-grid ul li {
+	/* border: 1px solid; */
+	border-radius: 30px;
+	background-color: #ffffff;
+}
+
+/* my menu Btn container*/
+.myMenuContainer {
+	position: absolute;
+	left: 94%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+.myMenuContainer button {
+	width: auto;
+	height: auto;
+	border-radius: 3px;
+	border: none;
+	background-color: inherit;
+	color: #333333;
+	font-weight: 900;
+	font-size: 14px;
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+	gap: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+.myMenuContainer button img {
+	transform: translateY(2px);
+}
+.myMenuContainer button:hover {
+	background-color: #d8e0eac9;
+}
+.myMenuContainer:hover ~ .myMenuContainer-content {
+	display: block;
+}
+/* my menu content container */
+.myMenuContainer-content {
+	position: absolute;
+	top: 7%;
+	left: 81%;
+	z-index: 1;
+	box-shadow: 0 2px 4px 3px rgba(0, 0, 0, 0.04),
+		0 1px 3px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	height: auto;
+	width: auto;
+	display: none;
+	background-color: white;
+}
+.myMenuContainer-content:hover {
+	display: block;
+}
+.myMenuContainer-content ul {
+	display: flex;
+	justify-content: center;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+.myMenuContainer-content ul:nth-child(1) {
+	padding: 20px;
+	box-sizing: border-box;
+}
+.myMenuContainer-content ul:nth-child(2) {
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+.myMenuContainer-content ul:nth-child(3) {
+	padding: 20px;
+	box-sizing: border-box;
+}
+.myMenuContainer-content ul li {
+	width: 90px;
+	height: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+.myMenuContainer-content ul li:hover {
+	background-color: #d8e0eac9;
+}
+.myMenuContainer-content ul li a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 14px;
+	gap: 5px;
+}
+.myMenuContainer-content ul li a img {
+	width: 32px;
+	height: 32px;
+}
+/* 말풍선 효과 주기 */
+/* .myMenuContainer-content::before {
+	position: absolute;
+    content: "";
+    left: 10em;
+    border: 1em solid transparent;
+    border-bottom: 1em solid red;
+    z-index: 0;
+    bottom: 6.6em;
+  } */
+
+/* chat */
+.wrap{
+    position:relative;
+}
+.wrap #btn-chat-open{
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    cursor:pointer;
+}
+.wrap #speech-bubble{
+    position: fixed;
+        bottom: 115px;
+        right: 13px;
+            visibility: hidden;
+}
+.wrap #btn-chat-open:hover ~ #speech-bubble{
+    visibility: visible;
+}
+
+/*================================first-container=========================*/
+.main .main-grid ul li .first-container {
+  /* border : 1px solid; */
+  padding: 10px;
+}
+
+.main .main-grid ul li .first-container .logo {
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.main .main-grid ul li .first-container .logo h5 {
+  text-align: center;
+  padding: 10px;
+  color: #888;
+}
+
+.main .main-grid ul li .first-container .today-works {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  border-bottom: #ededed 1px solid;
+  margin-left: 18px;
+  border-bottom-width: 0.5px;
+}
+
+.main .main-grid ul li .first-container .today-works p.start {
+  color: #888;
+}
+
+.main .main-grid ul li .first-container .today-works p {
+  padding: 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.main .main-grid ul li .first-container .today-event {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  border-bottom: #ededed 1px solid;
+  margin-left: 18px;
+  border-bottom-width: 0.5px;
+}
+
+.main .main-grid ul li .first-container .today-event p.info {
+  color: #888;
+}
+
+.main .main-grid ul li .first-container .today-event p {
+  padding: 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.main .main-grid ul li .first-container .today-board {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  border-bottom: #ededed 1px solid;
+  margin-left: 18px;
+  border-bottom-width: 0.5px;
+}
+
+.main .main-grid ul li .first-container .today-board p:nth-child(2) {
+  color: #888;
+}
+
+.main .main-grid ul li .first-container .today-board p {
+  padding: 13px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/*================================first-container=========================*/
