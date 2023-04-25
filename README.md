@@ -39,6 +39,7 @@ Police Office Groupware : Team project
   관리자 페이지는 원활한 업무 처리를 위한 페이지이고, 일반적인 게시판과 달리 더욱 많은 기능을 제어하고 사용할 수 있는 권한을 부여할 수 있습니다.
 또, 경찰의 업무는 사건 사고를 중심으로 업무가 진행되므로 사건 사고에 중점을 두고 제작하였습니다.
 
+<br>
 
 ## ➰ 팀원 소개
 |         강창신         |         장효선         |         이지창         |         허인경         |         김득주         |
@@ -46,6 +47,7 @@ Police Office Groupware : Team project
 |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870719/234169687-de6367dc-9813-4f63-b2f9-7427e710596a.jpg" /> |           <img  width="160px" height="200px" src="https://user-images.githubusercontent.com/116870719/234171127-39ce7b7c-e475-4b85-bc73-beac2f45e3b8.JPG" /> |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870668/234171821-6e3bbec4-6120-499a-bef6-087dee7e18ea.png" />          |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870668/234180853-28be0f41-6025-4f33-aae6-d9507b5345cd.png" />         |         사진          |  
 |         [@ckdtls1124](https://github.com/ckdtls1124/) |         [@wkdgytjs](https://github.com/wkdgytjs)         |         [@jichang-lee](https://github.com/jichang-lee)         |         [@devinky](https://github.com/devinky)         |         [@kimdeukju](https://github.com/kimdeukju)         |
 
+<br>
 
 ## **Installation**
   ```
@@ -54,6 +56,7 @@ Police Office Groupware : Team project
 ## **Usage Example**
 ![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
 
+<br>
 
 ## ➰사용한 기술 및 배포 환경
 <table>
@@ -72,6 +75,8 @@ Police Office Groupware : Team project
     <td>Java, HTML, CSS, Javascript</td>
   </tr>
 </table>
+
+<br>
 
 ## ➰Team (담당한 업무)
 
