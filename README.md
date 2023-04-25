@@ -53,28 +53,6 @@ Police Office Groupware : Team project
   ```
   $ git clone https://github.com/ckdtls1124/PoliceOfficeGroupware.git
   ```
-## **Usage Example**
-![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
-
-<br>
-
-## ➰사용한 기술 및 배포 환경
-<table>
-  <tr>
-    <th>OS</th>
-    <th>Database</th>
-    <th>IDE</th>
-    <th>Framework</th>
-    <th>Language</th>
-  </tr>
-  <tr>
-    <td>Windows 10</td>
-    <td>MySqL</td>
-    <td>IntelliJ, Visual Studio Code</td>
-    <td>Spring Boot</td>
-    <td>Java, HTML, CSS, Javascript</td>
-  </tr>
-</table>
 
 <br>
 
@@ -128,4 +106,26 @@ Police Office Groupware : Team project
 
 <br>
 
+## ➰사용한 기술 및 배포 환경
+<table>
+  <tr>
+    <th>OS</th>
+    <th>Database</th>
+    <th>IDE</th>
+    <th>Framework</th>
+    <th>Language</th>
+  </tr>
+  <tr>
+    <td>Windows 10</td>
+    <td>MySqL</td>
+    <td>IntelliJ, Visual Studio Code</td>
+    <td>Spring Boot</td>
+    <td>Java, HTML, CSS, Javascript</td>
+  </tr>
+</table>
   
+<br>
+
+## **Usage Example**
+![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
+
