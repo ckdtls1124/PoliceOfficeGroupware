@@ -42,7 +42,7 @@ Police Office Groupware : Team project
 
 ## **Installation**
   ```
-  $ git clone https://github.com/ckdtls1124/Groupware_Project.git
+  $ git clone https://github.com/ckdtls1124/PoliceOfficeGroupware.git
   ```
 ## **Usage Example**
 ![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
@@ -66,7 +66,11 @@ Police Office Groupware : Team project
   </tr>
 </table>
 
-<br>
+## ➰ 팀원 소개
+|         강창신         |         강창신         |         강창신         |         강창신         |         강창신         |
+|-----------------------|-----------------------|-----------------------|-----------------------|------------------------|
+|         ![IMG_0071](https://user-images.githubusercontent.com/116870719/234169687-de6367dc-9813-4f63-b2f9-7427e710596a.jpg) |         사진          |         사진          |         사진          |         사진          |  
+|         [@ckdtls1124](https://github.com/ckdtls1124/) |         강창신         |         강창신         |         강창신         |         강창신         |
 
 ## ➰Team (담당한 업무)
 
