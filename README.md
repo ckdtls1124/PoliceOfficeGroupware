@@ -72,10 +72,11 @@ Police Office Groupware : Team project
 <details>
 <summary> 강창신 </summary>
 
-1. 결재문서 CRUD
-2. 근태 기능
-3. naver-API
-4. 영화 API(Kobis API) & Chatbot
+1. 팀장
+2. 결재문서 CRUD
+3. 근태 기능
+4. naver-API
+5. 영화 API(Kobis API) & Chatbot
 </details>
 <details>
 <summary> 김득주 </summary>
@@ -91,8 +92,7 @@ Police Office Groupware : Team project
 2. 부서CRUD
 3. FullCalendar-API
 4. AWS EC2 배포
-5. CICD
-6. 날씨 API 
+5. 날씨 API 
 </details>
 <details>
 <summary> 장효선 </summary>
