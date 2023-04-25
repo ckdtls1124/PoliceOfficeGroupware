@@ -40,6 +40,13 @@ Police Office Groupware : Team project
 또, 경찰의 업무는 사건 사고를 중심으로 업무가 진행되므로 사건 사고에 중점을 두고 제작하였습니다.
 
 
+## ➰ 팀원 소개
+|         강창신         |         장효선         |         이지창         |         허인경         |         김득주         |
+|-----------------------|-----------------------|-----------------------|-----------------------|------------------------|
+|         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870719/234169687-de6367dc-9813-4f63-b2f9-7427e710596a.jpg" /> |           <img  width="160px" height="200px" src="https://user-images.githubusercontent.com/116870719/234171127-39ce7b7c-e475-4b85-bc73-beac2f45e3b8.JPG" /> |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870668/234171821-6e3bbec4-6120-499a-bef6-087dee7e18ea.png" />          |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870668/234180853-28be0f41-6025-4f33-aae6-d9507b5345cd.png" />         |         사진          |  
+|         [@ckdtls1124](https://github.com/ckdtls1124/) |         [@wkdgytjs](https://github.com/wkdgytjs)         |         [@jichang-lee](https://github.com/jichang-lee)         |         [@devinky](https://github.com/devinky)         |         [@kimdeukju](https://github.com/kimdeukju)         |
+
+
 ## **Installation**
   ```
   $ git clone https://github.com/ckdtls1124/PoliceOfficeGroupware.git
@@ -65,12 +72,6 @@ Police Office Groupware : Team project
     <td>Java, HTML, CSS, Javascript</td>
   </tr>
 </table>
-
-## ➰ 팀원 소개
-|         강창신         |         장효선         |         이지창         |         허인경         |         김득주         |
-|-----------------------|-----------------------|-----------------------|-----------------------|------------------------|
-|         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870719/234169687-de6367dc-9813-4f63-b2f9-7427e710596a.jpg" /> |           <img  width="160px" height="200px" src="https://user-images.githubusercontent.com/116870719/234171127-39ce7b7c-e475-4b85-bc73-beac2f45e3b8.JPG" /> |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870668/234171821-6e3bbec4-6120-499a-bef6-087dee7e18ea.png" />          |         <img width="160px" height="200px" src="https://user-images.githubusercontent.com/116870668/234180853-28be0f41-6025-4f33-aae6-d9507b5345cd.png" />         |         사진          |  
-|         [@ckdtls1124](https://github.com/ckdtls1124/) |         [@wkdgytjs](https://github.com/wkdgytjs)         |         [@jichang-lee](https://github.com/jichang-lee)         |         [@devinky](https://github.com/devinky)         |         [@kimdeukju](https://github.com/kimdeukju)         |
 
 ## ➰Team (담당한 업무)
 
