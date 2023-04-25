@@ -70,10 +70,10 @@ Police Office Groupware : Team project
 
 ## ➰Team (담당한 업무)
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/></a>
+
 <details>
 <summary>강창신</summary> 
-  <https://github.com/ckdtls1124/Groupware_Project>
+  <img src="https://img.shields.io/badge/?style=flat-square&logo=More to Know&logoColor=white"/></a> <https://github.com/ckdtls1124/Groupware_Project>
 1. 팀장
 2. 결재문서 CRUD
 3. 근태 기능
