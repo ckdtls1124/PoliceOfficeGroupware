@@ -69,8 +69,7 @@ Police Office Groupware : Team project
 ## ➰ 팀원 소개
 |         강창신         |         장효선         |         강창신         |         강창신         |         강창신         |
 |-----------------------|-----------------------|-----------------------|-----------------------|------------------------|
-|         <img width="160px" src="https://user-images.githubusercontent.com/116870719/234169687-de6367dc-9813-4f63-b2f9-7427e710596a.jpg" /> |           <img  width="160px" src="https://user-images.githubusercontent.com/116870719/234171127-39ce7b7c-e475-4b85-bc73-beac2f45e3b8.JPG" />
-        |         사진          |         사진          |         사진          |  
+|         <img width="160px" src="https://user-images.githubusercontent.com/116870719/234169687-de6367dc-9813-4f63-b2f9-7427e710596a.jpg" /> |           <img  width="160px" src="https://user-images.githubusercontent.com/116870719/234171127-39ce7b7c-e475-4b85-bc73-beac2f45e3b8.JPG" /> |         사진          |         사진          |         사진          |  
 |         [@ckdtls1124](https://github.com/ckdtls1124/) |         [@wkdgytjs](https://github.com/wkdgytjs)         |         강창신         |         강창신         |         강창신         |
 
 ## ➰Team (담당한 업무)
