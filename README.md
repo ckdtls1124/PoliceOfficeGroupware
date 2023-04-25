@@ -79,7 +79,7 @@ Police Office Groupware : Team project
 <summary>강창신 </summary>  
   
 1. 팀장
-2. Business Logic & DB 설계
+2. Business Logic & DB 설계 [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Business-Logic-&-DB)
 3. 결재문서 CRUD [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Memorandum-CRUD) 
 4. naver-API
 5. 영화 API(Kobis API) [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
