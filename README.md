@@ -51,7 +51,8 @@ Police Office Groupware : Team project
   - Database : MySQL 8.0.X
   
 ## **Usage Example**
-!Video or GIF Screen shot
+![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
+
   
 
 
