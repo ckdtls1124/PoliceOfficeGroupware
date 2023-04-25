@@ -52,6 +52,10 @@ Police Office Groupware : Team project
   
 ## **Usage Example**
 ![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 77f26c709b9634a457c63c8d0f8d1ac0a9e5ed35
   
 
 
