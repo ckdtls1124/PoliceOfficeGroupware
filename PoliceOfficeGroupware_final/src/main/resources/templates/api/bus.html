@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BUS API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script th:src="@{/js/api/bus.js}" defer></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=34ff576f78440aab7f99134fe4c07b65&libraries=services,clusterer,drawing"></script>
+    <style>
+
+  .bus{
+    max-width:1200px;
+    margin:0 auto;
+
+  }
+    table {
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid;
+    }
+
+.bus-detail{
+    max-height:20vh;
+    overflow-y:auto;
+}
+    .map-con{
+      display:flex;
+      justify-content: space-between;
+    gap:5px;
+    max-height:50vh;
+    overflow-y:auto;
+    }
+.stationNm{
+  flex:1;
+  position:sticky;
+  top:0;
+  max-height:50vh;
+  overflow-y:auto;
+}
+#map{
+  flex:7
+}
+
+
+  </style>
+</head>
+
+<body>
+<div class="bus">
+    <div class="bus-con">
+        <div class="bus-header">
+            <h1>공공데이터포털 버스 API</h1>
+            <input type="text" name="search" id="search">
+            <input type="button" value="버스노선검색" onclick="busSearch()">
+        </div>
+        <div class="bus-detail">
+            <table>
+                <thead>
+                <tr>
+                    <th>노선명</th>
+                    <th>노선유형</th>
+                    <th>노선거점</th>
+                    <th>노선종점</th>
+                    <th>첫차시간</th>
+                    <th>막차시간</th>
+                    <th>배차간격</th>
+                    <th>버스위치정보</th>
+                    <th>버스타입</th>
+                </tr>
+                </thead>
+                <tbody id="bus1">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="map-con">
+        <div class="stationNm"></div>
+        <div id="map" style="width:100%;height:50vh"></div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
+
