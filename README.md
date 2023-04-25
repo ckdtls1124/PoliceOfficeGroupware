@@ -36,7 +36,8 @@ Police Office Groupware : Team project
   지구대는 단순한 그룹웨어의 기능만 필요할 뿐만 아니라, 지구대가 속한 공동체에서 일어나는 다양한 사건들을 
   처리할 수 있는 그룹웨어의 기능을 필요로 합니다.
   
-  해당 프로젝트에서는 지구대가 필요로 하는 기능을 구현하고자 하였습니다.
+  관리자 페이지는 원활한 업무 처리를 위한 페이지이고, 일반적인 게시판과 달리 더욱 많은 기능을 제어하고 사용할 수 있는 권한을 부여할 수 있습니다.
+또, 경찰의 업무는 사건 사고를 중심으로 업무가 진행되므로 사건 사고에 중점을 두고 제작하였습니다.
 
 
 ## **Installation**
@@ -54,5 +55,63 @@ Police Office Groupware : Team project
 ![image](https://user-images.githubusercontent.com/116870719/234158749-9c740be5-d860-4ee5-85b8-946a7d36565e.png)
 
 
+## ➰사용한 기술 및 배포 환경
+<table>
+  <tr>
+    <th>OS</th>
+    <th>Database</th>
+    <th>IDE</th>
+    <th>Framework</th>
+    <th>Language</th>
+  </tr>
+  <tr>
+    <td>Windows 10</td>
+    <td>MySqL</td>
+    <td>IntelliJ, Visual Studio Code</td>
+    <td>Spring Boot</td>
+    <td>Java, HTML, CSS, Javascript</td>
+  </tr>
+</table>
+
+<br>
+
+## ➰Team (담당한 업무)
+<details>
+<summary> 강창신 </summary>
+
+1. 결재문서 CRUD
+2. 근태 기능
+3. naver-API
+</details>
+<details>
+<summary> 김득주 </summary>
+
+1. 로그인&Spring Security
+2. 아이디/비밀번호 찾기
+</details>
+<details>
+<summary> 이지창 </summary>
+
+1. 회원CRUD
+2. 부서CRUD
+3. FullCalendar-API
+4. AWS EC2 배포
+</details>
+<details>
+<summary> 장효선 </summary>
+
+1. 게시판CRUD
+2. 댓글CRUD
+3. 각 페이지 design frame(Html,CSS) 제작
+</details>
+<details>
+<summary> 허인경 </summary>
+  
+1. 사건CRU
+2. left-Menubar 제작
+3. KakaoMap-API
+</details>
+
+<br>
 
   
