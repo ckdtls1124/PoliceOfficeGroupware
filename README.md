@@ -70,7 +70,7 @@ Police Office Groupware : Team project
 
 ## ➰Team (담당한 업무)
 <details>
-<summary> 강창신 </summary>
+<summary>[강창신](https://github.com/ckdtls1124/Groupware_Project)</summary>
 
 1. 팀장
 2. 결재문서 CRUD
