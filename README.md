@@ -76,7 +76,6 @@ Police Office Groupware : Team project
 
 <img src="https://github.com/backslash-f/simage/blob/master/Resources/image_0.jpg" width="80">
 
-![AESCryptable Demo](https://github.com/backslash-f/aescryptable/blob/master/AESCryptable.playground.gif)
 
 [![macos-catalina](https://img.shields.io/badge/macos-catalina-brightgreen.svg)](https://www.apple.com/macos/catalina-preview)
 
