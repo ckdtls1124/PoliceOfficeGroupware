@@ -73,7 +73,7 @@ Police Office Groupware : Team project
 
 <details>
 <summary>강창신</summary> 
-  <img src="https://img.shields.io/badge/?style=flat-square&logo=More to Know&logoColor=white"/></a> <https://github.com/ckdtls1124/Groupware_Project>
+  <https://img.shields.io/github/license/ckdtls1124/Groupware_Project?style=plastic>
 1. 팀장
 2. 결재문서 CRUD
 3. 근태 기능
