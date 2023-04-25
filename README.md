@@ -79,10 +79,10 @@ Police Office Groupware : Team project
 <summary>강창신 </summary>  
   
 1. 팀장
-2. 결재문서 CRUD [Memorandum CRUD](https://github.com/ckdtls1124/Groupware_Project/wiki/Memorandum-CRUD) 
+2. 결재문서 CRUD [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Memorandum-CRUD) 
 3. 근태 기능
 4. naver-API
-5. 영화 API(Kobis API) [Movie API(Kobis API)](https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
+5. 영화 API(Kobis API) [-코드보기](https://github.com/ckdtls1124/Groupware_Project/wiki/Movie-API(Kobist-API))
 6. Chatbot
 </details>
 <details>
@@ -95,8 +95,8 @@ Police Office Groupware : Team project
 <details>
 <summary> 이지창 </summary>
 
-1. 회원CRUD
-2. 부서CRUD
+1. 회원CRUD [-코드보기](https://github.com/jichang-lee/Groupware-Project/wiki/%ED%9A%8C%EC%9B%90-%EA%B8%B0%EB%8A%A5)
+2. 부서CRUD [-코드보기](https://github.com/jichang-lee/Groupware-Project/wiki/%EB%B6%80%EC%84%9C-%EA%B8%B0%EB%8A%A5)
 3. FullCalendar-API
 4. AWS EC2 배포
 5. 날씨 API 
