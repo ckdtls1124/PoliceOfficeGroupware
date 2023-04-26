@@ -35,16 +35,13 @@ public class MemorandumFileService implements MemorandumFileCRUD {
     public List<MemorandumFileDto> findAllFilesInSelectedMemo(Long memoId) {
 //        결재 문서를 찾는다.
         Optional<MemorandumEntity> memorandumEntity = memorandumRepository.findById(memoId);
-
 //       찾은 결재 문서에 해당하는 파일을 찾는다.
         List<MemorandumFileEntity> memorandumFileEntityList = memorandumFileRepository.findAllByMemorandumEntity(memorandumEntity.get());
-
         List<MemorandumFileDto> memorandumFileDtoList = new ArrayList<>();
         for (MemorandumFileEntity memorandumFileEntity : memorandumFileEntityList) {
             MemorandumFileDto memorandumFileDto = MemorandumFileDto.builder().memorandumFileId(memorandumFileEntity.getMemorandumFileId()).memorandumFileOriginalName(memorandumFileEntity.getMemorandumFileOriginalName()).build();
             memorandumFileDtoList.add(memorandumFileDto);
         }
-
         return memorandumFileDtoList;
     }
 //   조회============================================
