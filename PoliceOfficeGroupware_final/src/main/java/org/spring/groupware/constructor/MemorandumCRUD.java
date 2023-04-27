@@ -58,4 +58,8 @@ public interface MemorandumCRUD {
 
 
     void addApprovingMemberAllEntity(String policeName, String deptName);
+
+    void updateSelectedMemoApprovingMember(MemoApprovedMember updatedApprovingMember);
+
+    void deleteSelectedMemo(Long id);
 }

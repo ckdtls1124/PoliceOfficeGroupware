@@ -41,7 +41,6 @@ public class MemorandumFileController {
         String contentDisposition = "attachment; filename=\""+encodedFileName+"\"";
 
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition).body(resource);
-
     }
 
 //    저장한 파일 중 선택 삭제
